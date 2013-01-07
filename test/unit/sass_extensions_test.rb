@@ -13,8 +13,12 @@ class SassExtensionsTest < Test::Unit::TestCase
     assert_equal 'blue green', evaluate(%Q(list-variables("variables/other-colors")))
   end
 
+  def test_list_variables_for_files_starting_with_underscore
+    assert_equal 'blue green', evaluate(%Q(list-variables("variables/more-other-colors")))
+  end
+
   def test_list_variables_for_directories
-    assert_equal 'my-wonderful_red blue green', evaluate(%Q(list-variables("variables/*")))
+    assert_equal 'blue green my-wonderful_red', evaluate(%Q(list-variables("variables/*")))
   end
 
 protected

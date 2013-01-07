@@ -41,6 +41,7 @@ module LivingStyleGuide
 
     def self.variables(uri)
       uri += '.s?ss' unless uri =~ /\.s[ac]ss$/
+      uri.gsub! %r{^(.*)/(.+)$}, '\1/{_,}\2'
       variables = []
       paths = [Compass.configuration.sass_path, Compass.configuration.additional_import_paths].flatten
       paths.each do |path|
