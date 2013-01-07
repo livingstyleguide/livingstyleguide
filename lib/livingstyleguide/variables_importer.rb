@@ -42,7 +42,8 @@ module LivingStyleGuide
     def self.variables(uri)
       uri += '.s?ss' unless uri =~ /\.s[ac]ss$/
       variables = []
-      Compass.configuration.additional_import_paths.each do |path|
+      paths = [Compass.configuration.sass_path, Compass.configuration.additional_import_paths].flatten
+      paths.each do |path|
         if path.is_a? String
           Dir.glob(File.join(path, uri)).each do |file|
             sass = File.read(file)
