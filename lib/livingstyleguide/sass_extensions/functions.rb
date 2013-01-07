@@ -6,7 +6,7 @@ module LivingStyleGuide::SassExtensions::Functions
     variables = []
     Dir.glob(path).each do |file|
       sass = File.read(file)
-      variables << sass.scan(%r(\$([a-z-_]+)\s*:))
+      variables << sass.scan(%r(\$([a-z\-_]+)\s*:))
     end
     variables.flatten!
     variables.uniq!
