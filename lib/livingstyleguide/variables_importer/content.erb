@@ -1,0 +1,15 @@
+<% variables.each do |variable| %>
+  .\$<%= variable %> {
+    @if type-of($<%= variable %>) == color {
+      &:before {
+        @extend %styleguide--color !optional;
+        background: $<%= variable %>;
+      }
+    }
+
+    &:after {
+      @extend %styleguide--code !optional;
+      content: "#{$<%= variable %>}";
+    }
+  }
+<% end %>
