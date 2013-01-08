@@ -1,6 +1,7 @@
 require 'livingstyleguide/version'
 require 'livingstyleguide/sass_extensions'
 require 'livingstyleguide/variables_importer'
+require 'livingstyleguide/markdown_extensions'
 require 'sass/plugin'
 
 module LivingStyleGuide
