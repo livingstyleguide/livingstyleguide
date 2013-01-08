@@ -1,5 +1,7 @@
 require 'redcarpet'
 require 'tilt'
+require 'minisyntax'
+require "erb"
 
 module LivingStyleGuide
   class RedcarpetTemplate < ::Tilt::RedcarpetTemplate::Redcarpet2
@@ -65,7 +67,9 @@ module LivingStyleGuide
       if language == 'example'
         %Q(<div class="livingstyleguide--example">\n  #{code}\n</div>)
       else
-        code
+        code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
+        code = ::MiniSyntax.highlight(code.strip, language.to_s.strip.to_sym)
+        %Q(<pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">#{code}</code></pre>)
       end
     end
 

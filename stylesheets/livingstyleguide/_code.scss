@@ -5,6 +5,7 @@
   font-size: $livingstyleguide--code-font-size;
   font-weight: $livingstyleguide--code-font-weight;
   padding: 0 3px;
+  -webkit-font-smoothing: subpixel-antialiased;
   @include border-radius($livingstyleguide--code-border-radius);
 
   .livingstyleguide--code-block & {
@@ -12,5 +13,36 @@
     line-height: $livingstyleguide--code-line-height;
     padding: 3px 6px;
   }
-}
 
+  kbd {
+    display: block;
+    font-weight: bold;
+
+    &:before {
+      content: "> ";
+    }
+  }
+
+  em {
+    color: lighten($livingstyleguide--code-color, 10%);
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  b {
+    color: lighten($livingstyleguide--code-color, 20%);
+    font-weight: bold;
+  }
+
+  i {
+    color: lighten($livingstyleguide--code-color, 30%);
+  }
+
+  q {
+    color: lighten($livingstyleguide--code-color, 30%);
+  }
+
+  var {
+    text-decoration: underline;
+  }
+}

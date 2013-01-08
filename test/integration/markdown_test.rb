@@ -43,4 +43,13 @@ class MarkdownTest < Test::Unit::TestCase
     HTML
   end
 
+  def test_code
+    html = render('test/fixtures/markdown/code.md')
+    assert_equal <<-HTML, html
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><b><i>.my-class</i></b> {
+        <b>color:</b> <b>red</b>;
+      }</code></pre>
+    HTML
+  end
+
 end
