@@ -1,38 +1,30 @@
-.livingstyleguide--container {
-  > {
-    p,
-    ul,
-    ol,
-    dl,
-    pre {
-      font-family: $livingstyleguide--base-font;
-      font-size: $livingstyleguide--base-font-size;
-      font-weight: $livingstyleguide--base-font-weight;
-      line-height: $livingstyleguide--base-line-height;
-      margin: $livingstyleguide--gap-width auto;
-      width: $livingstyleguide--width;
-    }
+.livingstyleguide--paragraph,
+.livingstyleguide--code-block,
+.livingstyleguide--unordered-list,
+.livingstyleguide--ordered-list {
+  font-family: $livingstyleguide--base-font;
+  font-size: $livingstyleguide--base-font-size;
+  font-weight: $livingstyleguide--base-font-weight;
+  line-height: $livingstyleguide--base-line-height;
+  margin: $livingstyleguide--gap-width auto;
+  width: $livingstyleguide--width;
+}
 
-    ul,
-    ol {
-      li {
-        list-style: disc;
-        margin: ceil($livingstyleguide--gap-width / 2) 0 ceil($livingstyleguide--gap-width / 2) (2 * $livingstyleguide--gap-width);
-      }
-    }
+.livingstyleguide--unordered-list-item,
+.livingstyleguide--ordered-list-item {
+  list-style: disc;
+  margin: ceil($livingstyleguide--gap-width / 2) 0 ceil($livingstyleguide--gap-width / 2) (2 * $livingstyleguide--gap-width);
+}
 
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: $livingstyleguide--headline-font;
-      font-size: $livingstyleguide--headline-font-size;
-      font-weight: $livingstyleguide--headline-font-weight;
-      line-height: $livingstyleguide--headline-line-height;
-      margin: (2 * $livingstyleguide--gap-width) auto $livingstyleguide--gap-width;
-      width: $livingstyleguide--width;
-    }
-  }
+.livingstyleguide--page-title,
+.livingstyleguide--headline,
+.livingstyleguide--sub-headline {
+  font-family: $livingstyleguide--headline-font;
+  font-size: $livingstyleguide--headline-font-size;
+  font-weight: $livingstyleguide--headline-font-weight;
+  line-height: $livingstyleguide--headline-line-height;
+  margin: (2 * $livingstyleguide--gap-width) auto $livingstyleguide--gap-width;
+  width: $livingstyleguide--width;
 }
 
 .livingstyleguide--example {

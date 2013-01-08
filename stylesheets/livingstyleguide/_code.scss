@@ -1,29 +1,16 @@
-.livingstyleguide--container > {
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  ul,
-  ol,
-  dl,
-  pre {
-    code {
-      background: $livingstyleguide--code-background-color;
-      color: $livingstyleguide--code-color;
-      font-family: $livingstyleguide--code-font;
-      font-size: $livingstyleguide--code-font-size;
-      font-weight: $livingstyleguide--code-font-weight;
-      padding: 0 3px;
-      @include border-radius($livingstyleguide--code-border-radius);
-    }
-  }
+.livingstyleguide--code {
+  background: $livingstyleguide--code-background-color;
+  color: $livingstyleguide--code-color;
+  font-family: $livingstyleguide--code-font;
+  font-size: $livingstyleguide--code-font-size;
+  font-weight: $livingstyleguide--code-font-weight;
+  padding: 0 3px;
+  @include border-radius($livingstyleguide--code-border-radius);
 
-  pre code,
-  ul pre code,
-  ol pre code {
+  .livingstyleguide--code-block & {
     display: block;
     line-height: $livingstyleguide--code-line-height;
     padding: 3px 6px;
   }
 }
+

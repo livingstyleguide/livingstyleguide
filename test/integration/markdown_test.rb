@@ -10,6 +10,7 @@ class MarkdownTest < Test::Unit::TestCase
   end
 
   def format_html(html)
+    html.strip!
     html.gsub! /\n+/, "\n      "
     %Q(      #{html}\n)
   end
@@ -20,6 +21,25 @@ class MarkdownTest < Test::Unit::TestCase
       <div class="livingstyleguide--example">
         <button class="button">Test</button>
       </div>
+    HTML
+  end
+
+  def test_text
+    html = render('test/fixtures/markdown/text.md')
+    assert_equal <<-HTML, html
+      <h2 class="livingstyleguide--headline">Hello World</h2>
+      <p class="livingstyleguide--paragraph">Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipiscing elit. Sed a pulvinar turpis.</p>
+      <ul class="livingstyleguide--unordered-list">
+      <li class="livingstyleguide--unordered-list-item">Lorem</li>
+      <li class="livingstyleguide--unordered-list-item">Ipsum</li>
+      <li class="livingstyleguide--unordered-list-item">Dolor</li>
+      </ul>
+      <h3 class="livingstyleguide--sub-headline">More Lorem</h3>
+      <ol class="livingstyleguide--ordered-list">
+      <li class="livingstyleguide--ordered-list-item">Lorem</li>
+      <li class="livingstyleguide--ordered-list-item">Ipsum</li>
+      <li class="livingstyleguide--ordered-list-item">Dolor</li>
+      </ol>
     HTML
   end
 

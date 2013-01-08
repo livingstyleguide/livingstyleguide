@@ -42,6 +42,25 @@ module LivingStyleGuide
       middleman_app.link_to(content, link, :title => title)
     end
 
+    def header(text, header_level)
+      klass = %w(page-title headline sub-headline)[header_level]
+      header_level += 1
+      %Q(<h#{header_level} class="livingstyleguide--#{klass}">#{text}</h#{header_level}>\n)
+    end
+
+    def paragraph(text)
+      %Q(<p class="livingstyleguide--paragraph">#{text}</p>\n)
+    end
+
+    def list(contents, list_type)
+      tag_name = "#{list_type[0]}l"
+      %Q(<#{tag_name} class="livingstyleguide--#{list_type}-list">\n#{contents}</#{tag_name}>\n)
+    end
+
+    def list_item(text, list_type)
+      %Q(<li class="livingstyleguide--#{list_type}-list-item">#{text.strip}</li>\n)
+    end
+
     def block_code(code, language)
       if language == 'example'
         %Q(<div class="livingstyleguide--example">\n  #{code}\n</div>)
