@@ -42,7 +42,8 @@
   }
 }
 
-.livingstyleguide--container > .livingstyleguide--color-swatches {
-  margin-bottom: -$livingstyleguide--gap-width;
+.livingstyleguide--color-swatches {
+  margin: $livingstyleguide--gap-width auto (-$livingstyleguide--gap-width) auto;
+  width: $livingstyleguide--width;
   @include clearfix;
 }

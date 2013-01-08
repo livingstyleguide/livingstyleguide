@@ -52,4 +52,14 @@ class MarkdownTest < Test::Unit::TestCase
     HTML
   end
 
+  def test_variables
+    html = render('test/fixtures/markdown/variables.md')
+    assert_equal <<-HTML, html
+      <ul class="livingstyleguide--color-swatches">
+      <li class="livingstyleguide--color-swatch $blue">$blue</li>
+      <li class="livingstyleguide--color-swatch $green">$green</li>
+      </ul>
+    HTML
+  end
+
 end

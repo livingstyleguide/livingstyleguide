@@ -1,0 +1,1 @@
+{{variables:variables/other-colors}}
