@@ -33,10 +33,10 @@ class VariablesImporterTest < Test::Unit::TestCase
 
   def test_output_of_variables
     css = render <<-SCSS
-      %styleguide--code {
+      %livingstyleguide--code {
         test: code;
       }
-      %styleguide--color {
+      %livingstyleguide--color {
         test: color;
       }
       @import "variables/colors";

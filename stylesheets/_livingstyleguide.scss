@@ -1,0 +1,47 @@
+//// INTEGRATION ////
+
+$livingstyleguide--layout-selector: body !default;
+
+//// TYPOGRAPHY ////
+
+$livingstyleguide--base-font: 'Georgia', 'Times New Roman', serif !default;
+$livingstyleguide--base-font-size: 14px !default;
+$livingstyleguide--base-font-weight: normal !default;
+$livingstyleguide--base-line-height: 1.4 !default;
+$livingstyleguide--headline-font: $livingstyleguide--base-font !default;
+$livingstyleguide--headline-font-size: 20px !default;
+$livingstyleguide--headline-font-weight: bold !default;
+$livingstyleguide--headline-line-height: 1.1 !default;
+$livingstyleguide--code-font: Courier, "Courier New", monospace !default;
+$livingstyleguide--code-font-size: 13px !default;
+$livingstyleguide--code-font-weight: normal !default;
+$livingstyleguide--code-line-height: 1.1 !default;
+
+//// STYLING ////
+
+$livingstyleguide--background-color: #f7f7f7 !default;
+$livingstyleguide--border-width: 1px !default;
+$livingstyleguide--border-color: silver !default;
+$livingstyleguide--border-radius: 0 !default;
+$livingstyleguide--color: #505050 !default;
+$livingstyleguide--width: 640px !default;
+$livingstyleguide--gap-width: 10px !default;
+
+$livingstyleguide--code-background-color: #505050 !default;
+$livingstyleguide--code-color: white !default;
+$livingstyleguide--code-border-width: $livingstyleguide--border-width !default;
+$livingstyleguide--code-border-color: $livingstyleguide--border-color !default;
+$livingstyleguide--code-border-radius: $livingstyleguide--border-radius !default;
+
+$livingstyleguide--color-swatch-color: black !default;
+$livingstyleguide--color-swatch-border-width: $livingstyleguide--border-width !default;
+$livingstyleguide--color-swatch-border-color: $livingstyleguide--border-color !default;
+$livingstyleguide--color-swatch-border-radius: $livingstyleguide--border-radius !default;
+$livingstyleguide--color-swatches-per-line: 2 !default;
+
+//// IMPORTS ////
+
+@import "livingstyleguide/layout";
+@import "livingstyleguide/content";
+@import "livingstyleguide/code";
+@import "livingstyleguide/color-swatches";

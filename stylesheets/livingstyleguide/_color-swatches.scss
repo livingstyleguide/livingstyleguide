@@ -1,0 +1,48 @@
+%livingstyleguide--color-swatch {
+  color: $livingstyleguide--color-swatch-color;
+  float: left;
+  font-family: $livingstyleguide--code-font;
+  font-size: $livingstyleguide--code-font-size;
+  font-weight: bold;
+  height: 4em * $livingstyleguide--base-line-height;
+  list-style: none !important;
+  margin: 0 $livingstyleguide--gap-width $livingstyleguide--gap-width 0 !important;
+  padding-top: 1em * $livingstyleguide--base-line-height;
+  position: relative;
+  text-align: center;
+  width: floor(
+      ($livingstyleguide--width - ($livingstyleguide--color-swatches-per-line - 1) * $livingstyleguide--gap-width)
+      /
+      $livingstyleguide--color-swatches-per-line
+    );
+  z-index: 1;
+  @include box-sizing(border-box);
+
+  &:nth-child(#{$livingstyleguide--color-swatches-per-line}n) {
+    margin-right: 0 !important;
+  }
+
+  &:before {
+    border: $livingstyleguide--color-swatch-border-width $livingstyleguide--code-border-color solid;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    @include border-radius($livingstyleguide--color-swatch-border-radius);
+    @include box-sizing(border-box);
+  }
+
+  &:after {
+    display: block;
+    font-weight: normal;
+  }
+}
+
+.livingstyleguide--container > .livingstyleguide--color-swatches {
+  margin-bottom: -$livingstyleguide--gap-width;
+  @include clearfix;
+}

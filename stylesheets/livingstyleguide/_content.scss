@@ -1,0 +1,56 @@
+.livingstyleguide--container {
+  > {
+    p,
+    ul,
+    ol,
+    dl,
+    pre {
+      font-family: $livingstyleguide--base-font;
+      font-size: $livingstyleguide--base-font-size;
+      font-weight: $livingstyleguide--base-font-weight;
+      line-height: $livingstyleguide--base-line-height;
+      margin: $livingstyleguide--gap-width auto;
+      width: $livingstyleguide--width;
+    }
+
+    ul,
+    ol {
+      li {
+        list-style: disc;
+        margin: ceil($livingstyleguide--gap-width / 2) 0 ceil($livingstyleguide--gap-width / 2) (2 * $livingstyleguide--gap-width);
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: $livingstyleguide--headline-font;
+      font-size: $livingstyleguide--headline-font-size;
+      font-weight: $livingstyleguide--headline-font-weight;
+      line-height: $livingstyleguide--headline-line-height;
+      margin: (2 * $livingstyleguide--gap-width) auto $livingstyleguide--gap-width;
+      width: $livingstyleguide--width;
+    }
+  }
+}
+
+.livingstyleguide--example {
+  @extend #{$livingstyleguide--layout-selector} !optional;
+  margin: $livingstyleguide--gap-width auto;
+  padding: $livingstyleguide--gap-width;
+  width: $livingstyleguide--width;
+  @include box-sizing(border-box);
+  @include border-radius($livingstyleguide--border-radius);
+
+  .livingstyleguide--layout-example & {
+    margin: 0 auto;
+    width: 100%;
+    @include border-radius(0);
+  }
+}
+
+.livingstyleguide--layout-example {
+  background: $livingstyleguide--color;
+  padding: $livingstyleguide--gap-width;
+}
