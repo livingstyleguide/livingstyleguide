@@ -1,5 +1,6 @@
 require 'erb'
 require 'ostruct'
+require 'compass'
 
 module LivingStyleGuide
   class VariablesImporter < Sass::Importers::Base
