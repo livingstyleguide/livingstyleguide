@@ -33,10 +33,11 @@ class VariablesImporterTest < Test::Unit::TestCase
 
   def test_output_of_variables
     css = render <<-SCSS
+      $livingstyleguide--color: black;
       %livingstyleguide--code {
         test: code;
       }
-      %livingstyleguide--color {
+      %livingstyleguide--color-swatch {
         test: color;
       }
       @import "variables/colors";
@@ -47,7 +48,7 @@ class VariablesImporterTest < Test::Unit::TestCase
       .\\$my-wonderful_red:after, .\\$blue:after {
         test: code;
       }
-      .\\$my-wonderful_red:before {
+      .\\$my-wonderful_red {
         test: color;
       }
       .\\$my-wonderful_red:before {
