@@ -1,6 +1,6 @@
 # Hello World
 
-Lorem ipsum **dolor** sit amet, consectetur adipiscing elit. Sed a pulvinar turpis.
+Lorem ipsum **dolor** sit amet, `<consectetur> adipiscing` elit. Sed a pulvinar turpis.
 
 * Lorem
 * Ipsum

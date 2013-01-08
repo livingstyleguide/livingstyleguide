@@ -82,6 +82,11 @@ module LivingStyleGuide
       end
     end
 
+    def codespan(code)
+      code = ERB::Util.html_escape(code)
+      %Q(<code class="livingstyleguide--code">#{code}</code>)
+    end
+
   end
 
   ::Tilt.register RedcarpetTemplate, 'markdown', 'mkd', 'md'
