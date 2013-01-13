@@ -29,6 +29,14 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.livingstyleguide--page-title {
+  font-size: $livingstyleguide--page-title-font-size;
+}
+
+.livingstyleguide--sub-headline {
+  font-size: $livingstyleguide--sub-headline-font-size;
+}
+
 .livingstyleguide--example {
   @extend #{$livingstyleguide--layout-selector} !optional;
   margin: $livingstyleguide--gap-width auto;
