@@ -57,13 +57,14 @@
 .livingstyleguide--layout-example + .livingstyleguide--code-block {
   background: $livingstyleguide--code-background-color;
   margin: 0 0 $livingstyleguide--gap-width;
+  padding: $livingstyleguide--gap-width 0;
   width: 100%;
   @include border-radius(0);
 
   .livingstyleguide--code {
     display: block;
     margin: auto;
-    width: $livingstyleguide--width - 2 * 6px;
+    width: $livingstyleguide--width;
   }
 }
 
