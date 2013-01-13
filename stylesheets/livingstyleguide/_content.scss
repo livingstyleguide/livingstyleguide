@@ -24,7 +24,7 @@
   font-size: $livingstyleguide--headline-font-size;
   font-weight: $livingstyleguide--headline-font-weight;
   line-height: $livingstyleguide--headline-line-height;
-  margin: (2 * $livingstyleguide--gap-width) auto $livingstyleguide--gap-width;
+  margin: (3 * $livingstyleguide--gap-width) auto $livingstyleguide--gap-width;
   width: $livingstyleguide--width;
   -webkit-font-smoothing: antialiased;
 }
@@ -38,12 +38,12 @@
 }
 
 .livingstyleguide--example {
-  @extend #{$livingstyleguide--layout-selector} !optional;
-  margin: $livingstyleguide--gap-width auto;
+  background: white;
+  margin: $livingstyleguide--gap-width auto 0;
   padding: $livingstyleguide--gap-width;
   width: $livingstyleguide--width;
   @include box-sizing(border-box);
-  @include border-radius($livingstyleguide--border-radius);
+  @include border-top-radius($livingstyleguide--border-radius);
 
   .livingstyleguide--layout-example & {
     margin: 0 auto;
@@ -53,6 +53,6 @@
 }
 
 .livingstyleguide--layout-example {
-  background: $livingstyleguide--color;
+  @extend #{$livingstyleguide--layout-selector} !optional;
   padding: $livingstyleguide--gap-width;
 }

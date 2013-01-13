@@ -20,13 +20,25 @@ class MarkdownTest < Test::Unit::TestCase
       <div class="livingstyleguide--example">
         <button class="button">Test</button>
       </div>
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">.+button.+Test.+button.+</code></pre>
+    HTML
+  end
+
+  def test_layout_examples
+    assert_markdown <<-HTML, 'layout-example.md'
+      <div class="livingstyleguide--layout-example">
+        <button class="button">Test</button>
+      </div>
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">.+button.+Test.+button.+</code></pre>
     HTML
   end
 
   def test_text
     assert_markdown <<-HTML, 'text.md'
       <h2 class="livingstyleguide--headline">Hello World</h2>
-      <p class="livingstyleguide--paragraph">Lorem ipsum <strong>dolor</strong> sit amet, <code class="livingstyleguide--code">&lt;consectetur&gt; adipiscing</code> elit. Sed a pulvinar turpis.</p>
+      <p class="livingstyleguide--paragraph">Lorem ipsum <strong>dolor</strong> sit amet,
+        <code class="livingstyleguide--code-span livingstyleguide--code">&lt;consectetur&gt; adipiscing</code> elit.
+        Sed a pulvinar turpis.</p>
       <ul class="livingstyleguide--unordered-list">
         <li class="livingstyleguide--unordered-list-item">Lorem</li>
         <li class="livingstyleguide--unordered-list-item">Ipsum</li>

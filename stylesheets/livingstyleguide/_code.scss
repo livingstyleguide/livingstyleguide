@@ -1,4 +1,5 @@
-.livingstyleguide--code {
+.livingstyleguide--code-span,
+.livingstyleguide--code-block {
   background: $livingstyleguide--code-background-color;
   color: $livingstyleguide--code-color;
   font-family: $livingstyleguide--code-font;
@@ -7,12 +8,6 @@
   padding: 0 3px;
   -webkit-font-smoothing: subpixel-antialiased;
   @include border-radius($livingstyleguide--code-border-radius);
-
-  .livingstyleguide--code-block & {
-    display: block;
-    line-height: $livingstyleguide--code-line-height;
-    padding: 3px 6px;
-  }
 
   kbd {
     display: block;
@@ -46,3 +41,29 @@
     text-decoration: underline;
   }
 }
+
+.livingstyleguide--code-block {
+  display: block;
+  line-height: $livingstyleguide--code-line-height;
+  padding: 3px 6px;
+  width: $livingstyleguide--width - 2 * 6px;
+}
+
+.livingstyleguide--example + .livingstyleguide--code-block {
+  margin-top: 0;
+  @include border-top-radius(0);
+}
+
+.livingstyleguide--layout-example + .livingstyleguide--code-block {
+  background: $livingstyleguide--code-background-color;
+  margin: 0 0 $livingstyleguide--gap-width;
+  width: 100%;
+  @include border-radius(0);
+
+  .livingstyleguide--code {
+    display: block;
+    margin: auto;
+    width: $livingstyleguide--width - 2 * 6px;
+  }
+}
+

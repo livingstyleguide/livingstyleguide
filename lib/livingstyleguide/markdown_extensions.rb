@@ -73,8 +73,8 @@ module LivingStyleGuide
     end
 
     def block_code(code, language)
-      if language == 'example'
-        %Q(<div class="livingstyleguide--example">\n  #{code}\n</div>)
+      if %w(example layout-example).include?(language)
+        %Q(<div class="livingstyleguide--#{language}">\n  #{code}\n</div>) + "\n" + block_code(code, 'html')
       else
         code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
         code = ::MiniSyntax.highlight(code.strip, language.to_s.strip.to_sym)
@@ -84,7 +84,7 @@ module LivingStyleGuide
 
     def codespan(code)
       code = ERB::Util.html_escape(code)
-      %Q(<code class="livingstyleguide--code">#{code}</code>)
+      %Q(<code class="livingstyleguide--code-span livingstyleguide--code">#{code}</code>)
     end
 
   end
