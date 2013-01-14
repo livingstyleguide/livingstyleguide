@@ -5,6 +5,7 @@
   font-family: $livingstyleguide--code-font;
   font-size: $livingstyleguide--code-font-size;
   font-weight: $livingstyleguide--code-font-weight;
+  overflow: scroll;
   padding: 0 3px;
   -webkit-font-smoothing: subpixel-antialiased;
   @include border-radius($livingstyleguide--code-border-radius);
