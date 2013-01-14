@@ -58,6 +58,16 @@ module LivingStyleGuide
           result << %Q(<li class="livingstyleguide--color-swatch $#{variable}">$#{variable}</li>\n)
         end
         result << "</ul>\n"
+      elsif text =~ /^\{\{font-example:(.+)\}\}$/
+        font = $1
+        <<-HTML.gsub('          ', '')
+          <div class="livingstyleguide--font-example" style="font: #{font}">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            abcdefghijklmnopqrstuvwxyz<br>
+            0123456789<br>
+            !&/()$=@;:,.
+          </div>
+        HTML
       else
         %Q(<p class="livingstyleguide--paragraph">#{text}</p>\n)
       end

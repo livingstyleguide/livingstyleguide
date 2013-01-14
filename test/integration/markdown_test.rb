@@ -9,7 +9,7 @@ class MarkdownTest < Test::Unit::TestCase
   end
 
   def assert_markdown(expected, file)
-    expected = expected.gsub(/\s+/m, ' ').gsub('$', '\\$').strip
+    expected = expected.gsub(/\s+/m, ' ').gsub(/([\$\(\)\[\]])/) { |s| "\\#{s}" }.strip
     given    = render(File.join(%W(test fixtures markdown #{file})))
     given    = given.gsub(/\s+/m, ' ').strip
     assert_match /#{expected}/, given
@@ -67,6 +67,17 @@ class MarkdownTest < Test::Unit::TestCase
         <li class="livingstyleguide--color-swatch $blue">$blue</li>
         <li class="livingstyleguide--color-swatch $green">$green</li>
       </ul>
+    HTML
+  end
+
+  def test_font_example
+    assert_markdown <<-HTML, 'font-example.md'
+      <div class="livingstyleguide--font-example" style="font: 16px Courier">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+        abcdefghijklmnopqrstuvwxyz<br>
+        0123456789<br>
+        !&/()$=@;:,.
+      </div>
     HTML
   end
 
