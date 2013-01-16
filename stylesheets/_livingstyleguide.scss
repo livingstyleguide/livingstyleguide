@@ -41,6 +41,9 @@ $livingstyleguide--color-swatch-border-color: $livingstyleguide--border-color !d
 $livingstyleguide--color-swatch-border-radius: $livingstyleguide--border-radius !default;
 $livingstyleguide--color-swatches-per-line: 2 !default;
 
+$livingstyleguide--highlight-color: #f6ffa3 !default;
+$livingstyleguide--highlight-border-radius: 2px;
+
 //// IMPORTS ////
 
 @import "livingstyleguide/layout";

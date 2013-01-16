@@ -73,3 +73,13 @@
   @extend .livingstyleguide--example;
 }
 
+.livingstyleguide--code-highlight {
+  background-color: $livingstyleguide--highlight-color;
+  @include border-radius($livingstyleguide--highlight-border-radius);
+}
+
+.livingstyleguide--code-highlight-block {
+  @extend .livingstyleguide--code-highlight;
+  display: block;
+}
+

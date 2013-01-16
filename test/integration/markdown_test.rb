@@ -61,6 +61,29 @@ class MarkdownTest < Test::Unit::TestCase
     HTML
   end
 
+  def test_code_with_highlight
+    assert_markdown <<-HTML, 'code-with-highlight.md'
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">.+<strong class="livingstyleguide--code-highlight">example</strong>.+</code></pre>
+    HTML
+  end
+
+  def test_code_with_highlight_block
+    assert_markdown <<-HTML, 'code-with-highlight-block.md'
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><strong class="livingstyleguide--code-highlight-block">.+Block example.+</strong></code></pre>
+    HTML
+  end
+
+  def test_example_with_highlight
+    assert_markdown <<-HTML, 'example-with-highlight.md'
+      <div class="livingstyleguide--example">
+        <img class="inline example">
+        <img class="inline ex-1 ex-2">
+      </div>
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">.+<strong class="livingstyleguide--code-highlight">example</strong>.+
+      <strong class="livingstyleguide--code-highlight">ex-1</strong> <strong class="livingstyleguide--code-highlight">ex-2</strong>.+</code></pre>
+    HTML
+  end
+
   def test_variables
     assert_markdown <<-HTML, 'variables.md'
       <ul class="livingstyleguide--color-swatches">
