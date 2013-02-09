@@ -6,12 +6,12 @@ require "erb"
 module LivingStyleGuide
   class RedcarpetTemplate < ::Tilt::RedcarpetTemplate::Redcarpet2
     RENDER_OPTIONS = {
-      autolink: true,
-      fenced_code_blocks: true,
-      tables: true,
-      strikethrough: true,
-      space_after_headers: true,
-      superscript: true
+      :autolink => true,
+      :fenced_code_blocks => true,
+      :tables => true,
+      :strikethrough => true,
+      :space_after_headers => true,
+      :superscript => true
     }
 
     def generate_renderer
@@ -74,7 +74,7 @@ module LivingStyleGuide
     end
 
     def list(contents, list_type)
-      tag_name = "#{list_type[0]}l"
+      tag_name = "#{list_type.to_s[0, 1]}l"
       %Q(<#{tag_name} class="livingstyleguide--#{list_type}-list">\n#{contents}</#{tag_name}>\n)
     end
 

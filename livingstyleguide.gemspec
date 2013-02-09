@@ -22,4 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'compass'
   gem.add_dependency 'sass'
   gem.add_dependency 'redcarpet'
+
+  gem.add_development_dependency 'rake'
 end

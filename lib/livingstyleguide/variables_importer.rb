@@ -59,7 +59,7 @@ module LivingStyleGuide
     end
 
     def self.sass_options(uri, importer, options)
-      options.merge! filename: uri.gsub(%r{\*/},"*\\/"), syntax: :scss, importer: importer
+      options.merge! :filename => uri.gsub(%r{\*/},"*\\/"), :syntax => :scss, :importer => importer
     end
 
     def self.sass_engine(uri, name, importer, options)
@@ -68,7 +68,7 @@ module LivingStyleGuide
     end
 
     def self.content_for_images(uri, variables, skip_overrides = false)
-      binder = LivingStyleGuide::Binding.new(variables: variables)
+      binder = LivingStyleGuide::Binding.new(:variables => variables)
       CONTENT_TEMPLATE.result(binder.get_binding)
     end
   end
