@@ -45,7 +45,7 @@ module LivingStyleGuide
     end
 
     def header(text, header_level)
-      klass = %w(page-title headline sub-headline)[header_level]
+      klass = %w(page-title headline sub-headline sub-sub-headline)[header_level]
       header_level += 1
       %Q(<h#{header_level} class="livingstyleguide--#{klass}">#{text}</h#{header_level}>\n)
     end

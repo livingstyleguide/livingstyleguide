@@ -19,7 +19,8 @@
 
 .livingstyleguide--page-title,
 .livingstyleguide--headline,
-.livingstyleguide--sub-headline {
+.livingstyleguide--sub-headline,
+.livingstyleguide--sub-sub-headline {
   font-family: $livingstyleguide--headline-font;
   font-size: $livingstyleguide--headline-font-size;
   font-weight: $livingstyleguide--headline-font-weight;
@@ -35,6 +36,10 @@
 
 .livingstyleguide--sub-headline {
   font-size: $livingstyleguide--sub-headline-font-size;
+}
+
+.livingstyleguide--sub-sub-headline {
+  font-size: $livingstyleguide--sub-sub-headline-font-size;
 }
 
 .livingstyleguide--example {

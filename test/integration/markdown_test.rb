@@ -50,6 +50,7 @@ class MarkdownTest < Test::Unit::TestCase
         <li class="livingstyleguide--ordered-list-item">Ipsum</li>
         <li class="livingstyleguide--ordered-list-item">Dolor</li>
       </ol>
+      <h4 class="livingstyleguide--sub-sub-headline">Even More Lorem</h4>
     HTML
   end
 
