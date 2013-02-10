@@ -40,7 +40,9 @@
 .livingstyleguide--example {
   background: white;
   margin: $livingstyleguide--gap-width auto 0;
+  overflow: hidden;
   padding: $livingstyleguide--gap-width;
+  position: relative;
   width: $livingstyleguide--width;
   @include box-sizing(border-box);
   @include border-top-radius($livingstyleguide--border-radius);
@@ -54,5 +56,7 @@
 
 .livingstyleguide--layout-example {
   @extend #{$livingstyleguide--layout-selector} !optional;
+  height: auto;
+  min-height: auto;
   padding: $livingstyleguide--layout-example-padding;
 }
