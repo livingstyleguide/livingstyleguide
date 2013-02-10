@@ -54,5 +54,5 @@
 
 .livingstyleguide--layout-example {
   @extend #{$livingstyleguide--layout-selector} !optional;
-  padding: $livingstyleguide--gap-width;
+  padding: $livingstyleguide--layout-example-padding;
 }
