@@ -45,10 +45,13 @@
 }
 
 .livingstyleguide--code-block {
-  display: block;
+  display: none;
   line-height: $livingstyleguide--code-line-height;
   padding: 3px 6px;
   width: $livingstyleguide--width - 2 * 6px;
+  .show-code & {
+    display: block;
+  }
 }
 
 .livingstyleguide--example + .livingstyleguide--code-block {
