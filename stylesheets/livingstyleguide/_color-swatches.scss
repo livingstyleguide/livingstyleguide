@@ -19,10 +19,6 @@
   z-index: 1;
   @include box-sizing(border-box);
 
-  &:nth-child(#{$livingstyleguide--color-swatches-per-line}n) {
-    margin-right: 0;
-  }
-
   &:before {
     border: $livingstyleguide--color-swatch-border-width $livingstyleguide--code-border-color solid;
     content: "";
@@ -45,6 +41,7 @@
 
 .livingstyleguide--color-swatches {
   margin: $livingstyleguide--gap-width auto (-$livingstyleguide--gap-width) auto;
-  width: $livingstyleguide--width;
+  padding-left: $livingstyleguide--gap-width;
+  width: $livingstyleguide--width + $livingstyleguide--gap-width;
   @include clearfix;
 }
