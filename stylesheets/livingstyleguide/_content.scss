@@ -9,6 +9,7 @@
   margin: $livingstyleguide--gap-width auto;
   width: $livingstyleguide--width;
   -webkit-font-smoothing: antialiased;
+  @include box-sizing(border-box);
 }
 
 .livingstyleguide--unordered-list-item,

@@ -43,6 +43,7 @@
 .livingstyleguide--color-swatches {
   margin: $livingstyleguide--gap-width auto (-$livingstyleguide--gap-width) auto;
   padding-left: $livingstyleguide--gap-width;
-  width: $livingstyleguide--width + $livingstyleguide--gap-width;
+  width: $livingstyleguide--width + 2 * $livingstyleguide--gap-width;
   @include clearfix;
+  @include box-sizing(border-box);
 }
