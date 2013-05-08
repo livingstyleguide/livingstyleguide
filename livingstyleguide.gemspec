@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency 'minisyntax'
-  gem.add_dependency 'middleman', '>= 3.0.9'
+  gem.add_dependency 'middleman', '~> 3'
   gem.add_dependency 'compass'
   gem.add_dependency 'sass'
   gem.add_dependency 'redcarpet'
