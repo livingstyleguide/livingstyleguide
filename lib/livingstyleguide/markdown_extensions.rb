@@ -86,6 +86,9 @@ module LivingStyleGuide
       if %w(example layout-example).include?(language)
         html = code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
         %Q(<div class="livingstyleguide--#{language}">\n  #{html}\n</div>) + "\n" + block_code(code, 'html')
+      elsif %w(javascript-example).include?(language)
+        javascript = code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
+        %Q(<script>#{javascript}</script>\n) + block_code(code, 'javascript')
       else
         code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
         code = ::MiniSyntax.highlight(code.strip, language.to_s.strip.to_sym)
