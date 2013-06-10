@@ -105,4 +105,11 @@ class MarkdownTest < Test::Unit::TestCase
     HTML
   end
 
+  def test_javascript_example
+    assert_markdown <<-HTML, 'javascript-example.md'
+      <script>alert("Hello world!"); </script>
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">alert(<q>"<b>Hello</b> world!"</q>);</code></pre>
+    HTML
+  end
+
 end
