@@ -37,6 +37,11 @@
 
   q {
     color: lighten($livingstyleguide--code-color, 30%);
+
+    &:before,
+    &:after {
+      content: "";
+    }
   }
 
   var {
