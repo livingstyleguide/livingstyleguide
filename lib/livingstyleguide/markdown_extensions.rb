@@ -2,6 +2,7 @@ require 'redcarpet'
 require 'tilt'
 require 'minisyntax'
 require "erb"
+require 'active_support/core_ext/string/inflections'
 
 module LivingStyleGuide
   class RedcarpetTemplate < ::Tilt::RedcarpetTemplate::Redcarpet2
@@ -45,9 +46,10 @@ module LivingStyleGuide
     end
 
     def header(text, header_level)
+      id = %Q( id="#{::ActiveSupport::Inflector.parameterize(text, '-')}")
       klass = %w(page-title headline sub-headline sub-sub-headline)[header_level]
       header_level += 1
-      %Q(<h#{header_level} class="livingstyleguide--#{klass}">#{text}</h#{header_level}>\n)
+      %Q(<h#{header_level} class="livingstyleguide--#{klass}"#{id}>#{text}</h#{header_level}>\n)
     end
 
     def paragraph(text)
