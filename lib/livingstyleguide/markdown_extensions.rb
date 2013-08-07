@@ -1,7 +1,7 @@
 require 'redcarpet'
 require 'tilt'
 require 'minisyntax'
-require "erb"
+require 'erb'
 require 'active_support/core_ext/string/inflections'
 
 module LivingStyleGuide
