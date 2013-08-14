@@ -28,6 +28,37 @@ $graphics-spacing: 5 * $grid
 @import "graphics/*.png"
 
 
+//// MIXINS ////
+
+@mixin for-phones
+  @media all and (max-width: 640px)
+    @content
+
+@mixin for-phones-portrait
+  @media all and (max-width: 480px)
+    @content
+
+@mixin for-phones-landscape
+  @media all and (min-width: 481px) and (max-width: 640px)
+    @content
+
+@mixin for-tablets
+  @media all and (min-width: 641px) and (max-width: 1024px)
+    @content
+
+@mixin for-tablets-portrait
+  @media all and (min-width: 641px) and (max-width: 768px)
+    @content
+
+@mixin for-tablets
+  @media all and (min-width: 769px) and (max-width: 1024px)
+    @content
+
+@mixin for-desktops
+  @media all and (min-width: 1024px)
+    @content
+
+
 //// RESET EVERYTHING ////
 
 *
@@ -62,8 +93,13 @@ head
   line-height: 1.25
   margin: (35 * $grid) auto (5 * $grid)
   text-align: center
-  width: 5 * ($column-width + $gap-width)
   -webkit-font-smoothing: antialiased
+  @include for-desktops
+    width: 5 * ($column-width + $gap-width)
+  @include for-phones
+    margin-top: 10 * $grid
+  @include for-tablets
+    margin-top: 15 * $grid
 
 
 //// HEADER ////
@@ -72,12 +108,17 @@ head
   font-size: 2.5rem
   font-weight: 200
   margin-bottom: -5 * $grid
+  @include for-phones
+    font-size: 1.5rem
+    margin-bottom: -3 * $grid
 
 .header--title
   display: inline
   font-size: 5rem
   font-weight: 200
   position: relative
+  @include for-phones
+    font-size: 2.5rem
 
 .header--version
   color: $gray
@@ -86,6 +127,9 @@ head
   position: absolute
   right: -1em
   top: 0
+  @include for-phones
+    right: 0
+    top: -1em
 
 .header--slogan
   font-weight: bold
@@ -116,13 +160,14 @@ head
 .links--item
   background: $blue
   color: $white
-  float: left
   font-weight: bold
   height: $column-width
-  margin: 0 floor($gap-width / 2)
+  margin: floor($gap-width / 2)
   padding: (5 * $grid) 0
-  width: $column-width
   @include transition(background, 0.2s)
+  @include for-desktops
+    float: left
+    width: $column-width
 
   &:hover
     background: $turquoise
