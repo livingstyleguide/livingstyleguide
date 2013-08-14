@@ -15,3 +15,9 @@ configure :build do
   activate :relative_assets
 end
 
+require 'fileutils'
+Dir.glob 'source/images/graphics/*@2x.png' do |file|
+  new_file = file.sub('graphics', 'graphics-2x').sub('@2x', '')
+  FileUtils.mv  file, new_file
+end
+

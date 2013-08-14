@@ -27,6 +27,9 @@ $pink: #c322bd
 $graphics-spacing: 5 * $grid
 @import "graphics/*.png"
 
+$graphics-2x-spacing: 10 * $grid
+@import "graphics-2x/*.png"
+
 
 //// MIXINS ////
 
@@ -56,6 +59,10 @@ $graphics-spacing: 5 * $grid
 
 @mixin for-desktops
   @media all and (min-width: 1024px)
+    @content
+
+@mixin for-hires
+  @media only all and (-webkit-min-device-pixel-ratio: 1.3), only all and (min--moz-device-pixel-ratio: 1.3), only all and (-o-min-device-pixel-ratio: 1.3/1), only all and (min-device-pixel-ratio: 1.3), only all and (min-resolution: 1.3dppx)
     @content
 
 
@@ -178,6 +185,9 @@ head
     margin: 0 auto (5 * $grid)
     @include graphics-sprite(rubygems, $dimensions: true)
     @include transition(transform, 0.15s)
+    @include for-hires
+      background-image: $graphics-2x-sprites
+      background-size: 100%
 
   &:hover:before
     @include transform(rotateZ(360deg))
@@ -200,6 +210,9 @@ head
   @include graphics-sprite(made-in-berlin, $dimensions: true)
   @include transition(opacity, 0.2s)
   @include hide-text
+  @include for-hires
+    background-image: $graphics-2x-sprites
+    background-size: graphics-sprite-width(rubygems)
 
   &:hover
     opacity: 1
