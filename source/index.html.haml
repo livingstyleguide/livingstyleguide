@@ -20,7 +20,13 @@ layout: false
       .header--the The
       %h1.header--title
         Living Style Guide
-        %span.header--version 0.4.1
+        %span.header--version
+          0.4.1
+          %span.header--version-info
+            %strong.header--version-info-title Warning:
+            The Living Style Guide Gem uses semantic versioning.
+            A version #{'<'} 1.0.0 indicates a work in progress and possibly larger changes.
+            %a.header--version-learn-more(href="http://semver.org/") Learn more
       %h2.header--slogan A Ruby Gem for Sass/SCSS and Compass
     %code.installation
       gem install livingstyleguide

@@ -53,12 +53,16 @@ $graphics-2x-spacing: 10 * $grid
   @media all and (min-width: 641px) and (max-width: 768px)
     @content
 
-@mixin for-tablets
+@mixin for-tablets-landscape
   @media all and (min-width: 769px) and (max-width: 1024px)
     @content
 
-@mixin for-desktops
+@mixin for-tablets-landscape-and-desktops
   @media all and (min-width: 1024px)
+    @content
+
+@mixin for-desktops
+  @media all and (min-width: 1025px)
     @content
 
 @mixin for-hires
@@ -101,12 +105,14 @@ head
   margin: (35 * $grid) auto (5 * $grid)
   text-align: center
   -webkit-font-smoothing: antialiased
-  @include for-desktops
+  @include for-tablets-landscape-and-desktops
     width: 5 * ($column-width + $gap-width)
-  @include for-phones
-    margin-top: 10 * $grid
   @include for-tablets
-    margin-top: 15 * $grid
+    margin-top: 20 * $grid
+  @include for-phones-landscape
+    margin-top: 28 * $grid
+  @include for-phones-portrait
+    margin-top: 34 * $grid
 
 
 //// HEADER ////
@@ -137,6 +143,65 @@ head
   @include for-phones
     right: 0
     top: -1em
+
+.header--version-info
+  background: $pink
+  bottom: 100%
+  color: $white
+  font-size: 0.8rem
+  font-weight: normal
+  padding: $grid (2 * $grid)
+  position: absolute
+  text-align: left
+  width: 57 * $grid
+  @include for-desktops
+    left: 50%
+    margin-bottom: 5 * $grid
+  @include for-tablets
+    left: auto
+    margin-bottom: 7 * $grid
+    right: 50%
+    width: 100 * $grid
+  @include for-phones-landscape
+    margin-bottom: 4 * $grid
+    right: -19 * $grid
+    text-align: center
+    width: 110 * $grid
+  @include for-phones-portrait
+    margin-bottom: 4 * $grid
+    margin-right: -7 * $grid
+    right: 50%
+    text-align: center
+    width: 60 * $grid
+
+  &:before
+    border: 4 * $grid solid
+    border-color: $pink transparent transparent
+    bottom: -8 * $grid
+    content: ""
+    height: 0
+    position: absolute
+    width: 0
+    @include for-desktops
+      border-left-width: 0
+      left: 0
+    @include for-tablets
+      border-right-width: 0
+      right: 0
+    @include for-phones-landscape
+      right: 21.5 * $grid
+    @include for-phones-portrait
+      right: 3 * $grid
+
+
+.header--version-info-title
+  font-weight: bold
+
+.header--version-learn-more
+  text-decoration: underline
+
+  &:hover
+    color: mix($pink, $white)
 
 .header--slogan
   font-weight: bold
@@ -172,7 +237,7 @@ head
   margin: floor($gap-width / 2)
   padding: (5 * $grid) 0
   @include transition(background, 0.2s)
-  @include for-desktops
+  @include for-tablets-landscape-and-desktops
     float: left
     width: $column-width
 
@@ -200,7 +265,7 @@ head
 //// FOOTER ////
 
 .footer
-  margin: (10 * $grid) 0
+  margin: (8 * $grid) 0
 
 .footer--made-in-berlin
   display: inline-block
