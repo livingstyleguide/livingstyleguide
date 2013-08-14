@@ -1,0 +1,178 @@
+@import "compass"
+
+
+//// METRICS ////
+
+$grid: 4px
+$column-width: 45 * $grid
+$gap-width: 3 * $grid
+
+
+//// COLORS ////
+
+$white: white
+$black: black
+$gray: #7f7f7f
+$green: #7dc322
+$blue: #6cb8bb
+$turquoise: #23c36b
+$violet: #6323c3
+$yellow: #b6c323
+$red: #c35423
+$pink: #c322bd
+
+
+//// SPRITES ////
+
+$graphics-spacing: 5 * $grid
+@import "graphics/*.png"
+
+
+//// RESET EVERYTHING ////
+
+*
+  border: none
+  border-collapse: collapse
+  border-spacing: 0
+  color: inherit
+  display: block
+  font-size: inherit
+  font-style: inherit
+  font-weight: inherit
+  line-height: inherit
+  list-style: none
+  margin: 0
+  padding: 0
+  text-align: inherit
+  text-decoration: none
+  vertical-align: middle
+  @include box-sizing(border-box)
+
+head
+  display: none
+
+
+//// LAYOUT ////
+
+.layout
+  background: $white
+  color: $black
+  font-family: "ff-dagny-web-pro-1", "ff-dagny-web-pro-2", "helvetica neue", helvetica, arial, sans-serif
+  font-size: 4 * $grid
+  line-height: 1.25
+  margin: (35 * $grid) auto (5 * $grid)
+  text-align: center
+  width: 5 * ($column-width + $gap-width)
+  -webkit-font-smoothing: antialiased
+
+
+//// HEADER ////
+
+.header--the
+  font-size: 2.5rem
+  font-weight: 200
+  margin-bottom: -5 * $grid
+
+.header--title
+  display: inline
+  font-size: 5rem
+  font-weight: 200
+  position: relative
+
+.header--version
+  color: $gray
+  font-size: 1.5rem
+  font-weight: bold
+  position: absolute
+  right: -1em
+  top: 0
+
+.header--slogan
+  font-weight: bold
+  letter-spacing: 2px
+  text-transform: uppercase
+
+
+//// INSTALLATION ////
+
+.installation
+  color: $turquoise
+  font-family: "courier new", courier, monospace
+  font-size: 1.5rem
+  margin: 2em 0
+
+  &:before
+    color: mix($turquoise, $white, 30%)
+    content: ">"
+    margin: 1px 0 0 -1em
+    position: absolute
+
+
+//// LINKS ////
+
+.links
+  @include clearfix
+
+.links--item
+  background: $blue
+  color: $white
+  float: left
+  font-weight: bold
+  height: $column-width
+  margin: 0 floor($gap-width / 2)
+  padding: (5 * $grid) 0
+  width: $column-width
+  @include transition(background, 0.2s)
+
+  &:hover
+    background: $turquoise
+
+  &:before
+    content: ""
+    display: block
+    margin: 0 auto (5 * $grid)
+    @include graphics-sprite(rubygems, $dimensions: true)
+    @include transition(transform, 0.15s)
+
+  &:hover:before
+    @include transform(rotateZ(360deg))
+
+  @each $name in github, issues, twitter, example-project
+    &.for-#{$name}:before
+      @include graphics-sprite-position($name)
+
+
+//// FOOTER ////
+
+.footer
+  margin: (10 * $grid) 0
+
+.footer--made-in-berlin
+  display: inline-block
+  margin: 0 5 * $grid
+  opacity: 0.7
+  vertical-align: bottom
+  @include graphics-sprite(made-in-berlin, $dimensions: true)
+  @include transition(opacity, 0.2s)
+  @include hide-text
+
+  &:hover
+    opacity: 1
+
+.footer--made-by-hagenburger
+  @extend .footer--made-in-berlin
+  @include graphics-sprite(hagenburger, $dimensions: true)
+
+.footer--contact
+  color: $gray
+  display: block
+  font-size: 0.75rem
+  margin: (5 * $grid) auto 0
+  letter-spacing: 1px
+  text-transform: uppercase
+  width: 10em
+  @include transition(color, 0.2s)
+
+  &:hover
+    color: $blue
+

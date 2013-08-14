@@ -1,0 +1,37 @@
+---
+title: Living Style Guide Gem
+layout: false
+---
+
+!!!html5
+%html
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    %meta(name="description" content="The Living Style Guide (livingstyleguide) is a Ruby Gem to easily create living style guides with markdown while working with Sass/SCSS and Compass.")
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+    %meta(name="author" content="Nico Hagenburger")
+    %title= data.page.title
+    %link(href="#{asset_path(:css, 'livingstyleguide')}" rel="stylesheet")
+    %script(src="//use.typekit.net/nbn2flh.js")
+    %script try{Typekit.load();}catch(e){}
+  %body.layout
+    %header.header
+      .header--the The
+      %h1.header--title
+        Living Style Guide
+        %span.header--version 0.4.1
+      %h2.header--slogan A Ruby Gem for Sass/SCSS and Compass
+    %code.installation
+      gem install livingstyleguide
+    .links
+      %a.links--item.for-rubygems-org(href="https://rubygems.org/gems/livingstyleguide") RubyGems.org
+      %a.links--item.for-github(href="https://github.com/hagenburger/livingstyleguide") Fork me on Github
+      %a.links--item.for-issues(href="https://github.com/hagenburger/livingstyleguide/issues") Open issues
+      %a.links--item.for-twitter(href="https://twitter.com/hagenburger") Follow for Updates
+      %a.links--item.for-example-project(href="https://github.com/hagenburger/livingstyleguide-example") Example Project
+    %footer.footer
+      %a.footer--made-in-berlin(href="http://www.hagenburger.net/BLOG/Made-in-Berlin.html") Made in Berlin
+      %a.footer--made-by-hagenburger(href="http://www.hagenburger.net") Nico Hagenburger
+      %a.footer--contact(href="http://www.hagenburger.net/CONTACT.html") Contact
+
