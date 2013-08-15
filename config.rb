@@ -21,3 +21,14 @@ Dir.glob 'source/images/graphics/*@2x.png' do |file|
   FileUtils.mv  file, new_file
 end
 
+helpers do
+  def livingstyleguide_gem_version
+    # Prefer `git tag` over version.rb as tags are released:
+    versions = `cd ../livingstyleguide && git tag`.split(/\n/)
+    current  = versions.last
+    current.sub(/^v/, '')
+  rescue
+    '0.0.0'
+  end
+end
+
