@@ -4,7 +4,7 @@ require 'compass'
 
 module LivingStyleGuide
   class VariablesImporter < Sass::Importers::Base
-    VAILD_FILE_NAME = /\A#{Sass::SCSS::RX::IDENT}\Z/
+    VALID_FILE_NAME = /\A#{Sass::SCSS::RX::IDENT}\Z/
     VARIABLE_IMPORTER_REGEX = %r{^variables:(((.+/)?([^\*.]+))/(.+?)(\.s[ac]ss)?)$}
     VALID_EXTENSIONS = %w(*.sass *.scss)
 
