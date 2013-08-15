@@ -1,7 +1,7 @@
-Website for The Living Style Guide Gem
+Website for The LivingStyleGuide Gem
 ======================================
 
-The source of the [website](http://livingstyleguide.org/) of [The Living Style Guide Gem](https://github.com/hagenburger/livingstyleguide).
+The source of the [website](http://livingstyleguide.org/) of [The LivingStyleGuide Gem](https://github.com/hagenburger/livingstyleguide).
 
 
 Setup
