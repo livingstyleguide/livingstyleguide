@@ -2,6 +2,7 @@
 .livingstyleguide--code-block,
 .livingstyleguide--unordered-list,
 .livingstyleguide--ordered-list {
+  display: block;
   font-family: $livingstyleguide--base-font;
   font-size: $livingstyleguide--base-font-size;
   font-weight: $livingstyleguide--base-font-weight;
@@ -14,6 +15,7 @@
 
 .livingstyleguide--unordered-list-item,
 .livingstyleguide--ordered-list-item {
+  display: block;
   list-style: disc;
   margin: ceil($livingstyleguide--gap-width / 2) 0 ceil($livingstyleguide--gap-width / 2) (2 * $livingstyleguide--gap-width);
 }
@@ -22,6 +24,7 @@
 .livingstyleguide--headline,
 .livingstyleguide--sub-headline,
 .livingstyleguide--sub-sub-headline {
+  display: block;
   font-family: $livingstyleguide--headline-font;
   font-size: $livingstyleguide--headline-font-size;
   font-weight: $livingstyleguide--headline-font-weight;
@@ -32,19 +35,23 @@
 }
 
 .livingstyleguide--page-title {
+  display: block;
   font-size: $livingstyleguide--page-title-font-size;
 }
 
 .livingstyleguide--sub-headline {
+  display: block;
   font-size: $livingstyleguide--sub-headline-font-size;
 }
 
 .livingstyleguide--sub-sub-headline {
+  display: block;
   font-size: $livingstyleguide--sub-sub-headline-font-size;
 }
 
 .livingstyleguide--example {
   background: white;
+  display: block;
   margin: $livingstyleguide--gap-width auto 0;
   overflow: hidden;
   padding: $livingstyleguide--gap-width;
@@ -62,6 +69,7 @@
 
 .livingstyleguide--layout-example {
   @extend #{$livingstyleguide--layout-selector} !optional;
+  display: block;
   height: auto;
   min-height: auto;
   padding: $livingstyleguide--layout-example-padding;

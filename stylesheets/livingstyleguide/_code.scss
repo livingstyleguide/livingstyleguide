@@ -2,6 +2,7 @@
 .livingstyleguide--code-block {
   background: $livingstyleguide--code-background-color;
   color: $livingstyleguide--code-color;
+  display: inline;
   font-family: $livingstyleguide--code-font;
   font-size: $livingstyleguide--code-font-size;
   font-weight: $livingstyleguide--code-font-weight;
@@ -21,6 +22,7 @@
 
   em {
     color: lighten($livingstyleguide--code-color, 10%);
+    display: inline;
     font-style: normal;
     font-weight: bold;
     text-decoration: underline;
@@ -28,15 +30,18 @@
 
   b {
     color: lighten($livingstyleguide--code-color, 20%);
+    display: inline;
     font-weight: bold;
   }
 
   i {
     color: lighten($livingstyleguide--code-color, 30%);
+    display: inline;
   }
 
   q {
     color: lighten($livingstyleguide--code-color, 30%);
+    display: inline;
 
     &:before,
     &:after {
@@ -45,6 +50,7 @@
   }
 
   var {
+    display: inline;
     text-decoration: underline;
   }
 }
@@ -86,6 +92,7 @@
 
 .livingstyleguide--code-highlight {
   background-color: $livingstyleguide--highlight-color;
+  display: inline;
   @include border-radius($livingstyleguide--highlight-border-radius);
 }
 
