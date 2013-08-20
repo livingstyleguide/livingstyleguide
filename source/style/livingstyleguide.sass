@@ -234,12 +234,14 @@ script
   background: $blue
   color: $white
   font-weight: bold
-  height: $column-width
   margin: floor($gap-width / 2)
+  text-align: left
   padding: (5 * $grid) 0
   @include transition(all 0, background 0.2s)
   @include for-tablets-landscape-and-desktops
     float: left
+    height: $column-width
+    text-align: center
     width: $column-width
 
   &:hover
@@ -247,13 +249,17 @@ script
 
   &:before
     content: ""
-    display: block
-    margin: 0 auto (5 * $grid)
+    display: inline-block
+    margin-right: 3 * $grid
+    vertical-align: middle
     @include graphics-sprite(rubygems, $dimensions: true)
     @include transition(transform, 0.15s)
     @include for-hires
       background-image: $graphics-2x-sprites
       background-size: 100%
+    @include for-tablets-landscape-and-desktops
+      display: block
+      margin: 0 auto (5 * $grid)
 
   &:hover:before
     @include transform(rotateZ(360deg))
