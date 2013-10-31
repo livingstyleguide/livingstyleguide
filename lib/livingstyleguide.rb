@@ -4,7 +4,6 @@ require 'livingstyleguide/variables_importer'
 require 'livingstyleguide/importer'
 require 'livingstyleguide/renderer'
 require 'livingstyleguide/markdown_extensions'
-require 'sass/plugin'
 
 module LivingStyleGuide
 end
