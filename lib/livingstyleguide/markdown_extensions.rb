@@ -88,6 +88,16 @@ module LivingStyleGuide
       if %w(example layout-example).include?(language)
         html = code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
         %Q(<div class="livingstyleguide--#{language}">\n  #{html}\n</div>) + "\n" + block_code(code, 'html')
+      elsif %w(haml-example haml-layout-example).include?(language)
+        begin
+          type = language[5..-1]
+          require 'haml'
+          Haml::Options.defaults[:attr_wrapper] = '"'
+          html = Haml::Engine.new(code).render.strip
+          %Q(<div class="livingstyleguide--#{type}">\n  #{html}\n</div>) + "\n" + block_code(code, 'html')
+        rescue
+          raise "Please make sure `gem 'haml'` is added to your Gemfile."
+        end
       elsif %w(javascript-example).include?(language)
         javascript = code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
         %Q(<script>#{javascript}</script>\n) + block_code(code, 'javascript')

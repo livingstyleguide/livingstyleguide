@@ -33,6 +33,15 @@ class MarkdownTest < Test::Unit::TestCase
     HTML
   end
 
+  def test_haml_example
+    assert_markdown <<-HTML, 'haml-example.md'
+      <div class="livingstyleguide--example">
+        <button class="button">Test</button>
+      </div>
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">%button.button Test</code></pre>
+    HTML
+  end
+
   def test_text
     assert_markdown <<-HTML, 'text.md'
       <h2 class="livingstyleguide--headline" id="hello-world">Hello World</h2>
