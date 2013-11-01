@@ -38,7 +38,7 @@ class MarkdownTest < Test::Unit::TestCase
       <div class="livingstyleguide--example">
         <button class="button">Test</button>
       </div>
-      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">%button.button Test</code></pre>
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><em>%button</em>.button Test</code></pre>
     HTML
   end
 
@@ -47,7 +47,7 @@ class MarkdownTest < Test::Unit::TestCase
       <div class="livingstyleguide--example">
         <button class="button">Test</button>
       </div>
-      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">%button<strong class="livingstyleguide--code-highlight">.button</strong> Test</code></pre>
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><em>%button</em><strong class="livingstyleguide--code-highlight">.button</strong> Test</code></pre>
     HTML
   end
 
