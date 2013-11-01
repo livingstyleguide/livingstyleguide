@@ -93,7 +93,8 @@ module LivingStyleGuide
           type = language[5..-1]
           require 'haml'
           Haml::Options.defaults[:attr_wrapper] = '"'
-          html = Haml::Engine.new(code).render.strip
+          haml = code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
+          html = Haml::Engine.new(haml).render.strip
           %Q(<div class="livingstyleguide--#{type}">\n  #{html}\n</div>) + "\n" + block_code(code, 'html')
         rescue LoadError
           raise "Please make sure `gem 'haml'` is added to your Gemfile."
