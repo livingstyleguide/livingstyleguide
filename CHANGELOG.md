@@ -13,3 +13,8 @@
 * Added support for Haml code in examples (`haml-example`,
   `haml-layout-example`)
 
+## 0.5.1
+
+* Fixed highlighting in Haml code examples
+* Use the Haml syntax highlighter
+
