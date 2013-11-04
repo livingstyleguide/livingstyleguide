@@ -18,3 +18,7 @@
 * Fixed highlighting in Haml code examples
 * Use the Haml syntax highlighter
 
+## 0.5.2
+
+* More stable CSS
+
