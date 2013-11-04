@@ -26,22 +26,26 @@
     font-style: normal;
     font-weight: bold;
     text-decoration: underline;
+    vertical-align: baseline;
   }
 
   b {
     color: lighten($livingstyleguide--code-color, 20%);
     display: inline;
     font-weight: bold;
+    vertical-align: baseline;
   }
 
   i {
     color: lighten($livingstyleguide--code-color, 30%);
     display: inline;
+    vertical-align: baseline;
   }
 
   q {
     color: lighten($livingstyleguide--code-color, 30%);
     display: inline;
+    vertical-align: baseline;
 
     &:before,
     &:after {
@@ -52,6 +56,7 @@
   var {
     display: inline;
     text-decoration: underline;
+    vertical-align: baseline;
   }
 }
 
@@ -93,6 +98,7 @@
 .livingstyleguide--code-highlight {
   background-color: $livingstyleguide--highlight-color;
   display: inline;
+  vertical-align: baseline;
   @include border-radius($livingstyleguide--highlight-border-radius);
 }
 
