@@ -4,6 +4,7 @@ require 'livingstyleguide/variables_importer'
 require 'livingstyleguide/importer'
 require 'livingstyleguide/renderer'
 require 'livingstyleguide/markdown_extensions'
+require 'livingstyleguide/tilt_template'
 
 module LivingStyleGuide
 end
