@@ -28,7 +28,7 @@ module ::Tilt
     end
   end
 
-  %w(html.sass html.scss).each do |ext|
+  %w(sass.lsg scss.lsg).each do |ext|
     register ext, LivingStyleGuideTemplate
   end
 end
