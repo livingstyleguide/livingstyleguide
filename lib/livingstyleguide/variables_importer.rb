@@ -20,6 +20,9 @@ module LivingStyleGuide
       nil
     end
 
+    def root
+    end
+
     def find_relative(uri, base, options)
       nil
     end

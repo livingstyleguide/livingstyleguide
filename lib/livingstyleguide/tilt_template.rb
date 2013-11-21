@@ -16,9 +16,15 @@ module ::Tilt
 
     private
     def sass_options
-      load_paths = [File.dirname(eval_file), LivingStyleGuide::Importer.instance]
-      syntax     = @file[-5..-1].to_sym
-      options.merge(:filename => eval_file, :line => line, :syntax => syntax, :load_paths => load_paths)
+      options = Compass.configuration.to_sass_plugin_options
+      options[:template_location].each do |path, short|
+        options[:load_paths] << path
+      end
+      options[:filename]   = eval_file
+      options[:line]       = line
+      options[:syntax]     = @file =~ /\.sass/ ? :sass : :scss
+      options[:importer]   = LivingStyleGuide::Importer.instance
+      options
     end
   end
 
