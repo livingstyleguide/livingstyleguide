@@ -22,3 +22,7 @@
 
 * More stable CSS
 
+## 0.6.0.alpha.0
+
+* Implemented command line interface
+
