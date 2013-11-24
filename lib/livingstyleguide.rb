@@ -24,11 +24,6 @@ module LivingStyleGuide
 
 end
 
-Compass.configuration.add_import_path LivingStyleGuide::VariablesImporter.new
-
-base_directory = File.join(File.dirname(__FILE__), '..')
-Compass::Frameworks.register 'livingstyleguide', :path => base_directory
-
 class Sass::Engine
   include LivingStyleGuide::Renderer
 end
@@ -38,4 +33,6 @@ class String
     self.nil? || self.empty?
   end
 end
+
+require 'LivingStyleGuide/integration'
 

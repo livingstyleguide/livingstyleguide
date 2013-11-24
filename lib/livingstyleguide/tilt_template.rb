@@ -11,25 +11,28 @@ module ::Tilt
 
     def evaluate(scope, locals, &block)
       engine = ::Sass::Engine.new(data, sass_options)
-      @output ||= engine.render_living_style_guide
+      engine.render_living_style_guide
     end
 
     private
     def sass_options
       options = Compass.configuration.to_sass_plugin_options
       options[:template_location].each do |path, short|
-        options[:load_paths] << path
+        options[:load_paths] << ::LivingStyleGuide::Importer.new(path)
       end
-      options[:filename]   = eval_file
-      options[:line]       = line
-      options[:syntax]     = @file =~ /\.sass/ ? :sass : :scss
-      options[:importer]   = LivingStyleGuide::Importer.instance
+      options[:filename] = eval_file
+      options[:line]     = line
+      options[:syntax]   = detect_syntax
+      options[:importer] = LivingStyleGuide::Importer.new('.')
       options
+    end
+
+    private
+    def detect_syntax
+      data =~ %r(^//\s*@syntax\s*:\s*sass\s*$) ? :sass : :scss
     end
   end
 
-  %w(sass.lsg scss.lsg).each do |ext|
-    register ext, LivingStyleGuideTemplate
-  end
+  register 'lsg', LivingStyleGuideTemplate
 end
 
