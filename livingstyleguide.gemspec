@@ -20,7 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'minisyntax'
   gem.add_dependency 'compass'
   gem.add_dependency 'sass'
-  gem.add_dependency 'sass-globbing'
   gem.add_dependency 'redcarpet'
   gem.add_dependency 'tilt'
   gem.add_dependency 'activesupport'
