@@ -34,5 +34,5 @@ class String
   end
 end
 
-require 'LivingStyleGuide/integration'
+require 'livingstyleguide/integration'
 
