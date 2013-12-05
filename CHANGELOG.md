@@ -26,3 +26,9 @@
 
 * Implemented command line interface
 
+## 0.6.0.alpha.1
+
+* Added Rails support
+* Removed globbing
+* Set .html.lsg as default file extension
+
