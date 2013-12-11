@@ -2,6 +2,7 @@
 .livingstyleguide--code-block,
 .livingstyleguide--unordered-list,
 .livingstyleguide--ordered-list {
+  color: $livingstyleguide--color;
   display: block;
   font-family: $livingstyleguide--base-font;
   font-size: $livingstyleguide--base-font-size;
@@ -24,6 +25,7 @@
 .livingstyleguide--headline,
 .livingstyleguide--sub-headline,
 .livingstyleguide--sub-sub-headline {
+  color: $livingstyleguide--color;
   display: block;
   font-family: $livingstyleguide--headline-font;
   font-size: $livingstyleguide--headline-font-size;
