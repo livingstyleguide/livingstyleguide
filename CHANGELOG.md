@@ -32,3 +32,8 @@
 * Removed globbing
 * Set .html.lsg as default file extension
 
+## 0.6.0.alpha.2
+
+* Better support for load paths in Rails
+* Fix for colors
+
