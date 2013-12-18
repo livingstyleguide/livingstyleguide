@@ -17,6 +17,9 @@ module ::Tilt
     private
     def sass_options
       options = Compass.configuration.to_sass_plugin_options
+      if defined?(Rails)
+        options[:load_paths] = options[:load_paths] | Rails.application.config.assets.paths
+      end
       options[:template_location].each do |path, short|
         options[:load_paths] << ::LivingStyleGuide::Importer.new(path)
       end
