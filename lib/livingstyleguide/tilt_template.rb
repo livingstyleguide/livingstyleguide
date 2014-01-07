@@ -11,8 +11,9 @@ module ::Tilt
     end
 
     def evaluate(scope, locals, &block)
-      parse_options(data)
-      generate_sass
+      yaml, additional_sass = data.split("\n\n", 2)
+      parse_options(yaml)
+      generate_sass(additional_sass)
       render_living_style_guide
     end
 
@@ -27,15 +28,10 @@ module ::Tilt
       end
       options[:filename]           = eval_file
       options[:line]               = line
-      options[:syntax]             = detect_syntax
+      options[:syntax]             = @options[:syntax]
       options[:importer]           = LivingStyleGuide::Importer.new('.')
       options[:living_style_guide] = @options
       options
-    end
-
-    private
-    def detect_syntax
-      data =~ %r(^//\s*@syntax\s*:\s*sass\s*$) ? :sass : :scss
     end
 
     private
@@ -44,14 +40,16 @@ module ::Tilt
       @options.keys.each do |key|
         @options[key.to_sym] = @options.delete(key)
       end
+      @options[:syntax] = @options[:syntax] == 'sass' ? :sass : :scss
     end
 
     private
-    def generate_sass
-      @sass = <<-SCSS
-        @import "#{@options[:source]}";
-        @import "livingstyleguide";
-      SCSS
+    def generate_sass(additional_sass)
+      @sass = [
+        %Q(@import "#{@options[:source]}"),
+        %Q(@import "livingstyleguide"),
+        additional_sass
+      ].join(@options[:syntax] == :sass ? "\n" : ';')
     end
 
     private
