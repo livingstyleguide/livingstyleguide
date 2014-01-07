@@ -25,10 +25,11 @@ module ::Tilt
       options[:template_location].each do |path, short|
         options[:load_paths] << ::LivingStyleGuide::Importer.new(path)
       end
-      options[:filename] = eval_file
-      options[:line]     = line
-      options[:syntax]   = detect_syntax
-      options[:importer] = LivingStyleGuide::Importer.new('.')
+      options[:filename]           = eval_file
+      options[:line]               = line
+      options[:syntax]             = detect_syntax
+      options[:importer]           = LivingStyleGuide::Importer.new('.')
+      options[:living_style_guide] = @options
       options
     end
 
