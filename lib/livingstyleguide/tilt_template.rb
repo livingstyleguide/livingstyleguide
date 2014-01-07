@@ -1,6 +1,7 @@
 require 'tilt'
 require 'erb'
 require 'compass'
+require 'yaml'
 
 module ::Tilt
   class LivingStyleGuideTemplate < Template
@@ -10,8 +11,9 @@ module ::Tilt
     end
 
     def evaluate(scope, locals, &block)
-      engine = ::Sass::Engine.new(data, sass_options)
-      engine.render_living_style_guide
+      parse_options(data)
+      generate_sass
+      render_living_style_guide
     end
 
     private
@@ -33,6 +35,28 @@ module ::Tilt
     private
     def detect_syntax
       data =~ %r(^//\s*@syntax\s*:\s*sass\s*$) ? :sass : :scss
+    end
+
+    private
+    def parse_options(data)
+      @options = YAML.load(data)
+      @options.keys.each do |key|
+        @options[key.to_sym] = @options.delete(key)
+      end
+    end
+
+    private
+    def generate_sass
+      @sass = <<-SCSS
+        @import "#{@options[:source]}";
+        @import "livingstyleguide";
+      SCSS
+    end
+
+    private
+    def render_living_style_guide
+      engine = ::Sass::Engine.new(@sass, sass_options)
+      engine.render_living_style_guide
     end
   end
 
