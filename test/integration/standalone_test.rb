@@ -17,6 +17,12 @@ class MarkdownTest < Test::Unit::TestCase
     assert_match %r(em { color: green;), html
   end
 
+  def test_javascript_includes
+    html = render('test/fixtures/standalone/styleguide-with-javascript.html.lsg')
+    assert_match %r(<script src="modernizr.js"></script>.*</head>), html
+    assert_match %r(<script src="http://code.jquery.com/jquery-2.0.3.js"></script> <script src="application.js"></script> </body>), html
+  end
+
   def test_additional_scss_code
     html = render('test/fixtures/standalone/styleguide-with-scss.html.lsg')
     assert_match %r(#test { color: red; }), html
