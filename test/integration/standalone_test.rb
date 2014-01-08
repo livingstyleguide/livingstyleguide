@@ -10,6 +10,13 @@ class MarkdownTest < Test::Unit::TestCase
     assert_match %r(<title>My Nice &amp; Beautiful Living Style Guide</title>), html
   end
 
+  def test_custom_styles
+    html = render('test/fixtures/standalone/styleguide-with-style.html.lsg')
+    assert_match %r(.livingstyleguide--ordered-list { color: red;), html
+    assert_match %r(border-radius: 3px), html
+    assert_match %r(em { color: green;), html
+  end
+
   def test_additional_scss_code
     html = render('test/fixtures/standalone/styleguide-with-scss.html.lsg')
     assert_match %r(#test { color: red; }), html

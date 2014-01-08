@@ -1,0 +1,7 @@
+source: "style.scss"
+title: "My Nice & Beautiful Living Style Guide"
+style:
+  color: red
+  border-radius: 3px
+  code-color: darken($my-base-color, 10%)
+

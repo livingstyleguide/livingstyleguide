@@ -47,9 +47,18 @@ module ::Tilt
     def generate_sass(additional_sass)
       @sass = [
         %Q(@import "#{@options[:source]}"),
+        style_variables,
         %Q(@import "livingstyleguide"),
         additional_sass
-      ].join(@options[:syntax] == :sass ? "\n" : ';')
+      ].flatten.join(@options[:syntax] == :sass ? "\n" : ';')
+    end
+
+    private
+    def style_variables
+      return unless @options.has_key?(:style)
+      @options[:style].map do |key, value|
+        "$livingstyleguide--#{key}: #{value}"
+      end
     end
 
     private
