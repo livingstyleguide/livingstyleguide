@@ -1,0 +1,8 @@
+source: "style.scss"
+title: "My Nice & Beautiful Living Style Guide"
+javascript-before:
+  - modernizr.js
+javascript-after:
+  - http://code.jquery.com/jquery-2.0.3.js
+  - application.js
+
