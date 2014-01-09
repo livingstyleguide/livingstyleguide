@@ -1,0 +1,7 @@
+source: "style.scss"
+title: "My Nice & Beautiful Living Style Guide"
+header: >
+  <h1>Super Style Guide</h1>
+footer: >
+  <p>Made by me</p>
+
