@@ -33,6 +33,12 @@ class MarkdownTest < Test::Unit::TestCase
     assert_match %r(#test { color: green; }), html
   end
 
+  def test_header_footer
+    html = render('test/fixtures/standalone/styleguide-with-header-footer.html.lsg')
+    assert_match %r(<h1>Super Style Guide</h1>), html
+    assert_match %r(<p>Made by me</p>), html
+  end
+
   private
   def render(file)
     Tilt.new(file).render.gsub(/\s+/, ' ')
