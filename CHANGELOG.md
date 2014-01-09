@@ -36,4 +36,11 @@
 
 * Better support for load paths in Rails
 * Fix for colors
+* New YAML based configuration
+  ([see this gist])[https://gist.github.com/hagenburger/7945859#file-styleguide-1-html-lsg])
+* Option to set the HTML title
+* Custom footer and header HTML
+* Linking of JavaScript files (like jQuery, application.js, …) into the
+  style guide
+* Custom styles can be set within YAML configuration
 
