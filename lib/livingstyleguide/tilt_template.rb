@@ -39,7 +39,7 @@ module ::Tilt
       @options.keys.each do |key|
         @options[key.gsub('-', '_').to_sym] = @options.delete(key)
       end
-      @options[:syntax] = @options.has_key?(:additional_sass) ? :sass : :scss
+      @options[:syntax] = @options.has_key?(:styleguide_sass) ? :sass : :scss
     end
 
     private
@@ -48,7 +48,7 @@ module ::Tilt
         %Q(@import "#{@options[:source]}"),
         style_variables,
         %Q(@import "livingstyleguide"),
-        @options[:additional_sass] || @options[:additional_scss]
+        @options[:styleguide_sass] || @options[:styleguide_scss]
       ].flatten.join(@options[:syntax] == :sass ? "\n" : ';')
     end
 
