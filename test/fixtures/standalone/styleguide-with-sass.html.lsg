@@ -1,7 +1,6 @@
 source: "style.scss"
 title: "My Nice & Beautiful Living Style Guide"
-syntax: sass
-
-#test
-  color: green
+additional-sass: >
+  #test
+    color: green
 
