@@ -37,7 +37,7 @@
 * Better support for load paths in Rails
 * Fix for colors
 * New YAML based configuration
-  ([see this gist])[https://gist.github.com/hagenburger/7945859#file-styleguide-1-html-lsg])
+  ([see this gist](https://gist.github.com/hagenburger/7945859#file-styleguide-1-html-lsg))
 * Option to set the HTML title
 * Custom footer and header HTML
   ([example](https://github.com/hagenburger/livingstyleguide/blob/master/test/fixtures/standalone/styleguide-with-header-footer.html.lsg))
