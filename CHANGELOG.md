@@ -40,7 +40,10 @@
   ([see this gist])[https://gist.github.com/hagenburger/7945859#file-styleguide-1-html-lsg])
 * Option to set the HTML title
 * Custom footer and header HTML
+  ([example](https://github.com/hagenburger/livingstyleguide/blob/master/test/fixtures/standalone/styleguide-with-header-footer.html.lsg))
 * Linking of JavaScript files (like jQuery, application.js, …) into the
   style guide
+  ([example](https://github.com/hagenburger/livingstyleguide/blob/master/test/fixtures/standalone/styleguide-with-javascript.html.lsg))
 * Custom styles can be set within YAML configuration
+  ([example](https://github.com/hagenburger/livingstyleguide/blob/master/test/fixtures/standalone/styleguide-with-style.html.lsg))
 
