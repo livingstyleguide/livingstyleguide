@@ -11,9 +11,8 @@ module ::Tilt
     end
 
     def evaluate(scope, locals, &block)
-      yaml, additional_sass = data.split("\n\n", 2)
-      parse_options(yaml)
-      generate_sass(additional_sass)
+      parse_options(data)
+      generate_sass
       render_living_style_guide
     end
 
@@ -38,18 +37,18 @@ module ::Tilt
     def parse_options(data)
       @options = YAML.load(data)
       @options.keys.each do |key|
-        @options[key.to_sym] = @options.delete(key)
+        @options[key.gsub('-', '_').to_sym] = @options.delete(key)
       end
-      @options[:syntax] = @options[:syntax] == 'sass' ? :sass : :scss
+      @options[:syntax] = @options.has_key?(:additional_sass) ? :sass : :scss
     end
 
     private
-    def generate_sass(additional_sass)
+    def generate_sass
       @sass = [
         %Q(@import "#{@options[:source]}"),
         style_variables,
         %Q(@import "livingstyleguide"),
-        additional_sass
+        @options[:additional_sass] || @options[:additional_scss]
       ].flatten.join(@options[:syntax] == :sass ? "\n" : ';')
     end
 

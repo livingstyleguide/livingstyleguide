@@ -1,7 +1,7 @@
 source: "style.scss"
 title: "My Nice & Beautiful Living Style Guide"
-
-#test {
-  color: red;
-}
+additional-scss: >
+  #test {
+    color: red;
+  }
 
