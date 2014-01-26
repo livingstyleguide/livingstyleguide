@@ -1,0 +1,2 @@
+require 'livingstyleguide/filters/highlights'
+
