@@ -15,9 +15,29 @@ class ExampleTest < Test::Unit::TestCase
     OUTPUT
   end
 
+  def test_options
+    LivingStyleGuide::Example.add_option :test do
+      filter_example do |html|
+        html.replace "TEST"
+      end
+    end
+    assert_render <<-INPUT, <<-OUTPUT
+      @test
+      <button>Hello World</button>
+    INPUT
+      <div class="livingstyleguide--example"> TEST </div>
+      <pre class="livingstyleguide--code-block">
+        <code class="livingstyleguide--code">
+          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+        </code>
+      </pre>
+    OUTPUT
+  end
+
   private
   def assert_render(input, expected_output)
-    output = LivingStyleGuide::Example.new(normalize(input)).render
+    input.gsub! /^ +/, ''
+    output = LivingStyleGuide::Example.new(input).render
     assert_equal(normalize(expected_output), normalize(output))
   end
 end
