@@ -1,14 +1,10 @@
 require 'test_helper'
 require 'active_support/core_ext/string/inflections'
 
-class ExampleTest < Test::Unit::TestCase
-
-  def setup
-    @class = Class.new(LivingStyleGuide::Example)
-  end
+class ExampleTest < ExampleTestCase
 
   def test_default
-    assert_render <<-INPUT, <<-OUTPUT
+    assert_render_equals <<-INPUT, <<-OUTPUT
       <button>Hello World</button>
     INPUT
       <div class="livingstyleguide--example"> <button>Hello World</button> </div>
@@ -26,7 +22,7 @@ class ExampleTest < Test::Unit::TestCase
         "TEST"
       end
     end
-    assert_render <<-INPUT, <<-OUTPUT
+    assert_render_equals <<-INPUT, <<-OUTPUT
       @test
       <button>Hello World</button>
     INPUT
@@ -45,7 +41,7 @@ class ExampleTest < Test::Unit::TestCase
         "TEST"
       end
     end
-    assert_render <<-INPUT, <<-OUTPUT
+    assert_render_equals <<-INPUT, <<-OUTPUT
       <button>Hello World</button>
     INPUT
       <div class="livingstyleguide--example"> TEST </div>
@@ -57,11 +53,5 @@ class ExampleTest < Test::Unit::TestCase
     OUTPUT
   end
 
-  private
-  def assert_render(input, expected_output)
-    input.gsub! /^ +/, ''
-    output = @class.new(input).render
-    assert_equal(normalize(expected_output), normalize(output))
-  end
 end
 
