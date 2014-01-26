@@ -18,7 +18,7 @@ class ExampleTest < Test::Unit::TestCase
   def test_options
     LivingStyleGuide::Example.add_option :test do
       filter_example do |html|
-        html.replace "TEST"
+        "TEST"
       end
     end
     assert_render <<-INPUT, <<-OUTPUT
