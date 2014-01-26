@@ -7,7 +7,7 @@ class LivingStyleGuide::Example
   include Hooks::InstanceHooks
 
   define_hooks :filter_example, :filter_code
-  @@options = {}
+  @@filters = {}
 
   @classes = %w(livingstyleguide--example)
 
@@ -15,31 +15,31 @@ class LivingStyleGuide::Example
     @source = input
     filter_example :remove_highlight_markers
     filter_code :set_highlights
-    parse_options
+    parse_filters
   end
 
   def render
     %Q(<div class="livingstyleguide--example">\n  #{filtered_example}\n</div>) + "\n" + display_source
   end
 
-  def self.add_option(key, &block)
-    @@options[key.to_sym] = block
+  def self.add_filter(key, &block)
+    @@filters[key.to_sym] = block
   end
 
   private
-  def parse_options
+  def parse_filters
     lines = @source.split(/\n/)
     @source = lines.reject do |line|
       if line =~ /^@([a-z-]+)$/
-        set_option $1
+        set_filter $1
         true
       end
     end.join("\n")
   end
 
   private
-  def set_option(key)
-    instance_eval &@@options[key.to_sym]
+  def set_filter(key)
+    instance_eval &@@filters[key.to_sym]
   end
 
   private
