@@ -1,6 +1,7 @@
 require 'compass'
 require 'livingstyleguide'
 require 'test/unit'
+require 'heredoc_unindent'
 
 Compass.configuration.add_import_path File.join(%w(test fixtures stylesheets))
 
@@ -33,14 +34,12 @@ class ExampleTestCase < Test::Unit::TestCase
   end
 
   def assert_render_equals(input, expected_output)
-    input.gsub! /^ +/, ''
-    output = @class.new(input).render
+    output = @class.new(input.unindent).render
     assert_equal(normalize(expected_output), normalize(output))
   end
 
   def assert_render_match(input, expected_output)
-    input.gsub! /^ +/, ''
-    output = @class.new(input).render
+    output = @class.new(input.unindent).render
     assert_match(/#{normalize(expected_output)}/, normalize(output))
   end
 
