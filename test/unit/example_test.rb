@@ -16,23 +16,25 @@ class ExampleTest < ExampleTestCase
     OUTPUT
   end
 
-  def test_filters
-    @class.add_filter :test do
+  def test_filters_with_underscore_and_dash_case
+    @class.add_filter :test_filter do
       filter_example do |html|
         "TEST"
       end
     end
-    assert_render_equals <<-INPUT, <<-OUTPUT
-      @test
-      <button>Hello World</button>
-    INPUT
-      <div class="livingstyleguide--example"> TEST </div>
-      <pre class="livingstyleguide--code-block">
-        <code class="livingstyleguide--code">
-          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
-        </code>
-      </pre>
-    OUTPUT
+    %w(test_filter test-filter).each do |filter|
+      assert_render_equals <<-INPUT, <<-OUTPUT
+        @#{filter}
+        <button>Hello World</button>
+      INPUT
+        <div class="livingstyleguide--example"> TEST </div>
+        <pre class="livingstyleguide--code-block">
+          <code class="livingstyleguide--code">
+            <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+          </code>
+        </pre>
+      OUTPUT
+    end
   end
 
   def test_default_filters
