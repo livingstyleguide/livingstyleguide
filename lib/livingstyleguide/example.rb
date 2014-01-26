@@ -1,19 +1,48 @@
 require 'minisyntax'
 require 'erb'
+require 'hooks'
 
 class LivingStyleGuide::Example
+  include Hooks
+  include Hooks::InstanceHooks
+
+  define_hooks :filter_example
+  @@options = {}
 
   def initialize(input)
     @source = input
+    parse_options
   end
 
   def render
-    %Q(<div class="livingstyleguide--example">\n  #{html_source}\n</div>) + "\n" + display_source
+    %Q(<div class="livingstyleguide--example">\n  #{filtered_example}\n</div>) + "\n" + display_source
+  end
+
+  def self.add_option(key, &block)
+    @@options[key.to_sym] = block
   end
 
   private
-  def html_source
-    @source.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
+  def parse_options
+    lines = @source.split(/\n/)
+    @source = lines.reject do |line|
+      if line =~ /^@([a-z-]+)$/
+        set_option $1
+        true
+      end
+    end.join("\n")
+  end
+
+  private
+  def set_option(key)
+    instance_eval &@@options[key.to_sym]
+  end
+
+  private
+  def filtered_example
+    html = @source.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
+    run_hook :filter_example, html
+    html
   end
 
   private
