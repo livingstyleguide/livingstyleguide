@@ -18,3 +18,10 @@ def parse_file(filename)
   Sass::Engine.new(File.read(filename), options)
 end
 
+def normalize(html)
+  html.gsub! /\s+/, ' '
+  html.gsub! '><', '> <'
+  html.strip!
+  html
+end
+
