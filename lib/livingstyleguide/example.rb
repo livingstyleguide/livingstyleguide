@@ -9,6 +9,8 @@ class LivingStyleGuide::Example
   define_hooks :filter_example
   @@options = {}
 
+  @classes = %w(livingstyleguide--example)
+
   def initialize(input)
     @source = input
     parse_options
@@ -41,7 +43,7 @@ class LivingStyleGuide::Example
   private
   def filtered_example
     html = @source.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
-    run_hook :filter_example, html
+    html = run_filter_hook(:filter_example, html)
     html
   end
 
@@ -58,6 +60,18 @@ class LivingStyleGuide::Example
   def set_highlights(code)
     code = code.gsub(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(<strong class="livingstyleguide--code-highlight-block">\\1</strong>))
     code = code.gsub(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="livingstyleguide--code-highlight">\\1</strong>))
+  end
+
+  private
+  def run_filter_hook(name, source)
+    _hooks[name].each do |callback|
+      if callback.kind_of?(Symbol)
+        source = send(callback, source)
+      else
+        source = instance_exec(source, &callback)
+      end
+    end
+    source
   end
 
 end
