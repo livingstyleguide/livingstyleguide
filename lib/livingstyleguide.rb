@@ -6,6 +6,7 @@ require 'livingstyleguide/importer'
 require 'livingstyleguide/renderer'
 require 'livingstyleguide/markdown_extensions'
 require 'livingstyleguide/tilt_template'
+require 'livingstyleguide/example'
 
 module LivingStyleGuide
   @@markdown = nil
