@@ -6,7 +6,7 @@ class LivingStyleGuide::Example
   include Hooks
   include Hooks::InstanceHooks
 
-  define_hooks :filter_example
+  define_hooks :filter_example, :filter_code
   @@options = {}
 
   @classes = %w(livingstyleguide--example)
@@ -14,6 +14,7 @@ class LivingStyleGuide::Example
   def initialize(input)
     @source = input
     filter_example :remove_highlight_markers
+    filter_code :set_highlights
     parse_options
   end
 
@@ -51,7 +52,7 @@ class LivingStyleGuide::Example
     code = @source.strip
     code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
     code = ::MiniSyntax.highlight(code, :html)
-    code = set_highlights(code)
+    code = run_filter_hook(:filter_code, code)
     %Q(<pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">#{code}</code></pre>)
   end
 
