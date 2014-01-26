@@ -15,8 +15,8 @@ class ExampleTest < Test::Unit::TestCase
     OUTPUT
   end
 
-  def test_options
-    LivingStyleGuide::Example.add_option :test do
+  def test_filters
+    LivingStyleGuide::Example.add_filter :test do
       filter_example do |html|
         "TEST"
       end
