@@ -13,6 +13,7 @@ class LivingStyleGuide::Example
 
   def initialize(input)
     @source = input
+    filter_example :remove_highlight_markers
     parse_options
   end
 
@@ -42,9 +43,7 @@ class LivingStyleGuide::Example
 
   private
   def filtered_example
-    html = @source.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
-    html = run_filter_hook(:filter_example, html)
-    html
+    run_filter_hook(:filter_example, @source)
   end
 
   private
@@ -60,6 +59,11 @@ class LivingStyleGuide::Example
   def set_highlights(code)
     code = code.gsub(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(<strong class="livingstyleguide--code-highlight-block">\\1</strong>))
     code = code.gsub(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="livingstyleguide--code-highlight">\\1</strong>))
+  end
+
+  private
+  def remove_highlight_markers(code)
+    code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
   end
 
   private
