@@ -1,4 +1,5 @@
-~~~ haml-example
+~~~ example
+@haml
 %button.button Test
 ~~~
 

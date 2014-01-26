@@ -75,17 +75,6 @@ module LivingStyleGuide
     def block_code(code, language)
       if %w(example).include?(language)
         Example.new(code).render
-      elsif %w(haml-example haml-layout-example).include?(language)
-        begin
-          type = language[5..-1]
-          require 'haml'
-          Haml::Options.defaults[:attr_wrapper] = '"'
-          haml = code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
-          html = Haml::Engine.new(haml).render.strip
-          %Q(<div class="livingstyleguide--#{type}">\n  #{html}\n</div>) + "\n" + block_code(code, 'haml')
-        rescue LoadError
-          raise "Please make sure `gem 'haml'` is added to your Gemfile."
-        end
       elsif %w(javascript-example).include?(language)
         javascript = code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
         %Q(<script>#{javascript}</script>\n) + block_code(code, 'javascript')
