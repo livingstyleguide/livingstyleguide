@@ -13,8 +13,6 @@ class LivingStyleGuide::Example
 
   def initialize(input)
     @source = input
-    filter_example :remove_highlight_markers
-    filter_code :set_highlights
     parse_filters
   end
 
@@ -22,8 +20,12 @@ class LivingStyleGuide::Example
     %Q(<div class="livingstyleguide--example">\n  #{filtered_example}\n</div>) + "\n" + display_source
   end
 
-  def self.add_filter(key, &block)
-    @@filters[key.to_sym] = block
+  def self.add_filter(key = nil, &block)
+    if key
+      @@filters[key.to_sym] = block
+    else
+      instance_eval &block
+    end
   end
 
   private
@@ -54,17 +56,6 @@ class LivingStyleGuide::Example
     code = ::MiniSyntax.highlight(code, :html)
     code = run_filter_hook(:filter_code, code)
     %Q(<pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">#{code}</code></pre>)
-  end
-
-  private
-  def set_highlights(code)
-    code = code.gsub(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(<strong class="livingstyleguide--code-highlight-block">\\1</strong>))
-    code = code.gsub(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="livingstyleguide--code-highlight">\\1</strong>))
-  end
-
-  private
-  def remove_highlight_markers(code)
-    code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
   end
 
   private
