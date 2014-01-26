@@ -32,7 +32,7 @@ class LivingStyleGuide::Example
   def parse_filters
     lines = @source.split(/\n/)
     @source = lines.reject do |line|
-      if line =~ /^@([a-z-]+)$/
+      if line =~ /^@([a-z-_]+)$/
         set_filter $1
         true
       end
@@ -41,7 +41,7 @@ class LivingStyleGuide::Example
 
   private
   def set_filter(key)
-    instance_eval &@@filters[key.to_sym]
+    instance_eval &@@filters[key.to_s.gsub('-', '_').to_sym]
   end
 
   private
