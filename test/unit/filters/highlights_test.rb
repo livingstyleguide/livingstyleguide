@@ -13,9 +13,9 @@ class HightlightsTest < ExampleTestCase
   def test_multi_line
     assert_render_match <<-INPUT, <<-OUTPUT
       This is
-        ***
-        highlighted
-        ***
+      ***
+      highlighted
+      ***
       text.
     INPUT
       This is <strong class="livingstyleguide--code-highlight-block">highlighted</strong> text.
