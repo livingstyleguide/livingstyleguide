@@ -12,6 +12,7 @@ class LivingStyleGuide::Example
   def initialize(input)
     @source = input
     @wrapper_classes = %w(livingstyleguide--example)
+    @syntax = :html
     parse_filters
   end
 
@@ -61,7 +62,7 @@ class LivingStyleGuide::Example
   def display_source
     code = @source.strip
     code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
-    code = ::MiniSyntax.highlight(code, :html)
+    code = ::MiniSyntax.highlight(code, @syntax)
     code = run_filter_hook(:filter_code, code)
     %Q(<pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">#{code}</code></pre>)
   end
