@@ -24,9 +24,9 @@ class MarkdownTest < Test::Unit::TestCase
     HTML
   end
 
-  def test_layout_examples
-    assert_markdown <<-HTML, 'layout-example.md'
-      <div class="livingstyleguide--layout-example">
+  def test_full_width_examples
+    assert_markdown <<-HTML, 'full-width-example.md'
+      <div class="livingstyleguide--example -lsg-has-full-width">
         <button class="button">Test</button>
       </div>
       <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">.+button.+Test.+button.+</code></pre>

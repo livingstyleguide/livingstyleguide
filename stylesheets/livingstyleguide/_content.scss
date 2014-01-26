@@ -62,17 +62,14 @@
   @include box-sizing(border-box);
   @include border-top-radius($livingstyleguide--border-radius);
 
-  .livingstyleguide--layout-example & {
+  &.-lsg-has-full-width {
+    @extend #{$livingstyleguide--layout-selector} !optional;
+    display: block;
+    height: auto;
     margin: 0 auto;
+    min-height: auto;
+    padding: $livingstyleguide--full-width-padding;
     width: 100%;
     @include border-radius(0);
   }
-}
-
-.livingstyleguide--layout-example {
-  @extend #{$livingstyleguide--layout-selector} !optional;
-  display: block;
-  height: auto;
-  min-height: auto;
-  padding: $livingstyleguide--layout-example-padding;
 }

@@ -9,15 +9,14 @@ class LivingStyleGuide::Example
   define_hooks :filter_example, :filter_code
   @@filters = {}
 
-  @classes = %w(livingstyleguide--example)
-
   def initialize(input)
     @source = input
+    @wrapper_classes = %w(livingstyleguide--example)
     parse_filters
   end
 
   def render
-    %Q(<div class="livingstyleguide--example">\n  #{filtered_example}\n</div>) + "\n" + display_source
+    %Q(<div class="#{wrapper_classes}">\n  #{filtered_example}\n</div>) + "\n" + display_source
   end
 
   def self.add_filter(key = nil, &block)
@@ -26,6 +25,15 @@ class LivingStyleGuide::Example
     else
       instance_eval &block
     end
+  end
+
+  def add_wrapper_class(class_name)
+    @wrapper_classes << class_name
+  end
+
+  private
+  def wrapper_classes
+    @wrapper_classes.join(' ')
   end
 
   private

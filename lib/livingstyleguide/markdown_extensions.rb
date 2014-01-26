@@ -75,9 +75,6 @@ module LivingStyleGuide
     def block_code(code, language)
       if %w(example).include?(language)
         Example.new(code).render
-      elsif %w(layout-example).include?(language)
-        html = code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
-        %Q(<div class="livingstyleguide--#{language}">\n  #{html}\n</div>) + "\n" + block_code(code, 'html')
       elsif %w(haml-example haml-layout-example).include?(language)
         begin
           type = language[5..-1]
