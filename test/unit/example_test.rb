@@ -55,5 +55,24 @@ class ExampleTest < ExampleTestCase
     OUTPUT
   end
 
+  def test_filters_with_argument
+    @class.add_filter :test_filter do |argument|
+      filter_example do |html|
+        argument
+      end
+    end
+    assert_render_equals <<-INPUT, <<-OUTPUT
+      @test_filter Another Test
+      <button>Hello World</button>
+    INPUT
+      <div class="livingstyleguide--example"> Another Test </div>
+      <pre class="livingstyleguide--code-block">
+        <code class="livingstyleguide--code">
+          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+        </code>
+      </pre>
+    OUTPUT
+  end
+
 end
 
