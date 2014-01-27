@@ -72,4 +72,8 @@
     width: 100%;
     @include border-radius(0);
   }
+
+  &.-lsg-for-javascript {
+    display: none;
+  }
 }

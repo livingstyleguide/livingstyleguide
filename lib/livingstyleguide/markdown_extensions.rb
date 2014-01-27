@@ -75,9 +75,6 @@ module LivingStyleGuide
     def block_code(code, language)
       if %w(example).include?(language)
         Example.new(code).render
-      elsif %w(javascript-example).include?(language)
-        javascript = code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
-        %Q(<script>#{javascript}</script>\n) + block_code(code, 'javascript')
       else
         code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
         code = ::MiniSyntax.highlight(code.strip, language.to_s.strip.to_sym)
