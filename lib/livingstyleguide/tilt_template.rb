@@ -25,11 +25,10 @@ module ::Tilt
       options[:template_location].each do |path, short|
         options[:load_paths] << ::LivingStyleGuide::Importer.new(path)
       end
-      options[:filename]           = eval_file
-      options[:line]               = line
-      options[:syntax]             = @options[:syntax]
-      options[:importer]           = LivingStyleGuide::Importer.new('.')
-      options[:living_style_guide] = @options
+      options[:filename] = eval_file
+      options[:line]     = line
+      options[:syntax]   = @options[:syntax]
+      options[:importer] = LivingStyleGuide::Importer.new('.')
       options
     end
 
@@ -62,8 +61,8 @@ module ::Tilt
 
     private
     def render_living_style_guide
-      engine = ::Sass::Engine.new(@sass, sass_options)
-      engine.render_living_style_guide
+      engine = ::LivingStyleGuide::Engine.new(@sass, @options, sass_options)
+      engine.render
     end
   end
 
