@@ -22,7 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'sass'
   gem.add_dependency 'redcarpet'
   gem.add_dependency 'tilt'
-  gem.add_dependency 'activesupport'
   gem.add_dependency 'thor'
   gem.add_dependency 'hooks'
 

@@ -2,7 +2,6 @@ require 'redcarpet'
 require 'tilt'
 require 'minisyntax'
 require 'erb'
-require 'active_support/core_ext/string/inflections'
 
 module LivingStyleGuide
   class RedcarpetTemplate < ::Tilt::RedcarpetTemplate::Redcarpet2
@@ -34,7 +33,7 @@ module LivingStyleGuide
   class RedcarpetHTML < ::Redcarpet::Render::HTML
 
     def header(text, header_level)
-      id = %Q( id="#{::ActiveSupport::Inflector.parameterize(text, '-')}")
+      id = %Q( id="#{slug(text)}")
       klass = %w(page-title headline sub-headline sub-sub-headline)[header_level]
       header_level += 1
       %Q(<h#{header_level} class="livingstyleguide--#{klass}"#{id}>#{text}</h#{header_level}>\n)
@@ -87,6 +86,14 @@ module LivingStyleGuide
     def codespan(code)
       code = ERB::Util.html_escape(code)
       %Q(<code class="livingstyleguide--code-span livingstyleguide--code">#{code}</code>)
+    end
+
+    private
+    def slug(text)
+      require 'active_support/core_ext/string/inflections'
+      ::ActiveSupport::Inflector.parameterize(text, '-')
+    rescue LoadError
+      text.downcase.gsub(/[ _\.\-!\?\(\)\[\]]+/, '-').gsub(/^-|-$/, '')
     end
 
   end
