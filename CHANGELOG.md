@@ -47,3 +47,11 @@
 * Custom styles can be set within YAML configuration
   ([example](https://github.com/hagenburger/livingstyleguide/blob/master/test/fixtures/standalone/styleguide-with-style.html.lsg))
 
+## 1.0.0.alpha.3
+
+* [Cache control for Sprockets](https://github.com/hagenburger/livingstyleguide/issues/25)
+* API to provide [filters in examples](https://github.com/hagenburger/livingstyleguide/issues/22)
+* Dropped `haml-example`, `layout-example`, and `haml-layout-example`;
+  moved into [filters](https://github.com/hagenburger/livingstyleguide/issues/28)
+* [A set of pre-defined filters](https://github.com/hagenburger/livingstyleguide/tree/master/lib/livingstyleguide/filters)
+
