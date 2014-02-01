@@ -28,4 +28,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'haml'
   gem.add_development_dependency 'heredoc_unindent'
+  gem.add_development_dependency 'minitest'
 end
