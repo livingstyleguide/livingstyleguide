@@ -11,6 +11,7 @@ module ::Tilt
     end
 
     def evaluate(scope, locals, &block)
+      @scope = scope
       parse_options(data)
       generate_sass
       render_living_style_guide
@@ -25,10 +26,11 @@ module ::Tilt
       options[:template_location].each do |path, short|
         options[:load_paths] << ::LivingStyleGuide::Importer.new(path)
       end
-      options[:filename] = eval_file
-      options[:line]     = line
-      options[:syntax]   = @options[:syntax]
-      options[:importer] = LivingStyleGuide::Importer.new('.')
+      options[:filename]  = eval_file
+      options[:line]      = line
+      options[:syntax]    = @options[:syntax]
+      options[:importer]  = LivingStyleGuide::Importer.new('.')
+      options[:sprockets] = { context: @scope }
       options
     end
 
@@ -52,6 +54,26 @@ module ::Tilt
     end
 
     private
+    def configure_cache
+      return unless @scope.respond_to?(:depend_on)
+      test = /^#{root}/
+      @engine.files.uniq.each do |file|
+        if file =~ test
+          @scope.depend_on file
+        end
+      end
+    end
+
+    private
+    def root
+      if @scope.respond_to?(:environment)
+        @scope.environment.root
+      else
+        File.dirname(@file)
+      end
+    end
+
+    private
     def style_variables
       return unless @options.has_key?(:style)
       @options[:style].map do |key, value|
@@ -61,8 +83,10 @@ module ::Tilt
 
     private
     def render_living_style_guide
-      engine = ::LivingStyleGuide::Engine.new(@sass, @options, sass_options)
-      engine.render
+      @engine = ::LivingStyleGuide::Engine.new(@sass, @options, sass_options)
+      html = @engine.render
+      configure_cache
+      html
     end
   end
 

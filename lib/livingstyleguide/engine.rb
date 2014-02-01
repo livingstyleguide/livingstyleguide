@@ -1,13 +1,14 @@
 module LivingStyleGuide
 
   class Engine
-    attr_accessor :markdown, :options
+    attr_accessor :markdown, :files, :options
 
     def initialize(source, options, sass_options)
       @source = source
       @options = options
       @sass_options = sass_options
       @markdown = ''
+      @files = []
     end
 
     def render
