@@ -4,33 +4,21 @@ require 'minisyntax'
 require 'erb'
 
 module LivingStyleGuide
-  class RedcarpetTemplate < ::Tilt::RedcarpetTemplate::Redcarpet2
-    RENDER_OPTIONS = {
-      :autolink => true,
-      :fenced_code_blocks => true,
-      :tables => true,
-      :strikethrough => true,
-      :space_after_headers => true,
-      :superscript => true
-    }
-
-    def generate_renderer
-      RedcarpetHTML.new(RENDER_OPTIONS)
-    end
-
-    def prepare
-      @engine = ::Redcarpet::Markdown.new(generate_renderer, RENDER_OPTIONS)
-      @output = nil
-    end
-
-    def evaluate(context, locals, &block)
-      @context ||= context
-      super
-    end
-
-  end
+  REDCARPET_RENDER_OPTIONS = {
+    autolink: true,
+    fenced_code_blocks: true,
+    tables: true,
+    strikethrough: true,
+    space_after_headers: true,
+    superscript: true
+  }
 
   class RedcarpetHTML < ::Redcarpet::Render::HTML
+
+    def initialize(options = {})
+      @options = options
+      super
+    end
 
     def header(text, header_level)
       id = %Q( id="#{slug(text)}")
@@ -73,7 +61,7 @@ module LivingStyleGuide
 
     def block_code(code, language)
       if %w(example).include?(language)
-        Example.new(code).render
+        Example.new(code, @options).render
       else
         code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
         code = ::MiniSyntax.highlight(code.strip, language.to_s.strip.to_sym)
@@ -97,7 +85,5 @@ module LivingStyleGuide
     end
 
   end
-
-  ::Tilt.register RedcarpetTemplate, 'markdown', 'mkd', 'md'
 end
 
