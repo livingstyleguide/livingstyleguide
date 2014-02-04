@@ -6,14 +6,19 @@ class LivingStyleGuide::Example
   include Hooks
   include Hooks::InstanceHooks
 
+  FILTER_REGEXP = /^@([a-z\-_]+)(\s+(.+?))?$/
+
   define_hooks :filter_example, :filter_code
   @@filters = {}
 
-  def initialize(input)
+  def initialize(input, options = {})
+    @options = { default_filters: [] }.merge(options)
     @source = input
     @wrapper_classes = %w(livingstyleguide--example)
     @syntax = :html
+    @filters = @options[:default_filters].clone
     parse_filters
+    apply_filters
   end
 
   def render
@@ -41,15 +46,21 @@ class LivingStyleGuide::Example
   def parse_filters
     lines = @source.split(/\n/)
     @source = lines.reject do |line|
-      if line =~ /^@([a-z\-_]+)(\s+(.+?))?$/
-        set_filter $1, $3
-        true
+      if line =~ FILTER_REGEXP
+        @filters << line
       end
     end.join("\n")
   end
 
   private
-  def set_filter(key, argument)
+  def apply_filters
+    @filters.each do |filter|
+      set_filter *filter.match(FILTER_REGEXP)[1..2]
+    end
+  end
+
+  private
+  def set_filter(key, argument = nil)
     instance_exec argument, &@@filters[key.to_s.gsub('-', '_').to_sym]
   end
 

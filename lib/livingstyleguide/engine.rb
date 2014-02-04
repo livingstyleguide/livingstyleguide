@@ -22,7 +22,9 @@ module LivingStyleGuide
     end
 
     def html
-      LivingStyleGuide::RedcarpetTemplate.new{ markdown }.render
+      renderer = RedcarpetHTML.new(@options)
+      redcarpet = ::Redcarpet::Markdown.new(renderer, REDCARPET_RENDER_OPTIONS)
+      redcarpet.render(markdown)
     end
 
     private
