@@ -60,7 +60,8 @@ module LivingStyleGuide
     end
 
     def block_code(code, language)
-      if %w(example).include?(language)
+      language ||= @options[:default_language]
+      if language == 'example'
         Example.new(code, @options).render
       else
         code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
