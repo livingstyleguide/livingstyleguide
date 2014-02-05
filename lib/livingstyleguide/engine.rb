@@ -3,9 +3,13 @@ module LivingStyleGuide
   class Engine
     attr_accessor :markdown, :files, :options
 
+    DEFAULT_OPTIONS = {
+      default_language: 'example'
+    }
+
     def initialize(source, options, sass_options)
       @source = source
-      @options = options
+      @options = DEFAULT_OPTIONS.merge(options)
       @sass_options = sass_options
       @markdown = ''
       @files = []

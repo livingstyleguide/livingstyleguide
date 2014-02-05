@@ -3,15 +3,15 @@ require 'tilt'
 
 class MarkdownTest < Test::Unit::TestCase
 
-  def render_markdown(file)
-    engine = LivingStyleGuide::Engine.new('', {}, {})
+  def render_markdown(file, options)
+    engine = LivingStyleGuide::Engine.new('', options, {})
     engine.markdown = File.read(file)
     engine.html
   end
 
-  def assert_markdown(expected, file)
+  def assert_markdown(expected, file, options = {})
     expected = expected.gsub(/\s+/m, ' ').gsub(/([\$\(\)\[\]])/) { |s| "\\#{s}" }.strip
-    given    = render_markdown(File.join(%W(test fixtures markdown #{file})))
+    given    = render_markdown(File.join(%W(test fixtures markdown #{file})), options)
     given    = given.gsub(/\s+/m, ' ').strip
     assert_match /#{expected}/, given
   end
