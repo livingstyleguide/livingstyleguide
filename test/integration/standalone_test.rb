@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'tilt'
 
-class MarkdownTest < Test::Unit::TestCase
+class MarkdownTest < Minitest::Test
 
   def test_standalone_project
     html = render('test/fixtures/standalone/styleguide.html.lsg')

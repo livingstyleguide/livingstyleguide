@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require 'compass'
 require 'livingstyleguide'
-require 'test/unit'
 require 'heredoc_unindent'
 
 Compass.configuration.add_import_path File.join(%w(test fixtures stylesheets))
@@ -25,24 +24,5 @@ def normalize(html)
   html.gsub! '><', '> <'
   html.strip!
   html
-end
-
-
-class ExampleTestCase < Test::Unit::TestCase
-
-  def setup
-    @class = Class.new(LivingStyleGuide::Example)
-  end
-
-  def assert_render_equals(input, expected_output, options = {})
-    output = @class.new(input.unindent, options).render
-    assert_equal(normalize(expected_output), normalize(output))
-  end
-
-  def assert_render_match(input, expected_output, options = {})
-    output = @class.new(input.unindent, options).render
-    assert_match(/#{normalize(expected_output)}/, normalize(output))
-  end
-
 end
 

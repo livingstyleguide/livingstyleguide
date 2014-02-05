@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'tilt'
 
-class MarkdownTest < Test::Unit::TestCase
+class MarkdownTest < Minitest::Test
 
   def render_markdown(file, options)
     engine = LivingStyleGuide::Engine.new('', options, {})
