@@ -1,5 +1,6 @@
 require 'livingstyleguide/version'
 require 'compass'
+require 'livingstyleguide/filter_hooks'
 require 'livingstyleguide/sass_extensions'
 require 'livingstyleguide/engine'
 require 'livingstyleguide/variables_importer'
