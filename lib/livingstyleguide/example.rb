@@ -5,6 +5,7 @@ require 'hooks'
 class LivingStyleGuide::Example
   include Hooks
   include Hooks::InstanceHooks
+  include LivingStyleGuide::FilterHooks
 
   FILTER_REGEXP = /^@([a-z\-_]+)(\s+(.+?))?$/
 
@@ -77,18 +78,5 @@ class LivingStyleGuide::Example
     code = run_filter_hook(:filter_code, code)
     %Q(<pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">#{code}</code></pre>)
   end
-
-  private
-  def run_filter_hook(name, source)
-    _hooks[name].each do |callback|
-      if callback.kind_of?(Symbol)
-        source = send(callback, source)
-      else
-        source = instance_exec(source, &callback)
-      end
-    end
-    source
-  end
-
 end
 
