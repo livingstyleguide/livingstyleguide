@@ -4,7 +4,7 @@ require 'compass'
 require 'compass/logger'
 require 'sass/plugin'
 
-class VariablesImporterTest < Test::Unit::TestCase
+class VariablesImporterTest < Minitest::Test
 
   def setup
     Compass.configure_sass_plugin!

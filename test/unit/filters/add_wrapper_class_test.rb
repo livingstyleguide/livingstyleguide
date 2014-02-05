@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'example_test_helper'
 
 class AddWrapperClassTest < ExampleTestCase
 

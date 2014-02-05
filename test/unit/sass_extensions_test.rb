@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SassExtensionsTest < Test::Unit::TestCase
+class SassExtensionsTest < Minitest::Test
   def test_list_variables_for_file
     assert_equal 'my-wonderful_red blue', evaluate(%Q(list-variables("variables/colors.scss")))
   end
