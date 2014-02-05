@@ -3,6 +3,8 @@
 Easily create living style guides by adding Markdown documentation to
 your Sass.
 
+![Build Status Images](https://travis-ci.org/hagenburger/livingstyleguide.png)
+
 ## Rails Integration
 
 1) Create *_app/assets/stylesheets/styleguide.html.lsg_* with:
