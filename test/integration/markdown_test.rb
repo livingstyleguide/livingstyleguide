@@ -124,4 +124,13 @@ class MarkdownTest < Test::Unit::TestCase
     HTML
   end
 
+  def test_resetting_language
+    assert_markdown <<-HTML, 'code-block-and-example.md', default_language: 'code'
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">Normal code block</code></pre><div class="livingstyleguide--example">
+        Example
+      </div>
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">Example</code></pre>
+    HTML
+  end
+
 end
