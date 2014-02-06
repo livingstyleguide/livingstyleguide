@@ -38,6 +38,16 @@ describe LivingStyleGuide::CodeBlock do
         <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">my beautiful code</code></pre>
       HTML
     end
+
+    it "should use own syntax highlighter" do
+      @code_block.syntax_highlight do |code|
+        code.gsub(/language/, language)
+      end
+
+      @code_block.new("my ugly language code", "html").render.must_equal <<-HTML.unindent.strip
+        <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">my ugly html code</code></pre>
+      HTML
+    end
   end
 end
 
