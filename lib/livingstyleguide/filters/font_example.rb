@@ -6,12 +6,13 @@ LivingStyleGuide::Example.add_filter :font_example do |font|
   end
 
   filter_example do |content|
-    <<-HTML
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
-      abcdefghijklmnopqrstuvwxyz<br>
-      0123456789<br>
+    content = <<-HTML if content == ''
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      abcdefghijklmnopqrstuvwxyz
+      0123456789
       !&/()$=@;:,.
     HTML
+    content.strip.gsub(/\n/, "<br>\n")
   end
 end
 
