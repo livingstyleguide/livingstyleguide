@@ -9,7 +9,7 @@ class LivingStyleGuide::Example
 
   FILTER_REGEXP = /^@([a-z\-_]+)(\s+(.+?))?$/
 
-  define_hooks :filter_example, :filter_code
+  define_hook :filter_example
   @@filters = {}
 
   def initialize(input, options = {})
@@ -23,7 +23,8 @@ class LivingStyleGuide::Example
   end
 
   def render
-    %Q(<div class="#{wrapper_classes}">\n  #{filtered_example}\n</div>) + "\n" + display_source
+    code_block = LivingStyleGuide::CodeBlock.new(@source, @syntax).render
+    %Q(<div class="#{wrapper_classes}">\n  #{filtered_example}\n</div>) + "\n" + code_block
   end
 
   def self.add_filter(key = nil, &block)
@@ -68,15 +69,6 @@ class LivingStyleGuide::Example
   private
   def filtered_example
     run_filter_hook(:filter_example, @source)
-  end
-
-  private
-  def display_source
-    code = @source.strip
-    code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
-    code = ::MiniSyntax.highlight(code, @syntax)
-    code = run_filter_hook(:filter_code, code)
-    %Q(<pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">#{code}</code></pre>)
   end
 end
 
