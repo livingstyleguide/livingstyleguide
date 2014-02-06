@@ -91,5 +91,21 @@ class ExampleTest < ExampleTestCase
     OUTPUT
   end
 
+  def test_outer_html
+    @class.html do |c|
+      "<span>#{c}</span>"
+    end
+    assert_render_equals <<-INPUT, <<-OUTPUT
+      <button>Hello World</button>
+    INPUT
+      <span> <button>Hello World</button> </span>
+      <pre class="livingstyleguide--code-block">
+        <code class="livingstyleguide--code">
+          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+        </code>
+      </pre>
+    OUTPUT
+  end
+
 end
 

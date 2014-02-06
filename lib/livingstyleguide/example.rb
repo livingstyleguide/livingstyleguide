@@ -9,7 +9,7 @@ class LivingStyleGuide::Example
 
   FILTER_REGEXP = /^@([a-z\-_]+)(\s+(.+?))?$/
 
-  define_hook :filter_example
+  define_hooks :filter_example, :html
   @@filters = {}
 
   def initialize(input, options = {})
@@ -22,9 +22,14 @@ class LivingStyleGuide::Example
     apply_filters
   end
 
+  html do |content|
+    %Q(<div class="#{wrapper_classes}">\n  #{content}\n</div>\n)
+  end
+
   def render
+    html = run_last_filter_hook(:html, filtered_example)
     code_block = LivingStyleGuide::CodeBlock.new(@source, @syntax).render
-    %Q(<div class="#{wrapper_classes}">\n  #{filtered_example}\n</div>) + "\n" + code_block
+    "#{html}#{code_block}"
   end
 
   def self.add_filter(key = nil, &block)
@@ -39,7 +44,6 @@ class LivingStyleGuide::Example
     @wrapper_classes << class_name
   end
 
-  private
   def wrapper_classes
     @wrapper_classes.join(' ')
   end
