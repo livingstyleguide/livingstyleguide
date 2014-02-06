@@ -1,1 +1,4 @@
-{{font-example:16px Courier}}
+~~~
+@font-example 16px Courier
+~~~
+
