@@ -14,18 +14,17 @@ your Sass.
    ```
 
 2) Write documentation for each module *app/assets/stylesheets/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
-   ``` markdown
-   Buttons
-   =======
+   
+       Buttons
+       =======
 
-   ~~~
-   <button class="button">Example button</button>
-   ~~~ 
+       ~~~ example
+       <button class="button">Example button</button>
+       ~~~ 
 
-   ~~~
-   <button class="button -is-primary">Example button</button>
-   ~~~ 
-   ```
+       ~~~ example
+       <button class="button -is-primary">Example button</button>
+       ~~~ 
 
 3) Open <http://localhost:3000/assets/styleguide.html>.
    This will automatically:
@@ -41,12 +40,10 @@ your Sass.
 This will output the code as HTML but display the syntax highlighted
 source as Haml:
 
-``` markdown
-~~~
-@haml
-%button.button Example button
-~~~
-```
+    ~~~
+    @haml
+    %button.button Example button
+    ~~~
 
 
 ### JavaScript example
@@ -54,14 +51,12 @@ source as Haml:
 This will show and execute the JavaScript, e. g. you designed tabs and
 need few lines of jQuery to bring them alive.
 
-``` markdown
-~~~
-@javascript
-$('.button').click(function() {
-  alert('Hello World!');
-});
-~~~
-```
+    ~~~ example
+    @javascript
+    $('.button').click(function() {
+      alert('Hello World!');
+    });
+    ~~~
 
 
 ### CoffeeScript example
@@ -69,24 +64,20 @@ $('.button').click(function() {
 Same example but using [CoffeeScript](http://coffeescript.org). It will be 
 executed as JavaScript and displayed as CoffeeScript:
 
-``` markdown
-~~~
-@javascript
-$('.button').click ->
-  alert 'Hello World!'
-~~~
-```
+    ~~~ example
+    @javascript
+    $('.button').click ->
+      alert 'Hello World!'
+    ~~~
 
 
 ### Font example
 
 Show which fonts should be used on your website—this will output and example text block (A—Z, a—z, 0—9, and some special characters) of the given font. It accepts valid CSS like for `font: 32px Comic Sans;`.
 
-``` markdown
-~~~
-@font-example 32px Comic Sans
-~~~
-```
+    ~~~ example
+    @font-example 32px Comic Sans
+    ~~~
 
 
 ## Installation
