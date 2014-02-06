@@ -10,6 +10,7 @@ class LivingStyleGuide::Example
   FILTER_REGEXP = /^@([a-z\-_]+)(\s+(.+?))?$/
 
   define_hooks :filter_example, :html
+  attr_reader :options
   @@filters = {}
 
   def initialize(input, options = {})

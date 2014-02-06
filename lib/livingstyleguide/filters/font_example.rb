@@ -1,3 +1,10 @@
+LivingStyleGuide::Engine.default_options[:font_example] = { text: <<-TEXT }
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  abcdefghijklmnopqrstuvwxyz
+  0123456789
+  !&/()$=@;:,.
+TEXT
+
 LivingStyleGuide::Example.add_filter :font_example do |font|
   suppress_code_block
 
@@ -6,12 +13,7 @@ LivingStyleGuide::Example.add_filter :font_example do |font|
   end
 
   filter_example do |content|
-    content = <<-HTML if content == ''
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ
-      abcdefghijklmnopqrstuvwxyz
-      0123456789
-      !&/()$=@;:,.
-    HTML
+    content = options[:font_example][:text] if content == ''
     content.strip.gsub(/\n/, "<br>\n")
   end
 end
