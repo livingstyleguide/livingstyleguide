@@ -28,6 +28,18 @@ class FontExampleTest < ExampleTestCase
     OUTPUT
   end
 
+  def test_default_font_example_with_defaut_custom_text
+    assert_render_equals <<-INPUT, <<-OUTPUT, font_example: { text: "zażółć\ngęślą\njaźń" }
+      @font-example 72px Drogowskaz
+    INPUT
+      <div class="livingstyleguide--font-example" style="font: 72px Drogowskaz">
+        zażółć<br>
+        gęślą<br>
+        jaźń
+      </div>
+    OUTPUT
+  end
+
 end
 
 
