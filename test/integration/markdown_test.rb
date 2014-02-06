@@ -89,7 +89,7 @@ class MarkdownTest < Minitest::Test
 
   def test_code_with_highlight_block
     assert_markdown <<-HTML, 'code-with-highlight-block.md'
-      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><strong class="livingstyleguide--code-highlight-block">.+Block example.+</strong></code></pre>
+      <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">.+<strong class="livingstyleguide--code-highlight-block">.+Block example.+</strong>.+</code></pre>
     HTML
   end
 

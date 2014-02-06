@@ -64,11 +64,7 @@ module LivingStyleGuide
       if language == 'example'
         Example.new(code, @options).render
       else
-        code = ERB::Util.html_escape(code).gsub(/&quot;/, '"')
-        code = ::MiniSyntax.highlight(code.strip, language.to_s.strip.to_sym)
-        code.gsub! /^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(<strong class="livingstyleguide--code-highlight-block">\\1</strong>)
-        code.gsub! /\*\*\*(.+?)\*\*\*/, %Q(<strong class="livingstyleguide--code-highlight">\\1</strong>)
-        %Q(<pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">#{code}</code></pre>)
+        CodeBlock.new(code.strip, language.to_s.strip.to_sym).render
       end
     end
 
