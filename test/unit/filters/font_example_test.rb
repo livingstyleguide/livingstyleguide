@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'example_test_helper'
 
 class FontExampleTest < ExampleTestCase
