@@ -9,7 +9,7 @@ class LivingStyleGuide::Example
 
   FILTER_REGEXP = /^@([a-z\-_]+)(\s+(.+?))?$/
 
-  define_hooks :filter_example, :html
+  define_hooks :filter_before, :filter_after, :html, :pre_processor
   attr_reader :options
   @@filters = {}
 
@@ -78,7 +78,9 @@ class LivingStyleGuide::Example
 
   private
   def filtered_example
-    run_filter_hook(:filter_example, @source)
+    source = run_filter_hook(:filter_before, @source)
+    source = run_last_filter_hook(:pre_processor, source)
+    run_filter_hook(:filter_after, source)
   end
 end
 
