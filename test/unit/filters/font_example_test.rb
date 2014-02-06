@@ -17,11 +17,11 @@ class FontExampleTest < ExampleTestCase
 
   def test_default_font_example_with_custom_text
     assert_render_equals <<-INPUT, <<-OUTPUT
-      @font-example 42px Comic Sans
+      @font-example 14px Helvetica
       Schweißgequält zündet Typograf Jakob
       verflixt öde Pangramme an.
     INPUT
-      <div class="livingstyleguide--font-example" style="font: 42px Comic Sans">
+      <div class="livingstyleguide--font-example" style="font: 14px Helvetica">
         Schweißgequält zündet Typograf Jakob<br>
         verflixt öde Pangramme an.
       </div>
