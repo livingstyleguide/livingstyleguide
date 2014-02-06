@@ -51,8 +51,9 @@
 
 * [Cache control for Sprockets](https://github.com/hagenburger/livingstyleguide/issues/25)
 * API to provide [filters in examples](https://github.com/hagenburger/livingstyleguide/issues/22)
-* Dropped `haml-example`, `layout-example`, and `haml-layout-example`;
+* Dropped `haml-example`, `layout-example`, `javascript-example` and `haml-layout-example`;
   moved into [filters](https://github.com/hagenburger/livingstyleguide/issues/28)
 * [A set of pre-defined filters](https://github.com/hagenburger/livingstyleguide/tree/master/lib/livingstyleguide/filters)
 * [Default filters](https://github.com/hagenburger/livingstyleguide/issues/31) (e. g. all templates should use Haml)
+* [CoffeeScript examples](https://github.com/hagenburger/livingstyleguide/issues/34)
 
