@@ -107,5 +107,17 @@ class ExampleTest < ExampleTestCase
     OUTPUT
   end
 
+  def test_hide_code_block
+    @class.add_filter :suppress_code_block do
+      suppress_code_block
+    end
+    assert_render_equals <<-INPUT, <<-OUTPUT
+      @suppress-code-block
+      <button>Hello World</button>
+    INPUT
+      <div class="livingstyleguide--example"> <button>Hello World</button> </div>
+    OUTPUT
+  end
+
 end
 

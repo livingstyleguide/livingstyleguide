@@ -18,6 +18,7 @@ class LivingStyleGuide::Example
     @wrapper_classes = %w(livingstyleguide--example)
     @syntax = :html
     @filters = @options[:default_filters].clone
+    @output_code_block = true
     parse_filters
     apply_filters
   end
@@ -28,7 +29,7 @@ class LivingStyleGuide::Example
 
   def render
     html = run_last_filter_hook(:html, filtered_example)
-    code_block = LivingStyleGuide::CodeBlock.new(@source, @syntax).render
+    code_block = LivingStyleGuide::CodeBlock.new(@source, @syntax).render if @output_code_block
     "#{html}#{code_block}"
   end
 
@@ -46,6 +47,10 @@ class LivingStyleGuide::Example
 
   def wrapper_classes
     @wrapper_classes.join(' ')
+  end
+
+  def suppress_code_block
+    @output_code_block = false
   end
 
   private
