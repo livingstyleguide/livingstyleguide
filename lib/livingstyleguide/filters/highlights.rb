@@ -3,7 +3,7 @@ LivingStyleGuide::CodeBlock.filter_code do |code|
   code = code.gsub(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="livingstyleguide--code-highlight">\\1</strong>))
 end
 
-LivingStyleGuide::Example.filter_example do |code|
+LivingStyleGuide::Example.filter_before do |code|
   code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
 end
 

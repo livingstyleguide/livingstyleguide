@@ -5,7 +5,7 @@ LivingStyleGuide::Example.add_filter :haml do
     Haml::Options.defaults[:attr_wrapper] = '"'
     @syntax = :haml
 
-    filter_example do |haml|
+    pre_processor do |haml|
       Haml::Engine.new(haml).render.strip
     end
 

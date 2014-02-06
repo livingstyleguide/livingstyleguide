@@ -22,6 +22,8 @@ module LivingStyleGuide::FilterHooks
     def run_single_hook(hook, source)
       if hook.kind_of?(Symbol)
         send(hook, source)
+      elsif hook.nil?
+        source
       else
         instance_exec(source, &hook)
       end

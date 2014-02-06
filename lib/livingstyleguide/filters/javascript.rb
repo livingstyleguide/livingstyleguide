@@ -3,7 +3,7 @@ LivingStyleGuide::Example.add_filter :javascript do
 
   add_wrapper_class '-lsg-for-javascript'
 
-  filter_example do |javascript|
+  filter_after do |javascript|
     %Q(<script>#{javascript}</script>\n)
   end
 end

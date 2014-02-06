@@ -6,7 +6,7 @@ LivingStyleGuide::Example.add_filter :coffee_script do
 
     add_wrapper_class '-lsg-for-javascript'
 
-    filter_example do |coffee_script|
+    pre_processor do |coffee_script|
       javascript = CoffeeScript.compile(coffee_script)
       %Q(<script>#{javascript}</script>\n)
     end

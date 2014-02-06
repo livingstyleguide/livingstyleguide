@@ -12,7 +12,7 @@ LivingStyleGuide::Example.add_filter :font_example do |font|
     %(<div class="livingstyleguide--font-example" style="font: #{font}">\n#{content}\n</div>\n)
   end
 
-  filter_example do |content|
+  pre_processor do |content|
     content = options[:font_example][:text] if content == ''
     content.strip.gsub(/\n/, "<br>\n")
   end

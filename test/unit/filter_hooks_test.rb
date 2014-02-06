@@ -36,6 +36,10 @@ describe LivingStyleGuide::FilterHooks do
       @class.filter { |text| text.gsub(/animal/, 'bird') }
       @class.run_last_filter_hook(:filter, "the animal").must_equal "the bird"
     end
+
+    it "should return the original string if no hooks are defined" do
+      @class.run_last_filter_hook(:filter, "the animal").must_equal "the animal"
+    end
   end
 
 end
