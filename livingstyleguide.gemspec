@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = LivingStyleGuide::VERSION
   gem.authors       = ["Nico Hagenburger"]
   gem.email         = ["nico@hagenburger.net"]
-  gem.description   = %q{Living Style Guide}
-  gem.summary       = %q{Living Style Guide}
+  gem.description   = %q{Automatically generate beautiful frontend style guides with Sass and Markdown. See http://livingstyleguide.org for details.}
+  gem.summary       = %q{Generate beautiful frontend style guides}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
