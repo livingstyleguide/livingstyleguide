@@ -38,9 +38,9 @@ $livingstyleguide--code-border-color: $livingstyleguide--border-color !default;
 $livingstyleguide--code-border-radius: $livingstyleguide--border-radius !default;
 
 $livingstyleguide--color-swatch-color: black !default;
-$livingstyleguide--color-swatch-border-width: $livingstyleguide--border-width !default;
-$livingstyleguide--color-swatch-border-color: $livingstyleguide--border-color !default;
-$livingstyleguide--color-swatch-border-radius: $livingstyleguide--border-radius !default;
+$livingstyleguide--color-swatch-border-width: 4px !default;
+$livingstyleguide--color-swatch-border-color: rgba(black, 0.05) !default;
+$livingstyleguide--color-swatch-border-radius: 50% !default;
 $livingstyleguide--color-swatches-per-line: 2 !default;
 
 $livingstyleguide--highlight-color: #f6ffa3 !default;

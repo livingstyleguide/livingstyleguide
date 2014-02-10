@@ -15,7 +15,7 @@
   @include box-sizing(border-box);
 
   &:before {
-    border: $livingstyleguide--color-swatch-border-width $livingstyleguide--code-border-color solid;
+    border: $livingstyleguide--color-swatch-border-width $livingstyleguide--color-swatch-border-color solid;
     content: "";
     display: block;
     height: 100%;
@@ -48,7 +48,7 @@
   .livingstyleguide--color-swatches.-lsg-#{$i}-columns .livingstyleguide--color-swatch {
     $size: floor(($livingstyleguide--width - ($i - 1) * $livingstyleguide--gap-width) / $i);
     height: $size;
-    padding-top: $size * 0.6;
+    padding-top: $size / 2 + ($size / 5 - 20px);
     width: $size;
   }
 }
