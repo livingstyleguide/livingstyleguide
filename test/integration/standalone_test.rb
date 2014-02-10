@@ -39,6 +39,15 @@ class MarkdownTest < Minitest::Test
     assert_match %r(<p>Made by me</p>), html
   end
 
+  def test_json
+    html = render('test/fixtures/standalone/styleguide-as-json.html.lsg')
+    assert_match %r(<title>My Nice &amp; Beautiful Living Style Guide</title>), html
+    assert_match %r(<script src="modernizr.js"></script>.*</head>), html
+    assert_match %r(<script src="http://code.jquery.com/jquery-2.0.3.js"></script> <script src="application.js"></script> </body>), html
+    assert_match %r(<h1>Super Style Guide</h1>), html
+    assert_match %r(<p>Made by me</p>), html
+  end
+
   private
   def render(file)
     Tilt.new(file).render.gsub(/\s+/, ' ')
