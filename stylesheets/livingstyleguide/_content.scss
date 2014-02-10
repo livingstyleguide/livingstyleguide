@@ -36,6 +36,29 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.livingstyleguide--anchor {
+  color: inherit;
+  margin-left: -1em;
+  position: absolute;
+  text-decoration: none;
+  width: 1em;
+  @include opacity(0);
+
+  .livingstyleguide--headline:hover &,
+  .livingstyleguide--sub-headline:hover &,
+  .livingstyleguide--sub-sub-headline:hover & {
+    @include opacity(0.5);
+
+    &:hover {
+      @include opacity(1);
+    }
+  }
+
+  &:before {
+    content: "#";
+  }
+}
+
 .livingstyleguide--page-title {
   display: block;
   font-size: $livingstyleguide--page-title-font-size;
