@@ -106,7 +106,7 @@ class MarkdownTest < Minitest::Test
 
   def test_variables
     assert_markdown <<-HTML, 'variables.md'
-      <ul class="livingstyleguide--color-swatches">
+      <ul class="livingstyleguide--color-swatches -lsg-2-columns">
         <li class="livingstyleguide--color-swatch $blue">$blue</li>
         <li class="livingstyleguide--color-swatch $green">$green</li>
       </ul>
