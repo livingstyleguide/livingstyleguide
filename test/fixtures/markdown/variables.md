@@ -1,1 +1,4 @@
-{{variables:variables/other-colors}}
+~~~
+@colors variables/other-colors
+~~~
+

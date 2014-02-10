@@ -28,16 +28,7 @@ module LivingStyleGuide
     end
 
     def paragraph(text)
-      if text =~ /^\{\{variables:(.+)\}\}$/
-        uri = $1
-        result = %Q(<ul class="livingstyleguide--color-swatches">\n)
-        VariablesImporter.variables(uri).each do |variable|
-          result << %Q(<li class="livingstyleguide--color-swatch $#{variable}">$#{variable}</li>\n)
-        end
-        result << "</ul>\n"
-      else
-        %Q(<p class="livingstyleguide--paragraph">#{text}</p>\n)
-      end
+      %Q(<p class="livingstyleguide--paragraph">#{text}</p>\n)
     end
 
     def list(contents, list_type)
