@@ -6,17 +6,11 @@
   font-size: $livingstyleguide--code-font-size;
   font-weight: bold;
   height: 4em * $livingstyleguide--base-line-height;
-  line-height: $livingstyleguide--base-line-height;
+  line-height: 1em * $livingstyleguide--base-line-height;
   list-style: none;
   margin: 0 $livingstyleguide--gap-width $livingstyleguide--gap-width 0;
-  padding-top: 1em * $livingstyleguide--base-line-height;
   position: relative;
   text-align: center;
-  width: floor(
-      ($livingstyleguide--width - ($livingstyleguide--color-swatches-per-line - 1) * $livingstyleguide--gap-width)
-      /
-      $livingstyleguide--color-swatches-per-line
-    );
   z-index: 1;
   @include box-sizing(border-box);
 
@@ -49,3 +43,13 @@
   @include clearfix;
   @include box-sizing(border-box);
 }
+
+@for $i from 1 through 12 {
+  .livingstyleguide--color-swatches.-lsg-#{$i}-columns .livingstyleguide--color-swatch {
+    $size: floor(($livingstyleguide--width - ($i - 1) * $livingstyleguide--gap-width) / $i);
+    height: $size;
+    padding-top: $size * 0.6;
+    width: $size;
+  }
+}
+
