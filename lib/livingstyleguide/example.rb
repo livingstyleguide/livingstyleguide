@@ -7,7 +7,7 @@ class LivingStyleGuide::Example
   include Hooks::InstanceHooks
   include LivingStyleGuide::FilterHooks
 
-  FILTER_REGEXP = /^@([a-z\-_]+)(\s+(.+?))?$/
+  FILTER_REGEXP = /^@([a-z\-_]+)(?:\s+(.+?))?$/
 
   define_hooks :filter_before, :filter_after, :html, :pre_processor
   attr_reader :options
