@@ -54,6 +54,11 @@ class MarkdownTest < Minitest::Test
     assert_match %r(<p>Made by me</p>), html
   end
 
+  def test_variables
+    html = render('test/fixtures/standalone/styleguide.html.lsg')
+    assert_match %r(\.\\\$my-base-color), html
+  end
+
   private
   def render(file)
     Tilt.new(file).render.gsub(/\s+/, ' ')
