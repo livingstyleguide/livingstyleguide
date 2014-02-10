@@ -37,9 +37,6 @@ class VariablesImporterTest < Minitest::Test
       %livingstyleguide--code {
         test: code;
       }
-      %livingstyleguide--color-swatch {
-        test: color;
-      }
       @import "variables/colors";
       @import "variables:variables/colors";
     SCSS
@@ -47,9 +44,6 @@ class VariablesImporterTest < Minitest::Test
     assert_equal <<-CSS, css
       .\\$my-wonderful_red:after, .\\$blue:after {
         test: code;
-      }
-      .\\$my-wonderful_red {
-        test: color;
       }
       .\\$my-wonderful_red:before {
         background: red;

@@ -16,8 +16,12 @@ LivingStyleGuide::Example.add_filter :colors do |file|
     colors += content.split(/\n+/).map{ |l| l.split(/\s+/) }
     columns = colors.map{ |l| l.size }.max
     colors_html = colors.flatten.map do |variable|
-      variable = "$#{variable}" unless variable[0] == '$'
-      %Q(<li class="livingstyleguide--color-swatch #{variable}">#{variable}</li>\n)
+      if variable == '-'
+        css_class = '-lsg-empty'
+      elsif variable[0] != '$'
+        variable = "$#{variable}"
+      end
+      %Q(<li class="livingstyleguide--color-swatch #{css_class || variable}">#{variable}</li>\n)
     end.join("\n")
     %(<ul class="livingstyleguide--color-swatches -lsg-#{columns}-columns">\n#{colors_html}\n</ul>\n)
   end
