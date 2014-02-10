@@ -39,10 +39,12 @@ module ::Tilt
     def parse_options(data)
       data.strip!
       @options = (data[0] == '{') ? JSON.parse(data) : YAML.load(data)
+      @options = {} unless @options
       @options.keys.each do |key|
         @options[key.gsub('-', '_').to_sym] = @options.delete(key)
       end
       @options[:syntax] = @options.has_key?(:styleguide_sass) ? :sass : :scss
+      @options[:source] ||= File.basename(file, '.html.lsg')
     end
 
     private

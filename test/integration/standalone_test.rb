@@ -10,6 +10,12 @@ class MarkdownTest < Minitest::Test
     assert_match %r(<title>My Nice &amp; Beautiful Living Style Guide</title>), html
   end
 
+  def test_default_source
+    html = render('test/fixtures/standalone/style.html.lsg')
+    assert_match %r(background: red), html
+    assert_match %r(<button class="button">), html
+  end
+
   def test_custom_styles
     html = render('test/fixtures/standalone/styleguide-with-style.html.lsg')
     assert_match %r(.livingstyleguide--ordered-list { color: red;), html
