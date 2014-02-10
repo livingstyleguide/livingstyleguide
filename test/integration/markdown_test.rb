@@ -54,7 +54,7 @@ class MarkdownTest < Minitest::Test
 
   def test_text
     assert_markdown <<-HTML, 'text.md'
-      <h2 class="livingstyleguide--headline" id="hello-world">Hello World</h2>
+      <h2 class="livingstyleguide--headline" id="hello-world"><a class="livingstyleguide--anchor" href="#hello-world"></a>Hello World</h2>
       <p class="livingstyleguide--paragraph">Lorem ipsum <strong>dolor</strong> sit amet,
         <code class="livingstyleguide--code-span livingstyleguide--code">&lt;consectetur&gt; adipiscing</code> elit.
         Sed a pulvinar turpis.</p>
@@ -63,13 +63,13 @@ class MarkdownTest < Minitest::Test
         <li class="livingstyleguide--unordered-list-item">Ipsum</li>
         <li class="livingstyleguide--unordered-list-item">Dolor</li>
       </ul>
-      <h3 class="livingstyleguide--sub-headline" id="more-lorem">More Lorem</h3>
+      <h3 class="livingstyleguide--sub-headline" id="more-lorem"><a class="livingstyleguide--anchor" href="#more-lorem"></a>More Lorem</h3>
       <ol class="livingstyleguide--ordered-list">
         <li class="livingstyleguide--ordered-list-item">Lorem</li>
         <li class="livingstyleguide--ordered-list-item">Ipsum</li>
         <li class="livingstyleguide--ordered-list-item">Dolor</li>
       </ol>
-      <h4 class="livingstyleguide--sub-sub-headline" id="even-more-lorem">Even More Lorem</h4>
+      <h4 class="livingstyleguide--sub-sub-headline" id="even-more-lorem"><a class="livingstyleguide--anchor" href="#even-more-lorem"></a>Even More Lorem</h4>
     HTML
   end
 
