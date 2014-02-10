@@ -13,8 +13,10 @@ LivingStyleGuide::Example.add_filter :colors do |file|
   end
 
   pre_processor do |content|
+    colors += content.split(/\s+/)
     colors.map do |variable|
-      %Q(<li class="livingstyleguide--color-swatch $#{variable}">$#{variable}</li>\n)
+      variable = "$#{variable}" unless variable[0] == '$'
+      %Q(<li class="livingstyleguide--color-swatch #{variable}">#{variable}</li>\n)
     end.join("\n")
   end
 end
