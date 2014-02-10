@@ -2,6 +2,7 @@ require 'tilt'
 require 'erb'
 require 'compass'
 require 'yaml'
+require 'json'
 
 module ::Tilt
   class LivingStyleGuideTemplate < Template
@@ -36,7 +37,8 @@ module ::Tilt
 
     private
     def parse_options(data)
-      @options = YAML.load(data)
+      data.strip!
+      @options = (data[0] == '{') ? JSON.parse(data) : YAML.load(data)
       @options.keys.each do |key|
         @options[key.gsub('-', '_').to_sym] = @options.delete(key)
       end
