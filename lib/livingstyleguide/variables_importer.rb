@@ -5,7 +5,7 @@ require 'compass'
 module LivingStyleGuide
   class VariablesImporter < Sass::Importers::Base
     VALID_FILE_NAME = /\A#{Sass::SCSS::RX::IDENT}\Z/
-    VARIABLE_IMPORTER_REGEX = %r{^variables:(((.+/)?([^\*.]+))/(.+?)(\.s[ac]ss)?)$}
+    VARIABLE_IMPORTER_STRING = 'LivingStyleGuide::VariablesImporter'
     VALID_EXTENSIONS = %w(*.sass *.scss)
 
     TEMPLATE_FOLDER = File.join(File.expand_path('../', __FILE__), 'variables_importer')
@@ -13,9 +13,9 @@ module LivingStyleGuide
     CONTENT_TEMPLATE = ERB.new(File.read(CONTENT_TEMPLATE_FILE))
 
     def find(uri, options)
-      if uri =~ VARIABLE_IMPORTER_REGEX
-        uri = $1
-        return self.class.sass_engine(uri, self.class.variables(uri), self, options)
+      if uri =~ /^#{VARIABLE_IMPORTER_STRING}$/
+        @options = options
+        return self.class.sass_engine(uri, all_variables, self, options)
       end
       nil
     end
@@ -54,6 +54,20 @@ module LivingStyleGuide
             sass = File.read(file)
             variables << sass.scan(%r(\$([a-z\-_]+)\s*:))
           end
+        end
+      end
+      variables.flatten!
+      variables.uniq!
+      variables
+    end
+
+    def all_variables
+      variables = []
+      test = /^#{File.dirname(@options[:filename])}/
+      @options[:living_style_guide].files.each do |file|
+        if file =~ test
+          sass = File.read(file)
+          variables << sass.scan(%r(\$([a-z\-_]+)\s*:))
         end
       end
       variables.flatten!

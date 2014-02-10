@@ -1,18 +1,21 @@
 <% variables.each do |variable| %>
-  .\$<%= variable %> {
-    @if type-of($<%= variable %>) == color {
-      @if (lightness($<%= variable %>) < lightness($livingstyleguide--color)) {
-        color: $livingstyleguide--background-color;
+  $<%= variable %>: null !default;
+  @if $<%= variable %> != null {
+    .\$<%= variable %> {
+      @if type-of($<%= variable %>) == color {
+        @if (lightness($<%= variable %>) < lightness($livingstyleguide--color)) {
+          color: $livingstyleguide--background-color;
+        }
+
+        &:before {
+          background: $<%= variable %>;
+        }
       }
 
-      &:before {
-        background: $<%= variable %>;
+      &:after {
+        @extend %livingstyleguide--code !optional;
+        content: "#{$<%= variable %>}";
       }
-    }
-
-    &:after {
-      @extend %livingstyleguide--code !optional;
-      content: "#{$<%= variable %>}";
     }
   }
 <% end %>

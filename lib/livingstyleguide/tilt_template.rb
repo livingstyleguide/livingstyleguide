@@ -53,6 +53,7 @@ module ::Tilt
         %Q(@import "#{@options[:source]}"),
         style_variables,
         %Q(@import "livingstyleguide"),
+        %Q(@import "#{::LivingStyleGuide::VariablesImporter::VARIABLE_IMPORTER_STRING}"),
         @options[:styleguide_sass] || @options[:styleguide_scss]
       ].flatten.join(@options[:syntax] == :sass ? "\n" : ';')
     end

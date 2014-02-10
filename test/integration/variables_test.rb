@@ -30,30 +30,4 @@ class VariablesImporterTest < Minitest::Test
     css.strip!
     %Q(      #{css}\n)
   end
-
-  def test_output_of_variables
-    css = render <<-SCSS
-      $livingstyleguide--color: black;
-      %livingstyleguide--code {
-        test: code;
-      }
-      @import "variables/colors";
-      @import "variables:variables/colors";
-    SCSS
-
-    assert_equal <<-CSS, css
-      .\\$my-wonderful_red:after, .\\$blue:after {
-        test: code;
-      }
-      .\\$my-wonderful_red:before {
-        background: red;
-      }
-      .\\$my-wonderful_red:after {
-        content: "red";
-      }
-      .\\$blue:after {
-        content: "blue";
-      }
-    CSS
-  end
 end
