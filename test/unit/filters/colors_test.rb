@@ -46,5 +46,20 @@ class ColorsTest < ExampleTestCase
     OUTPUT
   end
 
+  def test_skipped_cells
+    assert_render_equals <<-INPUT, <<-OUTPUT
+      @colors
+      $pink $purple
+      -     $turquoise
+    INPUT
+      <ul class="livingstyleguide--color-swatches -lsg-2-columns">
+        <li class="livingstyleguide--color-swatch $pink">$pink</li>
+        <li class="livingstyleguide--color-swatch $purple">$purple</li>
+        <li class="livingstyleguide--color-swatch -lsg-empty">-</li>
+        <li class="livingstyleguide--color-swatch $turquoise">$turquoise</li>
+      </ul>
+    OUTPUT
+  end
+
 end
 

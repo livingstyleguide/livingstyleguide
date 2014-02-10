@@ -1,7 +1,6 @@
 <% variables.each do |variable| %>
   .\$<%= variable %> {
     @if type-of($<%= variable %>) == color {
-      @extend %livingstyleguide--color-swatch !optional;
       @if (lightness($<%= variable %>) < lightness($livingstyleguide--color)) {
         color: $livingstyleguide--background-color;
       }

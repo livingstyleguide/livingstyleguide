@@ -1,4 +1,4 @@
-%livingstyleguide--color-swatch {
+.livingstyleguide--color-swatch {
   color: $livingstyleguide--color-swatch-color;
   display: block;
   float: left;
@@ -50,6 +50,15 @@
     height: $size;
     padding-top: $size / 2 + ($size / 5 - 20px);
     width: $size;
+  }
+}
+
+.livingstyleguide--color-swatch.-lsg-empty {
+  @include hide-text;
+
+  &:before,
+  &:after {
+    display: none;
   }
 }
 
