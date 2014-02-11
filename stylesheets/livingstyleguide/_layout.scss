@@ -3,6 +3,11 @@
   display: block;
 }
 
+.livingstyleguide--container {
+  display: block;
+  min-height: 50vh;
+}
+
 .livingstyleguide--footer {
   margin: (4 * $livingstyleguide--gap-width) auto;
   width: $livingstyleguide--width;
