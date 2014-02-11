@@ -4,7 +4,10 @@ module LivingStyleGuide
     attr_accessor :markdown, :files, :options
 
     @@default_options = {
-      default_language: 'example'
+      default_language: 'example',
+      title: 'Living Style Guide',
+      header: '<h1 class="livingstyleguide--page-title">Living Style Guide</h1>',
+      footer: '<div class="livingstyleguide--footer"><a class="livingstyleguide--logo" href="http://livingstyleguide.org">Made with the LivingStyleGuide gem.</a></div>'
     }
 
     def self.default_options
