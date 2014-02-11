@@ -61,7 +61,7 @@
 }
 
 .livingstyleguide--code-block {
-  display: none;
+  display: block;//none;
   line-height: $livingstyleguide--code-line-height;
   padding: 3px 6px;
   width: $livingstyleguide--width;
