@@ -1,5 +1,13 @@
 @import "compass"
+@import "compass-placeholders"
 
+
+//// FONTS ////
+
+@include font-face("Gubia", font-files("GubiaLight.otf"), $weight: 200)
+@include font-face("Gubia", font-files("GubiaRegular.otf"), $weight: normal)
+@include font-face("Gubia", font-files("GubiaBold.otf"), $weight: bold)
+@include font-face("Gubia", font-files("GubiaBlack.otf"), $weight: 800)
 
 //// METRICS ////
 
@@ -13,13 +21,10 @@ $gap-width: 3 * $grid
 $white: white
 $black: black
 $gray: #7f7f7f
-$green: #7dc322
-$blue: #6cb8bb
-$turquoise: #23c36b
-$violet: #6323c3
-$yellow: #b6c323
-$red: #c35423
-$pink: #c322bd
+$pink: #CA1F70
+$light-pink: #FFABC2
+$yellow: #FAFF8C
+$turquoise: #2EF1BD
 
 
 //// SPRITES ////
@@ -29,6 +34,9 @@ $graphics-spacing: 5 * $grid
 
 $graphics-2x-spacing: 10 * $grid
 @import "graphics-2x/*.png"
+
+.graphics-sprite
+  background-size: graphics-sprite-width(livingstyleguide)
 
 
 //// MIXINS ////
@@ -90,6 +98,7 @@ $graphics-2x-spacing: 10 * $grid
   vertical-align: middle
   @include box-sizing(border-box)
 
+
 head,
 script
   display: none
@@ -100,10 +109,10 @@ script
 .layout
   background: $white
   color: $black
-  font-family: "ff-dagny-web-pro-1", "ff-dagny-web-pro-2", "helvetica neue", helvetica, arial, sans-serif
+  font-family: Gubia, "helvetica neue", helvetica, arial, sans-serif
   font-size: 4 * $grid
   line-height: 1.25
-  margin: (35 * $grid) auto (5 * $grid)
+  margin: 0 auto (5 * $grid)
   text-align: center
   -webkit-font-smoothing: antialiased
   @include for-tablets-landscape-and-desktops
@@ -118,24 +127,16 @@ script
 
 //// HEADER ////
 
-.header--the
-  font-size: 2.5rem
-  font-weight: 200
-  margin-bottom: -5 * $grid
-  @include for-phones
-    font-size: 1.5rem
-    margin-bottom: -3 * $grid
-
-.header--title
-  display: inline
-  font-size: 5rem
-  font-weight: 200
+.header--logo
+  display: block
+  margin-left: -32px
   position: relative
-  @include for-phones
-    font-size: 2.5rem
+  @include graphics-sprite(livingstyleguide, $dimensions: true)
+
 
 .header--version
   color: $gray
+  display: none
   font-size: 1.5rem
   font-weight: bold
   position: absolute
@@ -145,69 +146,13 @@ script
     right: 0
     top: -1em
 
-.header--version-info
-  background: $pink
-  bottom: 100%
-  color: $white
-  font-size: 0.8rem
-  font-weight: normal
-  padding: $grid (2 * $grid)
-  position: absolute
-  text-align: left
-  width: 57 * $grid
-  @include for-desktops
-    left: 50%
-    margin-bottom: 5 * $grid
-  @include for-tablets
-    left: auto
-    margin-bottom: 7 * $grid
-    right: 50%
-    width: 100 * $grid
-  @include for-phones-landscape
-    margin-bottom: 4 * $grid
-    right: -19 * $grid
-    text-align: center
-    width: 110 * $grid
-  @include for-phones-portrait
-    margin-bottom: 4 * $grid
-    margin-right: -7 * $grid
-    right: 50%
-    text-align: center
-    width: 60 * $grid
-
-  &:before
-    border: 4 * $grid solid
-    border-color: $pink transparent transparent
-    bottom: -8 * $grid
-    content: ""
-    height: 0
-    position: absolute
-    width: 0
-    @include for-desktops
-      border-left-width: 0
-      left: 0
-    @include for-tablets
-      border-right-width: 0
-      right: 0
-    @include for-phones-landscape
-      right: 21.5 * $grid
-    @include for-phones-portrait
-      right: 3 * $grid
-
-
-.header--version-info-title
-  font-weight: bold
-
-.header--version-learn-more
-  text-decoration: underline
-
-  &:hover
-    color: mix($pink, $white)
 
 .header--slogan
+  color: $light-pink
   font-weight: bold
-  letter-spacing: 2px
-  text-transform: uppercase
+  padding-top: 220px
+  margin: auto
+  width: 300px
 
 
 //// INSTALLATION ////
@@ -216,7 +161,11 @@ script
   color: $turquoise
   font-family: "courier new", courier, monospace
   font-size: 1.5rem
+  left: 550px
   margin: 2em 0
+  position: absolute
+  text-align: left
+  top: 250px
 
   &:before
     color: mix($turquoise, $white, 30%)
@@ -228,35 +177,55 @@ script
 //// LINKS ////
 
 .links
-  @include clearfix
+  @extend %pie-clearfix
+
 
 .links--item
-  background: $blue
-  color: $white
+  background: $yellow
+  color: $black
+  font-size: 24px
   font-weight: bold
   margin: floor($gap-width / 2)
   text-align: left
   padding: (5 * $grid) 0
+  position: relative
   @include transition(all 0, background 0.2s)
   @include for-tablets-landscape-and-desktops
+    background: transparent
     float: left
     height: $column-width
     text-align: center
     width: $column-width
 
-  &:hover
-    background: $turquoise
+    &:hover
+      z-index: 5
+
+    &:after
+      background: $yellow
+      bottom: 0
+      content: ""
+      left: 0
+      position: absolute
+      right: 0
+      top: 0
+      z-index: -1
+      @include transform(rotateZ(45deg))
+      @include transition(transform, 0.15s)
+
+    &:hover:after
+      background: $turquoise
+      @include transform(rotateZ(-315deg))
 
   &:before
     content: ""
     display: inline-block
     margin-right: 3 * $grid
     vertical-align: middle
+    z-index: 10
     @include graphics-sprite(rubygems, $dimensions: true)
     @include transition(transform, 0.15s)
     @include for-hires
       background-image: $graphics-2x-sprites
-      background-size: 100%
     @include for-tablets-landscape-and-desktops
       display: block
       margin: 0 auto (5 * $grid)
@@ -265,18 +234,21 @@ script
     @include transform(rotateZ(360deg))
 
   @each $name in github, issues, twitter, example-project
-    &.for-#{$name}:before
+    &.-#{$name}:before
       @include graphics-sprite-position($name)
+
+
 
 
 //// FOOTER ////
 
 .footer
-  margin: (8 * $grid) 0
+  margin: (16 * $grid) 0
+
 
 .footer--made-in-berlin
   display: inline-block
-  margin: 0 5 * $grid
+  margin: 0 45px
   opacity: 0.7
   vertical-align: bottom
   @include graphics-sprite(made-in-berlin, $dimensions: true)
@@ -284,25 +256,27 @@ script
   @include hide-text
   @include for-hires
     background-image: $graphics-2x-sprites
-    background-size: graphics-sprite-width(rubygems)
 
   &:hover
     opacity: 1
+
 
 .footer--made-by-hagenburger
   @extend .footer--made-in-berlin
   @include graphics-sprite(hagenburger, $dimensions: true)
 
+
 .footer--contact
   color: $gray
   display: block
-  font-size: 0.75rem
-  margin: (5 * $grid) auto 0
+  font-weight: normal
+  font-size: 1rem
   letter-spacing: 1px
+  margin: (5 * $grid) auto 0
   text-transform: uppercase
   width: 10em
   @include transition(color, 0.2s)
 
   &:hover
-    color: $blue
+    color: $turquoise
 

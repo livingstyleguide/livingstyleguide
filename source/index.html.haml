@@ -1,5 +1,5 @@
 ---
-title: LivingStyleGuide Gem—easily create living style guides
+title: LivingStyleGuide Gem—easily create front-end style guides
 layout: false
 ---
 
@@ -8,7 +8,7 @@ layout: false
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    %meta(name="description" content="The LivingStyleGuide is a Ruby Gem to easily create living style guides with markdown while working with Sass/SCSS and Compass.")
+    %meta(name="description" content="The LivingStyleGuide is a Ruby Gem to easily create front-end style guides with markdown while working with Sass/SCSS and Compass.")
     %meta(name="viewport" content="width=device-width, initial-scale=1")
     %meta(name="author" content="Nico Hagenburger")
     %title= data.page.title
@@ -17,25 +17,18 @@ layout: false
     %script try{Typekit.load();}catch(e){}
   %body.layout
     %header.header
-      .header--the The
-      %h1.header--title
-        LivingStyleGuide
-        %span.header--version
-          = livingstyleguide_gem_version
-          %span.header--version-info
-            %strong.header--version-info-title Warning:
-            The LivingStyleGuide Gem uses semantic versioning.
-            A version &lt; 1.0.0 indicates a work in progress and possibly larger changes.
-            %a.header--version-learn-more(href="http://semver.org/") Learn more
-      %h2.header--slogan A Ruby Gem for Sass/SCSS and Compass
+      .header--logo
+        %h2.header--slogan The easiest way to create front-end style guides with Sass and Compass
+      %span.header--version
+        = livingstyleguide_gem_version
     %code.installation
       gem install livingstyleguide
     .links
-      %a.links--item.for-rubygems-org(href="https://rubygems.org/gems/livingstyleguide") RubyGems.org
-      %a.links--item.for-github(href="https://github.com/hagenburger/livingstyleguide") Fork me on Github
-      %a.links--item.for-issues(href="https://github.com/hagenburger/livingstyleguide/issues") Open issues
-      %a.links--item.for-twitter(href="https://twitter.com/hagenburger") Follow for Updates
-      %a.links--item.for-example-project(href="https://github.com/hagenburger/livingstyleguide-example") Example Project
+      %a.links--item.-rubygems-org(href="https://rubygems.org/gems/livingstyleguide") RubyGems.org
+      %a.links--item.-github(href="https://github.com/hagenburger/livingstyleguide") Fork me on Github
+      %a.links--item.-issues(href="https://github.com/hagenburger/livingstyleguide/issues") Open issues
+      %a.links--item.-twitter(href="https://twitter.com/hagenburger") Follow for Updates
+      %a.links--item.-example-project(href="https://github.com/hagenburger/livingstyleguide-example") Example Projects
     %footer.footer
       %a.footer--made-in-berlin(href="http://www.hagenburger.net/BLOG/Made-in-Berlin.html") Made in Berlin
       %a.footer--made-by-hagenburger(href="http://www.hagenburger.net") Nico Hagenburger

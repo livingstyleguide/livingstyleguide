@@ -1,3 +1,5 @@
+require 'compass-placeholders'
+
 activate :livereload
 
 page '/', :layout => false
