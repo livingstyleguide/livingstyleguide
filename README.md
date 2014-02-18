@@ -84,7 +84,7 @@ Show which fonts should be used on your website—this will output and example t
 
 Add this line to your application's Gemfile:
 
-    gem 'livingstyleguide', '0.6.0.alpha.2'
+    gem 'livingstyleguide'
 
 And then execute:
 
@@ -92,7 +92,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install livingstyleguide -v0.6.0.alpha.2
+    $ gem install livingstyleguide
 
 
 ## Contributing
