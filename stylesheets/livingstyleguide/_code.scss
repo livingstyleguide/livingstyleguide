@@ -1,5 +1,6 @@
 .livingstyleguide--code-span,
 .livingstyleguide--code-block {
+  @extend %livingstyleguide--reset;
   background: $livingstyleguide--code-background-color;
   border-radius: $livingstyleguide--code-border-radius;
   color: $livingstyleguide--code-color;
@@ -96,6 +97,7 @@
 }
 
 .livingstyleguide--code-highlight {
+  @extend %livingstyleguide--reset;
   background-color: $livingstyleguide--highlight-color;
   border-radius: $livingstyleguide--highlight-border-radius;
   display: inline;
@@ -103,6 +105,7 @@
 }
 
 .livingstyleguide--code-highlight-block {
+  @extend %livingstyleguide--reset;
   @extend .livingstyleguide--code-highlight;
   display: block;
 }
