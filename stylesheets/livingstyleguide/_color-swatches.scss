@@ -12,10 +12,10 @@
   position: relative;
   text-align: center;
   z-index: 1;
-  @include box-sizing(border-box);
 
   &:before {
     border: $livingstyleguide--color-swatch-border-width $livingstyleguide--color-swatch-border-color solid;
+    border-radius: $livingstyleguide--color-swatch-border-radius;
     content: "";
     display: block;
     height: 100%;
@@ -24,8 +24,6 @@
     top: 0;
     width: 100%;
     z-index: -1;
-    @include border-radius($livingstyleguide--color-swatch-border-radius);
-    @include box-sizing(border-box);
   }
 
   &:after {
@@ -38,10 +36,9 @@
 .livingstyleguide--color-swatches {
   display: block;
   margin: $livingstyleguide--gap-width auto (-$livingstyleguide--gap-width) auto;
+  overflow: hidden;
   padding-left: $livingstyleguide--gap-width;
   width: $livingstyleguide--width + 2 * $livingstyleguide--gap-width;
-  @include clearfix;
-  @include box-sizing(border-box);
 }
 
 @for $i from 1 through 12 {
@@ -54,7 +51,9 @@
 }
 
 .livingstyleguide--color-swatch.-lsg-empty {
-  @include hide-text;
+  overflow: hidden;
+  text-align: left;
+  text-indent: -119988px;
 
   &:before,
   &:after {
