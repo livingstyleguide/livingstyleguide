@@ -1,6 +1,6 @@
 .livingstyleguide--color-swatch {
+  @extend %livingstyleguide--reset;
   color: $livingstyleguide--color-swatch-color;
-  display: block;
   float: left;
   font-family: $livingstyleguide--code-font;
   font-size: $livingstyleguide--code-font-size;
@@ -14,10 +14,10 @@
   z-index: 1;
 
   &:before {
+    @extend %livingstyleguide--reset;
     border: $livingstyleguide--color-swatch-border-width $livingstyleguide--color-swatch-border-color solid;
     border-radius: $livingstyleguide--color-swatch-border-radius;
     content: "";
-    display: block;
     height: 100%;
     left: 0;
     position: absolute;
@@ -34,7 +34,7 @@
 }
 
 .livingstyleguide--color-swatches {
-  display: block;
+  @extend %livingstyleguide--reset;
   margin: $livingstyleguide--gap-width auto (-$livingstyleguide--gap-width) auto;
   overflow: hidden;
   padding-left: $livingstyleguide--gap-width;
