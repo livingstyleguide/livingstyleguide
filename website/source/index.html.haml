@@ -1,0 +1,49 @@
+---
+title: LivingStyleGuide Gem—easily create front-end style guides
+layout: false
+---
+
+!!!html5
+%html
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    %meta(name="description" content="The LivingStyleGuide is a Ruby Gem to easily create front-end style guides with markdown while working with Sass/SCSS and Compass.")
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+    %meta(name="author" content="Nico Hagenburger")
+    %title= data.page.title
+    %link(href="#{asset_path(:css, 'livingstyleguide')}" rel="stylesheet")
+    %script(src="//use.typekit.net/nbn2flh.js")
+    %script try{Typekit.load();}catch(e){}
+  %body.layout
+    %header.header
+      .header--logo
+        %h2.header--slogan The easiest way to create front-end style guides with Sass and Compass
+      %span.header--version
+        = livingstyleguide_gem_version
+    %code.installation
+      gem install livingstyleguide
+    .links
+      %a.links--item.-rubygems-org(href="https://rubygems.org/gems/livingstyleguide") RubyGems.org
+      %a.links--item.-github(href="https://github.com/hagenburger/livingstyleguide") Fork me on Github
+      %a.links--item.-issues(href="https://github.com/hagenburger/livingstyleguide/issues") Open issues
+      %a.links--item.-twitter(href="https://twitter.com/hagenburger") Follow for Updates
+      %a.links--item.-example-project(href="https://github.com/hagenburger/livingstyleguide-example") Example Projects
+    %footer.footer
+      %a.footer--made-in-berlin(href="http://www.hagenburger.net/BLOG/Made-in-Berlin.html") Made in Berlin
+      %a.footer--made-by-hagenburger(href="http://www.hagenburger.net") Nico Hagenburger
+      %a.footer--contact(href="http://www.hagenburger.net/CONTACT.html") Contact
+    %script
+      :plain
+        var _paq = _paq || [];
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+
+        (function() {
+          var u=(("https:" == document.location.protocol) ? "https" : "http") + "://nh.fornax.uberspace.de/piwik/";
+          _paq.push(["setTrackerUrl", u+"piwik.php"]);
+          _paq.push(["setSiteId", "2"]);
+          var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+          g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+        })();
+
