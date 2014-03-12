@@ -64,3 +64,7 @@
 * [JSON for config files](https://github.com/hagenburger/livingstyleguide/issues/37)
 * Updated styling of the style guide
 
+## 1.0.1
+
+* Fixed dependencies for broken gems
+
