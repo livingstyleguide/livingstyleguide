@@ -57,3 +57,10 @@
 * [Default filters](https://github.com/hagenburger/livingstyleguide/issues/31) (e. g. all templates should use Haml)
 * [CoffeeScript examples](https://github.com/hagenburger/livingstyleguide/issues/34)
 
+## 1.0.0
+
+* New design and API for colors
+* [Show anchors naxt to headlines](https://github.com/hagenburger/livingstyleguide/issues/23)
+* [JSON for config files](https://github.com/hagenburger/livingstyleguide/issues/37)
+* Updated styling of the style guide
+
