@@ -68,3 +68,8 @@
 
 * Fixed dependencies for broken gems
 
+## 1.0.2
+
+* Fixed an issue where the command line interface used the input
+  filename as the output filename
+
