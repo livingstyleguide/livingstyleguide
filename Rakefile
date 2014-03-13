@@ -9,4 +9,17 @@ Rake::TestTask.new :test do |t|
   t.verbose = true
 end
 
+desc 'Deploys the website to livingstyleguide.org'
+task :deploy do
+  Bundler.with_clean_env do
+    system 'cd website && bundle && bundle exec middleman build'
+    system 'rsync -avz website/build/ lsg@livingstyleguide.org:/home/lsg/html/'
+  end
+end
+
+task :release do
+  Rake::Task['deploy'].execute
+end
+
 task :default => [:test]
+
