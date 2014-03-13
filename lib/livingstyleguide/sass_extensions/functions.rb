@@ -9,4 +9,11 @@ module LivingStyleGuide::SassExtensions::Functions
     Sass::Script::List.new(variables, :space)
   end
 
+  if defined?(::Middleman)
+    def asset_url(path, prefix)
+      Sass::Script::String.new(options[:sprockets][:context].asset_url(path.value, prefix.value))
+    end
+  end
+
 end
+

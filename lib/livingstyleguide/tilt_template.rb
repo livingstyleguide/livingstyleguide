@@ -32,6 +32,7 @@ module ::Tilt
       options[:syntax]    = @options[:syntax]
       options[:importer]  = LivingStyleGuide::Importer.new('.')
       options[:sprockets] = { context: @scope }
+      options[:custom]    = { sprockets_context: @scope }
       options
     end
 
