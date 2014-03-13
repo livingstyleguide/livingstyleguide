@@ -4,6 +4,15 @@
 
 * Fixed an issue where the command line interface used the input
   filename as the output filename
+* Fixed an error causes by Compass’ `brightness()` function in 1.0.0
+  alpha versions
+* Fixed asset URL handling with Middleman and Sprockets
+* **Internal:**
+  * Integrated the website into the repository
+  * Added the
+    [changelog](http://livingstyleguide.org/changelog.html) to the website
+  * Automated website deployment after a new version of the gem is
+    released
 
 
 ## 1.0.1
