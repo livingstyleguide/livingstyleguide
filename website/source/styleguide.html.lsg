@@ -1,0 +1,7 @@
+source: style/styles.sass
+title: "The LivingStyleGuide’s Front-end Style Guide"
+style:
+  color: $pink
+  base-font: 'Courier, "Courier New", monospace'
+  headline-font: 'Gubia, "Helvetica Neue", Helvetica, Arial'
+
