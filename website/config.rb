@@ -2,7 +2,8 @@ require 'compass-placeholders'
 
 activate :livereload
 
-page '/', :layout => false
+page '/', layout: false
+page '/changelog.html', layout: :markdown
 
 set :css_dir, 'style'
 set :js_dir, 'javascripts'
