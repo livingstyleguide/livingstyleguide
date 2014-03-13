@@ -24,7 +24,7 @@
 
   &:hover {
     -webkit-transform: translateZ(0);
-    @include filter(brightness(0.7));
+    @include filter(unquote("brightness(0.7)"));
   }
 }
 
