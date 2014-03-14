@@ -9,3 +9,6 @@ styleguide-sass: |
   .livingstyleguide--example
     @extend .layout
 
+    &.-diamonds
+      height: length($diamonds--items) / 2 * $diamonds--item-roteted-size
+
