@@ -1,0 +1,69 @@
+$diamonds--item-size: 160px;
+$diamonds--item-roteted-size: floor(sqrt(2 * pow($diamonds--item-size, 2)));
+$diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
+                      #F4A7BE #D0156E #F8AAC1 #E293AA,
+                  #FF96B5 #CA1F70 #CA1B6E #FF96B5,
+                      #EB83A2 #C42872 #EF6991,
+                  #FF96B5 #EF6991 #FF96B5,
+                      #ECA2B8 #EE97B0,
+                  #FF96B5 #E293AA,
+                      #FF96B5,
+                  #EF6991;
+
+.diamonds {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: length(nth($diamonds--items, 1)) * $diamonds--item-roteted-size;
+  @include clearfix;
+}
+
+
+.diamonds--item {
+  $margin: floor(($diamonds--item-roteted-size - $diamonds--item-size) / 2);
+  float: left;
+  height: $diamonds--item-size;
+  margin: floor($diamonds--item-size / -2) $margin $margin;
+  position: relative;
+  width: $diamonds--item-size;
+  z-index: 2;
+
+  &:before {
+    background: $pink;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    @include transform(rotateZ(45deg));
+    @include transition(transform, 0.15s);
+  }
+
+  $item-number: 0;
+  $row-number: 0;
+  @each $row in $diamonds--items {
+    $first: true;
+    $row-number: $row-number + 1;
+    @each $item in $row {
+      $item-number: $item-number + 1;
+      &:nth-child(#{$item-number}) {
+        @if $first {
+          $first: false;
+          clear: left;
+          @if $row-number % 2 == 0 {
+            margin-left: 0;
+          }
+          @else {
+            margin-left: floor($diamonds--item-roteted-size / -2);
+          }
+        }
+        &:before {
+          background: $item;
+        }
+      }
+    }
+  }
+}
+
