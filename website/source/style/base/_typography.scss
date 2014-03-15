@@ -1,0 +1,5 @@
+@include font-face("Gubia", font-files("GubiaLight.otf"), $weight: 200);
+@include font-face("Gubia", font-files("GubiaRegular.otf"), $weight: normal);
+@include font-face("Gubia", font-files("GubiaBold.otf"), $weight: bold);
+@include font-face("Gubia", font-files("GubiaBlack.otf"), $weight: 800);
+
