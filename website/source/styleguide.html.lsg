@@ -1,4 +1,4 @@
-source: style/styles.sass
+source: style/styles.css.scss
 title: "The LivingStyleGuide’s Front-end Style Guide"
 
 style:
@@ -9,19 +9,23 @@ style:
   color-swatch-border-radius: 0
   color-swatch-border-width: 0
 
-styleguide-sass: |
-  .livingstyleguide--example
-    @extend .layout
+styleguide-scss: |
+  .livingstyleguide--example {
+    @extend .layout;
 
-    &.-diamonds
-      height: length($diamonds--items) / 2 * $diamonds--item-roteted-size
+    &.-diamonds {
+      height: length($diamonds--items) / 2 * $diamonds--item-roteted-size;
+    }
+  }
 
-  .livingstyleguide--color-swatches
-    @extend %pie-clearfix
-    margin-bottom: 50px
-    margin-top: 40px
-    overflow: visible
+  .livingstyleguide--color-swatches {
+    @extend %pie-clearfix;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    overflow: visible;
+  }
 
-  .livingstyleguide--color-swatch:before
-    @include transform(rotateZ(45deg))
+  .livingstyleguide--color-swatch:before {
+    @include transform(rotateZ(45deg));
+  }
 
