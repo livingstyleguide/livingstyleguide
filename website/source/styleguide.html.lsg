@@ -8,6 +8,10 @@ style:
   headline-font: 'Gubia, "Helvetica Neue", Helvetica, Arial'
   color-swatch-border-radius: 0
   color-swatch-border-width: 0
+  gap-width: 16px
+  page-title-font-size: 50px
+  headline-font-size: 36px
+  sub-headline-font-size: 22px
 
 styleguide-scss: |
   .livingstyleguide--example {
@@ -27,5 +31,13 @@ styleguide-scss: |
 
   .livingstyleguide--color-swatch:before {
     @include transform(rotateZ(45deg));
+  }
+
+  .livingstyleguide--page-title,
+  .livingstyleguide--headline,
+  .livingstyleguide--sub-headline,
+  .livingstyleguide--sub-sub-headline {
+    text-align: center;
+    text-transform: uppercase;
   }
 
