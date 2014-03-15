@@ -13,7 +13,10 @@ desc 'Deploys the website to livingstyleguide.org'
 task :deploy do
   Bundler.with_clean_env do
     system 'cd website && bundle && bundle exec middleman build'
-    system 'rsync -avz website/build/ lsg@livingstyleguide.org:/home/lsg/html/'
+    branch = `git rev-parse --abbrev-ref HEAD`.strip
+    path   = "#{"branches/#{branch}/" unless branch == 'master'}"
+    system "rsync -avz website/build/ lsg@livingstyleguide.org:/home/lsg/html/#{path}"
+    puts "Sucessfully deployed website to http://livingstyleguide.org/#{path}"
   end
 end
 
