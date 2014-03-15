@@ -1,14 +1,27 @@
 source: style/styles.sass
 title: "The LivingStyleGuide’s Front-end Style Guide"
+
 style:
   layout-selector: '".layout"'
   color: $pink
   base-font: 'Courier, "Courier New", monospace'
   headline-font: 'Gubia, "Helvetica Neue", Helvetica, Arial'
+  color-swatch-border-radius: 0
+  color-swatch-border-width: 0
+
 styleguide-sass: |
   .livingstyleguide--example
     @extend .layout
 
     &.-diamonds
       height: length($diamonds--items) / 2 * $diamonds--item-roteted-size
+
+  .livingstyleguide--color-swatches
+    @extend %pie-clearfix
+    margin-bottom: 50px
+    margin-top: 40px
+    overflow: visible
+
+  .livingstyleguide--color-swatch:before
+    @include transform(rotateZ(45deg))
 
