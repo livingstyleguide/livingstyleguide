@@ -103,7 +103,7 @@ $graphics-2x-spacing: 10 * $grid;
   padding: 0;
   text-align: inherit;
   text-decoration: none;
-  vertical-align: middle;
+  vertical-align: baseline;
   @include box-sizing(border-box);
 }
 
