@@ -77,3 +77,43 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
   }
 }
 
+.diamonds--item-version,
+.diamonds--item-version-title,
+.diamonds--item-changelog {
+  color: $pink;
+  position: relative;
+  text-transform: uppercase;
+  z-index: 4;
+}
+
+.diamonds--item-version-title,
+.diamonds--item-changelog {
+  cursor: pointer;
+  margin: ($diamonds--item-size / 2 + 20px) 0 -3px;
+  padding: 1px 5px 0;
+}
+
+.diamonds--item-version-title {
+  .diamonds--item:hover & {
+    @extend %display-none;
+  }
+}
+
+.diamonds--item-version {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.diamonds--item-changelog {
+  @extend %display-none;
+
+  .diamonds--item:hover & {
+    @extend %display-inline-block;
+  }
+
+  &:hover {
+    background: $pink;
+    color: $white;
+  }
+}
+

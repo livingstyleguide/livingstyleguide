@@ -41,3 +41,7 @@ styleguide-scss: |
     text-transform: uppercase;
   }
 
+  .livingstyleguide--example > .diamonds--item {
+    margin: 33px;
+  }
+
