@@ -42,6 +42,7 @@ styleguide-scss: |
   }
 
   .livingstyleguide--example > .diamonds--item {
-    margin: 33px;
+    float: none;
+    margin: 33px auto;
   }
 
