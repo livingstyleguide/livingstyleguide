@@ -22,3 +22,14 @@ Version
   ***.diamonds--item-version*** 1.0.0
 ```
 
+
+Tagline
+-------
+
+```
+@haml
+.diamonds--item
+  %h1***.diamonds--item-tagline***
+    The easiest way to create front-end style guides with Sass and Compass
+```
+
