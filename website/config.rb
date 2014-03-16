@@ -33,6 +33,29 @@ helpers do
   rescue
     '0.0.0'
   end
+
+  def markdown_partial(filename)
+    filename.gsub! /(.+)\/(.+)/, 'source/\\1/_\\2.md' unless filename =~ /\.md$/
+    markdown = File.read(filename)
+    renderer = LivingStyleGuide::RedcarpetHTML.new({})
+    redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
+    %Q(<article class="markdown">\n#{redcarpet.render(markdown)}\n</article>)
+  end
+end
+
+LivingStyleGuide::Example.add_filter :markdown do
+  begin
+    @syntax = :markdown
+
+    pre_processor do |markdown|
+      renderer = LivingStyleGuide::RedcarpetHTML.new({})
+      redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
+      %Q(<article class="markdown">\n#{redcarpet.render(markdown)}\n</article>)
+    end
+
+  rescue LoadError
+    raise "Please make sure `gem 'haml'` is added to your Gemfile."
+  end
 end
 
 activate :blog do |blog|

@@ -1,0 +1,7 @@
+- page_articles.each do |article|
+  %article
+    %h1
+      %a(href="#{article.url}")= article.title
+      %time= article.date.strftime('%b %e %Y')
+    = article.body
+    %a(href="#{article.url}") Read more
