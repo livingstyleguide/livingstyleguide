@@ -92,6 +92,8 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
 }
 
 .diamonds--item-version-title {
+  @extend %display-inline-block;
+
   .diamonds--item:hover & {
     @extend %display-none;
   }
@@ -112,6 +114,23 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
   &:hover {
     background: $pink;
     color: $white;
+  }
+}
+
+.diamonds--item-tagline {
+  color: #FFABC2;
+  font-size: 18px;
+  font-weight: bold;
+  left: -53%;
+  line-height: 1.1;
+  position: absolute;
+  right: -53%;
+  top: 10px;
+  z-index: 4;
+  @include transition(transform, 0.15s);
+
+  .diamonds--item:hover & {
+    @include transform(scale(1.2));
   }
 }
 
