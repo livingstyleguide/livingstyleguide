@@ -26,28 +26,26 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
   margin: floor($diamonds--item-size / -2) $margin $margin;
   position: relative;
   width: $diamonds--item-size;
-  z-index: 2;
 
-  &:hover {
-    z-index: 3;
-  }
-
+  &:after,
   &:before {
-    background: $pink;
     bottom: 0;
     content: "";
     left: 0;
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 4;
-    @include transform(rotateZ(45deg));
-    @include transition(transform, 0.15s);
-    @include backface-visibility(hidden);
+    z-index: 2;
     @include transform(rotateZ(45deg) rotateX(180deg) rotateY(180deg));
   }
 
-  &:hover:before {
+  &:after {
+    @include transition(transform, 0.15s);
+    @include backface-visibility(hidden);
+    z-index: 3;
+  }
+
+  &:hover:after {
     @include transform(rotateZ(45deg) rotateX(0deg) rotateY(180deg));
   }
 
@@ -69,7 +67,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
             margin-left: floor($diamonds--item-roteted-size / -2);
           }
         }
-        &:before {
+        &:after {
           background: $item;
         }
       }
