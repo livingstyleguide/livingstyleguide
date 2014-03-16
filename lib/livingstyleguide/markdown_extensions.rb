@@ -18,6 +18,7 @@ module LivingStyleGuide
     def initialize(options = {}, engine)
       @options = options
       @engine = engine
+      @options[:prefix] ||= 'livingstyleguide--'
       super @options
     end
 
@@ -25,20 +26,20 @@ module LivingStyleGuide
       id = slug(text)
       klass = %w(page-title headline sub-headline sub-sub-headline)[header_level]
       header_level += 1
-      %Q(<h#{header_level} class="livingstyleguide--#{klass}" id="#{id}"><a class="livingstyleguide--anchor" href="##{id}"></a>#{text}</h#{header_level}>\n)
+      %Q(<h#{header_level} class="#{@options[:prefix]}#{klass}" id="#{id}"><a class="livingstyleguide--anchor" href="##{id}"></a>#{text}</h#{header_level}>\n)
     end
 
     def paragraph(text)
-      %Q(<p class="livingstyleguide--paragraph">#{text}</p>\n)
+      %Q(<p class="#{@options[:prefix]}paragraph">#{text}</p>\n)
     end
 
     def list(contents, list_type)
       tag_name = "#{list_type.to_s[0, 1]}l"
-      %Q(<#{tag_name} class="livingstyleguide--#{list_type}-list">\n#{contents}</#{tag_name}>\n)
+      %Q(<#{tag_name} class="#{@options[:prefix]}#{list_type}-list">\n#{contents}</#{tag_name}>\n)
     end
 
     def list_item(text, list_type)
-      %Q(<li class="livingstyleguide--#{list_type}-list-item">#{text.strip}</li>\n)
+      %Q(<li class="#{@options[:prefix]}#{list_type}-list-item">#{text.strip}</li>\n)
     end
 
     def block_code(code, language)
@@ -52,7 +53,7 @@ module LivingStyleGuide
 
     def codespan(code)
       code = ERB::Util.html_escape(code)
-      %Q(<code class="livingstyleguide--code-span livingstyleguide--code">#{code}</code>)
+      %Q(<code class="#{@options[:prefix]}code-span #{@options[:prefix]}code">#{code}</code>)
     end
 
     private
