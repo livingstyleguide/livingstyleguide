@@ -5,14 +5,16 @@ AddDefaultCharset utf-8
 
 # Set default domain
 
+<%
+  subdomain = current_branch == 'master' ? '' : current_branch.gsub('/', '-') + '.preview.'
+%>
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{HTTP_HOST} !=localhost [NC]
   RewriteCond %{HTTP_HOST} !=127.0.0.1
-  RewriteCond %{HTTP_HOST} !^livingstyleguide\.org$ [NC]
-  RewriteRule ^(.*)$ http://livingstyleguide.org/$1 [R=301,L]
+  RewriteCond %{HTTP_HOST} !^<%= subdomain %>livingstyleguide\.org$ [NC]
+  RewriteRule ^(.*)$ http://<%= subdomain %>livingstyleguide.org/$1 [R=301,L]
 </IfModule>
-
 
 # Force UTF-8 for certain file formats.
 

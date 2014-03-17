@@ -15,8 +15,14 @@ task :deploy do
     system 'cd website && bundle && bundle exec middleman build'
     branch = `git rev-parse --abbrev-ref HEAD`.strip
     path   = "#{"branches/#{branch}/" unless branch == 'master'}"
-    system "rsync -avz website/build/ lsg@livingstyleguide.org:/home/lsg/html/#{path}"
-    puts "Sucessfully deployed website to http://livingstyleguide.org/#{path}"
+    if branch == 'master'
+      path = 'html'
+      domain = 'livingstyleguide.org'
+    else
+      domain = path = branch.gsub('/', '-') + '.preview.livingstyleguide.org'
+    end
+    system "rsync -avz website/build/ lsg@livingstyleguide.org:/var/www/virtual/lsg/#{path}"
+    puts "Sucessfully deployed website to http://#{domain}"
   end
 end
 

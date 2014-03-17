@@ -18,6 +18,10 @@ configure :build do
   activate :asset_hash
 end
 
+after_build do
+  File.rename 'build/.htaccess.html', 'build/.htaccess'
+end
+
 require 'fileutils'
 Dir.glob 'source/images/graphics/*@2x.png' do |file|
   new_file = file.sub('graphics', 'graphics-2x').sub('@2x', '')
@@ -40,6 +44,10 @@ helpers do
     renderer = LivingStyleGuide::RedcarpetHTML.new({})
     redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
     %Q(<article class="markdown">\n#{redcarpet.render(markdown)}\n</article>)
+  end
+
+  def current_branch
+    `git rev-parse --abbrev-ref HEAD`.strip
   end
 end
 
