@@ -1,0 +1,87 @@
+$links--item-size: 120px;
+
+
+.links {
+  @extend %pie-clearfix;
+  position: absolute;
+  right: 100px;
+  top: 0;
+}
+
+.links--item {
+  background: $yellow;
+  color: $black;
+  font-size: 18px;
+  font-weight: bold;
+  margin: floor($gap-width / 2);
+  text-align: left;
+  padding: 5 * $grid 0;
+  position: relative;
+  @include transition(all 0, background 0.2s);
+
+  @include for-tablets-landscape-and-desktops {
+    background: transparent;
+    clear: right;
+    float: right;
+    height: $links--item-size;
+    text-align: center;
+    width: $links--item-size;
+    z-index: 1;
+
+    &:hover {
+      z-index: 5;
+    }
+
+    &:after {
+      background: $yellow;
+      bottom: 0;
+      content: "";
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
+      @include transform(rotateZ(45deg));
+      @include transition(transform, 0.15s);
+    }
+
+    &:hover:after {
+      background: $turquoise;
+      @include transform(rotateZ(-315deg));
+    }
+  }
+
+  &:before {
+    content: "";
+    display: inline-block;
+    margin-right: 3 * $grid;
+    vertical-align: middle;
+    z-index: 10;
+    @include graphics-sprite(rubygems, $dimensions: true);
+    @include transition(transform, 0.15s);
+    @include for-hires {
+      background-image: $graphics-2x-sprites;
+    }
+
+    @include for-tablets-landscape-and-desktops {
+      display: block;
+      margin: -20px -15px 0;
+    }
+  }
+  &:hover:before {
+    @include transform(rotateZ(360deg));
+  }
+
+  $margin-right: 0;
+  @each $name in issues, twitter, example-project {
+    &.-#{$name} {
+      margin-right: $margin-right;
+      $margin-right: $margin-right + floor($links--item-size / 2);
+
+      &:before {
+        @include graphics-sprite-position($name);
+      }
+    }
+  }
+}
+

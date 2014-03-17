@@ -20,6 +20,10 @@ styleguide-scss: |
     &.-diamonds {
       height: length($diamonds--items) / 2 * $diamonds--item-roteted-size;
     }
+
+    &.-links {
+      height: 660px;
+    }
   }
 
   .livingstyleguide--color-swatches {
