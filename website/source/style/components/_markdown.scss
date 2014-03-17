@@ -29,8 +29,11 @@ $livingstyleguide--full-width-padding: 0;
 @import "livingstyleguide/code";
 
 .markdown {
-  max-width: $livingstyleguide--width;
+  margin: 0 40px 40px auto;
+  padding-top: 40px;
+  overflow: hidden;
   text-align: left;
+  width: $livingstyleguide--width;
 
   a {
     color: darken($turquoise, 20%);

@@ -125,18 +125,6 @@ style {
   margin: 0 0 5 * $grid;
   text-align: center;
   -webkit-font-smoothing: antialiased;
-
-  @include for-tablets {
-    margin-top: 20 * $grid;
-  }
-
-  @include for-phones-landscape {
-    margin-top: 28 * $grid;
-  }
-
-  @include for-phones-portrait {
-    margin-top: 34 * $grid;
-  }
 }
 
 
