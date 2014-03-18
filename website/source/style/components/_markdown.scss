@@ -1,6 +1,6 @@
 $livingstyleguide--color: $pink;
-$livingstyleguide--code-background-color: $yellow;
-$livingstyleguide--code-color: $black;
+$livingstyleguide--code-background-color: #F3D5DE;//$yellow;
+$livingstyleguide--code-color: $pink;//$black;
 $livingstyleguide--code-font: "courier new", courier, monospace;
 $livingstyleguide--base-font-size: 13px;
 $livingstyleguide--base-font-weight: normal;
@@ -13,7 +13,7 @@ $livingstyleguide--width: 600px;
 $livingstyleguide--gap-width: 20px;
 $livingstyleguide--highlight-color: $light-pink;
 $livingstyleguide--highlight-border-radius: 0;
-$livingstyleguide--base-font: Courier, "Courier New", monospace;
+$livingstyleguide--base-font: Gubia, "Helvetica Neue", Helvetica, Arial;
 $livingstyleguide--headline-font: Gubia, "Helvetica Neue", Helvetica, Arial;
 $livingstyleguide--headline-font-size: 36px;
 $livingstyleguide--headline-font-weight: bold;
@@ -29,11 +29,11 @@ $livingstyleguide--full-width-padding: 0;
 @import "livingstyleguide/code";
 
 .markdown {
-  margin: 0 40px 40px auto;
-  padding-top: 40px;
+  margin: 0 0 0 auto;
+  padding: 40px;
   overflow: hidden;
   text-align: left;
-  width: $livingstyleguide--width;
+  width: $livingstyleguide--width + 2 * 40px;
 
   a {
     color: darken($turquoise, 20%);
@@ -51,22 +51,26 @@ $livingstyleguide--full-width-padding: 0;
 
   em {
     @extend %display-inline;
-    @extend %font-style-italic;
+    @extend %font-weight-bold;
   }
 
   .livingstyleguide--headline {
     color: $turquoise;
     font-size: 3em;
     margin: 0 0 0.5em;
+    text-transform: uppercase;
   }
 
   .livingstyleguide--sub-headline {
     color: $pink;
     font-size: 2em;
-    margin: 0 0 0.5em;
+    margin: 1.5em 0 0.5em;
+    text-transform: uppercase;
   }
 
   .livingstyleguide--paragraph {
+    //color: lighten($black, 10%);
+    font-size: 18px;
     margin: 0 0 0.75em;
   }
 
@@ -89,9 +93,13 @@ $livingstyleguide--full-width-padding: 0;
   }
 
   .livingstyleguide--code {
-    background: $yellow;
     display: inline;
     font-family: "courier new", courier, monospace;
+  }
+
+  .livingstyleguide--code-block {
+    margin-left: -6px;
+    margin-right: -6px;
   }
 }
 
