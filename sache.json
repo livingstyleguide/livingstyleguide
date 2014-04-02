@@ -1,6 +1,6 @@
 {
   "name": "The LivingStyleGuide",
-  "tags": ["livingstyleguide", "documentation", "testing", "dry"],
+  "tags": ["livingstyleguide", "styleguide", "components", "documentation", "testing", "dry"],
   "description": "Automatically generate beautiful frontend style guides with Sass and Markdown. See http://livingstyleguide.org for details."
 }
 
