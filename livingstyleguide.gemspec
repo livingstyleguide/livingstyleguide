@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["nico@hagenburger.net"]
   gem.description   = %q{Automatically generate beautiful frontend style guides with Sass and Markdown. See http://livingstyleguide.org for details.}
   gem.summary       = %q{Generate beautiful frontend style guides}
-  gem.homepage      = ""
+  gem.homepage      = 'http://livingstyleguide.org'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
