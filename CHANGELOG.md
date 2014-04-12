@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+
+* Less Compass dependencies (not required in Sass anymore)
+* More stable style guide design
+
+
 ## 1.0.2
 
 * Fixed an issue where the command line interface used the input
