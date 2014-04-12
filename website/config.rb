@@ -15,7 +15,6 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
   activate :asset_hash
-  activate :relative_assets
 end
 
 require 'fileutils'
@@ -27,7 +26,7 @@ end
 helpers do
   def livingstyleguide_gem_version
     # Prefer `git tag` over version.rb as tags are released:
-    versions = `git tag`.split(/\n/)
+    versions = `cd .. && git tag`.split(/\n/)
     current  = versions.last
     current.sub(/^v/, '')
   rescue

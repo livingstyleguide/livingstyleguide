@@ -2,8 +2,8 @@
 .livingstyleguide--code-block,
 .livingstyleguide--unordered-list,
 .livingstyleguide--ordered-list {
+  @extend %livingstyleguide--reset;
   color: $livingstyleguide--color;
-  display: block;
   font-family: $livingstyleguide--base-font;
   font-size: $livingstyleguide--base-font-size;
   font-weight: $livingstyleguide--base-font-weight;
@@ -11,11 +11,11 @@
   margin: $livingstyleguide--gap-width auto;
   width: $livingstyleguide--width;
   -webkit-font-smoothing: antialiased;
-  @include box-sizing(border-box);
 }
 
 .livingstyleguide--unordered-list-item,
 .livingstyleguide--ordered-list-item {
+  @extend %livingstyleguide--reset;
   display: block;
   list-style: disc;
   margin: ceil($livingstyleguide--gap-width / 2) 0 ceil($livingstyleguide--gap-width / 2) (2 * $livingstyleguide--gap-width);
@@ -25,6 +25,7 @@
 .livingstyleguide--headline,
 .livingstyleguide--sub-headline,
 .livingstyleguide--sub-sub-headline {
+  @extend %livingstyleguide--reset;
   color: $livingstyleguide--color;
   display: block;
   font-family: $livingstyleguide--headline-font;
@@ -37,20 +38,21 @@
 }
 
 .livingstyleguide--anchor {
+  @extend %livingstyleguide--reset;
   color: inherit;
   margin-left: -1em;
+  opacity: 0;
   position: absolute;
   text-decoration: none;
   width: 1em;
-  @include opacity(0);
 
   .livingstyleguide--headline:hover &,
   .livingstyleguide--sub-headline:hover &,
   .livingstyleguide--sub-sub-headline:hover & {
-    @include opacity(0.5);
+    opacity: 0.5;
 
     &:hover {
-      @include opacity(1);
+      opacity: 1;
     }
   }
 
@@ -75,25 +77,26 @@
 }
 
 .livingstyleguide--example {
+  @extend %livingstyleguide--reset;
   background: white;
+  border-top-left-radius: $livingstyleguide--border-radius;
+  border-top-right-radius: $livingstyleguide--border-radius;
   display: block;
   margin: $livingstyleguide--gap-width auto 0;
   overflow: hidden;
   padding: $livingstyleguide--gap-width;
   position: relative;
   width: $livingstyleguide--width;
-  @include box-sizing(border-box);
-  @include border-top-radius($livingstyleguide--border-radius);
 
   &.-lsg-has-full-width {
     @extend #{$livingstyleguide--layout-selector} !optional;
+    border-radius: 0;
     display: block;
     height: auto;
     margin: 0 auto;
     min-height: auto;
     padding: $livingstyleguide--full-width-padding;
     width: 100%;
-    @include border-radius(0);
   }
 
   &.-lsg-for-javascript {
