@@ -19,12 +19,16 @@
   display: block;
   height: 100px;
   margin: auto;
+  overflow: hidden;
+  text-align: left;
+  text-indent: -119988px;
   width: 203px;
-  @include hide-text;
 
   &:hover {
     -webkit-transform: translateZ(0);
-    @include filter(unquote("brightness(0.7)"));
+    -webkit-filter: brightness(0.7);
+    -moz-filter: brightness(0.7);
+    filter: brightness(0.7);
   }
 }
 
