@@ -1,6 +1,6 @@
 <% variables.each do |variable| %>
   $<%= variable %>: null !default;
-  @if $<%= variable %> != null {
+  @if $<%= variable %> != null and type-of($<%= variable %>) != map {
     .\$<%= variable %> {
       @if type-of($<%= variable %>) == color {
         @if (lightness($<%= variable %>) < lightness($livingstyleguide--color)) {

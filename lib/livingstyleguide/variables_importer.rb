@@ -44,6 +44,7 @@ module LivingStyleGuide
     end
 
     def self.variables(uri)
+      uri = uri.dup
       uri += '.s?ss' unless uri =~ /\.s[ac]ss$/
       uri.gsub! %r{^(.*)/(.+)$}, '\1/{_,}\2'
       variables = []
