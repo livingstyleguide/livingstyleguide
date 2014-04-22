@@ -1,4 +1,7 @@
 $my-base-color: green;
+$some-map: (
+  key: "value",
+);
 
 @import "compass";
 @import "modules/buttons";

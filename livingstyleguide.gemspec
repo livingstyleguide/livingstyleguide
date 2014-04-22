@@ -33,3 +33,4 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'compass', '~> 1.0.0.alpha.19'
   gem.add_development_dependency 'sass', '~> 3.3'
 end
+
