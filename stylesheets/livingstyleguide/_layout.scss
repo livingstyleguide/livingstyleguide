@@ -26,9 +26,9 @@
 
   &:hover {
     -webkit-transform: translateZ(0);
-    -webkit-filter: brightness(0.7);
-    -moz-filter: brightness(0.7);
-    filter: brightness(0.7);
+    -webkit-filter: unquote("brightness(0.7)");
+    -moz-filter: unquote("brightness(0.7)");
+    filter: unquote("brightness(0.7)");
   }
 }
 
