@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+* Fixed an error caused when maps are used
+
+
 ## 1.0.3
 
 * Less Compass dependencies (not required in Sass anymore)
