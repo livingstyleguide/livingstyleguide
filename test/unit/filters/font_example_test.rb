@@ -12,7 +12,20 @@ class FontExampleTest < ExampleTestCase
         ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
         abcdefghijklmnopqrstuvwxyz<br>
         0123456789<br>
-        !&/()$=@;:,.
+        !&amp;/()$=@;:,.
+      </div>
+    OUTPUT
+  end
+
+  def test_font_example_with_quotation_marks
+    assert_render_equals <<-INPUT, <<-OUTPUT
+      @font-example 42px "Comic Neue"
+    INPUT
+      <div class="livingstyleguide--font-example" style="font: 42px &quot;Comic Neue&quot;">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+        abcdefghijklmnopqrstuvwxyz<br>
+        0123456789<br>
+        !&amp;/()$=@;:,.
       </div>
     OUTPUT
   end
