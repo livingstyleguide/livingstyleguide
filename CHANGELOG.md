@@ -5,6 +5,7 @@
 * Compatibility with [Padrino](http://www.padrinorb.com)
 * Fixed an error caused when maps are used
 * [Anchors are close to headlines when centered](https://github.com/hagenburger/livingstyleguide/issues/52) from now on
+* [Escape fonts in examples](https://github.com/hagenburger/livingstyleguide/issues/51)
 * **Internal:**
   * Use Sass 3.3 and Compass 1.0.0 for automated tests
 

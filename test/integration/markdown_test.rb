@@ -119,7 +119,7 @@ class MarkdownTest < Minitest::Test
         ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
         abcdefghijklmnopqrstuvwxyz<br>
         0123456789<br>
-        !&/()$=@;:,.
+        !&amp;/()$=@;:,.
       </div>
     HTML
   end
