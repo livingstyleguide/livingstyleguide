@@ -38,7 +38,7 @@
 ## 1.0.0
 
 * New design and API for colors
-* [Show anchors naxt to headlines](https://github.com/hagenburger/livingstyleguide/issues/23)
+* [Show anchors next to headlines](https://github.com/hagenburger/livingstyleguide/issues/23)
 * [JSON for config files](https://github.com/hagenburger/livingstyleguide/issues/37)
 * Updated styling of the style guide
 
