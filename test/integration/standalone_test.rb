@@ -64,6 +64,14 @@ class MarkdownTest < Minitest::Test
     assert_match %r(\.\\\$my-base-color), html
   end
 
+  def test_variables_and_maps
+    if Sass.version[:major] == 3 and Sass.version[:minor] < 3
+      skip('This test needs Sass ~> 3.3')
+    end
+    html = render('test/fixtures/standalone/styleguide-sass-maps.html.lsg')
+    assert_match %r(\.\\\$some-map), html
+  end
+
   private
   def render(file)
     Tilt.new(file).render.gsub(/\s+/, ' ')
