@@ -2,6 +2,7 @@
 
 ## 1.0.4
 
+* Compatibility with [Padrino](http://www.padrinorb.com)
 * Fixed an error caused when maps are used
 * **Internal:**
   * Use Sass 3.3 and Compass 1.0.0 for automated tests
