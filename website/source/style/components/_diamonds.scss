@@ -20,6 +20,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
   float: left;
   height: $diamonds--item-size;
   margin: floor($diamonds--item-size / -2) $margin $margin;
+  text-align: center;
   position: relative;
   width: $diamonds--item-size;
 
