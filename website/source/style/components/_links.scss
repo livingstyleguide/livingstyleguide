@@ -6,6 +6,7 @@ $links--item-size: 160px;
   position: absolute;
   width: 2 * $diamonds--item-roteted-size + 4px;
   z-index: 2;
+  @include transform-origin(0 0 0);
 
   $last-max-width: 0;
   @for $i from 6 to 14 {
