@@ -11,7 +11,10 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
                   #EF6991;
 
 .diamonds {
+  position: absolute;
+  top: 0;
   width: length(nth($diamonds--items, 1)) * $diamonds--item-roteted-size;
+  z-index: 1;
   @include transform-origin(0 0 0);
 
   $last-max-width: 0;
