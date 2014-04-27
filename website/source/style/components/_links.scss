@@ -1,7 +1,10 @@
-$links--item-size: 120px;
+$links--item-size: 123px;
 
 
 .links {
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }
 
 .links--item {
@@ -10,7 +13,7 @@ $links--item-size: 120px;
   font-size: 18px;
   font-weight: bold;
   height: $links--item-size;
-  margin: 0;
+  margin: 0 47px 0 0;
   text-align: left;
   padding: 5 * $grid 0;
   position: relative;
@@ -60,13 +63,8 @@ $links--item-size: 120px;
 
   $margin-right: 0;
   @each $name in issues, twitter, example-project {
-    &.-#{$name} {
-      margin-right: $margin-right;
-      $margin-right: $margin-right + floor($links--item-size / 2);
-
-      &:before {
-        @include graphics-sprite-position($name);
-      }
+    &.-#{$name}:before {
+      @include graphics-sprite-position($name);
     }
   }
 }
