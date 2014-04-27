@@ -1,39 +1,60 @@
-$links--item-size: 123px;
+$links--item-size: 160px;
 
 
 .links {
+  display: block;
   position: absolute;
-  right: 20px;
-  top: 20px;
+  width: 2 * $diamonds--item-roteted-size + 4px;
+  z-index: 2;
+
+  $last-max-width: 0;
+  @for $i from 6 to 14 {
+    $scale: $i / 10 - 0.3;
+    $max-width: $i * 100px;
+    @media all and (min-width: #{$last-max-width + 1px}) and (max-width: #{$max-width}) {
+      left: 680px * $scale;
+      top: 112px * $scale;
+      @include transform(scale($scale));
+    }
+    $last-max-width: $max-width;
+  }
 }
 
 .links--item {
+  $margin: floor(($diamonds--item-roteted-size - $diamonds--item-size) / 2);
   color: $black;
   display: inline-block;
   font-size: 18px;
   font-weight: bold;
-  height: $links--item-size;
-  margin: 0 47px 0 0;
+  height: $diamonds--item-size;
+  margin: floor($diamonds--item-size / -2) $margin $margin;
   text-align: left;
   padding: 5 * $grid 0;
   position: relative;
   text-align: center;
-  width: $links--item-size;
+  width: $diamonds--item-size;
   z-index: 1;
   @include transition(all 0, background 0.2s);
+
+  &:first-child,
+  &:last-child {
+    clear: left;
+    margin-left: $margin + 1px;// floor($diamonds--item-roteted-size / 2) + $margin + 1px;
+  }
 
   &:hover {
     z-index: 5;
   }
 
   &:after {
+    $distance: 10px;
     background: $yellow;
-    bottom: 0;
+    bottom: $distance;
     content: "";
-    left: 0;
+    left: $distance;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: $distance;
+    top: $distance;
     z-index: -1;
     @include transform(rotateZ(45deg));
     @include transition(transform, 0.15s);
