@@ -1,6 +1,6 @@
-$livingstyleguide--color: $pink;
-$livingstyleguide--code-background-color: #F3D5DE;//$yellow;
-$livingstyleguide--code-color: $pink;//$black;
+$livingstyleguide--color: $black;
+$livingstyleguide--code-background-color: #F3D5DE;
+$livingstyleguide--code-color: $pink;
 $livingstyleguide--code-font: "courier new", courier, monospace;
 $livingstyleguide--base-font-size: 13px;
 $livingstyleguide--base-font-weight: normal;
@@ -56,21 +56,16 @@ $livingstyleguide--full-width-padding: 0;
   }
 
   .livingstyleguide--headline {
-    color: $turquoise;
     font-size: 3em;
     margin: 0 0 0.5em;
-    text-transform: uppercase;
   }
 
   .livingstyleguide--sub-headline {
-    color: $pink;
     font-size: 2em;
     margin: 1.5em 0 0.5em;
-    text-transform: uppercase;
   }
 
   .livingstyleguide--paragraph {
-    //color: lighten($black, 10%);
     font-size: 18px;
     margin: 0 0 0.75em;
   }
