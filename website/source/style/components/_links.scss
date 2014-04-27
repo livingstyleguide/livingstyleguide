@@ -68,7 +68,7 @@ $links--item-size: 160px;
   &:before {
     content: "";
     display: block;
-    margin: -20px -15px 0;
+    margin: auto;
     vertical-align: middle;
     z-index: 10;
     @include graphics-sprite(rubygems, $dimensions: true);
