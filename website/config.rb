@@ -32,5 +32,12 @@ helpers do
   rescue
     '0.0.0'
   end
+
+  def comparison
+    data = File.readlines('data/comparison.txt')
+    data.collect do |line|
+      line.split(/\s\|\s/)
+    end
+  end
 end
 
