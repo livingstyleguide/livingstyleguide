@@ -14,15 +14,15 @@ your Sass.
    ```
 
 2) Write documentation for each module *app/assets/stylesheets/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
-   
+
        Buttons
        =======
 
-       ~~~ example
+       ~~~
        <button class="button">Example button</button>
        ~~~ 
 
-       ~~~ example
+       ~~~
        <button class="button -is-primary">Example button</button>
        ~~~ 
 
@@ -51,7 +51,7 @@ source as Haml:
 This will show and execute the JavaScript, e. g. you designed tabs and
 need few lines of jQuery to bring them alive.
 
-    ~~~ example
+    ~~~
     @javascript
     $('.button').click(function() {
       alert('Hello World!');
@@ -64,7 +64,7 @@ need few lines of jQuery to bring them alive.
 Same example but using [CoffeeScript](http://coffeescript.org). It will be 
 executed as JavaScript and displayed as CoffeeScript:
 
-    ~~~ example
+    ~~~
     @javascript
     $('.button').click ->
       alert 'Hello World!'
@@ -75,7 +75,7 @@ executed as JavaScript and displayed as CoffeeScript:
 
 Show which fonts should be used on your website—this will output and example text block (A—Z, a—z, 0—9, and some special characters) of the given font. It accepts valid CSS like for `font: 32px Comic Sans;`.
 
-    ~~~ example
+    ~~~
     @font-example 32px Comic Sans
     ~~~
 
