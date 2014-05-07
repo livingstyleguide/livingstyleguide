@@ -61,7 +61,7 @@ need few lines of jQuery to bring them alive.
 
 ### CoffeeScript example
 
-Same example but using [CoffeeScript](http://coffeescript.org). It will be 
+Same example but using [CoffeeScript](http://coffeescript.org). It will be
 executed as JavaScript and displayed as CoffeeScript:
 
     ~~~
@@ -82,7 +82,7 @@ Show which fonts should be used on your website—this will output and example t
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application’s Gemfile:
 
     gem 'livingstyleguide'
 
