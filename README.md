@@ -65,7 +65,7 @@ Same example but using [CoffeeScript](http://coffeescript.org). It will be
 executed as JavaScript and displayed as CoffeeScript:
 
     ~~~
-    @javascript
+    @coffee-script
     $('.button').click ->
       alert 'Hello World!'
     ~~~
