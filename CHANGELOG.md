@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.5
+
+* Simulate `inspect(...)` for Sass < 3.3
+
+
 ## 1.0.4
 
 * Compatibility with [Padrino](http://www.padrinorb.com)
