@@ -1,3 +1,9 @@
+<% if Sass.version[:major] == 3 and Sass.version[:minor] < 3 %>
+  @function inspect($value) {
+    @return $value;
+  }
+<% end %>
+
 <% variables.each do |variable| %>
   $<%= variable %>: null !default;
   @if $<%= variable %> != null {//and type-of($<%= variable %>) != map {
@@ -19,3 +25,4 @@
     }
   }
 <% end %>
+
