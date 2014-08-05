@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.6
+
+* Support for variables that contain numbers in their name
+
+
 ## 1.0.5
 
 * Simulate `inspect(...)` for Sass < 3.3
