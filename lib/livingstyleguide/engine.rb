@@ -137,6 +137,8 @@ module LivingStyleGuide
         next unless sass_filename.is_a?(String)
         glob = "#{sass_filename.sub(/\.s[ac]ss$/, '')}.md"
         Dir.glob(glob) do |markdown_filename|
+          next if files.include?(markdown_filename)
+
           files << markdown_filename
           @markdown << File.read(markdown_filename)
         end
@@ -209,4 +211,3 @@ module LivingStyleGuide
   end
 
 end
-
