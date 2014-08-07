@@ -56,6 +56,12 @@ your Sass.
     gem 'livingstyleguide'
    ```
 
+   Add the _styleguide.html_ to the precompile list in _config/application.rb_:
+   
+   ```
+   config.assets.precompile += ['styleguide.html']
+   ```
+   
    And then execute:
 
    ```
