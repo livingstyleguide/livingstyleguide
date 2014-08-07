@@ -36,14 +36,14 @@ your Sass.
        ~~~ 
 
        ~~~
-       <button class="button -is-primary">Example button</button>
+       <button class="button -primary">Example button</button>
        ~~~ 
 
 4) Call `livingstyleguide compile sass/styleguide.html.lsg`
    This will automatically:
    * Combine all Markdown files and convert them to HTML
-   * Create a beautyful style guide
-   * Saves the style guide as _styleguide.html_ in your output folder (e.g. `css/`)
+   * Create a beautiful style guide
+   * Saves the style guide as _styleguide.html_ in your output folder (e. g. `css/`)
    * Show the HTML source syntax highlighted close to each example
 
 
@@ -79,13 +79,13 @@ your Sass.
        ~~~ 
 
        ~~~
-       <button class="button -is-primary">Example button</button>
+       <button class="button -primary">Example button</button>
        ~~~ 
 
 4) Open <http://localhost:3000/assets/styleguide.html>.
    This will automatically:
    * Combine all Markdown files and convert them to HTML
-   * Create a beautyful style guide
+   * Create a beautiful style guide
    * Show the HTML source syntax highlighted close to each example
 
 
@@ -121,13 +121,13 @@ your Sass.
        ~~~ 
 
        ~~~
-       <button class="button -is-primary">Example button</button>
+       <button class="button -primary">Example button</button>
        ~~~ 
 
 4) Open <http://localhost:4567//styleguide.html>.
    This will automatically:
    * Combine all Markdown files and convert them to HTML
-   * Create a beautyful style guide
+   * Create a beautiful style guide
    * Show the HTML source syntax highlighted close to each example
 
 
