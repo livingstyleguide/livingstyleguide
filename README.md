@@ -5,15 +5,28 @@ your Sass.
 
 ![Build Status Images](https://travis-ci.org/hagenburger/livingstyleguide.png)
 
-## Rails Integration
 
-1) Create *_app/assets/stylesheets/styleguide.html.lsg_* with:
+## Getting Started
+
+* [Command Line Interface](#command-line-interface)
+* [Rails Integration](#rails-integration)
+* [Middleman Integration](#middleman-integration)
+
+
+## Command Line Interface
+
+1) Setup
+   ```
+   $ gem install livingstyleguide
+   ```
+
+2) Create *_sass/styleguide.html.lsg_* (replace `sass/` with the directory name of your Sass files) with:
    ``` yaml
    source: application.css.scss # replace with your default Sass/SCSS file name
    title: "My Living Style Guide"
    ```
 
-2) Write documentation for each module *app/assets/stylesheets/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
+3) Write documentation for each module *sass/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
 
        Buttons
        =======
@@ -26,7 +39,92 @@ your Sass.
        <button class="button -is-primary">Example button</button>
        ~~~ 
 
-3) Open <http://localhost:3000/assets/styleguide.html>.
+4) Call `livingstyleguide compile sass/styleguide.html.lsg`
+   This will automatically:
+   * Combine all Markdown files and convert them to HTML
+   * Create a beautyful style guide
+   * Saves the style guide as _styleguide.html_ in your output folder (e.g. `css/`)
+   * Show the HTML source syntax highlighted close to each example
+
+
+## Rails Integration
+
+1) Setup:  
+   Add this line to your application’s _Gemfile_:
+
+   ```
+    gem 'livingstyleguide'
+   ```
+
+   And then execute:
+
+   ```
+    $ bundle
+    $ rails s
+   ```
+
+2) Create *_app/assets/stylesheets/styleguide.html.lsg_* with:
+   ``` yaml
+   source: application.css.scss # replace with your default Sass/SCSS file name
+   title: "My Living Style Guide"
+   ```
+
+3) Write documentation for each module *app/assets/stylesheets/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
+
+       Buttons
+       =======
+
+       ~~~
+       <button class="button">Example button</button>
+       ~~~ 
+
+       ~~~
+       <button class="button -is-primary">Example button</button>
+       ~~~ 
+
+4) Open <http://localhost:3000/assets/styleguide.html>.
+   This will automatically:
+   * Combine all Markdown files and convert them to HTML
+   * Create a beautyful style guide
+   * Show the HTML source syntax highlighted close to each example
+
+
+## Middleman Integration
+
+1) Setup:  
+   Add this line to your application’s _Gemfile_:
+
+   ```
+    gem 'livingstyleguide'
+   ```
+
+   And then execute:
+
+   ```
+    $ bundle
+    $ middleman
+   ```
+
+2) Create *_source/styleguide.html.lsg_* with:
+   ``` yaml
+   source: css/application.css.scss # replace with your default Sass/SCSS file name
+   title: "My Living Style Guide"
+   ```
+
+3) Write documentation for each module *source/css/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
+
+       Buttons
+       =======
+
+       ~~~
+       <button class="button">Example button</button>
+       ~~~ 
+
+       ~~~
+       <button class="button -is-primary">Example button</button>
+       ~~~ 
+
+4) Open <http://localhost:4567//styleguide.html>.
    This will automatically:
    * Combine all Markdown files and convert them to HTML
    * Create a beautyful style guide
