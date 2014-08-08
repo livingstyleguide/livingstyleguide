@@ -5,6 +5,11 @@ your Sass.
 
 ![Build Status Images](https://travis-ci.org/hagenburger/livingstyleguide.png)
 
+![preview](https://cloud.githubusercontent.com/assets/103399/3854622/2fb68574-1eda-11e4-862c-33e7d7943c56.jpg)
+
+* Style guide on the left: http://www.homify.de/assets/styleguide.html (non-public repository)
+* Style guide on the right: http://livingstyleguide.com/eurucamp/ ([public repository](https://github.com/eurucamp/livingstyleguide-eurucamp))
+
 ----
 
 
