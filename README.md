@@ -172,6 +172,8 @@ A default example outputs the HTML source as:
 * Real HTML in a wrapper to display the results
 * Syntax-highligted code below
 
+Example:
+
     ```
     <button class="button">Example button</button>
     ```
