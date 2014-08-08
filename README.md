@@ -47,7 +47,6 @@ your Sass.
    * Create a beautiful style guide
    * Saves the style guide as _styleguide.html_ in your output folder (e. g. `css/`)
    * Show the HTML source syntax highlighted close to each example
-   * 
    
 ### Tipps for the Command Line Interface
 
@@ -103,6 +102,7 @@ your Sass.
    ``` ruby
    config.assets.precompile += ['styleguide.html']
    ```
+* There is a [Rails example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/rails-example) on Github.
 
 
 ## Middleman Integration
@@ -149,6 +149,8 @@ your Sass.
 ### Tipps for Middleman
 
 * Don’t put the _styleguide.html.lsg into your CSS folder (`source/css/`). It won’t work.
+* There is a [Middleman example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/middleman-example) on Github.
+* A more complex production project can [be found online](http://livingstyleguide.com/eurucamp/). The complete source of this Middleman project [is available on Github](https://github.com/eurucamp/livingstyleguide-eurucamp). You’ll find a lot of configuration on how to make the style guide look beautiful.
 
 ----
 
