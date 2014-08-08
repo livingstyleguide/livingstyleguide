@@ -130,7 +130,7 @@ your Sass.
        <button class="button -primary">Example button</button>
        ~~~ 
 
-4) Open <http://localhost:4567//styleguide.html>.
+4) Open <http://localhost:4567/styleguide.html>.
    This will automatically:
    * Combine all Markdown files and convert them to HTML
    * Create a beautiful style guide
