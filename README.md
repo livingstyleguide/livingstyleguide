@@ -39,13 +39,13 @@ your Sass.
         Buttons
         =======
 
-        ~~~
+        ```
         <button class="button">Example button</button>
-        ~~~
+        ```
 
-        ~~~
+        ```
         <button class="button -primary">Example button</button>
-        ~~~
+        ```
 
 4. Call `livingstyleguide compile sass/styleguide.html.lsg`
    This will automatically:
@@ -53,7 +53,7 @@ your Sass.
    * Create a beautiful style guide
    * Saves the style guide as _styleguide.html_ in your output folder (e. g. `css/`)
    * Show the HTML source syntax highlighted close to each example
-   
+
 ### Tipps for the Command Line Interface
 
 * Create your project with [Compass](http://compass-style.org). In future, the LivingStyleGuide will not depend on Compass, but for now, this works best.
@@ -62,7 +62,7 @@ your Sass.
 
 ## Rails Integration
 
-1. Setup:  
+1. Setup:
    Add this line to your application’s _Gemfile_:
 
    ``` ruby
@@ -87,13 +87,13 @@ your Sass.
         Buttons
         =======
 
-        ~~~
+        ```
         <button class="button">Example button</button>
-        ~~~
+        ```
 
-        ~~~
+        ```
         <button class="button -primary">Example button</button>
-        ~~~
+        ```
 
 4. Open <http://localhost:3000/assets/styleguide.html>.
    This will automatically:
@@ -113,7 +113,7 @@ your Sass.
 
 ## Middleman Integration
 
-1. Setup:  
+1. Setup:
    Add this line to your application’s _Gemfile_:
 
    ```
@@ -138,13 +138,13 @@ your Sass.
         Buttons
         =======
 
-        ~~~
+        ```
         <button class="button">Example button</button>
-        ~~~
+        ```
 
-        ~~~
+        ```
         <button class="button -primary">Example button</button>
-        ~~~
+        ```
 
 4. Open <http://localhost:4567/styleguide.html>.
    This will automatically:
@@ -172,9 +172,9 @@ A default example outputs the HTML source as:
 * Real HTML in a wrapper to display the results
 * Syntax-highligted code below
 
-    ~~~
+    ```
     <button class="button">Example button</button>
-    ~~~
+    ```
 
 There are more **filters** to generate output. They start with an `@` and can be put in the code block:
 
@@ -183,18 +183,18 @@ There are more **filters** to generate output. They start with an `@` and can be
 
 This will generate a list ($name + #value in a circle of that color) of all color variables found in *variables/_colors.scss*:
 
-    ~~~
+    ```
     @colors variables/colors
-    ~~~
-    
+    ```
+
 Alternatively you can set the colors you want to output yourself (much better for grouping different shades of one color). `-` leaves a cell in the matrix empty:
 
-    ~~~
+    ```
     @colors
     -       $light-red  $gray
     $green  $red        -
     -       $dark-red   $black
-    ~~~
+    ```
 
 
 ### Haml Examples
@@ -202,10 +202,10 @@ Alternatively you can set the colors you want to output yourself (much better fo
 This will output the code as HTML but display the syntax highlighted
 source as Haml:
 
-    ~~~
+    ```
     @haml
     %button.button Example button
-    ~~~
+    ```
 
 
 ### Handlebars.js (and other JavaScript templating languages) Examples
@@ -218,12 +218,12 @@ This requires some configuration which is explained in a [blog post on how to us
 This will show and execute the JavaScript, e. g. you designed tabs and
 need few lines of jQuery to bring them alive.
 
-    ~~~
+    ```
     @javascript
     $('.button').click(function() {
       alert('Hello World!');
     });
-    ~~~
+    ```
 
 
 ### CoffeeScript Examples
@@ -231,43 +231,43 @@ need few lines of jQuery to bring them alive.
 Same example but using [CoffeeScript](http://coffeescript.org). It will be
 executed as JavaScript and displayed as CoffeeScript:
 
-    ~~~
+    ```
     @coffee-script
     $('.button').click ->
       alert 'Hello World!'
-    ~~~
+    ```
 
 
 ### Font Examples
 
 Show which fonts should be used on your website—this will output and example text block (A—Z, a—z, 0—9, and some special characters) of the given font. It accepts valid CSS like for `font: 32px Comic Sans;`.
 
-    ~~~
+    ```
     @font-example 32px Comic Sans
-    ~~~
+    ```
 
 Use your own text (defaults to “ABC…\nabc…\n123…\n!&…” if not set):
 
-    ~~~
+    ```
     @font-example 32px Comic Sans
     Schweißgequält zündet Typograf Jakob
     verflixt öde Pangramme an.
-    ~~~
+    ```
 
 
 ### Output Code
 
 If you just want to output code with no extras (just like in a normal Markdown file), you only need to add the language:
 
-    ~~~ html
+    ``` html
     <div>Some HTML that just gets syntax-higlighted but not put into the document’s DOM</div>
-    ~~~
+    ```
 
 No syntax highlighter:
 
-    ~~~ plain
+    ``` plain
     <div>Some HTML that just gets syntax-higlighted but not put into the document’s DOM</div>
-    ~~~
+    ```
 
 
 ## Styling the Style Guide
@@ -337,3 +337,4 @@ Or install it yourself as:
 Copyright (c) 2012 – 2014 [Nico Hagenburger](http://www.hagenburger.net).
 See [MIT-LICENSE.md](MIT-LICENSE.md) for details.
 Get in touch with [@hagenburger](http://twitter.com/hagenburger) on Twitter.
+
