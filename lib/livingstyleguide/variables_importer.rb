@@ -53,7 +53,7 @@ module LivingStyleGuide
         if path.is_a? String
           Dir.glob(File.join(path, uri)).each do |file|
             sass = File.read(file)
-            variables << sass.scan(%r(\$([a-z\-_]+)\s*:))
+            variables << sass.scan(%r(\$([a-z0-9\-_]+)\s*:))
           end
         end
       end
