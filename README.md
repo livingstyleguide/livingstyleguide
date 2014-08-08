@@ -30,8 +30,8 @@ your Sass project.
 
 2. Create *_sass/styleguide.html.lsg_* (replace `sass/` with the directory name of your Sass files) with:
    ``` yaml
-   source: application.css.scss # replace with your default Sass/SCSS file name
-   title: "My Living Style Guide"
+   source: 'application.css.scss' # replace with your default Sass/SCSS file name
+   title: 'My Living Style Guide'
    ```
 
 3. Write documentation for each module *sass/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
@@ -79,8 +79,8 @@ your Sass project.
 
 2. Create *_app/assets/stylesheets/styleguide.html.lsg_* with:
    ``` yaml
-   source: application.css.scss # replace with your default Sass/SCSS file name
-   title: "My Living Style Guide"
+   source: 'application.css.scss' # replace with your default Sass/SCSS file name
+   title: 'My Living Style Guide'
    ```
 
 3.  Write documentation for each module *app/assets/stylesheets/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
@@ -130,8 +130,8 @@ your Sass project.
 
 2. Create *_source/styleguide.html.lsg_* with:
    ``` yaml
-   source: css/application.css.scss # replace with your default Sass/SCSS file name
-   title: "My Living Style Guide"
+   source: 'css/application.css.scss' # replace with your default Sass/SCSS file name
+   title: 'My Living Style Guide'
    ```
 
 3. Write documentation for each module *source/css/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
@@ -283,7 +283,7 @@ Add a list of default filters to your _styleguide.html.lsg_:
 
 ``` yaml
 default-filters:
-  - "@haml"
+  - '@haml'
 ```
 
 **Info:** YAML will fail if you don’t use quotation marks here. You should not use `@coffee-script` as default filter.
