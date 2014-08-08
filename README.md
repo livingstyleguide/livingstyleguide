@@ -167,7 +167,12 @@ source as Haml:
     ~~~
 
 
-### JavaScript example
+### Handlebars.js (and other JavaScript templating languages) Examples
+
+This requires some configuration which is explained in a [blog post on how to use Handlebars.js in the LivingStyleGuide](http://www.hagenburger.net/BLOG/handlebars-js-templates-living-style-guide.html). This blog post also shows how to load templates from other locations and use JSON to compile them in the style guide.
+
+
+### JavaScript Examples
 
 This will show and execute the JavaScript, e. g. you designed tabs and
 need few lines of jQuery to bring them alive.
@@ -180,7 +185,7 @@ need few lines of jQuery to bring them alive.
     ~~~
 
 
-### CoffeeScript example
+### CoffeeScript Examples
 
 Same example but using [CoffeeScript](http://coffeescript.org). It will be
 executed as JavaScript and displayed as CoffeeScript:
@@ -192,7 +197,7 @@ executed as JavaScript and displayed as CoffeeScript:
     ~~~
 
 
-### Font example
+### Font Examples
 
 Show which fonts should be used on your website—this will output and example text block (A—Z, a—z, 0—9, and some special characters) of the given font. It accepts valid CSS like for `font: 32px Comic Sans;`.
 
