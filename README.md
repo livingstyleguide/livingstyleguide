@@ -211,6 +211,15 @@ Show which fonts should be used on your website—this will output and example t
     @font-example 32px Comic Sans
     ~~~
 
+Use your own text (defaults to “ABC…\nabc…\n123…\n!&…” if not set):
+
+    ~~~
+    @font-example 32px Comic Sans
+    Schweißgequält zündet Typograf Jakob
+    verflixt öde Pangramme an.
+    ~~~
+
+
 ----
 
 
