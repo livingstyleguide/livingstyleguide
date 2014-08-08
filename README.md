@@ -162,6 +162,24 @@ There is a [separate project taking care of Gulp](https://github.com/efacilitati
 
 ## More
 
+### Colors
+
+This will generate a list ($name + #value in a circle of that color) of all color variables found in *variables/_colors.scss*:
+
+    ~~~
+    @colors variables/colors
+    ~~~
+    
+Alternatively you can set the colors you want to output yourself (much better for grouping different shades of one color). `-` leaves a cell in the matrix empty:
+
+    ~~~
+    @colors
+    -       $light-red  $gray
+    $green  $red        -
+    -       $dark-red   $black
+    ~~~
+
+
 ### Haml Examples
 
 This will output the code as HTML but display the syntax highlighted
