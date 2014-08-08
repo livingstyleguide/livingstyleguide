@@ -1,12 +1,12 @@
-# Living Style Guide ![Build Status Images](https://travis-ci.org/hagenburger/livingstyleguide.png)
+# LivingStyleGuide ![Build Status Images](https://travis-ci.org/hagenburger/livingstyleguide.png)
 
-Easily create living style guides by adding Markdown documentation to
-your Sass.
+Easily create living style guides/front-end style guides/pattern libraries by adding Markdown documentation to
+your Sass project.
 
 ![preview](https://cloud.githubusercontent.com/assets/103399/3854622/2fb68574-1eda-11e4-862c-33e7d7943c56.jpg)
 
-* Style guide on the left: http://www.homify.de/assets/styleguide.html (non-public repository)
-* Style guide on the right: http://livingstyleguide.com/eurucamp/ ([public repository](https://github.com/eurucamp/livingstyleguide-eurucamp))
+* On the left: http://www.homify.de/assets/styleguide.html (non-public repository)
+* On the right: http://livingstyleguide.com/eurucamp/ ([public repository](https://github.com/eurucamp/livingstyleguide-eurucamp))
 
 ----
 
@@ -30,8 +30,8 @@ your Sass.
 
 2. Create *_sass/styleguide.html.lsg_* (replace `sass/` with the directory name of your Sass files) with:
    ``` yaml
-   source: application.css.scss # replace with your default Sass/SCSS file name
-   title: "My Living Style Guide"
+   source: 'application.css.scss' # replace with your default Sass/SCSS file name
+   title: 'My Living Style Guide'
    ```
 
 3. Write documentation for each module *sass/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
@@ -53,6 +53,7 @@ your Sass.
    * Create a beautiful style guide
    * Saves the style guide as _styleguide.html_ in your output folder (e. g. `css/`)
    * Show the HTML source syntax highlighted close to each example
+
 
 ### Tipps for the Command Line Interface
 
@@ -78,8 +79,8 @@ your Sass.
 
 2. Create *_app/assets/stylesheets/styleguide.html.lsg_* with:
    ``` yaml
-   source: application.css.scss # replace with your default Sass/SCSS file name
-   title: "My Living Style Guide"
+   source: 'application.css.scss' # replace with your default Sass/SCSS file name
+   title: 'My Living Style Guide'
    ```
 
 3.  Write documentation for each module *app/assets/stylesheets/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
@@ -108,7 +109,7 @@ your Sass.
    ``` ruby
    config.assets.precompile += ['styleguide.html']
    ```
-* There is a [Rails example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/rails-example) on Github.
+* There is a [Rails example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/rails-example) available on Github.
 
 
 ## Middleman Integration
@@ -129,8 +130,8 @@ your Sass.
 
 2. Create *_source/styleguide.html.lsg_* with:
    ``` yaml
-   source: css/application.css.scss # replace with your default Sass/SCSS file name
-   title: "My Living Style Guide"
+   source: 'css/application.css.scss' # replace with your default Sass/SCSS file name
+   title: 'My Living Style Guide'
    ```
 
 3. Write documentation for each module *source/css/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
@@ -155,7 +156,7 @@ your Sass.
 ### Tipps for Middleman
 
 * Don’t put the _styleguide.html.lsg_ into your CSS folder (`source/css/`). It won’t work.
-* There is a [Middleman example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/middleman-example) on Github.
+* There is a [Middleman example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/middleman-example) available on Github.
 * A more complex production project can [be found online](http://livingstyleguide.com/eurucamp/). The complete source of this Middleman project [is available on Github](https://github.com/eurucamp/livingstyleguide-eurucamp). You’ll find a lot of configuration on how to make the style guide look beautiful.
 
 
@@ -163,7 +164,9 @@ your Sass.
 
 There is a [separate project taking care of Gulp](https://github.com/efacilitation/gulp-livingstyleguide).
 
+
 ----
+
 
 ## Writing Examples
 
@@ -280,7 +283,7 @@ Add a list of default filters to your _styleguide.html.lsg_:
 
 ``` yaml
 default-filters:
-  - "@haml"
+  - '@haml'
 ```
 
 **Info:** YAML will fail if you don’t use quotation marks here. You should not use `@coffee-script` as default filter.
@@ -290,8 +293,8 @@ default-filters:
 
 ### Custom Header
 
-The examples in [the screenshot above](#living-style-guide-) use custom headers to have an individual look.
-You can add whatever HTML you want and some Sass to style it to your _styleguide.html.lsg_:
+The examples in [the screenshot above](#readme) use custom headers to have an individual look.
+You can add whatever HTML you want and some Sass to style it to your _styleguide.html.lsg:_
 
 ``` yaml
 header: |
@@ -315,6 +318,30 @@ styleguide-scss: |
 See [Custom Header](#custom-header), just use `footer:`.
 
 
+### Custom Settings
+
+Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_
+
+``` yaml
+style:
+  base-font: 'Comic Sans MS, Arial, sans-serif'
+  base-font-size: '7em'
+  background-color: 'red'
+  border-color: '$my-color'
+  color: '#eee'
+  code-color: 'darken(red, 10%)'
+  color-swatch-border-radius: '0'
+```
+
+* For a full list of options, [have a look at the source](https://github.com/hagenburger/livingstyleguide/blob/master/stylesheets/_livingstyleguide.scss) (just strip `$livingstyleguide--` from the variables).
+* Every Sass expression is allowed
+* Variables defined in your production Sass are available
+* `code-color` generates a whole color scheme for syntax highlighting in your corporate colors
+* `color-swatch-border-radius: 0` creates squared color swatches
+
+Just play a bit and create an individual style guide which represents your personal taste :)
+
+
 ----
 
 
@@ -334,6 +361,7 @@ Or install it yourself as:
 
     $ gem install livingstyleguide
 
+
 ----
 
 
@@ -345,12 +373,12 @@ Or install it yourself as:
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+
 ----
 
 
 ## Copyright
 
-Copyright (c) 2012 – 2014 [Nico Hagenburger](http://www.hagenburger.net).
+Copyright 2012—2014 [Nico Hagenburger](http://www.hagenburger.net).
 See [MIT-LICENSE.md](MIT-LICENSE.md) for details.
-Get in touch with [@hagenburger](http://twitter.com/hagenburger) on Twitter.
-
+Get in touch with [@hagenburger](http://twitter.com/hagenburger) on Twitter or [open an issue](https://github.com/hagenburger/livingstyleguide/issues/new).
