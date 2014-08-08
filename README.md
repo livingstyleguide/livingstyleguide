@@ -18,6 +18,7 @@ your Sass.
 * [Middleman Integration](#middleman-integration)
 * [Gulp](#gulp)
 * [Writing Examples](#writing-examples)
+* [Styling the Style Guide](#styling-the-style-guide)
 
 
 ## Command Line Interface
@@ -267,6 +268,35 @@ No syntax highlighter:
     ~~~ plain
     <div>Some HTML that just gets syntax-higlighted but not put into the document’s DOM</div>
     ~~~
+
+
+## Styling the Style Guide
+
+### Custom Header
+
+The examples in [the screenshot above](#living-style-guide) use custom headers to have an individual look.
+You can add whatever HTML you want and some Sass to style it to your _styleguide.html.lsg_:
+
+``` yaml
+header: |
+  <div class="my-header">
+    <img src="logo.svg">
+  </div>
+
+styleguide-scss: |
+  .my-header {
+    background: red;
+    text-align: center;
+    padding: 100px;
+  }
+```
+
+[Here’s the code](https://github.com/eurucamp/livingstyleguide-eurucamp/blob/master/source/index.html.lsg#L71-L80) of the custom header in the example of the screenshot.
+
+
+### Custom Footer
+
+See [Custom Header](#custom-header), just use `footer:`.
 
 
 ----
