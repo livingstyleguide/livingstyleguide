@@ -315,6 +315,29 @@ styleguide-scss: |
 See [Custom Header](#custom-header), just use `footer:`.
 
 
+### Custom Settings
+
+Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_
+
+``` yaml
+style:
+  base-font: 'Comic Sans MS, Arial, sans-serif'
+  base-font-size: '7em'
+  background-color: 'red'
+  border-color: '$my-color'
+  color: '#eee'
+  code-color: 'darken(red, 10%)'
+  color-swatch-border-radius: '0'
+```
+
+* For a full list of options, [have a look at the source](https://github.com/hagenburger/livingstyleguide/blob/master/stylesheets/_livingstyleguide.scss) (just ignore `$livingstyleguide--` from the variables.
+* Every Sass expression is allowed
+* Variables defined in your production Sass are available
+* `code-color` generates a whole color scheme for syntax highlighting in your corporate colors
+* `color-swatch-border-radius: 0` creates squared color swatches
+
+Just play a bit and create an individual style guide which represents your personal taste :)
+
 ----
 
 
