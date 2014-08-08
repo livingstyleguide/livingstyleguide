@@ -14,6 +14,7 @@ your Sass.
 * [Rails Integration](#rails-integration)
 * [Middleman Integration](#middleman-integration)
 * [Gulp](#gulp)
+* [Writing Examples](#writing-examples)
 
 
 ## Command Line Interface
@@ -160,7 +161,19 @@ There is a [separate project taking care of Gulp](https://github.com/efacilitati
 
 ----
 
-## More
+## Writing Examples
+
+A default example outputs the HTML source as:
+
+* Real HTML in a wrapper to display the results
+* Syntax-highligted code below
+
+    ~~~
+    <button class="button">Example button</button>
+    ~~~
+
+There are more **filters** to generate output. They start with an `@` and can be put in the code block:
+
 
 ### Colors
 
