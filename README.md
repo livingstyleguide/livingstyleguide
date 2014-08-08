@@ -251,6 +251,21 @@ Use your own text (defaults to “ABC…\nabc…\n123…\n!&…” if not set):
     ~~~
 
 
+### Output Code
+
+If you just want to output code with no extras (just like in a normal Markdown file), you only need to add the language:
+
+    ~~~ html
+    <div>Some HTML that just gets syntax-higlighted but not put into the document’s DOM</div>
+    ~~~
+
+No syntax highlighter:
+
+    ~~~ plain
+    <div>Some HTML that just gets syntax-higlighted but not put into the document’s DOM</div>
+    ~~~
+
+
 ----
 
 
