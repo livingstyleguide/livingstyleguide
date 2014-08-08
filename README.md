@@ -200,7 +200,7 @@ Alternatively you can set the colors you want to output yourself (much better fo
 ### Haml Examples
 
 This will output the code as HTML but display the syntax highlighted
-source as Haml:
+source as Haml ([learn how to use Haml by default](#default-filters)):
 
     ```
     @haml
@@ -268,6 +268,20 @@ No syntax highlighter:
     ``` plain
     <div>Some HTML that just gets syntax-higlighted but not put into the document’s DOM</div>
     ```
+
+
+### Default Filters
+
+You can set filters to apply to all examples.
+This is useful, when you depend on Haml or other templating engines.
+Add a list of default filters to your _styleguide.html.lsg_:
+
+``` yaml
+default-filters:
+  - "@haml"
+```
+
+**Info:** YAML will fail if you don’t use quotation marks here. You should not use `@coffee-script` as default filter.
 
 
 ## Styling the Style Guide
