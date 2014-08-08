@@ -274,7 +274,7 @@ No syntax highlighter:
 
 ### Custom Header
 
-The examples in [the screenshot above](#living-style-guide) use custom headers to have an individual look.
+The examples in [the screenshot above](#living-style-guide-) use custom headers to have an individual look.
 You can add whatever HTML you want and some Sass to style it to your _styleguide.html.lsg_:
 
 ``` yaml
