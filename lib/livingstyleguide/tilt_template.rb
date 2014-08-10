@@ -85,7 +85,7 @@ module ::Tilt
     def find_root_path
       path = File.dirname(@file)
       while path.length > 0 do
-        if File.exists?(File.join(path, 'Gemfile'))
+        if File.exists?(File.join(path, 'Gemfile')) or File.exists?(File.join(path, '.git'))
           break
         end
         path = File.expand_path('..', path)
