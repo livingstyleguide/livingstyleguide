@@ -25,8 +25,8 @@ class MarkdownTest < Minitest::Test
 
   def test_javascript_includes
     html = render('test/fixtures/standalone/styleguide-with-javascript.html.lsg')
-    assert_match %r(<script src="modernizr.js"></script>.*</head>), html
-    assert_match %r(<script src="http://code.jquery.com/jquery-2.0.3.js"></script> <script src="application.js"></script> </body>), html
+    assert_match %r(<script src="modernizr.js"></script> <script>alert\("Hello World!"\)</script>.*</head>), html
+    assert_match %r(<script src="http://code.jquery.com/jquery-2.0.3.js"></script> <script src="application.js"></script> <script>alert\("Goodbye World!"\)</script>.*</body>), html
   end
 
   def test_additional_scss_code
