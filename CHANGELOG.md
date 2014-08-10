@@ -4,6 +4,7 @@
 
 * Automatically find project root by Git root, Gemfile, or Rails root
 * Allow JavaScript code in `javascript-before` and `javascript-after`
+* Configurable `text-align` for `base` and `headline`
 
 
 ## 1.0.6
