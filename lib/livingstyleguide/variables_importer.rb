@@ -20,9 +20,6 @@ module LivingStyleGuide
       nil
     end
 
-    def root
-    end
-
     def find_relative(uri, base, options)
       nil
     end
@@ -64,9 +61,9 @@ module LivingStyleGuide
 
     def all_variables
       variables = []
-      test = /^#{File.dirname(@options[:filename])}/
+      test = /^#{File.expand_path(@options[:living_style_guide].options[:root])}/
       @options[:living_style_guide].files.each do |file|
-        if file =~ test
+        if File.expand_path(file) =~ test
           sass = File.read(file)
           variables << sass.scan(%r(\$([a-z\-_]+)\s*:))
         end
