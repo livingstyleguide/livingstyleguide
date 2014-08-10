@@ -17,9 +17,11 @@ class VariablesImporterTest < Minitest::Test
   end
 
   def test_variables_outside_of_root_using_git
+    Dir.mkdir 'test/fixtures/standalone/variables/git/.git'
     html = render('test/fixtures/standalone/variables/git/styleguide/styleguide.html.lsg')
     assert_match %r(\.\\\$green), html
     refute_match %r(\.\\\$red), html
+    Dir.rmdir 'test/fixtures/standalone/variables/git/.git'
   end
 
   private
