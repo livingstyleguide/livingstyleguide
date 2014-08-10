@@ -17,7 +17,7 @@
 .livingstyleguide--unordered-list-item,
 .livingstyleguide--ordered-list-item {
   @extend %livingstyleguide--reset;
-  display: block;
+  display: list-item;
   list-style: disc;
   margin: ceil($livingstyleguide--gap-width / 2) 0 ceil($livingstyleguide--gap-width / 2) (2 * $livingstyleguide--gap-width);
 }

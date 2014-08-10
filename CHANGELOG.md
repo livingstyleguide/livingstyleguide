@@ -5,6 +5,7 @@
 * Automatically find project root by Git root, Gemfile, or Rails root
 * Allow JavaScript code in `javascript-before` and `javascript-after`
 * Configurable `text-align` for `base` and `headline`
+* [Fixed styling](https://github.com/hagenburger/livingstyleguide/issues/76) of `<ul>`/`<ol>`
 
 
 ## 1.0.6
