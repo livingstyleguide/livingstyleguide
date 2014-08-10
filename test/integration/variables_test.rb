@@ -16,6 +16,12 @@ class VariablesImporterTest < Minitest::Test
     refute_match %r(\.\\\$red), html
   end
 
+  def test_variables_outside_of_root_using_git
+    html = render('test/fixtures/standalone/variables/git/styleguide/styleguide.html.lsg')
+    assert_match %r(\.\\\$green), html
+    refute_match %r(\.\\\$red), html
+  end
+
   private
   def render(file)
     Tilt.new(file).render.gsub(/\s+/, ' ')
