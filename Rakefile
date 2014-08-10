@@ -18,6 +18,8 @@ task :deploy do
 end
 
 task :release do
+  branch = `git rev-parse --abbrev-ref HEAD`.strip
+  raise 'Please switch to `master` first.' unless branch == 'master'
   Rake::Task['deploy'].execute
 end
 
