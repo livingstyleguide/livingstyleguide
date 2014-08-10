@@ -10,24 +10,16 @@ class VariablesImporterTest < Minitest::Test
     Compass.configure_sass_plugin!
   end
 
-  def render(scss)
-    scss    = %Q(@import "compass"; #{scss})
-    options = Compass.sass_engine_options
-    options[:line_comments]      = false
-    options[:style]              = :expanded
-    options[:syntax]             = :scss
-    options[:compass]          ||= {}
-    options[:compass][:logger] ||= Compass::NullLogger.new
-    css = Sass::Engine.new(scss, options).render
-    format_css(css)
+  def test_variables_outside_of_root_using_gemfile
+    html = render('test/fixtures/standalone/variables/gemfile/styleguide/styleguide.html.lsg')
+    assert_match %r(\.\\\$green), html
+    refute_match %r(\.\\\$red), html
   end
 
-  def format_css(css)
-    css.gsub! %Q(@charset "UTF-8";), ''
-    css.gsub! %r(\n), "\n      "
-    css.gsub! %r( +$), ''
-    css.gsub! %r(\n\n+), "\n"
-    css.strip!
-    %Q(      #{css}\n)
+  private
+  def render(file)
+    Tilt.new(file).render.gsub(/\s+/, ' ')
   end
+
 end
+

@@ -46,6 +46,8 @@ module ::Tilt
       end
       @options[:syntax] = @options.has_key?(:styleguide_sass) ? :sass : :scss
       @options[:source] ||= File.basename(file, '.html.lsg')
+      @options[:filename] = file
+      @options[:root] ||= root
     end
 
     private
@@ -75,8 +77,20 @@ module ::Tilt
       if @scope.respond_to?(:environment)
         @scope.environment.root
       else
-        File.dirname(@file)
+        find_root_path
       end
+    end
+
+    private
+    def find_root_path
+      path = File.dirname(@file)
+      while path.length > 0 do
+        if File.exists?(File.join(path, 'Gemfile'))
+          break
+        end
+        path = File.expand_path('..', path)
+      end
+      path
     end
 
     private
