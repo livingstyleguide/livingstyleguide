@@ -73,9 +73,7 @@ module LivingStyleGuide
     end
 
     def head
-      (@engine.options[:javascript_before] || []).map do |src|
-        %Q(<script src="#{src}"></script>)
-      end.join("\n")
+      javascript_tags_for(@engine.options[:javascript_before]).join("\n")
     end
 
     def header
@@ -85,10 +83,20 @@ module LivingStyleGuide
 
     def footer
       contents = [@engine.options[:footer]]
-      contents << (@engine.options[:javascript_after] || []).map do |src|
-        %Q(<script src="#{src}"></script>)
-      end
+      contents << javascript_tags_for(@engine.options[:javascript_after])
       contents.join("\n")
+    end
+
+    private
+    def javascript_tags_for(list)
+      return [] unless list
+      list.map do |src|
+        if src =~ /\.js$/
+          %Q(<script src="#{src}"></script>)
+        else
+          %Q(<script>#{src}</script>)
+        end
+      end
     end
 
   end
