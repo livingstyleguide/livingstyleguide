@@ -9,6 +9,7 @@
   font-weight: $livingstyleguide--base-font-weight;
   line-height: $livingstyleguide--base-line-height;
   margin: $livingstyleguide--gap-width auto;
+  text-align: $livingstyleguide--base-text-align;
   width: $livingstyleguide--width;
   -webkit-font-smoothing: antialiased;
 }
@@ -33,6 +34,7 @@
   font-weight: $livingstyleguide--headline-font-weight;
   line-height: $livingstyleguide--headline-line-height;
   margin: (3 * $livingstyleguide--gap-width) auto $livingstyleguide--gap-width;
+  text-align: $livingstyleguide--headline-text-align;
   width: $livingstyleguide--width;
   -webkit-font-smoothing: antialiased;
 }
