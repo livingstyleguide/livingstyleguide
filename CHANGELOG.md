@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0
+
+* Automatically find project root by Git root, Gemfile, or Rails root
+
+
 ## 1.0.6
 
 * Support for variables that contain numbers in their name
