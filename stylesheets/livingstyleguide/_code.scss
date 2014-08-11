@@ -1,3 +1,7 @@
+.livingstyleguide--code {
+  @extend %livingstyleguide--reset;
+}
+
 .livingstyleguide--code-span,
 .livingstyleguide--code-block {
   @extend %livingstyleguide--reset;
@@ -13,6 +17,7 @@
   -webkit-font-smoothing: subpixel-antialiased;
 
   kbd {
+    @extend %livingstyleguide--reset;
     display: block;
     font-weight: bold;
 
@@ -22,6 +27,7 @@
   }
 
   em {
+    @extend %livingstyleguide--reset;
     color: lighten($livingstyleguide--code-color, 10%);
     display: inline;
     font-style: normal;
@@ -31,6 +37,7 @@
   }
 
   b {
+    @extend %livingstyleguide--reset;
     color: lighten($livingstyleguide--code-color, 20%);
     display: inline;
     font-weight: bold;
@@ -38,12 +45,14 @@
   }
 
   i {
+    @extend %livingstyleguide--reset;
     color: lighten($livingstyleguide--code-color, 30%);
     display: inline;
     vertical-align: baseline;
   }
 
   q {
+    @extend %livingstyleguide--reset;
     color: lighten($livingstyleguide--code-color, 30%);
     display: inline;
     vertical-align: baseline;
@@ -55,6 +64,7 @@
   }
 
   var {
+    @extend %livingstyleguide--reset;
     display: inline;
     text-decoration: underline;
     vertical-align: baseline;
