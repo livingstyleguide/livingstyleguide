@@ -4,7 +4,7 @@
 
 * Fixed two CSS reseting problems that slightly broke the design
   ([#82](https://github.com/hagenburger/livingstyleguide/issues/82),
-[#85](https://github.com/hagenburger/livingstyleguide/issues/85)
+[#85](https://github.com/hagenburger/livingstyleguide/issues/85))
 
 
 ## 1.1.0
