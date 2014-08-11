@@ -111,6 +111,10 @@ your Sass project.
    ```
 * There is a [Rails example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/rails-example) available on Github.
 
+### Using it with Rails 4
+
+Since Rails 4 non-digest assets are not created anymore. If you want a public sharable url consider using something like [Non Stupid Digest Assets](https://github.com/alexspeller/non-stupid-digest-assets)
+
 
 ## Middleman Integration
 
