@@ -19,14 +19,20 @@ module LivingStyleGuide
       @source = source
       @options = @@default_options.merge(options)
       @sass_options = sass_options
-      @markdown = ''
-      @files = []
     end
 
     def render
       data = TemplateData.new(self)
       template = File.read(File.join(File.dirname(__FILE__), '..', '..', 'templates', 'layouts', 'default.html.erb'))
       ERB.new(template).result(data.get_binding)
+    end
+
+    def files
+      @files ||= generate_file_list(sass_engine.to_tree)
+    end
+
+    def markdown
+      @markdown ||= generate_markdown
     end
 
     def css
@@ -40,11 +46,36 @@ module LivingStyleGuide
     end
 
     private
+    def generate_file_list(node)
+      list = []
+      list << node.filename if node.filename =~ /\.s[ac]ss/
+      node.children.each do |child|
+        if child.is_a?(Sass::Tree::ImportNode)
+          list += generate_file_list(child.imported_file.to_tree)
+        end
+      end
+      list
+    end
+
+    private
     def sass_engine
       return @sass_engine if @sass_engine
       sass_options = @sass_options.clone
       sass_options[:living_style_guide] = self
       @sass_engine = ::Sass::Engine.new(@source, sass_options)
+    end
+
+    private
+    def generate_markdown
+      source = ''
+      files.clone.each do |sass_filename|
+        glob = "#{sass_filename.sub(/\.s[ac]ss$/, '')}.md"
+        Dir.glob(glob) do |markdown_filename|
+          files << markdown_filename
+          source << File.read(markdown_filename)
+        end
+      end
+      source
     end
 
   end

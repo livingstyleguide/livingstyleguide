@@ -25,12 +25,11 @@ module ::Tilt
         options[:load_paths] = options[:load_paths] | Rails.application.config.assets.paths
       end
       options[:template_location].each do |path, short|
-        options[:load_paths] << ::LivingStyleGuide::Importer.new(path)
+        options[:load_paths] << path
       end
       options[:filename]  = eval_file
       options[:line]      = line
       options[:syntax]    = @options[:syntax]
-      options[:importer]  = LivingStyleGuide::Importer.new('.')
       options[:sprockets] = { context: @scope }
       options[:custom]    = { sprockets_context: @scope }
       options
@@ -56,7 +55,7 @@ module ::Tilt
         %Q(@import "#{@options[:source]}"),
         style_variables,
         %Q(@import "livingstyleguide"),
-        %Q(@import "#{::LivingStyleGuide::VariablesImporter::VARIABLE_IMPORTER_STRING}"),
+        #%Q(@import "#{::LivingStyleGuide::VariablesImporter::VARIABLE_IMPORTER_STRING}"),
         @options[:styleguide_sass] || @options[:styleguide_scss]
       ].flatten.join(@options[:syntax] == :sass ? "\n" : ';')
     end
@@ -64,10 +63,10 @@ module ::Tilt
     private
     def configure_cache
       return unless @scope.respond_to?(:depend_on)
-      test = /^#{root}/
+      test = /^#{File.expand_path(root)}\//
       @engine.files.uniq.each do |file|
-        if file =~ test
-          @scope.depend_on file
+        if File.expand_path(file) =~ test
+          @scope.depend_on $'
         end
       end
     end
