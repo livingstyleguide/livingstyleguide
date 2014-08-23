@@ -62,11 +62,8 @@ module ::Tilt
     private
     def configure_cache
       return unless @scope.respond_to?(:depend_on)
-      test = /^#{File.expand_path(root)}\//
       @engine.files.uniq.each do |file|
-        if File.expand_path(file) =~ test
-          @scope.depend_on file
-        end
+        @scope.depend_on file
       end
     end
 
