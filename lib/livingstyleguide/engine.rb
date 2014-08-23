@@ -1,7 +1,7 @@
 module LivingStyleGuide
 
   class Engine
-    attr_accessor :markdown, :files, :options
+    attr_accessor :markdown, :files, :options, :variables
 
     @@default_options = {
       default_language: 'example',
@@ -19,6 +19,9 @@ module LivingStyleGuide
       @source = source
       @options = @@default_options.merge(options)
       @sass_options = sass_options
+      @variables = []
+      @files = []
+      @markdown = ''
     end
 
     def render
@@ -28,11 +31,18 @@ module LivingStyleGuide
     end
 
     def files
-      @files ||= generate_file_list(sass_engine.to_tree)
+      collect_data if @files.empty?
+      @files
+    end
+
+    def variables
+      collect_data if @variables.empty?
+      @variables
     end
 
     def markdown
-      @markdown ||= generate_markdown
+      generate_markdown if @markdown.empty?
+      @markdown
     end
 
     def css
@@ -46,15 +56,20 @@ module LivingStyleGuide
     end
 
     private
-    def generate_file_list(node)
-      list = []
-      list << node.filename if node.filename =~ /\.s[ac]ss/
+    def collect_data
+      collect_data_for sass_engine.to_tree
+    end
+
+    private
+    def collect_data_for(node = nil)
+      @files << node.filename if node.filename =~ /\.s[ac]ss/
       node.children.each do |child|
         if child.is_a?(Sass::Tree::ImportNode)
-          list += generate_file_list(child.imported_file.to_tree)
+          collect_data_for child.imported_file.to_tree
+        elsif child.is_a?(Sass::Tree::VariableNode)
+          @variables << child.name
         end
       end
-      list
     end
 
     private
@@ -63,19 +78,29 @@ module LivingStyleGuide
       sass_options = @sass_options.clone
       sass_options[:living_style_guide] = self
       @sass_engine = ::Sass::Engine.new(@source, sass_options)
+      tree = @sass_engine.to_tree
+      collect_data
+      tree << variables_importer(sass_options)
+      @sass_engine
+    end
+
+    private
+    def variables_importer(sass_options)
+      vi = ::Sass::Tree::ImportNode.new(VariablesImporter::VARIABLE_IMPORTER_STRING)
+      vi.options = sass_options
+      vi
     end
 
     private
     def generate_markdown
-      source = ''
       files.clone.each do |sass_filename|
+        next unless sass_filename.is_a?(String)
         glob = "#{sass_filename.sub(/\.s[ac]ss$/, '')}.md"
         Dir.glob(glob) do |markdown_filename|
           files << markdown_filename
-          source << File.read(markdown_filename)
+          @markdown << File.read(markdown_filename)
         end
       end
-      source
     end
 
   end
