@@ -7,7 +7,7 @@ describe "Sprockets integration" do
     template = Tilt.new('test/fixtures/standalone/styleguide.html.lsg')
     context = Minitest::Mock.new
     %w(style.scss modules/_buttons.scss modules/_buttons.md).each do |file|
-      context.expect :depend_on, nil, [file]
+      context.expect :depend_on, nil, ["test/fixtures/standalone/#{file}"]
     end
 
     template.render context
