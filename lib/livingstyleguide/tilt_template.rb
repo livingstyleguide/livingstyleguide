@@ -4,8 +4,8 @@ require 'compass'
 require 'yaml'
 require 'json'
 
-module ::Tilt
-  class LivingStyleGuideTemplate < Template
+module LivingStyleGuide
+  class TiltTemplate < ::Tilt::Template
     self.default_mime_type = 'text/html'
 
     def prepare
@@ -104,7 +104,7 @@ module ::Tilt
       html
     end
   end
-
-  register 'lsg', LivingStyleGuideTemplate
 end
+
+Tilt.register 'lsg', LivingStyleGuide::TiltTemplate
 
