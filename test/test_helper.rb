@@ -11,7 +11,7 @@ def parse_file(filename)
   syntax   = :scss unless [:scss, :sass].include?(syntax)
   options  = {
     :filename   => filename,
-    :load_paths => [File.dirname(filename), LivingStyleGuide::Importer.instance],
+    :load_paths => [File.dirname(filename)],
     :syntax     => syntax,
     :cache      => false,
     :read_cache => false
