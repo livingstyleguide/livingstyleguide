@@ -23,6 +23,10 @@ module LivingStyleGuide
       nil
     end
 
+    def to_s
+      self.class.name
+    end
+
     def self.variables(uri)
       uri = uri.dup
       uri += '.s?ss' unless uri =~ /\.s[ac]ss$/
