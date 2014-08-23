@@ -57,15 +57,20 @@ module LivingStyleGuide
 
     private
     def collect_data
-      collect_data_for sass_engine.to_tree
+      root = File.expand_path(@options[:root])
+      filter = /^#{root}\/.+\.(scss|sass|lsg)$/
+      collect_data_for sass_engine.to_tree, filter
+      @files.shift # ignore *.lsg file
     end
 
     private
-    def collect_data_for(node = nil)
-      @files << node.filename if node.filename =~ /\.s[ac]ss/
+    def collect_data_for(node, filter)
+      filename = File.expand_path(node.filename)
+      return unless filename =~ filter
+      @files << filename
       node.children.each do |child|
         if child.is_a?(Sass::Tree::ImportNode)
-          collect_data_for child.imported_file.to_tree
+          collect_data_for child.imported_file.to_tree, filter
         elsif child.is_a?(Sass::Tree::VariableNode)
           @variables << child.name
         end
