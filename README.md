@@ -57,7 +57,7 @@ your Sass project.
 
 ### Tipps for the Command Line Interface
 
-* Create your project with [Compass](http://compass-style.org). In future, the LivingStyleGuide will not depend on Compass, but for now, this works best.
+* Create your project with or without [Compass](http://compass-style.org).
 * This can be easily integrated into non-Ruby build systems.
 
 
