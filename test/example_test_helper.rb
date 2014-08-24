@@ -6,15 +6,15 @@ class ExampleTestCase < Minitest::Test
     @class = Class.new(LivingStyleGuide::Example)
   end
 
-  def assert_render_equals(input, expected_output, options = nil)
+  def assert_render_equals(input, expected_output, options = nil, engine = nil)
     options ||= LivingStyleGuide::Engine.default_options
-    output = @class.new(input.unindent, options).render
+    output = @class.new(input.unindent, options, engine).render
     assert_equal(normalize(expected_output), normalize(output))
   end
 
-  def assert_render_match(input, expected_output, options = nil)
+  def assert_render_match(input, expected_output, options = nil, engine = nil)
     options ||= LivingStyleGuide::Engine.default_options
-    output = @class.new(input.unindent, options).render
+    output = @class.new(input.unindent, options, engine).render
     assert_match(/#{normalize(expected_output)}/, normalize(output))
   end
 

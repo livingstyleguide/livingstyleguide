@@ -15,9 +15,10 @@ module LivingStyleGuide
 
   class RedcarpetHTML < ::Redcarpet::Render::HTML
 
-    def initialize(options = {})
+    def initialize(options = {}, engine)
       @options = options
-      super
+      @engine = engine
+      super @options
     end
 
     def header(text, header_level)
@@ -43,7 +44,7 @@ module LivingStyleGuide
     def block_code(code, language)
       language ||= @options[:default_language]
       if language == 'example'
-        Example.new(code, @options).render
+        Example.new(code, @options, @engine).render
       else
         CodeBlock.new(code.strip, language.to_s.strip.to_sym).render
       end

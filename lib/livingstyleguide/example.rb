@@ -10,11 +10,12 @@ class LivingStyleGuide::Example
   FILTER_REGEXP = /^@([a-z\-_]+)(?:\s+(.+?))?$/
 
   define_hooks :filter_before, :filter_after, :html, :pre_processor
-  attr_reader :options
+  attr_reader :options, :engine
   @@filters = {}
 
-  def initialize(input, options = {})
+  def initialize(input, options, engine)
     @options = { default_filters: [] }.merge(options)
+    @engine = engine
     @source = input
     @wrapper_classes = %w(livingstyleguide--example)
     @syntax = :html

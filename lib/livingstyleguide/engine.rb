@@ -48,7 +48,7 @@ module LivingStyleGuide
     end
 
     def html
-      renderer = RedcarpetHTML.new(@options)
+      renderer = RedcarpetHTML.new(@options, self)
       redcarpet = ::Redcarpet::Markdown.new(renderer, REDCARPET_RENDER_OPTIONS)
       redcarpet.render(markdown)
     end
