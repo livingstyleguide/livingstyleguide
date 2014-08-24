@@ -1,28 +1,27 @@
 $diamonds--item-size: 160px;
 $diamonds--item-rotated-size: floor(sqrt(2 * pow($diamonds--item-size, 2)));
-$diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
-                      #F4A7BE (#D0156E url("/images/diamonds--logo.svg") -130px -130px no-repeat) #F8AAC1 #E293AA,
+$diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
+                      #F4A7BE #F8AAC1 (#D0156E url("/images/diamonds--logo.svg") -130px -130px no-repeat) #E293AA #EE97B0,
                   #FF96B5 (#CA1F70 url("/images/diamonds--logo.svg") -130px 30px no-repeat) (#CA1B6E url("/images/diamonds--logo.svg") 30px -130px no-repeat) #FF96B5,
-                      #EB83A2 (#C42872 url("/images/diamonds--logo.svg") 30px 30px no-repeat) #EF6991,
-                  #FF96B5 #EF6991 #FF96B5,
-                      #ECA2B8 #EE97B0,
-                  #FF96B5 #E293AA,
-                      #FF96B5,
-                  #EF6991;
+                      #EB83A2 (#C42872 url("/images/diamonds--logo.svg") 30px 30px no-repeat) #F8AAC1,
+                  #FF96B5 #F199B2,
+                      #ECA2B8;
 
 .diamonds {
+  left: 50%;
   position: absolute;
   top: 0;
   width: length(nth($diamonds--items, 1)) * $diamonds--item-rotated-size;
   z-index: 1;
   @include transform-origin(0 0 0);
+  @include transform(translateX(-50%));
 
   $last-max-width: 0;
   @for $i from 3 to 7 {
     $scale: $i / 5 - 0.3;
     $max-width: $i * 200px;
     @media all and (min-width: #{$last-max-width + 1px}) and (max-width: #{$max-width}) {
-      @include transform(scale($scale));
+      @include transform(scale($scale) translateX(-50%));
     }
     $last-max-width: $max-width;
   }
@@ -63,23 +62,24 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
   $item-number: 0;
   $row-number: 0;
   @each $row in $diamonds--items {
-    $first: true;
+    $current-item-number: 0;
     $row-number: $row-number + 1;
     @each $item in $row {
       $item-number: $item-number + 1;
+      $current-item-number: $current-item-number + 1;
       &:nth-child(#{$item-number}) {
-        @if $first {
-          $first: false;
-          clear: left;
-          @if $row-number % 2 == 0 {
-            margin-left: 0;
+        &:after {
+          @if $current-item-number == 1 or $current-item-number == length(nth($diamonds--items, $row-number)) {
+            background: scale-color(lighten($item, 10%), $lightness: 70%, $saturation: 70%);
+            background: $item;
           }
           @else {
-            margin-left: floor($diamonds--item-rotated-size / -2);
+            background: $item;
           }
         }
-        &:after {
-          background: $item;
+        @if $current-item-number == 1 {
+          clear: left;
+          margin-left: floor($diamonds--item-rotated-size / 2 * ($row-number - 1) + $margin);
         }
       }
     }
