@@ -4,7 +4,7 @@ $links--item-size: 160px;
 .links {
   display: block;
   position: absolute;
-  width: 2 * $diamonds--item-roteted-size + 4px;
+  width: 2 * $diamonds--item-rotated-size + 4px;
   z-index: 2;
   @include transform-origin(0 0 0);
 
@@ -22,7 +22,7 @@ $links--item-size: 160px;
 }
 
 .links--item {
-  $margin: floor(($diamonds--item-roteted-size - $diamonds--item-size) / 2);
+  $margin: floor(($diamonds--item-rotated-size - $diamonds--item-size) / 2);
   color: $black;
   display: inline-block;
   font-size: 18px;
@@ -40,7 +40,7 @@ $links--item-size: 160px;
   &:first-child,
   &:last-child {
     clear: left;
-    margin-left: $margin + 1px;// floor($diamonds--item-roteted-size / 2) + $margin + 1px;
+    margin-left: $margin + 1px;// floor($diamonds--item-rotated-size / 2) + $margin + 1px;
   }
 
   &:hover {
