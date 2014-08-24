@@ -25,8 +25,7 @@ module LivingStyleGuide
     end
 
     def render
-      data = TemplateData.new(self)
-      template('layout.html.erb', data)
+      template('layout.html.erb')
     end
 
     def files
@@ -82,17 +81,15 @@ module LivingStyleGuide
       sass_options = @sass_options.clone
       sass_options[:living_style_guide] = self
       @sass_engine = ::Sass::Engine.new(@source, sass_options)
-      tree = @sass_engine.to_tree
       collect_data
-      tree << variables_importer(sass_options)
+      @sass_engine.to_tree << output_variables
       @sass_engine
     end
 
     private
-    def variables_importer(sass_options)
-      vi = ::Sass::Tree::ImportNode.new(VariablesImporter::VARIABLE_IMPORTER_STRING)
-      vi.options = sass_options
-      vi
+    def output_variables
+      scss = template('variables.scss.erb')
+      ::Sass::Engine.new(scss, syntax: :scss).to_tree.children
     end
 
     private
@@ -108,7 +105,8 @@ module LivingStyleGuide
     end
 
     private
-    def template(filename, data)
+    def template(filename)
+      data = TemplateData.new(self)
       erb = File.read(File.join(File.dirname(__FILE__), 'templates', filename))
       ERB.new(erb).result(data.get_binding)
     end
@@ -132,6 +130,10 @@ module LivingStyleGuide
 
     def css
       @engine.css
+    end
+
+    def variables
+      @engine.variables
     end
 
     def html
