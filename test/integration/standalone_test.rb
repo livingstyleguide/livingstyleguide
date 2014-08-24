@@ -72,10 +72,14 @@ class MarkdownTest < Minitest::Test
     assert_match %r(\.\\\$some-map), html
   end
 
+  def test_duplicate_imports_rendered_once
+    html = render('test/fixtures/standalone/styleguide-dup-imports.html.lsg')
+    assert_equal 1, html.scan(%r(<h2 class="livingstyleguide--headline" id="buttons")).size
+  end
+
   private
   def render(file)
     Tilt.new(file).render.gsub(/\s+/, ' ')
   end
 
 end
-
