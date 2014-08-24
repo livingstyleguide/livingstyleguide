@@ -4,7 +4,7 @@ require 'tilt'
 class MarkdownTest < Minitest::Test
 
   def render_markdown(file, options)
-    engine = LivingStyleGuide::Engine.new('', options, {})
+    engine = LivingStyleGuide::Engine.new(options, {})
     engine.markdown = File.read(file)
     engine.html
   end
