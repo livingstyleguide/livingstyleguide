@@ -64,26 +64,46 @@ module LivingStyleGuide
 
     private
     def collect_data
-      root = File.expand_path(@options[:root])
-      filter = /^#{root}\/.+\.(scss|sass|lsg)$/
-      collect_data_for sass_engine.to_tree, filter
-      @files.shift # ignore *.lsg file
+      traverse_children sass_engine.to_tree
     end
 
     private
-    def collect_data_for(node, filter)
-      filename = File.expand_path(node.filename)
-      return unless filename =~ filter
-      @files << filename
+    def traverse_children(node)
       node.children.each do |child|
         if child.is_a?(Sass::Tree::ImportNode)
-          collect_data_for child.imported_file.to_tree, filter
+          add_file child.imported_file.to_tree
         elsif child.is_a?(Sass::Tree::VariableNode)
-          key = node.filename.gsub(/(?<=^|\/)_?([^\/]+?)\.s[ac]ss$/, '\\1')
-          @variables[key] ||= []
-          @variables[key] << child.name
+          add_variable child
         end
       end
+    end
+
+    private
+    def add_file(node)
+      filename = File.expand_path(node.filename)
+      if local_sass_file?(filename)
+        @files << filename
+        traverse_children node
+      end
+    end
+
+    private
+    def add_variable(node)
+      key = import_filename(node.filename)
+      @variables[key] ||= []
+      @variables[key] << node.name
+    end
+
+    private
+    def local_sass_file?(filename)
+      @local_sass_file_regexp ||= /^#{File.expand_path(@options[:root])}\/.+\.s[ac]ss$/
+      filename =~ @local_sass_file_regexp
+    end
+
+    private
+    def import_filename(filename)
+      @import_filename_regexp ||= /(?<=^|\/)_?([^\/]+?)\.s[ac]ss$/
+      filename.sub(@import_filename_regexp, '\\1')
     end
 
     private
