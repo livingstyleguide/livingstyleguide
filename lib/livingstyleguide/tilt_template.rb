@@ -1,6 +1,5 @@
 require 'tilt'
 require 'erb'
-require 'compass'
 require 'yaml'
 require 'json'
 
@@ -20,12 +19,19 @@ module LivingStyleGuide
 
     private
     def sass_options
-      options = Compass.configuration.to_sass_plugin_options
-      if defined?(Rails)
-        options[:load_paths] = options[:load_paths] | Rails.application.config.assets.paths
+      if defined?(Compass)
+        options = Compass.configuration.to_sass_plugin_options
+      else
+        load_path = File.join(File.dirname(__FILE__), '..', '..', 'stylesheets')
+        options = { load_paths: [load_path] }
       end
-      options[:template_location].each do |path, short|
-        options[:load_paths] << path
+      if defined?(Rails)
+        options[:load_paths] += Rails.application.config.assets.paths
+      end
+      if options[:template_location]
+        options[:template_location].each do |path, short|
+          options[:load_paths] << path
+        end
       end
       options[:filename]  = eval_file
       options[:line]      = line
