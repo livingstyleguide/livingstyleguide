@@ -3,7 +3,7 @@ LivingStyleGuide::Example.add_filter :colors do |file|
 
 
   if file
-    colors = [LivingStyleGuide::VariablesImporter.variables(file)]
+    colors = [engine.variables[file]]
   else
     colors = []
   end
