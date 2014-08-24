@@ -4,7 +4,7 @@
   }
 <% end %>
 
-<% variables.each do |variable| %>
+<% variables.values.flatten.each do |variable| %>
   $<%= variable %>: null !default;
   @if $<%= variable %> != null {//and type-of($<%= variable %>) != map {
     .\$<%= variable %> {

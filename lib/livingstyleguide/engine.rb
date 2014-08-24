@@ -19,7 +19,7 @@ module LivingStyleGuide
       @source = source
       @options = @@default_options.merge(options)
       @sass_options = sass_options
-      @variables = []
+      @variables = {}
       @files = []
       @markdown = ''
     end
@@ -70,7 +70,9 @@ module LivingStyleGuide
         if child.is_a?(Sass::Tree::ImportNode)
           collect_data_for child.imported_file.to_tree, filter
         elsif child.is_a?(Sass::Tree::VariableNode)
-          @variables << child.name
+          key = node.filename.gsub(/(?<=^|\/)_?([^\/]+?)\.s[ac]ss$/, '\\1')
+          @variables[key] ||= []
+          @variables[key] << child.name
         end
       end
     end
