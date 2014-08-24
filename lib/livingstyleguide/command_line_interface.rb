@@ -1,5 +1,8 @@
 require 'rubygems'
+begin
 require 'bundler/setup'
+rescue LoadError
+end
 require 'thor'
 require 'tilt'
 
