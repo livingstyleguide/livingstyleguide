@@ -1,5 +1,5 @@
 $diamonds--item-size: 160px;
-$diamonds--item-roteted-size: floor(sqrt(2 * pow($diamonds--item-size, 2)));
+$diamonds--item-rotated-size: floor(sqrt(2 * pow($diamonds--item-size, 2)));
 $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
                       #F4A7BE (#D0156E url("/images/diamonds--logo.svg") -130px -130px no-repeat) #F8AAC1 #E293AA,
                   #FF96B5 (#CA1F70 url("/images/diamonds--logo.svg") -130px 30px no-repeat) (#CA1B6E url("/images/diamonds--logo.svg") 30px -130px no-repeat) #FF96B5,
@@ -13,7 +13,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
 .diamonds {
   position: absolute;
   top: 0;
-  width: length(nth($diamonds--items, 1)) * $diamonds--item-roteted-size;
+  width: length(nth($diamonds--items, 1)) * $diamonds--item-rotated-size;
   z-index: 1;
   @include transform-origin(0 0 0);
 
@@ -30,7 +30,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
 
 
 .diamonds--item {
-  $margin: floor(($diamonds--item-roteted-size - $diamonds--item-size) / 2);
+  $margin: floor(($diamonds--item-rotated-size - $diamonds--item-size) / 2);
   float: left;
   height: $diamonds--item-size;
   margin: floor($diamonds--item-size / -2) $margin $margin;
@@ -75,7 +75,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991,
             margin-left: 0;
           }
           @else {
-            margin-left: floor($diamonds--item-roteted-size / -2);
+            margin-left: floor($diamonds--item-rotated-size / -2);
           }
         }
         &:after {
