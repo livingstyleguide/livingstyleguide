@@ -15,8 +15,7 @@ module LivingStyleGuide
       @@default_options
     end
 
-    def initialize(source, options, sass_options)
-      @source = source
+    def initialize(options, sass_options)
       @options = @@default_options.merge(options)
       @sass_options = sass_options
       @variables = {}
@@ -41,6 +40,16 @@ module LivingStyleGuide
     def markdown
       generate_markdown if @markdown.empty?
       @markdown
+    end
+
+    def sass
+      separator = @options[:syntax] == :sass ? "\n" : ';'
+      [
+        %Q(@import "#{@options[:source]}"),
+        style_variables,
+        %Q(@import "livingstyleguide"),
+        @options[:styleguide_sass] || @options[:styleguide_scss]
+      ].flatten.join(separator)
     end
 
     def css
@@ -82,7 +91,7 @@ module LivingStyleGuide
       return @sass_engine if @sass_engine
       sass_options = @sass_options.clone
       sass_options[:living_style_guide] = self
-      @sass_engine = ::Sass::Engine.new(@source, sass_options)
+      @sass_engine = ::Sass::Engine.new(sass, sass_options)
       collect_data
       @sass_engine.to_tree << output_variables
       @sass_engine
@@ -92,6 +101,14 @@ module LivingStyleGuide
     def output_variables
       scss = template('variables.scss.erb')
       ::Sass::Engine.new(scss, syntax: :scss).to_tree.children
+    end
+
+    private
+    def style_variables
+      return unless @options.has_key?(:style)
+      @options[:style].map do |key, value|
+        "$livingstyleguide--#{key}: #{value}"
+      end
     end
 
     private

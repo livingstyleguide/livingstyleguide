@@ -13,7 +13,6 @@ module LivingStyleGuide
     def evaluate(scope, locals, &block)
       @scope = scope
       parse_options(data)
-      generate_sass
       render_living_style_guide
     end
 
@@ -56,16 +55,6 @@ module LivingStyleGuide
     end
 
     private
-    def generate_sass
-      @sass = [
-        %Q(@import "#{@options[:source]}"),
-        style_variables,
-        %Q(@import "livingstyleguide"),
-        @options[:styleguide_sass] || @options[:styleguide_scss]
-      ].flatten.join(@options[:syntax] == :sass ? "\n" : ';')
-    end
-
-    private
     def configure_cache
       return unless @scope.respond_to?(:depend_on)
       @engine.files.uniq.each do |file|
@@ -95,16 +84,8 @@ module LivingStyleGuide
     end
 
     private
-    def style_variables
-      return unless @options.has_key?(:style)
-      @options[:style].map do |key, value|
-        "$livingstyleguide--#{key}: #{value}"
-      end
-    end
-
-    private
     def render_living_style_guide
-      @engine = ::LivingStyleGuide::Engine.new(@sass, @options, sass_options)
+      @engine = ::LivingStyleGuide::Engine.new(@options, sass_options)
       html = @engine.render
       configure_cache
       html
