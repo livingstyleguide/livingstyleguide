@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0.pre.1
+
+* CLI works without having Bundler installed
+* Compass is not required anymore (but still works well)
+* Depricated `list-variables()` in SassScript for v2.0.0
+* **Internal:**
+  * Removed importer => insprect Sass tree
+  * Removed variables lookup => inspect Sass tree
+  * Refactored code and file structure
+
 ## 1.1.1
 
 * Fixed two CSS reseting problems that slightly broke the design
