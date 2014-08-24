@@ -1,5 +1,10 @@
 # Changelog
 
+## Next
+
+* Import Markdown once, even when Sass is imported twice
+
+
 ## 1.2.0.pre.1
 
 * CLI works without having Bundler installed
@@ -10,6 +15,7 @@
   * Removed importer => insprect Sass tree
   * Removed variables lookup => inspect Sass tree
   * Refactored code and file structure
+
 
 ## 1.1.1
 
