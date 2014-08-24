@@ -26,8 +26,7 @@ module LivingStyleGuide
 
     def render
       data = TemplateData.new(self)
-      template = File.read(File.join(File.dirname(__FILE__), '..', '..', 'templates', 'layouts', 'default.html.erb'))
-      ERB.new(template).result(data.get_binding)
+      template('layout.html.erb', data)
     end
 
     def files
@@ -106,6 +105,12 @@ module LivingStyleGuide
           @markdown << File.read(markdown_filename)
         end
       end
+    end
+
+    private
+    def template(filename, data)
+      erb = File.read(File.join(File.dirname(__FILE__), 'templates', filename))
+      ERB.new(erb).result(data.get_binding)
     end
 
   end
