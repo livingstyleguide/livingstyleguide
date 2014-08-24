@@ -55,7 +55,7 @@ your Sass project.
    * Show the HTML source syntax highlighted close to each example
 
 
-### Tipps for the Command Line Interface
+### Tips for the Command Line Interface
 
 * Create your project with or without [Compass](http://compass-style.org).
 * This can be easily integrated into non-Ruby build systems.
@@ -102,7 +102,7 @@ your Sass project.
    * Create a beautiful style guide
    * Show the HTML source syntax highlighted close to each example
 
-### Tipps for Rails
+### Tips for Rails
 
 *  Add the _styleguide.html_ to the precompile list in _config/application.rb_:
 
@@ -157,7 +157,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
    * Create a beautiful style guide
    * Show the HTML source syntax highlighted close to each example
 
-### Tipps for Middleman
+### Tips for Middleman
 
 * Don’t put the _styleguide.html.lsg_ into your CSS folder (`source/css/`). It won’t work.
 * There is a [Middleman example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/middleman-example) available on Github.
