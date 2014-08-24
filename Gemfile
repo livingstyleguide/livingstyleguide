@@ -4,6 +4,6 @@ source 'https://rubygems.org'
 gemspec
 
 # Use latest for testing, but allow older versions in the gemspec:
-gem 'sass', '~> 3.3'
-gem 'compass', '1.0.0.alpha.19'
+gem 'sass', '~> 3.4'
+gem 'compass', '~> 1.0.0'
 
