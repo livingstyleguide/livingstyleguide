@@ -5,8 +5,8 @@ require 'compass'
 module LivingStyleGuide
   class VariablesImporter < Sass::Importers::Base
     VARIABLE_IMPORTER_STRING = 'LivingStyleGuide::VariablesImporter'
-    TEMPLATE_FOLDER = File.join(File.expand_path('../', __FILE__), 'variables_importer')
-    CONTENT_TEMPLATE_FILE = File.join(TEMPLATE_FOLDER, 'content.erb')
+    TEMPLATE_FOLDER = File.join(File.dirname(__FILE__), 'templates')
+    CONTENT_TEMPLATE_FILE = File.join(TEMPLATE_FOLDER, 'variables.scss.erb')
     CONTENT_TEMPLATE = ERB.new(File.read(CONTENT_TEMPLATE_FILE))
 
     def find(uri, options)
