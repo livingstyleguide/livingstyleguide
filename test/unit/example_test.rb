@@ -138,5 +138,14 @@ class ExampleTest < ExampleTestCase
     OUTPUT
   end
 
+  def test_undefined_filter
+    Proc.new do
+      assert_render_equals <<-INPUT, ''
+        @some-undefined-filter
+        <button>Hello World</button>
+      INPUT
+    end.must_raise NameError
+  end
+
 end
 
