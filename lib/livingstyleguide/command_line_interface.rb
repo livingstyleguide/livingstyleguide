@@ -11,7 +11,7 @@ module LivingStyleGuide
 
     desc 'compile filename', 'Compiles the living style guide to HTML.'
     def compile(file)
-      output_file = file.sub(/\.lsg$/, '')
+      output_file = file.sub(/(\.html)?\.lsg$/, '.html')
       if defined?(Compass)
         Compass.add_project_configuration 
         output_file.sub! /^#{Compass.configuration.sass_dir}/, Compass.configuration.css_dir
