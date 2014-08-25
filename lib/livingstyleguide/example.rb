@@ -74,7 +74,11 @@ class LivingStyleGuide::Example
 
   private
   def set_filter(key, argument = nil)
-    instance_exec argument, &@@filters[key.to_s.gsub('-', '_').to_sym]
+    name = key.to_s.gsub('-', '_').to_sym
+    unless @@filters.has_key?(name)
+      raise NameError.new("Undefined filter “@#{key}” called.", name)
+    end
+    instance_exec argument, &@@filters[name]
   end
 
   private
