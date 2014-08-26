@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'minisyntax'
 require 'erb'
 require 'hooks'
