@@ -2,6 +2,7 @@
 
 ## 1.2.0
 
+* CLI supports writing to STDOUT
 * CLI supports output file
 * Import Markdown once, even when Sass is imported twice
 * The command line interface also supports _*.lsg_ files (without having

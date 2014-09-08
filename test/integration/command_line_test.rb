@@ -20,5 +20,10 @@ describe "LivingStyleGuide::CommandLineInterface" do
     File.delete 'test/fixtures/standalone/hello-world.html'
   end
 
+  it "should write to STDOUT" do
+    `./bin/livingstyleguide compile test/fixtures/standalone/styleguide.lsg --stdout`.must_match %r(<button class="button">)
+    File.exists?('test/fixtures/standalone/styleguide.html').must_equal false
+  end
+
 end
 
