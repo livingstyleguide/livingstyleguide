@@ -14,5 +14,11 @@ describe "LivingStyleGuide::CommandLineInterface" do
     File.delete 'test/fixtures/standalone/styleguide.html'
   end
 
+  it "should use different output file" do
+    `./bin/livingstyleguide compile test/fixtures/standalone/styleguide.lsg test/fixtures/standalone/hello-world.html`
+    File.exists?('test/fixtures/standalone/hello-world.html').must_equal true
+    File.delete 'test/fixtures/standalone/hello-world.html'
+  end
+
 end
 
