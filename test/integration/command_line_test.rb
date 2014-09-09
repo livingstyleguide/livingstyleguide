@@ -31,19 +31,24 @@ describe "LivingStyleGuide::CommandLineInterface" do
   end
 
   def cli(command, input = nil, &block)
-    current_path = Dir.pwd
-    Dir.chdir 'test/fixtures/standalone'
-    files = Dir.glob('*')
     stdin, stdout = Open3.popen2("../../../bin/livingstyleguide #{command}")
     stdin.puts input
     stdin.close
 
     yield stdout.read
+  end
 
-    (Dir.glob('*') - files).each do |file|
+  before do
+    @current_path = Dir.pwd
+    Dir.chdir 'test/fixtures/standalone'
+    @files = Dir.glob('*')
+  end
+
+  after do
+    (Dir.glob('*') - @files).each do |file|
       File.unlink file
     end
-    Dir.chdir current_path
+    Dir.chdir @current_path
   end
 
 end
