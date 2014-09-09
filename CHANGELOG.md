@@ -2,6 +2,7 @@
 
 ## 1.2.0
 
+* CLI shows version
 * CLI supports reading from STDIN
 * CLI supports writing to STDOUT
 * CLI supports output file

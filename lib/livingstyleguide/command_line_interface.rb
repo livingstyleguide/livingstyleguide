@@ -17,6 +17,11 @@ module LivingStyleGuide
       output template.render, input_file, output_file
     end
 
+    desc 'version', 'Shows the current version of the Gem'
+    def version
+      puts "LivingStyleGuide #{LivingStyleGuide::VERSION}"
+    end
+
     private
     def input(input_file = nil)
       @input ||= if input_file.nil?

@@ -3,6 +3,8 @@ require 'open3'
 
 describe "LivingStyleGuide::CommandLineInterface" do
 
+  # COMPILE
+
   it "should output the style guide from *.html.lsg source" do
     cli 'compile styleguide.html.lsg' do |stdout|
       File.exists?('styleguide.html').must_equal true
@@ -38,6 +40,16 @@ describe "LivingStyleGuide::CommandLineInterface" do
       stdout.must_match %r(<button class="button">)
     end
   end
+
+  # VERSION
+
+  it "should show the current version" do
+    cli 'version' do |stdout|
+      stdout.must_match %r(LivingStyleGuide #{LivingStyleGuide::VERSION})
+    end
+  end
+
+  # support
 
   def cli(command, input = nil, &block)
     stdin, stdout = Open3.popen2("../../../bin/livingstyleguide #{command}")
