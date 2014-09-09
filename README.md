@@ -28,9 +28,9 @@ your Sass project.
    $ gem install livingstyleguide
    ```
 
-2. Create *_sass/styleguide.html.lsg_* (replace `sass/` with the directory name of your Sass files) with:
+2. Create *_sass/styleguide.lsg_* (replace `sass/` with the directory name of your Sass files) with:
    ``` yaml
-   source: 'application.css.scss' # replace with your default Sass/SCSS file name
+   source: 'application.scss' # replace with your default Sass/SCSS file name
    title: 'My Living Style Guide'
    ```
 
@@ -47,11 +47,11 @@ your Sass project.
         <button class="button -primary">Example button</button>
         ```
 
-4. Call `livingstyleguide compile sass/styleguide.html.lsg`
+4. Call `livingstyleguide compile sass/styleguide.lsg public/styleguide.html`
    This will automatically:
    * Combine all Markdown files and convert them to HTML
    * Create a beautiful style guide
-   * Saves the style guide as _styleguide.html_ in your output folder (e. g. `css/`)
+   * Saves the style guide as _public/styleguide.html_
    * Show the HTML source syntax highlighted close to each example
 
 
@@ -59,6 +59,7 @@ your Sass project.
 
 * Create your project with or without [Compass](http://compass-style.org).
 * This can be easily integrated into non-Ruby build systems.
+* If you omit the input and output filenames, STDIN and STDOUT will be used.
 
 
 ## Rails Integration
