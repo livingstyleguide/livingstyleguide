@@ -4,20 +4,29 @@ require 'open3'
 describe "LivingStyleGuide::CommandLineInterface" do
 
   it "should output the style guide from *.html.lsg source" do
-    cli 'compile styleguide.html.lsg' do
+    cli 'compile styleguide.html.lsg' do |stdout|
       File.exists?('styleguide.html').must_equal true
+      stdout.strip.must_equal <<-STDOUT.strip
+        Successfully generated a living style guide at styleguide.html.
+      STDOUT
     end
   end
 
   it "should output the style guide from *.lsg source" do
-    cli 'compile styleguide.lsg' do
+    cli 'compile styleguide.lsg' do |stdout|
       File.exists?('styleguide.html').must_equal true
+      stdout.strip.must_equal <<-STDOUT.strip
+        Successfully generated a living style guide at styleguide.html.
+      STDOUT
     end
   end
 
   it "should use different output file" do
-    cli 'compile styleguide.lsg hello-world.html' do
+    cli 'compile styleguide.lsg hello-world.html' do |stdout|
       File.exists?('hello-world.html').must_equal true
+      stdout.strip.must_equal <<-STDOUT.strip
+        Successfully generated a living style guide at hello-world.html.
+      STDOUT
     end
   end
 
