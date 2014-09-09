@@ -2,6 +2,7 @@
 
 ## 1.2.0
 
+* CLI supports reading from STDIN
 * CLI supports writing to STDOUT
 * CLI supports output file
 * Import Markdown once, even when Sass is imported twice

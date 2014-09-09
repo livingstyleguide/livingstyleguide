@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'open3'
 
 describe "LivingStyleGuide::CommandLineInterface" do
 
@@ -22,6 +23,14 @@ describe "LivingStyleGuide::CommandLineInterface" do
 
   it "should write to STDOUT" do
     `./bin/livingstyleguide compile test/fixtures/standalone/styleguide.lsg --stdout`.must_match %r(<button class="button">)
+    File.exists?('test/fixtures/standalone/styleguide.html').must_equal false
+  end
+
+  it "should read from STDIN" do
+    stdin, stdout = Open3.popen2('./bin/livingstyleguide compile --stdin --stdout')
+    stdin.puts 'source: test/fixtures/standalone/style.scss'
+    stdin.close
+    stdout.read.must_match %r(<button class="button">)
     File.exists?('test/fixtures/standalone/styleguide.html').must_equal false
   end
 

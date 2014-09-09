@@ -27,6 +27,9 @@ module LivingStyleGuide
       if defined?(Rails)
         options[:load_paths] += Rails.application.config.assets.paths
       end
+      if @file.nil?
+        options[:load_paths] << Dir.pwd
+      end
       if options[:template_location]
         options[:template_location].each do |path, short|
           options[:load_paths] << path
@@ -73,7 +76,7 @@ module LivingStyleGuide
 
     private
     def find_root_path
-      path = File.dirname(@file)
+      path = @file.nil? ? Dir.pwd : File.dirname(@file)
       while path.length > 0 do
         if File.exists?(File.join(path, 'Gemfile')) or File.exists?(File.join(path, '.git'))
           break

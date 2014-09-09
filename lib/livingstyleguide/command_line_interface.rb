@@ -10,14 +10,24 @@ module LivingStyleGuide
   class CommandLineInterface < Thor
 
     desc 'compile input output', 'Compiles the living style guide to HTML.'
+    option :stdin, type: :boolean
     option :stdout, type: :boolean
-    def compile(input, output = nil)
-      output = input.sub(/(\.html)?\.lsg$/, '.html') if output.nil?
-      if defined?(Compass)
-        Compass.add_project_configuration
-        output = output.sub /^#{Compass.configuration.sass_dir}/, Compass.configuration.css_dir
+    def compile(input = nil, output = nil)
+      unless input.nil?
+        output = input.sub(/(\.html)?\.lsg$/, '.html') if output.nil?
+        if defined?(Compass)
+          Compass.add_project_configuration
+          output = output.sub /^#{Compass.configuration.sass_dir}/, Compass.configuration.css_dir
+        end
       end
-      html = Tilt.new(input).render
+      template = LivingStyleGuide::TiltTemplate.new(input) do
+        if options[:stdin]
+          $stdin.read
+        else
+          File.read(input)
+        end
+      end
+      html = template.render
       if options[:stdout]
         puts html
       else
