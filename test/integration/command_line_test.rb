@@ -21,13 +21,8 @@ describe "LivingStyleGuide::CommandLineInterface" do
     File.delete 'test/fixtures/standalone/hello-world.html'
   end
 
-  it "should write to STDOUT" do
-    `./bin/livingstyleguide compile test/fixtures/standalone/styleguide.lsg --stdout`.must_match %r(<button class="button">)
-    File.exists?('test/fixtures/standalone/styleguide.html').must_equal false
-  end
-
-  it "should read from STDIN" do
-    stdin, stdout = Open3.popen2('./bin/livingstyleguide compile --stdin --stdout')
+  it "should read from STDIN and write to STDOUT" do
+    stdin, stdout = Open3.popen2('./bin/livingstyleguide compile')
     stdin.puts 'source: test/fixtures/standalone/style.scss'
     stdin.close
     stdout.read.must_match %r(<button class="button">)
