@@ -34,7 +34,7 @@ your Sass project.
    title: 'My Living Style Guide'
    ```
 
-3. Write documentation for each module *sass/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
+3. Write documentation for each module *sass/partials/_buttons.md* (to describe *_buttons.scss* in the same folder):
 
         Buttons
         =======
