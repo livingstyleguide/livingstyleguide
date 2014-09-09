@@ -4,29 +4,42 @@ require 'open3'
 describe "LivingStyleGuide::CommandLineInterface" do
 
   it "should output the style guide from *.html.lsg source" do
-    `./bin/livingstyleguide compile test/fixtures/standalone/styleguide.html.lsg`
-    File.exists?('test/fixtures/standalone/styleguide.html').must_equal true
-    File.delete 'test/fixtures/standalone/styleguide.html'
+    cli('compile test/fixtures/standalone/styleguide.html.lsg') do
+      File.exists?('test/fixtures/standalone/styleguide.html').must_equal true
+    end
   end
 
   it "should output the style guide from *.lsg source" do
-    `./bin/livingstyleguide compile test/fixtures/standalone/styleguide.lsg`
-    File.exists?('test/fixtures/standalone/styleguide.html').must_equal true
-    File.delete 'test/fixtures/standalone/styleguide.html'
+    cli('compile test/fixtures/standalone/styleguide.lsg') do
+      File.exists?('test/fixtures/standalone/styleguide.html').must_equal true
+    end
   end
 
   it "should use different output file" do
-    `./bin/livingstyleguide compile test/fixtures/standalone/styleguide.lsg test/fixtures/standalone/hello-world.html`
-    File.exists?('test/fixtures/standalone/hello-world.html').must_equal true
-    File.delete 'test/fixtures/standalone/hello-world.html'
+    cli('compile test/fixtures/standalone/styleguide.lsg test/fixtures/standalone/hello-world.html') do
+      File.exists?('test/fixtures/standalone/hello-world.html').must_equal true
+    end
   end
 
   it "should read from STDIN and write to STDOUT" do
-    stdin, stdout = Open3.popen2('./bin/livingstyleguide compile')
-    stdin.puts 'source: test/fixtures/standalone/style.scss'
+    cli('compile', 'source: test/fixtures/standalone/style.scss') do
+      File.exists?('test/fixtures/standalone/styleguide.html').must_equal false
+    end.must_match %r(<button class="button">)
+  end
+
+  def cli(command, input = nil, &block)
+    files = Dir.glob('test/fixtures/standalone/*')
+    stdin, stdout = Open3.popen2("./bin/livingstyleguide #{command}")
+    stdin.puts input
     stdin.close
-    stdout.read.must_match %r(<button class="button">)
-    File.exists?('test/fixtures/standalone/styleguide.html').must_equal false
+    result = stdout.read
+
+    yield
+
+    (Dir.glob('test/fixtures/standalone/*') - files).each do |file|
+      File.unlink file
+    end
+    result
   end
 
 end
