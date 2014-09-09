@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.2.0
+## 1.2.0.pre.2
 
 * CLI shows version
 * CLI supports reading from STDIN
