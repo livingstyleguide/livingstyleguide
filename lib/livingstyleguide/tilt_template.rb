@@ -67,7 +67,7 @@ module LivingStyleGuide
 
     private
     def root
-      if @scope.respond_to?(:environment)
+      if @scope.respond_to?(:environment) and @scope.environment.respond_to?(:root)
         @scope.environment.root
       else
         find_root_path
