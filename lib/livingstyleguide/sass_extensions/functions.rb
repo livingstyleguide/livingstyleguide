@@ -10,6 +10,15 @@ module LivingStyleGuide::SassExtensions::Functions
     Sass::Script::List.new(variables, :space)
   end
 
+  def global_variables
+    ruby = environment.global_env.instance_variable_get(:@vars)
+    sass_script = {}
+    ruby.each do |name, value|
+      sass_script[Sass::Script::String.new(name)] = value
+    end
+    Sass::Script::Value::Map.new(sass_script)
+  end
+
   if defined?(::Middleman)
     def asset_url(path, prefix)
       Sass::Script::String.new(options[:sprockets][:context].asset_url(path.value, prefix.value))
