@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0
+
+* **Internal:**
+  * Refactored variable generation
+
+
 ## 1.2.0.pre.2
 
 * CLI shows version
