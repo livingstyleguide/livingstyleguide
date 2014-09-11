@@ -1,7 +1,7 @@
 # LivingStyleGuide ![Build Status Images](https://travis-ci.org/hagenburger/livingstyleguide.png)
 
 Easily create living style guides/front-end style guides/pattern libraries by adding Markdown documentation to
-your Sass project.
+your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
 ![preview](https://cloud.githubusercontent.com/assets/103399/3854622/2fb68574-1eda-11e4-862c-33e7d7943c56.jpg)
 
