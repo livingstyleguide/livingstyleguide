@@ -1,0 +1,24 @@
+$livingstyleguide--variables: global-variables() !default;
+
+@each $variable, $value in $livingstyleguide--variables {
+  $value: null !default;
+  @if $value != null {
+    .\$#{$variable} {
+      @if type-of($value) == color {
+        @if (lightness($value) < lightness($livingstyleguide--color)) {
+          color: $livingstyleguide--background-color;
+        }
+
+        &:before {
+          background: $value;
+        }
+      }
+
+      &:after {
+        @extend %livingstyleguide--code !optional;
+        content: "#{inspect($value)}";
+      }
+    }
+  }
+}
+

@@ -113,14 +113,7 @@ module LivingStyleGuide
       sass_options[:living_style_guide] = self
       @sass_engine = ::Sass::Engine.new(sass, sass_options)
       collect_data
-      @sass_engine.to_tree << output_variables
       @sass_engine
-    end
-
-    private
-    def output_variables
-      scss = template('variables.scss.erb')
-      ::Sass::Engine.new(scss, syntax: :scss).to_tree.children
     end
 
     private
