@@ -169,17 +169,17 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
 
 ## Gulp
 
-There is a [separate project taking care of Gulp](https://github.com/efacilitation/gulp-livingstyleguide).
+See [efacilitation/gulp-livingstyleguide](https://github.com/efacilitation/gulp-livingstyleguide#readme).
 
 
 ## Broccoli
 
-There is a [separate project taking care of Broccoli](https://github.com/hagenburger/broccoli-livingstyleguide).
+See [hagenburger/broccoli-livingstyleguide](https://github.com/hagenburger/broccoli-livingstyleguide#usage).
 
 
 ## Ember CLI
 
-See [Broccoli integration](#broccoli).
+See [hagenburger/broccoli-livingstyleguide](https://github.com/hagenburger/broccoli-livingstyleguide#usage) (comments on Ember CLI can be found there).
 
 
 ----
