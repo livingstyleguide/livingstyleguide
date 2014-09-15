@@ -17,6 +17,8 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 * [Rails Integration](#rails-integration)
 * [Middleman Integration](#middleman-integration)
 * [Gulp](#gulp)
+* [Broccoli](#broccoli)
+* [Ember CLI](#ember-cli)
 * [Writing Examples](#writing-examples)
 * [Styling the Style Guide](#styling-the-style-guide)
 
@@ -168,6 +170,16 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
 ## Gulp
 
 There is a [separate project taking care of Gulp](https://github.com/efacilitation/gulp-livingstyleguide).
+
+
+## Broccoli
+
+There is a [separate project taking care of Broccoli](https://github.com/hagenburger/broccoli-livingstyleguide).
+
+
+## Ember CLI
+
+See [Broccoli integration](#broccoli).
 
 
 ----
