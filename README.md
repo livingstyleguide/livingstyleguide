@@ -359,6 +359,26 @@ style:
 Just play a bit and create an individual style guide which represents your personal taste :)
 
 
+## Including JavaScript
+
+If you need external JavaScript files to be included in the style guide, there are two options: before (in the `<head>`) or after (just before the closing `</body>`). It accepts a list of URLs (ending with `*.js`) or plain JavaScript code:
+
+``` yaml
+javascript-before:
+  - "assets/modernizr.js"
+
+javascript-after:
+  - "http://code.jquery.com/jquery-1.11.1.min.js"
+  - "assets/application.js"
+  - |
+    $(function() {
+      // custom code
+    });
+```
+
+If you use [@javascript](#javascript-examples) or [@coffee-script](#coffeescript-examples), your application files and jQuery might need to be included in the `javascript-before` section.
+
+
 ----
 
 
