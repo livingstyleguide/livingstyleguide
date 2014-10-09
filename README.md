@@ -113,6 +113,14 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
    config.assets.precompile += ['styleguide.html']
    ```
 * There is a [Rails example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/rails-example) available on Github.
+*  Use _sass-rails_ > v5 to allow _Sass_ > v3.2:
+
+   ``` ruby
+   # Gemfile:
+   gem 'sass-rails', '~> 5.0.0.beta1'
+   ```
+   
+   See [issue #99](https://github.com/hagenburger/livingstyleguide/issues/99) for discussions.
 
 ### Using it with Rails 4
 
