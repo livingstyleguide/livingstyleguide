@@ -1,3 +1,6 @@
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+
 begin
   require 'compass'
 rescue LoadError
