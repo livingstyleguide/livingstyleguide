@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1
+
+* Fixed rare UTF-8 problems
+* Fixed NoMethodError when using image-url
+
+
 ## 1.2.0
 
 * **Internal:**
