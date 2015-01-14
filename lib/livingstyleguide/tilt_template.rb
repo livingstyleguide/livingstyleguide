@@ -40,7 +40,7 @@ module LivingStyleGuide
       options[:syntax]    = @options[:syntax]
       options[:sprockets] = { context: @scope }
       options[:custom]    = { sprockets_context: @scope }
-      if defined?(Sass::Rails)
+      if defined?(Sass::Rails::Resolver)
         options[:custom][:resolver] = Sass::Rails::Resolver.new(@scope)
       end
       options
