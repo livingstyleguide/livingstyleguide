@@ -27,7 +27,7 @@
 
 * CLI works without having Bundler installed
 * Compass is not required anymore (but still works well)
-* Depricated `list-variables()` in SassScript for v2.0.0
+* Deprecated `list-variables()` in SassScript for v2.0.0
 * Fixed [wrong/duplicate imports](https://github.com/hagenburger/livingstyleguide/issues/91) when importing Compass files
 * **Internal:**
   * Removed importer => insprect Sass tree
