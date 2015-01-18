@@ -1,7 +1,7 @@
 module LivingStyleGuide::SassExtensions::Functions
 
   def list_variables(uri)
-    Sass::Util.sass_warn '`list-variables()` is depricated and will be removed in v2.0.0.'
+    Sass::Util.sass_warn '`list-variables()` is deprecated and will be removed in v2.0.0.'
     uri = uri.value
     variables = parse_variables(uri)
     variables.map! do |name|
