@@ -14,4 +14,10 @@ describe LivingStyleGuide::Document do
     doc.source.must_equal "Test"
   end
 
+  it "outputs the input as HTML for Markdown" do
+    input = "*Test*"
+    doc = LivingStyleGuide::Document.new(input, :markdown)
+    doc.render.must_equal "<p><em>Test</em></p>\n"
+  end
+
 end

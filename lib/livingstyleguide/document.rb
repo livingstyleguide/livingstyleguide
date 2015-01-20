@@ -1,13 +1,20 @@
 # encoding: utf-8
 
-class LivingStyleGuide::Document
-  attr_reader :source
+require 'tilt'
 
-  def initialize(source)
+class LivingStyleGuide::Document
+  attr_accessor :source, :type
+
+  def initialize(source, type = :plain)
+    @type = type
     @source = source
   end
 
   def render
-    @source
+    if @type == :plain
+      @source
+    else
+      Tilt.new("*.#{@type}"){ @source }.render
+    end
   end
 end
