@@ -2,22 +2,27 @@ require 'test_helper'
 
 describe LivingStyleGuide::Document do
 
-  it "outputs the input as default" do
-    input = "Test"
-    doc = LivingStyleGuide::Document.new(input)
-    doc.render.must_equal "Test"
+  before do
+    @doc = LivingStyleGuide::Document.new('')
+  end
+
+  def assert_document_equals(input, output)
+    @doc.source = input.gsub(/^      /, '')
+    @doc.render.strip.must_equal output.gsub(/^      /, '').strip
   end
 
   it "outputs the source" do
-    input = "Test"
-    doc = LivingStyleGuide::Document.new(input)
+    doc = LivingStyleGuide::Document.new("Test")
     doc.source.must_equal "Test"
   end
 
+  it "outputs the input as default" do
+    assert_document_equals "Test", "Test"
+  end
+
   it "outputs the input as HTML for Markdown" do
-    input = "*Test*"
-    doc = LivingStyleGuide::Document.new(input, :markdown)
-    doc.render.must_equal "<p><em>Test</em></p>\n"
+    @doc.type = :markdown
+    assert_document_equals "*Test*", "<p><em>Test</em></p>"
   end
 
 end
