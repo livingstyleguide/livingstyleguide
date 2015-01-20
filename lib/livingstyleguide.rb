@@ -14,9 +14,9 @@ require 'livingstyleguide/markdown_extensions'
 require 'livingstyleguide/tilt_template'
 require 'livingstyleguide/code_block'
 require 'livingstyleguide/example'
+require 'livingstyleguide/document'
 require 'livingstyleguide/filters'
 require 'livingstyleguide/integration'
 
 module LivingStyleGuide
 end
-
