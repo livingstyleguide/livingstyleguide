@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.2
+
+* #105: Better support of `sass-rails` in various versions
+* #107: Fixed typo
+
+
 ## 1.2.1
 
 * Fixed rare UTF-8 problems
