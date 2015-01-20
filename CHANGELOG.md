@@ -2,8 +2,8 @@
 
 ## 1.2.2
 
-* #105: Better support of `sass-rails` in various versions
-* #107: Fixed typo
+* [#105](https://github.com/hagenburger/livingstyleguide/issues/105): Better support of `sass-rails` in various versions
+* [#107](https://github.com/hagenburger/livingstyleguide/issues/107): Fixed typo
 
 
 ## 1.2.1
