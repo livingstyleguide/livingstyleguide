@@ -8,7 +8,7 @@ describe LivingStyleGuide::Document do
 
   def assert_document_equals(input, output)
     @doc.source = input.gsub(/^        /, '')
-    actual = @doc.html.gsub(/\n\n+/, "\n").strip
+    actual = @doc.render.gsub(/\n\n+/, "\n").strip
     expected = output.gsub(/^        /, '').gsub(/\n\n+/, "\n").strip
     actual.must_equal expected
   end
@@ -217,6 +217,17 @@ describe LivingStyleGuide::Document do
             background: red
         Lorem ipsum
       OUTPUT
+    end
+
+  end
+
+  describe "templates" do
+
+    it "should use template" do
+      @doc.template = 'my-template'
+      File.stub :read, "*<%= html %>*" do
+        assert_document_equals "Test", "*Test*"
+      end
     end
 
   end
