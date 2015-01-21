@@ -165,5 +165,59 @@ describe LivingStyleGuide::Document do
       OUTPUT
     end
 
+    it "can have filters with an indented block" do
+      LivingStyleGuide::Filters.add_filter :x_indented do |block|
+        block.gsub(/\w/, 'X')
+      end
+      assert_document_equals <<-INPUT, <<-OUTPUT
+        @x-indented
+          Lorem ipsum
+          dolor
+        Lorem ipsum
+      INPUT
+        XXXXX XXXXX
+        XXXXX
+        Lorem ipsum
+      OUTPUT
+    end
+
+    it "can have filters with multiple arguments and an indented block" do
+      LivingStyleGuide::Filters.add_filter :y_indented do |arg1, arg2, block|
+        "arg1: #{arg1}\narg2: #{arg2}\n#{block.gsub(/\w/, 'Y')}"
+      end
+      assert_document_equals <<-INPUT, <<-OUTPUT
+        @y-indented 1, 2
+          Lorem ipsum
+          dolor
+        Lorem ipsum
+      INPUT
+        arg1: 1
+        arg2: 2
+        YYYYY YYYYY
+        YYYYY
+        Lorem ipsum
+      OUTPUT
+    end
+
+    it "blocks should allow indented CSS (nested {})" do
+      LivingStyleGuide::Filters.add_filter :css_test_indented do |block|
+        block
+      end
+      assert_document_equals <<-INPUT, <<-OUTPUT
+        @css-test-indented
+          .my-class
+            background: black
+            &:hover
+              background: red
+        Lorem ipsum
+      INPUT
+        .my-class
+          background: black
+          &:hover
+            background: red
+        Lorem ipsum
+      OUTPUT
+    end
+
   end
 end
