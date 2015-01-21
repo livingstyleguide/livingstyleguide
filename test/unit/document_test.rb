@@ -8,7 +8,9 @@ describe LivingStyleGuide::Document do
 
   def assert_document_equals(input, output)
     @doc.source = input.gsub(/^      /, '')
-    @doc.render.strip.must_equal output.gsub(/^      /, '').strip
+    actual = @doc.render.gsub(/\n\n+/, "\n").strip
+    expected = output.gsub(/^      /, '').gsub(/\n\n+/, "\n").strip
+    actual.must_equal expected
   end
 
   it "outputs the source" do
@@ -25,12 +27,43 @@ describe LivingStyleGuide::Document do
     assert_document_equals "*Test*", "<p><em>Test</em></p>"
   end
 
-  it "allows to set the type as filter" do
+  it "allows to set the type to Markdown" do
     assert_document_equals <<-INPUT, <<-OUTPUT
       @markdown
       *Test*
     INPUT
       <p><em>Test</em></p>
+    OUTPUT
+  end
+
+  it "allows to set the type to Haml" do
+    assert_document_equals <<-INPUT, <<-OUTPUT
+      @haml
+      %test Test
+    INPUT
+      <test>Test</test>
+    OUTPUT
+  end
+
+  it "allows to set the type to Coffee-Script" do
+    assert_document_equals <<-INPUT, <<-OUTPUT
+      @coffee-script
+      alert "Test"
+    INPUT
+      (function() {
+        alert("Test");
+      }).call(this);
+    OUTPUT
+  end
+
+  it "allows to set the type to Coffee-Script with short version" do
+    assert_document_equals <<-INPUT, <<-OUTPUT
+      @coffee
+      alert "Test"
+    INPUT
+      (function() {
+        alert("Test");
+      }).call(this);
     OUTPUT
   end
 
