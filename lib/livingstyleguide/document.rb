@@ -4,11 +4,12 @@ require 'tilt'
 require 'erb'
 
 class LivingStyleGuide::Document
-  attr_accessor :source, :type
+  attr_accessor :source, :type, :filters
 
   def initialize(source, type = :plain)
     @type = type
     @source = source
+    @filters = LivingStyleGuide::Filters.new(self)
   end
 
   def render
@@ -16,18 +17,31 @@ class LivingStyleGuide::Document
     if @type == :plain
       @source
     else
-      Tilt.new("*.#{@type}"){ @source }.render
+      require "tilt/#{template_name}"
+      template_class.new{ @source }.render
     end
-  end
-
-  def markdown
-    @type = :markdown
-    nil
   end
 
   private
   def run_filters
-    erb = source.gsub(/@([\w\d_-]+)/, '<%= \\1 %>')
-    @source = ERB.new(erb).result(binding)
+    erb = source.gsub(/@([\w\d_-]+)/) { "<%= #{$1.gsub('-', '_')} %>" }
+    @source = ERB.new(erb).result(@filters.get_binding)
+  end
+
+  private
+  def template_name
+    @type == :markdown ? :redcarpet : @type
+  end
+
+  private
+  def template_class
+    case @type
+    when :markdown
+      Tilt::RedcarpetTemplate
+    when :coffee
+      Tilt::CoffeeScriptTemplate
+    else
+      Tilt.const_get(@type.to_s.capitalize + 'Template')
+    end
   end
 end

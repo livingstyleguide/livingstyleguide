@@ -14,3 +14,8 @@ LivingStyleGuide::Example.add_filter :haml do
   end
 end
 
+
+LivingStyleGuide.add_filter :haml do
+  document.type = :haml
+  nil
+end

@@ -16,3 +16,8 @@ LivingStyleGuide::Example.add_filter :coffee_script do
   end
 end
 
+
+LivingStyleGuide.add_filter :coffee_script, :coffee do
+  document.type = :coffee
+  nil
+end
