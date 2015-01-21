@@ -67,4 +67,31 @@ describe LivingStyleGuide::Document do
     OUTPUT
   end
 
+  it "can have filters with an argument" do
+    LivingStyleGuide::Filters.add_filter :my_filter do |arg|
+      "arg: #{arg}"
+    end
+    assert_document_equals <<-INPUT, <<-OUTPUT
+      @my-filter Test
+      Lorem ipsum
+    INPUT
+      arg: Test
+      Lorem ipsum
+    OUTPUT
+  end
+
+  it "can have filters with an argument" do
+    LivingStyleGuide::Filters.add_filter :my_second_filter do |arg1, arg2|
+      "arg1: #{arg1}\narg2: #{arg2}"
+    end
+    assert_document_equals <<-INPUT, <<-OUTPUT
+      @my-second-filter Test, More test
+      Lorem ipsum
+    INPUT
+      arg1: Test
+      arg2: More test
+      Lorem ipsum
+    OUTPUT
+  end
+
 end
