@@ -25,4 +25,13 @@ describe LivingStyleGuide::Document do
     assert_document_equals "*Test*", "<p><em>Test</em></p>"
   end
 
+  it "allows to set the type as filter" do
+    assert_document_equals <<-INPUT, <<-OUTPUT
+      @markdown
+      *Test*
+    INPUT
+      <p><em>Test</em></p>
+    OUTPUT
+  end
+
 end
