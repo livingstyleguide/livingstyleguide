@@ -4,16 +4,17 @@ require 'tilt'
 require 'erb'
 
 class LivingStyleGuide::Document
-  attr_accessor :source, :type, :filters
+  attr_accessor :source, :type, :filters, :template
 
   def initialize(source, type = :plain)
     @type = type
     @source = source
     @filters = LivingStyleGuide::Filters.new(self)
+    @template = :default
   end
 
   def html
-    result = render
+    result = ERB.new(erb).result(@filters.get_binding)
     if @type == :plain
       result
     else
@@ -32,7 +33,12 @@ class LivingStyleGuide::Document
   end
 
   def render
-    ERB.new(erb).result(@filters.get_binding)
+    ERB.new(template_erb).result(binding)
+  end
+
+  private
+  def template_erb
+    File.read("#{File.dirname(__FILE__)}/templates/#{@template}.html.erb")
   end
 
   private
