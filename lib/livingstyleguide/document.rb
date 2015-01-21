@@ -24,8 +24,8 @@ class LivingStyleGuide::Document
 
   private
   def run_filters
-    erb = source.gsub(/@([\w\d_-]+)(?: ([^\{]+))?(?: *\{\n((?:.|\n)*)\n\})?/) do
-      name, arguments, block = $1, $2 || '', $3
+    erb = source.gsub(/@([\w\d_-]+)(?: ([^\{\n]+))?(?: *\{\n((?:.|\n)*)\n\}|\n((?:  .*\n)+))?/) do
+      name, arguments, block = $1, $2 || '', $3 || $4
       arguments = arguments.split(',').map do |argument|
         %Q("#{argument.strip.gsub('"', '\\"')}")
       end
