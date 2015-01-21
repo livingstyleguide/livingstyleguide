@@ -12,30 +12,40 @@ class LivingStyleGuide::Document
     @filters = LivingStyleGuide::Filters.new(self)
   end
 
-  def render
-    run_filters
+  def html
+    result = render
     if @type == :plain
-      @source
+      result
     else
       require "tilt/#{template_name}"
-      template_class.new{ @source }.render
+      template_class.new{ result }.render
     end
   end
 
-  private
-  def run_filters
-    erb = source.gsub(/@([\w\d_-]+)(?: ([^\{\n]+))?(?: *\{\n((?:.|\n)*)\n\}|\n((?:  .*\n)+))?/) do
-      name, arguments, block = $1, $2 || '', $3 || $4
-      arguments = arguments.split(',').map do |argument|
-        %Q("#{argument.strip.gsub('"', '\\"')}")
+  def erb
+    parse_filters do |name, arguments|
+      arguments = arguments.map do |argument|
+        %Q("#{argument.gsub('"', '\\"').gsub("\n", '\\n')}")
       end
-      block = if block
-        block.gsub!(/\A(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, '') }
-        %Q("#{block.gsub('"', '\\"').gsub("\n", '\\n')}")
-      end
-      "<%= #{name.gsub('-', '_')}(#{[*arguments, block].compact.join(', ')}) %>"
+      "<%= #{name}(#{arguments.join(', ')}) %>"
     end
-    @source = ERB.new(erb).result(@filters.get_binding)
+  end
+
+  def render
+    ERB.new(erb).result(@filters.get_binding)
+  end
+
+  private
+  def parse_filters
+    source.gsub(/@([\w\d_-]+)(?: ([^\{\n]+))?(?: *\{\n((?:.|\n)*)\n\}|\n((?:  .*\n)+))?/) do
+      name, arguments, block = $1, $2 || '', $3 || $4
+      name = name.gsub('-', '_').to_sym
+      arguments = arguments.split(',').map(&:strip)
+      if block
+        arguments << block.gsub(/\A(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, '') }
+      end
+      yield name, arguments
+    end
   end
 
   private
