@@ -24,7 +24,13 @@ class LivingStyleGuide::Document
 
   private
   def run_filters
-    erb = source.gsub(/@([\w\d_-]+)/) { "<%= #{$1.gsub('-', '_')} %>" }
+    erb = source.gsub(/@([\w\d_-]+)(?: (.+))?/) do
+      name, arguments = $1, $2 || ''
+      arguments = arguments.split(',').map do |argument|
+        %Q("#{argument.strip.gsub('"', '\\"')}")
+      end.join(', ')
+      "<%= #{name.gsub('-', '_')}(#{arguments}) %>"
+    end
     @source = ERB.new(erb).result(@filters.get_binding)
   end
 
