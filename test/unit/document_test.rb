@@ -8,7 +8,7 @@ describe LivingStyleGuide::Document do
 
   def assert_document_equals(input, output)
     @doc.source = input.gsub(/^        /, '')
-    actual = @doc.render.gsub(/\n\n+/, "\n").strip
+    actual = @doc.html.gsub(/\n\n+/, "\n").strip
     expected = output.gsub(/^        /, '').gsub(/\n\n+/, "\n").strip
     actual.must_equal expected
   end
