@@ -24,12 +24,16 @@ class LivingStyleGuide::Document
 
   private
   def run_filters
-    erb = source.gsub(/@([\w\d_-]+)(?: (.+))?/) do
-      name, arguments = $1, $2 || ''
+    erb = source.gsub(/@([\w\d_-]+)(?: ([^\{]+))?(?: *\{\n((?:.|\n)*)\n\})?/) do
+      name, arguments, block = $1, $2 || '', $3
       arguments = arguments.split(',').map do |argument|
         %Q("#{argument.strip.gsub('"', '\\"')}")
-      end.join(', ')
-      "<%= #{name.gsub('-', '_')}(#{arguments}) %>"
+      end
+      block = if block
+        block.gsub!(/\A(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, '') }
+        %Q("#{block.gsub('"', '\\"').gsub("\n", '\\n')}")
+      end
+      "<%= #{name.gsub('-', '_')}(#{[*arguments, block].compact.join(', ')}) %>"
     end
     @source = ERB.new(erb).result(@filters.get_binding)
   end

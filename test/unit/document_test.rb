@@ -104,5 +104,66 @@ describe LivingStyleGuide::Document do
       OUTPUT
     end
 
+    it "can have filters with a block" do
+      LivingStyleGuide::Filters.add_filter :x do |block|
+        block.gsub(/\w/, 'X')
+      end
+      assert_document_equals <<-INPUT, <<-OUTPUT
+        @x {
+          Lorem ipsum
+          dolor
+        }
+        Lorem ipsum
+      INPUT
+        XXXXX XXXXX
+        XXXXX
+        Lorem ipsum
+      OUTPUT
+    end
+
+    it "can have filters with multiple arguments and a block" do
+      LivingStyleGuide::Filters.add_filter :y do |arg1, arg2, block|
+        "arg1: #{arg1}\narg2: #{arg2}\n#{block.gsub(/\w/, 'Y')}"
+      end
+      assert_document_equals <<-INPUT, <<-OUTPUT
+        @y 1, 2 {
+          Lorem ipsum
+          dolor
+        }
+        Lorem ipsum
+      INPUT
+        arg1: 1
+        arg2: 2
+        YYYYY YYYYY
+        YYYYY
+        Lorem ipsum
+      OUTPUT
+    end
+
+    it "blocks should allow CSS (nested {})" do
+      LivingStyleGuide::Filters.add_filter :css_test do |block|
+        block
+      end
+      assert_document_equals <<-INPUT, <<-OUTPUT
+        @css-test {
+          .my-class {
+            background: black;
+            &:hover {
+              background: red;
+            }
+          }
+        }
+        Lorem ipsum
+      INPUT
+        .my-class {
+          background: black;
+          &:hover {
+            background: red;
+          }
+        }
+        Lorem ipsum
+      OUTPUT
+    end
+
   end
 end
