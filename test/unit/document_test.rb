@@ -80,7 +80,7 @@ describe LivingStyleGuide::Document do
     OUTPUT
   end
 
-  it "can have filters with an argument" do
+  it "can have filters with multiple arguments" do
     LivingStyleGuide::Filters.add_filter :my_second_filter do |arg1, arg2|
       "arg1: #{arg1}\narg2: #{arg2}"
     end
