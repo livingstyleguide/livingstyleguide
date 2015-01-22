@@ -4,28 +4,14 @@ require 'tilt'
 require 'erb'
 
 class LivingStyleGuide::Document
-  attr_accessor :raw, :source, :type, :filters, :template
+  attr_accessor :raw, :source, :type, :filters, :template, :classes, :html
 
   def initialize(raw, type = :plain)
     @type = type
     @raw = raw
     @filters = LivingStyleGuide::Filters.new(self)
     @template = :default
-  end
-
-  def html
-    result = ERB.new(erb).result(@filters.get_binding)
-    case @type
-    when :plain, :example
-      result
-    when :markdown
-      renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide::Engine.default_options, self)
-      redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
-      redcarpet.render(result)
-    else
-      require "tilt/#{@type}"
-      template_class.new{ result }.render
-    end
+    @classes = []
   end
 
   def source
@@ -42,6 +28,20 @@ class LivingStyleGuide::Document
   end
 
   def render
+    result = ERB.new(erb).result(@filters.get_binding)
+    @html = case @type
+    when :plain, :example
+      result
+    when :markdown
+      renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide::Engine.default_options, self)
+      redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
+      redcarpet.render(result)
+    else
+      require "tilt/#{@type}"
+      template_class.new{ result }.render
+    end
+    @classes.unshift "livingstyleguide--#{@type}-example"
+    @classes.unshift "livingstyleguide--example"
     ERB.new(template_erb).result(binding)
   end
 

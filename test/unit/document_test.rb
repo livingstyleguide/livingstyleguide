@@ -242,14 +242,16 @@ describe LivingStyleGuide::Document do
         %div Test
         ```
       INPUT
-        <div class="livingstyleguide--example">
-          <div>Test</div>
-        </div>
-        <pre class="livingstyleguide--code-block">
-          <code class="livingstyleguide--code">
-            %div Test
-          </code>
-        </pre>
+        <section class="livingstyleguide--example livingstyleguide--haml-example">
+          <div class="livingstyleguide--html">
+            <div>Test</div>
+          </div>
+          <pre class="livingstyleguide--code-block">
+            <code class="livingstyleguide--code">
+              %div Test
+            </code>
+          </pre>
+        </section>
       OUTPUT
     end
 
