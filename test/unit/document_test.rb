@@ -26,7 +26,11 @@ describe LivingStyleGuide::Document do
 
     it "outputs the input as HTML for Markdown" do
       @doc.type = :markdown
-      assert_document_equals "*Test*", "<p><em>Test</em></p>"
+      assert_document_equals <<-INPUT, <<-OUTPUT
+        *Test*
+      INPUT
+        <p class="livingstyleguide--paragraph"><em>Test</em></p>
+      OUTPUT
     end
 
   end
@@ -38,7 +42,7 @@ describe LivingStyleGuide::Document do
         @markdown
         *Test*
       INPUT
-        <p><em>Test</em></p>
+        <p class="livingstyleguide--paragraph"><em>Test</em></p>
       OUTPUT
     end
 
