@@ -19,7 +19,7 @@ class LivingStyleGuide::Document
     when :plain, :example
       result
     when :markdown
-      renderer = LivingStyleGuide::RedcarpetHTML.new({}, self)
+      renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide::Engine.default_options, self)
       redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
       redcarpet.render(result)
     else
