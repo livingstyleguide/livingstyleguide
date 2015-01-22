@@ -1,6 +1,6 @@
-require 'example_test_helper'
+require 'document_test_helper'
 
-class HamlTest < ExampleTestCase
+class HamlTest < DocumentTestCase
 
   def test_haml
     assert_render_match <<-INPUT, <<-OUTPUT
@@ -8,13 +8,8 @@ class HamlTest < ExampleTestCase
       %div
         .lorem Ipsum
     INPUT
-      <div class="livingstyleguide--example"> <div> <div class="lorem">Ipsum</div> </div> </div>
-      <pre class="livingstyleguide--code-block">
-        <code class="livingstyleguide--code">
-          <em>%div</em> <b>.lorem</b> Ipsum</code>
-      </pre>
+      <div> <div class='lorem'>Ipsum</div> </div>
     OUTPUT
   end
 
 end
-
