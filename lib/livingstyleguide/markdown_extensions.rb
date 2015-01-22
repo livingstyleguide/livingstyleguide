@@ -42,12 +42,9 @@ module LivingStyleGuide
     end
 
     def block_code(code, language)
-      language ||= @options[:default_language]
-      if language == 'example'
-        Example.new(code, @options, @engine).render
-      else
-        CodeBlock.new(code.strip, language.to_s.strip.to_sym).render
-      end
+      document = Document.new(code, language.to_s.strip.to_sym)
+      document.template = template_for(language)
+      document.render
     end
 
     def codespan(code)
@@ -63,6 +60,9 @@ module LivingStyleGuide
       text.downcase.gsub(/[ _\.\-!\?\(\)\[\]]+/, '-').gsub(/^-|-$/, '')
     end
 
+    private
+    def template_for(language)
+      language || @options[:default_language] == 'example' ? 'example' : 'code'
+    end
   end
 end
-
