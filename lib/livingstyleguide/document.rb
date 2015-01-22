@@ -15,10 +15,15 @@ class LivingStyleGuide::Document
 
   def html
     result = ERB.new(erb).result(@filters.get_binding)
-    if @type == :plain
+    case @type
+    when :plain
       result
+    when :markdown
+      renderer = LivingStyleGuide::RedcarpetHTML.new({}, self)
+      redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
+      redcarpet.render(result)
     else
-      require "tilt/#{template_name}"
+      require "tilt/#{@type}"
       template_class.new{ result }.render
     end
   end
@@ -61,10 +66,7 @@ class LivingStyleGuide::Document
 
   private
   def template_class
-    case @type
-    when :markdown
-      Tilt::RedcarpetTemplate
-    when :coffee
+    if @type == :coffee
       Tilt::CoffeeScriptTemplate
     else
       Tilt.const_get(@type.to_s.capitalize + 'Template')
