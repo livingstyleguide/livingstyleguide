@@ -16,6 +16,7 @@ class LivingStyleGuide::Filters
   end
 end
 
+require 'livingstyleguide/filters/options'
 require 'livingstyleguide/filters/highlights'
 require 'livingstyleguide/filters/full_width'
 require 'livingstyleguide/filters/haml'
