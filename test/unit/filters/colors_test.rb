@@ -1,8 +1,8 @@
 # encoding: utf-8
 
-require 'example_test_helper'
+require 'document_test_helper'
 
-class ColorsTest < ExampleTestCase
+class ColorsTest < DocumentTestCase
 
   def test_colors_of_file
     engine = OpenStruct.new(variables: { 'variables/colors' => %w(red blue) })
@@ -18,8 +18,9 @@ class ColorsTest < ExampleTestCase
 
   def test_defined_colors
     assert_render_equals <<-INPUT, <<-OUTPUT
-      @colors
-      $orange $green
+      @colors {
+        $orange $green
+      }
     INPUT
       <ul class="livingstyleguide--color-swatches -lsg-2-columns">
         <li class="livingstyleguide--color-swatch $orange">$orange</li>
@@ -30,9 +31,10 @@ class ColorsTest < ExampleTestCase
 
   def test_rows
     assert_render_equals <<-INPUT, <<-OUTPUT
-      @colors
-      $pink $purple $gray
-      $turquoise $cyan $black
+      @colors {
+        $pink $purple $gray
+        $turquoise $cyan $black
+      }
     INPUT
       <ul class="livingstyleguide--color-swatches -lsg-3-columns">
         <li class="livingstyleguide--color-swatch $pink">$pink</li>
@@ -47,9 +49,10 @@ class ColorsTest < ExampleTestCase
 
   def test_skipped_cells
     assert_render_equals <<-INPUT, <<-OUTPUT
-      @colors
-      $pink $purple
-      -     $turquoise
+      @colors {
+        $pink $purple
+        -     $turquoise
+      }
     INPUT
       <ul class="livingstyleguide--color-swatches -lsg-2-columns">
         <li class="livingstyleguide--color-swatch $pink">$pink</li>
