@@ -1,8 +1,8 @@
 # encoding: utf-8
 
-require 'example_test_helper'
+require 'document_test_helper'
 
-class FontExampleTest < ExampleTestCase
+class FontExampleTest < DocumentTestCase
 
   def test_default_font_example
     assert_render_equals <<-INPUT, <<-OUTPUT
@@ -32,9 +32,10 @@ class FontExampleTest < ExampleTestCase
 
   def test_default_font_example_with_custom_text
     assert_render_equals <<-INPUT, <<-OUTPUT
-      @font-example 14px Helvetica
-      Schweißgequält zündet Typograf Jakob
-      verflixt öde Pangramme an.
+      @font-example 14px Helvetica {
+        Schweißgequält zündet Typograf Jakob
+        verflixt öde Pangramme an.
+      }
     INPUT
       <div class="livingstyleguide--font-example" style="font: 14px Helvetica">
         Schweißgequält zündet Typograf Jakob<br>
