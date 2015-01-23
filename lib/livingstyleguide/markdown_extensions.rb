@@ -43,7 +43,9 @@ module LivingStyleGuide
     end
 
     def block_code(code, language)
-      document = Document.new(code, language.to_s.strip.to_sym)
+      language = language.to_s.strip.to_sym
+      language = @options[:default_language] if language == :''
+      document = Document.new(code, language == :example ? :plain : language)
       document.template = template_for(language)
       document.render
     end
@@ -63,7 +65,7 @@ module LivingStyleGuide
 
     private
     def template_for(language)
-      language || @options[:default_language] == 'example' ? 'example' : 'code'
+      language == :example ? :example : :code
     end
   end
 end
