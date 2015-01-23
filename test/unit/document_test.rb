@@ -2,13 +2,11 @@ require 'test_helper'
 
 describe LivingStyleGuide::Document do
 
-  before do
-    @doc = LivingStyleGuide::Document.new('')
-  end
-
-  def assert_document_equals(input, output, type = :markdown)
-    @doc.raw = input.gsub(/^        /, '')
-    @doc.type = type
+  def assert_document_equals(input, output, options = {})
+    input.gsub!(/^        /, '')
+    @doc = LivingStyleGuide::Document.new { input }
+    @doc.type = options[:type] || :markdown
+    @doc.template = options[:template] if options.has_key?(:template)
     actual = @doc.render.gsub(/\n\n+/, "\n").strip
     expected = output.gsub(/^        /, '').gsub(/\n\n+/, "\n").strip
     actual.must_equal expected
@@ -17,16 +15,15 @@ describe LivingStyleGuide::Document do
   describe "base features" do
 
     it "outputs the source" do
-      doc = LivingStyleGuide::Document.new("Test")
+      doc = LivingStyleGuide::Document.new { "Test" }
       doc.source.must_equal "Test"
     end
 
     it "outputs the input as default" do
-      assert_document_equals "Test", "Test", :plain
+      assert_document_equals "Test", "Test", type: :plain
     end
 
     it "outputs the input as HTML for Markdown" do
-      @doc.type = :markdown
       assert_document_equals <<-INPUT, <<-OUTPUT
         *Test*
       INPUT
@@ -39,7 +36,7 @@ describe LivingStyleGuide::Document do
   describe "change type by filter" do
 
     it "allows to set the type to Markdown" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @markdown
         *Test*
       INPUT
@@ -48,7 +45,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "allows to set the type to Haml" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @haml
         %test Test
       INPUT
@@ -57,7 +54,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "allows to set the type to Coffee-Script" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @coffee-script
         alert "Test"
       INPUT
@@ -68,7 +65,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "allows to set the type to Coffee-Script with short version" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @coffee
         alert "Test"
       INPUT
@@ -86,7 +83,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide::Filters.add_filter :my_filter do |arg|
         "arg: #{arg}"
       end
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @my-filter Test
         Lorem ipsum
       INPUT
@@ -99,7 +96,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide::Filters.add_filter :my_second_filter do |arg1, arg2|
         "arg1: #{arg1}\narg2: #{arg2}"
       end
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @my-second-filter Test, More test
         Lorem ipsum
       INPUT
@@ -113,7 +110,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide::Filters.add_filter :x do |block|
         block.gsub(/\w/, 'X')
       end
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @x {
           Lorem ipsum
           dolor
@@ -130,7 +127,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide::Filters.add_filter :y do |arg1, arg2, block|
         "arg1: #{arg1}\narg2: #{arg2}\n#{block.gsub(/\w/, 'Y')}"
       end
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @y 1, 2 {
           Lorem ipsum
           dolor
@@ -149,7 +146,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide::Filters.add_filter :css_test do |block|
         block
       end
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @css-test {
           .my-class {
             background: black;
@@ -174,7 +171,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide::Filters.add_filter :x_indented do |block|
         block.gsub(/\w/, 'X')
       end
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @x-indented
           Lorem ipsum
           dolor
@@ -190,7 +187,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide::Filters.add_filter :y_indented do |arg1, arg2, block|
         "arg1: #{arg1}\narg2: #{arg2}\n#{block.gsub(/\w/, 'Y')}"
       end
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @y-indented 1, 2
           Lorem ipsum
           dolor
@@ -208,7 +205,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide::Filters.add_filter :css_test_indented do |block|
         block
       end
-      assert_document_equals <<-INPUT, <<-OUTPUT, :plain
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @css-test-indented
           .my-class
             background: black
@@ -229,9 +226,8 @@ describe LivingStyleGuide::Document do
   describe "templates" do
 
     it "should use template" do
-      @doc.template = 'my-template'
       File.stub :read, "*<%= html %>*" do
-        assert_document_equals "Test", "*Test*", :plain
+        assert_document_equals "Test", "*Test*", type: :plain, template: 'my-template'
       end
     end
 
