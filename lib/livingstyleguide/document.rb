@@ -3,12 +3,11 @@
 require 'tilt'
 require 'erb'
 
-class LivingStyleGuide::Document
-  attr_accessor :raw, :source, :type, :filters, :template, :classes, :html
+class LivingStyleGuide::Document < ::Tilt::Template
+  attr_accessor :source, :type, :filters, :template, :classes, :html
 
-  def initialize(raw, type = :plain)
-    @type = type
-    @raw = raw
+  def prepare
+    @type = :plain
     @filters = LivingStyleGuide::Filters.new(self)
     @template = :default
     @classes = []
@@ -27,7 +26,7 @@ class LivingStyleGuide::Document
     end
   end
 
-  def render
+  def evaluate(scope, locals, &block)
     result = ERB.new(erb).result(@filters.get_binding)
     @html = case @type
     when :plain, :example
@@ -52,7 +51,7 @@ class LivingStyleGuide::Document
 
   private
   def parse_filters
-    raw.gsub(/\G(.*?)((```.+?```)|\Z)/m) do
+    data.gsub(/\G(.*?)((```.+?```)|\Z)/m) do
       content, code_block = $1, $2
       content.gsub(/@([\w\d_-]+)(?: ([^\{\n]+))?(?: *\{\n((?:.|\n)*)\n\}|\n((?:  .*\n)+))?/) do
         name, arguments, block = $1, $2 || '', $3 || $4
@@ -69,12 +68,12 @@ class LivingStyleGuide::Document
   private
   def gsub_content(regexp, &block)
     if @type == :markdown
-      raw.gsub(/\G(.+?)((```.+?```)|\Z)/m) do
+      data.gsub(/\G(.+?)((```.+?```)|\Z)/m) do
         content, code_block = $1, $2
         content.to_s.gsub(regexp, &block) + code_block
       end
     else
-      raw.gsub(regexp, &block)
+      data.gsub(regexp, &block)
     end
   end
 
