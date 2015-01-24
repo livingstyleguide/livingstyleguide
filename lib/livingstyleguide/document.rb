@@ -105,7 +105,11 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def generate_id
-    "section-#{Digest::SHA256.hexdigest(data)[0...6]}"
+    if @file
+      @file.sub('/_', '/').gsub(/\.\w+/, '')
+    else
+      "section-#{Digest::SHA256.hexdigest(data)[0...6]}"
+    end
   end
 end
 
