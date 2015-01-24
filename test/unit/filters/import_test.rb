@@ -10,7 +10,21 @@ class ImportTest < DocumentTestCase
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
-      @import test/fixtures/import/_headline.lsg
+      @import test/fixtures/import/headline.lsg
+
+      After
+    INPUT
+      <p.+?>Before</p>
+      <h2.+?>Imported</h2>
+      <p.+?>After</p>
+    OUTPUT
+  end
+
+  def test_import_lsg_partial_with_underscore
+    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+      Before
+
+      @import test/fixtures/import/headline-partial.lsg
 
       After
     INPUT
@@ -24,7 +38,7 @@ class ImportTest < DocumentTestCase
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
-      @import test/fixtures/import/_headline
+      @import test/fixtures/import/headline
 
       After
     INPUT
@@ -38,7 +52,7 @@ class ImportTest < DocumentTestCase
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
-      @import test/fixtures/import/_filter.lsg
+      @import test/fixtures/import/filter.lsg
 
       After
     INPUT
@@ -67,7 +81,7 @@ class ImportTest < DocumentTestCase
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
-      @import test/fixtures/import/_haml.haml
+      @import test/fixtures/import/haml.haml
 
       After
     INPUT
