@@ -13,7 +13,6 @@ LivingStyleGuide.add_filter :set do |option|
       value
     end
     document.options[key] = value
-    #puts key, value, document.options[key], "<<<<"
   end
   nil
 end
