@@ -9,7 +9,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :scss, :css, :id
 
   def prepare
-    @type = :plain
+    @type = :markdown
     @filters = LivingStyleGuide::Filters.new(self)
     @template = :default
     @classes = []
