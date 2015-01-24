@@ -272,7 +272,12 @@ describe LivingStyleGuide::Document do
 
     it "should generate IDs by hash" do
       doc = LivingStyleGuide::Document.new { '# Test' }
-      doc.id.must_match(/^section-[0-9a-f]+$/)
+      doc.id.must_match(/^section-[0-9a-f]{6}$/)
+    end
+
+    it "should generate IDs by file name" do
+      doc = LivingStyleGuide::Document.new('test/fixtures/import/_headline-partial.lsg')
+      doc.id.must_equal('test/fixtures/import/headline-partial')
     end
 
   end
