@@ -254,6 +254,7 @@ describe LivingStyleGuide::Document do
   end
 
   describe "CSS" do
+
     it "should output CSS from SCSS source" do
       doc = LivingStyleGuide::Document.new { '' }
       doc.scss << <<-SCSS
@@ -262,7 +263,9 @@ describe LivingStyleGuide::Document do
           color: $color;
         }
       SCSS
-      doc.css.must_equal(/#test\s\{\scolor: #bd0d5e\s\}/m)
+      doc.css.must_match(/#test\s*\{\s*color: #bd0d5e;\s*\}/m)
     end
+
   end
+
 end
