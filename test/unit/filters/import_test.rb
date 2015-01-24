@@ -15,7 +15,9 @@ class ImportTest < DocumentTestCase
       After
     INPUT
       <p.+?>Before</p>
+      .*?
       <h2.+?>Imported</h2>
+      .*?
       <p.+?>After</p>
     OUTPUT
   end
@@ -29,7 +31,9 @@ class ImportTest < DocumentTestCase
       After
     INPUT
       <p.+?>Before</p>
+      .*?
       <h2.+?>Imported</h2>
+      .*?
       <p.+?>After</p>
     OUTPUT
   end
@@ -43,7 +47,9 @@ class ImportTest < DocumentTestCase
       After
     INPUT
       <p.+?>Before</p>
+      .*?
       <h2.+?>Imported</h2>
+      .*?
       <p.+?>After</p>
     OUTPUT
   end
@@ -57,7 +63,9 @@ class ImportTest < DocumentTestCase
       After
     INPUT
       <p.+?>Before</p>
+      .*?
       <h2.+?>Bar Bar</h2>
+      .*?
       <p.+?>After</p>
     OUTPUT
   end
@@ -71,8 +79,11 @@ class ImportTest < DocumentTestCase
       After
     INPUT
       <p.+?>Before</p>
-      <h2.+?>Bar Bar</h2>
+      .*?
       <h2.+?>Imported</h2>
+      .*?
+      <h2.+?>Bar Bar</h2>
+      .*?
       <p.+?>After</p>
     OUTPUT
   end
