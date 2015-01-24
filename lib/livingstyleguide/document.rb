@@ -5,16 +5,23 @@ require 'erb'
 
 class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
+  attr_accessor :scss, :css
 
   def prepare
     @type = :plain
     @filters = LivingStyleGuide::Filters.new(self)
     @template = :default
     @classes = []
+    @scss = ''
+    @css = ''
   end
 
   def source
     @source ||= erb.gsub(/<%.*?%>\n?/, '')
+  end
+
+  def css
+    ::Sass::Engine.new(scss, syntax: :scss).render
   end
 
   def erb
