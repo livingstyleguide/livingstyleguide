@@ -101,6 +101,3 @@ module LivingStyleGuide
     end
   end
 end
-
-Tilt.register 'lsg', LivingStyleGuide::TiltTemplate
-
