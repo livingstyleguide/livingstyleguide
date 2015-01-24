@@ -268,4 +268,12 @@ describe LivingStyleGuide::Document do
 
   end
 
+  describe "IDs" do
+
+    it "should generate IDs by hash" do
+      doc = LivingStyleGuide::Document.new { '# Test' }
+      doc.id.must_match(/^section-[0-9a-f]+$/)
+    end
+
+  end
 end
