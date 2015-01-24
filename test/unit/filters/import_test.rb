@@ -2,6 +2,10 @@ require 'document_test_helper'
 
 class ImportTest < DocumentTestCase
 
+  LivingStyleGuide::Filters.add_filter :foo do |text|
+    "# #{text.capitalize} #{text.capitalize}"
+  end
+
   def test_import_lsg
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
@@ -31,9 +35,6 @@ class ImportTest < DocumentTestCase
   end
 
   def test_import_filter
-    LivingStyleGuide::Filters.add_filter :foo do |text|
-      "# #{text.capitalize} #{text.capitalize}"
-    end
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
@@ -43,6 +44,21 @@ class ImportTest < DocumentTestCase
     INPUT
       <p.+?>Before</p>
       <h2.+?>Bar Bar</h2>
+      <p.+?>After</p>
+    OUTPUT
+  end
+
+  def test_import_multiple
+    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+      Before
+
+      @import test/fixtures/import/*
+
+      After
+    INPUT
+      <p.+?>Before</p>
+      <h2.+?>Bar Bar</h2>
+      <h2.+?>Imported</h2>
       <p.+?>After</p>
     OUTPUT
   end
