@@ -91,3 +91,5 @@ class LivingStyleGuide::Document < ::Tilt::Template
     end
   end
 end
+
+Tilt.register 'lsg', LivingStyleGuide::Document
