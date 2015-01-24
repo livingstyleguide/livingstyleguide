@@ -6,7 +6,7 @@ describe LivingStyleGuide::Document do
     input.gsub!(/^        /, '')
     @doc = LivingStyleGuide::Document.new { input }
     @doc.type = options[:type] || :markdown
-    @doc.template = options[:template] if options.has_key?(:template)
+    @doc.template = options[:template] || 'plain'
     actual = @doc.render.gsub(/\n\n+/, "\n").strip
     expected = output.gsub(/^        /, '').gsub(/\n\n+/, "\n").strip
     actual.must_equal expected
