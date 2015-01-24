@@ -2,10 +2,11 @@
 
 require 'tilt'
 require 'erb'
+require 'digest'
 
 class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
-  attr_accessor :scss, :css
+  attr_accessor :scss, :css, :id
 
   def prepare
     @type = :plain
@@ -22,6 +23,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def css
     ::Sass::Engine.new(scss, syntax: :scss).render
+  end
+
+  def id
+    @id ||= generate_id
   end
 
   def erb
@@ -96,6 +101,11 @@ class LivingStyleGuide::Document < ::Tilt::Template
     else
       Tilt.const_get(@type.to_s.capitalize + 'Template')
     end
+  end
+
+  private
+  def generate_id
+    "section-#{Digest::SHA256.hexdigest(data)[0...6]}"
   end
 end
 
