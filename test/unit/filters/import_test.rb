@@ -16,6 +16,20 @@ class ImportTest < DocumentTestCase
     OUTPUT
   end
 
+  def test_import_lsg_without_extension
+    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+      Before
+
+      @import test/fixtures/import/_headline
+
+      After
+    INPUT
+      <p.+?>Before</p>
+      <h2.+?>Imported</h2>
+      <p.+?>After</p>
+    OUTPUT
+  end
+
   def test_import_filter
     LivingStyleGuide::Filters.add_filter :foo do |text|
       "# #{text.capitalize} #{text.capitalize}"
