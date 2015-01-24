@@ -12,7 +12,7 @@ class JavaScriptTest < ExampleTestCase
       INPUT
     end
     doc.render
-    assert_match(/#adding-scss\s*\{\s*background: red;\s*\}/m, doc.css)
+    assert_match(/##{doc.id} #adding-scss\s*\{\s*background: red;\s*\}/m, doc.css)
   end
 
 end
