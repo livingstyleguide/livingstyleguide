@@ -7,11 +7,12 @@ require 'digest'
 class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
   attr_accessor :scss, :css, :id, :locals
+  attr_accessor :head, :header, :footer, :title
 
   def prepare
     @type = :markdown
     @filters = LivingStyleGuide::Filters.new(self)
-    @template = :default
+    @template = options.has_key?(:livingstyleguide) ? :default : :layout
     @classes = []
     @scss = ''
     @css = ''
