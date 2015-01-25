@@ -292,6 +292,14 @@ describe LivingStyleGuide::Document do
       OUTPUT
     end
 
+    it "should allow ERB templates that don’t conflict with filters" do
+      assert_document_equals <<-INPUT, <<-OUTPUT, data: { foo: "Bar" }, type: :erb
+        <div><%= foo %></div>
+      INPUT
+        <div>Bar</div>
+      OUTPUT
+    end
+
   end
 
 end
