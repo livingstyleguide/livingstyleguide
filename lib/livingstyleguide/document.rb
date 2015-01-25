@@ -49,7 +49,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
       redcarpet.render(result)
     else
       require "tilt/#{@type}"
-      template_class.new{ result }.render
+      template_class.new{ result }.render(nil, locals)
     end
     @classes.unshift "livingstyleguide--#{@type}-example"
     @classes.unshift "livingstyleguide--example"
