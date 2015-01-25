@@ -102,4 +102,17 @@ class ImportTest < DocumentTestCase
     OUTPUT
   end
 
+  def test_import_with_data
+    { erb: 'erubis', haml: 'haml' }.each do |type, file|
+      require "tilt/#{file}"
+      assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+        @import test/fixtures/import/with-data.#{type} {
+          "foo": "Bar"
+        }
+      INPUT
+        <div>Bar</div>
+      OUTPUT
+    end
+  end
+
 end
