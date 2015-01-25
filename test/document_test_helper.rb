@@ -7,18 +7,18 @@ class DocumentTestCase < Minitest::Test
   end
 
   def assert_render_equals(input, expected_output, options = {})
-    doc = @class.new{ input.unindent }
-    doc.type = options[:type] || :markdown
-    doc.template = options[:template] || 'plain'
-    output = doc.render
+    @doc = @class.new{ input.unindent }
+    @doc.type = options[:type] || :markdown
+    @doc.template = options[:template] || 'plain'
+    output = @doc.render
     assert_equal(normalize(expected_output), normalize(output))
   end
 
   def assert_render_match(input, expected_output, options = {})
-    doc = @class.new{ input.gsub(/\n\n/, "\n      \n").unindent }
-    doc.type = options[:type] || :markdown
-    doc.template = options[:template] || 'plain'
-    output = doc.render
+    @doc = @class.new{ input.gsub(/\n\n/, "\n      \n").unindent }
+    @doc.type = options[:type] || :markdown
+    @doc.template = options[:template] || 'plain'
+    output = @doc.render
     assert_match(/#{normalize(expected_output)}/, normalize(output))
   end
 
