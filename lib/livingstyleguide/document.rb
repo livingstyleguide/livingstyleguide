@@ -23,7 +23,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def css
-    ::Sass::Engine.new(scss, syntax: :scss).render
+    scss_with_lsg = "#{scss}; @import 'livingstyleguide';"
+    ::Sass::Engine.new(scss_with_lsg, syntax: :scss).render
   end
 
   def id
