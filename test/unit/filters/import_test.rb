@@ -89,6 +89,7 @@ class ImportTest < DocumentTestCase
   end
 
   def test_import_haml
+    require 'tilt/haml'
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
