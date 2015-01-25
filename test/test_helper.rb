@@ -26,3 +26,5 @@ def normalize(html)
   html
 end
 
+require 'i18n'
+I18n.enforce_available_locales = false
