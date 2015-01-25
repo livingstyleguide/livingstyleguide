@@ -7,7 +7,7 @@ describe LivingStyleGuide::Document do
     @doc = LivingStyleGuide::Document.new { input }
     @doc.type = options[:type] || :markdown
     @doc.template = options[:template] || 'plain'
-    actual = @doc.render.gsub(/\n\n+/, "\n").strip
+    actual = @doc.render(nil, options[:data]).gsub(/\n\n+/, "\n").strip
     expected = output.gsub(/^        /, '').gsub(/\n\n+/, "\n").strip
     actual.must_equal expected
   end
@@ -281,4 +281,17 @@ describe LivingStyleGuide::Document do
     end
 
   end
+
+  describe "Data" do
+
+    it "should use data in Haml templates" do
+      assert_document_equals <<-INPUT, <<-OUTPUT, data: { foo: "Bar" }, type: :haml
+        %div= foo
+      INPUT
+        <div>Bar</div>
+      OUTPUT
+    end
+
+  end
+
 end
