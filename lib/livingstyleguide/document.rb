@@ -63,7 +63,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def parse_filters
-    data.gsub(/\G(.*?)((```.+?```)|\Z)/m) do
+    (@type == :erb ? data.gsub('<%', '<%%') : data).gsub(/\G(.*?)((```.+?```)|\Z)/m) do
       content, code_block = $1, $2
       content.gsub(/@([\w\d_-]+)(?: ([^\{\n]+))?(?: *\{\n((?:.|\n)*)\n\}|\n((?:  .*\n)+))?/) do
         name, arguments, block = $1, $2 || '', $3 || $4
@@ -96,10 +96,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def template_class
-    if @type == :coffee
-      Tilt::CoffeeScriptTemplate
-    else
-      Tilt.const_get(@type.to_s.capitalize + 'Template')
+    case @type
+    when :coffee then Tilt::CoffeeScriptTemplate
+    when :erb    then Tilt::ERBTemplate
+    else Tilt.const_get(@type.to_s.capitalize + 'Template')
     end
   end
 
