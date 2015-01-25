@@ -4,10 +4,9 @@ if defined?(Rails) and defined?(Rails::Railtie)
   class LivingStyleGuideRailtie < Rails::Railtie
     initializer 'living_style_guide.assets' do
       Rails.application.config.assets.configure do |env|
-        env.register_engine('.lsg', ::LivingStyleGuide::TiltTemplate)
+        env.register_engine('.lsg', ::LivingStyleGuide::Document)
       end
     end
   end
 
 end
-
