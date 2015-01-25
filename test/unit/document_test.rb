@@ -156,7 +156,23 @@ describe LivingStyleGuide::Document do
           }
         }
         Lorem ipsum
+        @css-test {
+          .my-class {
+            background: black;
+            &:hover {
+              background: red;
+            }
+          }
+        }
+        Lorem ipsum
       INPUT
+        .my-class {
+          background: black;
+          &:hover {
+            background: red;
+          }
+        }
+        Lorem ipsum
         .my-class {
           background: black;
           &:hover {
