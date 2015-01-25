@@ -7,6 +7,6 @@ LivingStyleGuide.add_filter :import do |glob, data = nil|
     data = JSON.parse("{#{data}}")
   end
   Dir.glob(glob).map do |file|
-    ::Tilt.new(file).render(nil, data)
+    ::Tilt.new(file, livingstyleguide: document).render(nil, data)
   end.join
 end
