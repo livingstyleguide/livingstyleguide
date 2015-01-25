@@ -6,7 +6,7 @@ require 'digest'
 
 class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
-  attr_accessor :scss, :css, :id
+  attr_accessor :scss, :css, :id, :locals
 
   def prepare
     @type = :markdown
@@ -15,6 +15,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @classes = []
     @scss = ''
     @css = ''
+    @locals = {}
   end
 
   def source
@@ -49,7 +50,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
       redcarpet.render(result)
     else
       require "tilt/#{@type}"
-      template_class.new{ result }.render(nil, locals)
+      template_class.new{ result }.render(nil, @locals.merge(locals))
     end
     @classes.unshift "livingstyleguide--#{@type}-example"
     @classes.unshift "livingstyleguide--example"
