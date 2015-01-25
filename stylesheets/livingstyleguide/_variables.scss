@@ -1,9 +1,16 @@
-$livingstyleguide--variables: global-variables() !default;
+$livingstyleguide--variables: () !default;
 
 @each $variable, $value in $livingstyleguide--variables {
   $value: null !default;
   @if $value != null {
-    .\$#{$variable} {
+    $selector: $variable;
+    @if str-slice($variable, 1, 1) == "$" or str-slice($variable, 1, 1) == "#" {
+      $selector: "\\" + $selector;
+    }
+    @if str-slice($variable, -2, -1) == "()" {
+      $selector: str-slice($variable, 1, -3) + "\\(\\)";
+    }
+    .#{$selector} {
       @if type-of($value) == color {
         @if (lightness($value) < lightness($livingstyleguide--color)) {
           color: $livingstyleguide--background-color;
@@ -21,4 +28,3 @@ $livingstyleguide--variables: global-variables() !default;
     }
   }
 }
-

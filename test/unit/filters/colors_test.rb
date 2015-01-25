@@ -63,5 +63,27 @@ class ColorsTest < DocumentTestCase
     OUTPUT
   end
 
+  def test_functions_and_colors
+    assert_render_equals <<-INPUT, <<-OUTPUT
+      @scss {
+        $pink: #c82570 !global;
+      }
+      @colors {
+        $pink purple() #87c53b red
+      }
+    INPUT
+      <ul class="livingstyleguide--color-swatches -lsg-4-columns">
+        <li class="livingstyleguide--color-swatch $pink">$pink</li>
+        <li class="livingstyleguide--color-swatch purple()">purple()</li>
+        <li class="livingstyleguide--color-swatch #87c53b">#87c53b</li>
+        <li class="livingstyleguide--color-swatch red">red</li>
+      </ul>
+    OUTPUT
+    assert_match '.\$pink', @doc.css
+    assert_match '.purple\(\)', @doc.css
+    assert_match '.\#87c53b', @doc.css
+    assert_match '.red', @doc.css
+  end
+
 end
 
