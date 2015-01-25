@@ -1,6 +1,6 @@
 begin
   require 'sprockets'
-  Sprockets.register_engine('.lsg', ::LivingStyleGuide::TiltTemplate)
+  Sprockets.register_engine('.lsg', ::LivingStyleGuide::Document)
 rescue LoadError
 end
 
