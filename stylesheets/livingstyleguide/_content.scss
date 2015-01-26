@@ -79,7 +79,7 @@
   font-size: $livingstyleguide--sub-sub-headline-font-size;
 }
 
-.livingstyleguide--html {
+.livingstyleguide--example {
   @extend %livingstyleguide--reset;
   background: white;
   border-top-left-radius: $livingstyleguide--border-radius;
@@ -104,5 +104,11 @@
 
   &.-lsg-for-javascript {
     display: none;
+  }
+
+  .livingstyleguide--code-block {
+    margin-bottom: -$livingstyleguide--gap-width;
+    margin-left: -$livingstyleguide--gap-width;
+    margin-right: -$livingstyleguide--gap-width;
   }
 }
