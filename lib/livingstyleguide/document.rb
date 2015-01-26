@@ -74,7 +74,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     end
     @classes.unshift "livingstyleguide--#{@type}-example"
     @classes.unshift "livingstyleguide--example"
-    ERB.new(template_erb).result(binding)
+    ERB.new(template_erb).result(binding).gsub(/\n\n+/, "\n")
   end
 
   private
