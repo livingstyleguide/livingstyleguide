@@ -6,8 +6,26 @@ require 'digest'
 
 class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
-  attr_accessor :scss, :css, :id, :locals
-  attr_accessor :head, :header, :footer, :title
+  attr_accessor :css, :id, :locals
+  attr_accessor :title
+
+  %w(scss head header footer).each do |attr|
+    define_method attr do
+      if options.has_key?(:livingstyleguide)
+        options[:livingstyleguide].send(attr)
+      else
+        instance_variable_get("@#{attr}")
+      end
+    end
+
+    define_method "#{attr}=" do |value|
+      if options.has_key?(:livingstyleguide)
+        options[:livingstyleguide].send("#{attr}=", value)
+      else
+        instance_variable_get("@#{attr}", value)
+      end
+    end
+  end
 
   def prepare
     @type = :markdown
