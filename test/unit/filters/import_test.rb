@@ -116,4 +116,11 @@ class ImportTest < DocumentTestCase
     end
   end
 
+  def test_import_sass
+    assert_render_match <<-INPUT, '\A\s*\Z'
+      @import test/fixtures/import/test.scss
+    INPUT
+    assert_match(%r(@import "test/fixtures/import/test.scss";), @doc.scss)
+  end
+
 end
