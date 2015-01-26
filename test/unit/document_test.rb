@@ -258,11 +258,8 @@ describe LivingStyleGuide::Document do
           <div class="livingstyleguide--html">
             <div>Test</div>
           </div>
-          <pre class="livingstyleguide--code-block">
-            <code class="livingstyleguide--code">
-              %div Test
-            </code>
-          </pre>
+          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><em>%div</em> Test
+        </code></pre>
         </section>
       OUTPUT
     end
