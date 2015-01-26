@@ -7,6 +7,11 @@ LivingStyleGuide.add_filter :import do |glob, data = nil|
     data = JSON.parse("{#{data}}")
   end
   Dir.glob(glob).map do |file|
-    ::Tilt.new(file, livingstyleguide: document).render(nil, data)
+    if file =~ /\.s[ac]ss$/
+      document.scss << %Q(@import "#{file}";\n)
+      nil
+    else
+      ::Tilt.new(file, livingstyleguide: document).render(nil, data)
+    end
   end.join
 end
