@@ -15,10 +15,10 @@ module LivingStyleGuide
 
   class RedcarpetHTML < ::Redcarpet::Render::HTML
 
-    def initialize(options = {}, engine)
+    def initialize(options = {}, document)
       @options = options
-      @engine = engine
       @options[:prefix] ||= 'livingstyleguide--'
+      @document = document
       super @options
     end
 
@@ -45,7 +45,7 @@ module LivingStyleGuide
     def block_code(code, language)
       language = language.to_s.strip.to_sym
       language = @options[:default_language] if language == :''
-      document = Document.new { code }
+      document = Document.new(livingstyleguide: @document) { code }
       document.type = language == :example ? :plain : language
       document.template = template_for(language)
       document.render
