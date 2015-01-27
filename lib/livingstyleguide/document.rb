@@ -8,6 +8,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
   attr_accessor :css, :id, :locals
   attr_accessor :title
+  attr_reader :scope
 
   %w(scss head header footer).each do |attr|
     define_method attr do
@@ -60,6 +61,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def evaluate(scope, locals, &block)
+    @scope = scope
+    depend_on file if file and options.has_key?(:livingstyleguide)
     result = ERB.new(erb).result(@filters.get_binding)
     @html = case @type
     when :plain, :example
@@ -70,11 +73,15 @@ class LivingStyleGuide::Document < ::Tilt::Template
       redcarpet.render(result)
     else
       require "tilt/#{@type}"
-      template_class.new{ result }.render(nil, @locals.merge(locals))
+      template_class.new{ result }.render(@scope, @locals.merge(locals))
     end
     @classes.unshift "livingstyleguide--#{@type}-example"
     @classes.unshift "livingstyleguide--example"
     ERB.new(template_erb).result(binding).gsub(/\n\n+/, "\n")
+  end
+
+  def depend_on(file)
+    @scope.depend_on(File.expand_path(file)) if @scope.respond_to?(:depend_on)
   end
 
   private
