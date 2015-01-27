@@ -74,7 +74,7 @@
 .livingstyleguide--code-block {
   display: block;//none;
   line-height: $livingstyleguide--code-line-height;
-  padding: 3px 6px;
+  padding: 3px $livingstyleguide--gap-width;
   width: $livingstyleguide--width;
 
   .show-code & {
