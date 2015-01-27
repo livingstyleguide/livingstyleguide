@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.0-alpha.1
+
+* [New filter syntax everywhere](http://www.hagenburger.net/BLOG/livingstyleguide-2.html) (as it used to be within examples: Now everywhere in the file and the root document)
+* [Importing](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/import_test.rb#L9) (`@import coding-style.lsg`) of other files (LivingStyleGuide documents, HTML, Haml, …)
+* Imported files can be rendered with [local data defined as JSON](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/import_test.rb#L110-L112)
+* Importing supports [globbing of files](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/import_test.rb#L73)
+* [#57](https://github.com/hagenburger/livingstyleguide/issues/57): Having [multiple](https://github.com/hagenburger/livingstyleguide-concept/blob/master/c_new-multiple-pages-v2.0x/atoms.html.lsg#L2) [LivingStyleGuide](https://github.com/hagenburger/livingstyleguide-concept/blob/master/c_new-multiple-pages-v2.0x/index.html.lsg#L1) [documents](https://github.com/hagenburger/livingstyleguide-concept/blob/master/c_new-multiple-pages-v2.0x/pages.html.lsg#L2) by sharing [the configuration](https://github.com/hagenburger/livingstyleguide-concept/blob/master/c_new-multiple-pages-v2.0x/_config.lsg) and loading it via `@import config.lsg`)
+* All imported files and all code examples will be grouped in a `<section>` with unique ID (as ID the current file name will be used if available). This helps scoping CSS and allows linking.
+* [#97](https://github.com/hagenburger/livingstyleguide/issues/97): No need to import/parse/render the whole Sass project (only color variables may be needed)
+* [Sprockets dependencies](https://github.com/hagenburger/livingstyleguide/blob/v2/test/integration/sprockets_test.rb#L6) (except imports within Sass)
+* [Colors do support](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/colors_test.rb#L72) Sass `functions()`, `#hex`, and `colorconstants` besides `$variables`
+* SCSS code can be [added everywhere](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/scss_test.rb#L7-L11) when needed (within examples, it will be automatically scoped to this example)
+
+
 ## 1.4.0
 
 * [#188](https://github.com/livingstyleguide/livingstyleguide/pull/188):
@@ -196,4 +210,3 @@
 ## 0.4.1
 
 * Added anchors (ids) to headlines
-
