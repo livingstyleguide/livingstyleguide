@@ -47,7 +47,7 @@ module LivingStyleGuide
       document = Document.new(livingstyleguide: @document) { code }
       document.type = language == :example ? :plain : language
       document.template = template_for(language)
-      document.render
+      document.render(@document.scope)
     end
 
     def codespan(code)
