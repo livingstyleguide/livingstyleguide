@@ -3,10 +3,10 @@ $links--item-size: 160px;
 
 .links {
   display: block;
-  position: absolute;
+  margin: 100px auto;
+  padding-top: 114px;
   width: 2 * $diamonds--item-rotated-size + 4px;
   z-index: 2;
-  @include transform-origin(0 0 0);
 
   $last-max-width: 0;
   @for $i from 3 to 8 {
