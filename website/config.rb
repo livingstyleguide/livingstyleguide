@@ -4,6 +4,7 @@ activate :livereload
 
 page '/', layout: false
 page '/changelog.html', layout: :markdown
+page '/blog.html', layout: :markdown
 
 set :css_dir, 'style'
 set :js_dir, 'javascripts'
@@ -34,3 +35,8 @@ helpers do
   end
 end
 
+activate :blog do |blog|
+  blog.permalink = 'blog/:title.html'
+  blog.prefix = 'blog'
+  blog.layout = 'markdown'
+end
