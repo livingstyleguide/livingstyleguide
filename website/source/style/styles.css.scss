@@ -151,12 +151,9 @@ style {
 .installation {
   color: $turquoise;
   font-family: "courier new", courier, monospace;
-  font-size: 1.5rem;
-  left: 550px;
+  font-size: 2.5rem;
   margin: 2em 0;
-  position: absolute;
-  text-align: left;
-  top: 250px;
+
   &:before {
     color: mix($turquoise, $white, 30%);
     content: ">";
@@ -200,7 +197,7 @@ style {
   font-weight: normal;
   font-size: 1rem;
   letter-spacing: 1px;
-  margin: 5 * $grid auto 0;
+  margin: (15 * $grid) auto 0;
   text-transform: uppercase;
   width: 10em;
   @include transition(color, 0.2s);
