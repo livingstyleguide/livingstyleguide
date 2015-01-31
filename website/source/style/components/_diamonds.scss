@@ -1,9 +1,11 @@
 $diamonds--item-size: 160px;
 $diamonds--item-rotated-size: floor(sqrt(2 * pow($diamonds--item-size, 2)));
+$a: -140px;
+$b: 20px;
 $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
-                      #F4A7BE #F8AAC1 (#D0156E url("/images/diamonds--logo.svg") -130px -130px no-repeat) #E293AA #EE97B0,
-                  #FF96B5 (#CA1F70 url("/images/diamonds--logo.svg") -130px 30px no-repeat) (#CA1B6E url("/images/diamonds--logo.svg") 30px -130px no-repeat) #FF96B5,
-                      #EB83A2 (#C42872 url("/images/diamonds--logo.svg") 30px 30px no-repeat) #F8AAC1,
+                      #F4A7BE #F8AAC1 (#D0156E url("/images/diamonds--logo.svg") $a $a no-repeat) #E293AA #EE97B0,
+                  #FF96B5 (#CA1F70 url("/images/diamonds--logo.svg") $a $b no-repeat) (#CA1B6E url("/images/diamonds--logo.svg") $b $a no-repeat) #FF96B5,
+                      #EB83A2 (#C42872 url("/images/diamonds--logo.svg") $b $b no-repeat) #F8AAC1,
                   #FF96B5 #F199B2,
                       #ECA2B8;
 
