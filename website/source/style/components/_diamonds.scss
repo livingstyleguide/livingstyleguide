@@ -179,5 +179,10 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
   .diamonds--item:hover & {
     @include transform(scale(1.2));
   }
+
+  .-subpage- & {
+    opacity: 0;
+    @include transform(scale(0.8));
+  }
 }
 
