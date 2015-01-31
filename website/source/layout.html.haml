@@ -8,7 +8,7 @@
     %meta(name="author" content="Nico Hagenburger")
     %title= data.page.title
     %link(href="#{asset_path(:css, 'styles')}" rel="stylesheet")
-  %body.layout(class="#{'-subpage-' if data.page.subpage}")
+  %body.layout(class="#{'-subpage-' unless data.page.root}")
     .diamonds
       - 4.times do
         .diamonds--item

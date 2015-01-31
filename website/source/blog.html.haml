@@ -1,7 +1,11 @@
+---
+title: Official LivingStyleGuide Blog
+---
+
+%h1.blog--headline Blog
 - page_articles.each do |article|
-  %article
-    %h1
+  %article.blog--item
+    %h2.blog--item-title
       %a(href="#{article.url}")= article.title
-      %time= article.date.strftime('%b %e %Y')
-    = article.body
-    %a(href="#{article.url}") Read more
+    %time.blog--item-date= article.date.strftime('%b %e %Y')
+    %a.blog--item-read-more(href="#{article.url}") Read more
