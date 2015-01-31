@@ -38,6 +38,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
   text-align: center;
   position: relative;
   width: $diamonds--item-size;
+  @include transition(transform, 0.5s);
 
   &:after,
   &:before {
@@ -59,6 +60,39 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
 
   &:hover:after {
     @include transform(rotateZ(45deg) rotateX(0deg) rotateY(180deg));
+  }
+
+  .-subpage- & {
+    opacity: 0;
+
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(9),
+    &:nth-child(13),
+    &:nth-child(14),
+    &:nth-child(17) {
+      opacity: 1;
+    }
+
+    &:nth-child(9) {
+      @include transform(scale(0.5));
+      @include transform-origin(50% -33px 0);
+    }
+
+    &:nth-child(13) {
+      @include transform(scale(0.5));
+      @include transform-origin(193px -146px 0);
+    }
+
+    &:nth-child(14) {
+      @include transform(scale(0.5));
+      @include transform-origin(-33px -146px 0);
+    }
+
+    &:nth-child(17) {
+      @include transform(scale(0.5));
+      @include transform-origin(50% -259px 0);
+    }
   }
 
   $item-number: 0;
