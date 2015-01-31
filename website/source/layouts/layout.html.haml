@@ -8,17 +8,23 @@
     %meta(name="author" content="Nico Hagenburger")
     %title= data.page.title
     %link(href="#{asset_path(:css, 'styles')}" rel="stylesheet")
-    %script(src="//use.typekit.net/nbn2flh.js")
-    %script try{Typekit.load();}catch(e){}
-  %body.layout
-    %header.header
-      .header--logo
-        %h2.header--slogan The easiest way to create front-end style guides with Sass and Compass
-      %span.header--version
-        = livingstyleguide_gem_version
+  %body.layout(class="#{'-subpage-' if data.page.subpage}")
+    .diamonds
+      - 4.times do
+        .diamonds--item
+      .diamonds--item
+        .diamonds--item-version-title Version
+        = link_to 'Open Changelog', 'changelog.html', class: 'diamonds--item-changelog'
+        .diamonds--item-version= livingstyleguide_gem_version
+      - 11.times do
+        .diamonds--item
+      .diamonds--item
+        %h1.diamonds--item-tagline
+          Helps you to create awesome front-end style guides with Sass and Markdown
+      - 11.times do
+        .diamonds--item
     .layout--container
-      %article.markdown
-        = yield
+      = yield
     %footer.footer
       %a.footer--made-in-berlin(href="http://www.hagenburger.net/BLOG/Made-in-Berlin.html") Made in Berlin
       %a.footer--made-by-hagenburger(href="http://www.hagenburger.net") Nico Hagenburger
@@ -36,5 +42,3 @@
           var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
           g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
         })();
-
-
