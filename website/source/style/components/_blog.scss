@@ -1,0 +1,37 @@
+.blog {
+  &--headline {
+    color: $turquoise;
+    font-size: 3rem;
+  }
+
+  &--item {
+    display: block;
+    margin: 2rem 0;
+
+    &-title {
+      color: $pink;
+      font-size: 2rem;
+      @include transition(all, 0.5s);
+
+      &:hover {
+        letter-spacing: 0.1em;
+      }
+    }
+
+    &-date {
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    &-read-more {
+      display: block;
+      text-align: center;
+      text-transform: uppercase;
+      @include transition(all, 0.5s);
+
+      &:hover {
+        letter-spacing: 0.5em;
+      }
+    }
+  }
+}

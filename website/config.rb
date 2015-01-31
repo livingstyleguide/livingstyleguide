@@ -2,9 +2,9 @@ require 'compass-placeholders'
 
 activate :livereload
 
-page '/', layout: false
-page '/changelog.html', layout: :markdown
-page '/blog.html', layout: :markdown
+page '/'
+page '/changelog.html'
+page '/blog.html'
 
 set :css_dir, 'style'
 set :js_dir, 'javascripts'
@@ -67,7 +67,7 @@ LivingStyleGuide::Example.add_filter :markdown do
 end
 
 activate :blog do |blog|
-  blog.permalink = 'blog/:title.html'
-  blog.prefix = 'blog'
-  blog.layout = 'markdown'
+  blog.sources = 'blog/:year-:month-:day-:title.html'
+  blog.permalink = ':title.html'
+  blog.layout = 'blog-post'
 end
