@@ -91,7 +91,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
 .diamonds--item-version,
 .diamonds--item-version-title,
 .diamonds--item-changelog {
-  color: $pink;
+  color: mix($pink, black, 80%);
   position: relative;
   text-transform: uppercase;
   z-index: 4;
