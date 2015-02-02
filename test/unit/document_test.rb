@@ -237,6 +237,14 @@ describe LivingStyleGuide::Document do
       OUTPUT
     end
 
+    it "should ignore “@” in the middle of the text" do
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        Lorem @ipsum
+      INPUT
+        Lorem @ipsum
+      OUTPUT
+    end
+
   end
 
   describe "templates" do

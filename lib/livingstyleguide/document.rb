@@ -93,7 +93,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def parse_filters
     (@type == :erb ? data.gsub('<%', '<%%') : data).gsub(/\G(.*?)((```.+?```)|\Z)/m) do
       content, code_block = $1, $2
-      content.gsub(/@([\w\d_-]+)(?: ([^\{\n]+))?(?: *\{\n((?:.|\n)*?)\n\}|\n((?:  .*\n)+))?/) do
+      content.gsub(/^@([\w\d_-]+)(?: ([^\{\n]+))?(?: *\{\n((?:.|\n)*?)\n\}|\n((?:  .*\n)+))?/) do
         name, arguments, block = $1, $2 || '', $3 || $4
         name = name.gsub('-', '_').to_sym
         arguments = arguments.split(',').map(&:strip)
