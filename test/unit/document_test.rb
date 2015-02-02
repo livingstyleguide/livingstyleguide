@@ -262,7 +262,7 @@ describe LivingStyleGuide::Document do
         %div Test
         ```
       INPUT
-        <section class="livingstyleguide--example livingstyleguide--haml-example">
+        <section class="livingstyleguide--example livingstyleguide--haml-example" id="section-b6e9ab">
           <div class="livingstyleguide--html">
             <div>Test</div>
           </div>
