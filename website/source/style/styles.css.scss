@@ -154,6 +154,10 @@ style {
   font-size: 2.5rem;
   margin: 2em 0;
 
+  @media all and (max-width: 800px) {
+    font-size: 1.5rem;
+  }
+
   &:before {
     color: mix($turquoise, $white, 30%);
     content: ">";
