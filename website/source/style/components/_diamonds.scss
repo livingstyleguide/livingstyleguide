@@ -19,7 +19,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
   @include transform(translateX(-50%));
 
   $last-max-width: 0;
-  @for $i from 3 to 7 {
+  @for $i from 5 to 7 {
     $scale: $i / 5 - 0.3;
     $max-width: $i * 200px;
     @media all and (min-width: #{$last-max-width + 1px}) and (max-width: #{$max-width}) {
