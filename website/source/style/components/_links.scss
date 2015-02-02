@@ -3,9 +3,10 @@ $links--item-size: 160px;
 
 .links {
   display: block;
+  font-size: 0;
   margin: 100px auto;
   padding-top: 114px;
-  width: 2 * $diamonds--item-rotated-size + 4px;
+  width: 2 * $diamonds--item-rotated-size;
   z-index: 2;
 
   $last-max-width: 0;
