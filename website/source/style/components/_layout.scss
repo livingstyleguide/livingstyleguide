@@ -12,10 +12,14 @@
 
 .layout--container {
   margin: 59vw auto 0;
+  max-width: 680px;
   position: relative;
-  width: 680px;
   z-index: 2;
   @include transition(margin, 0.5s);
+
+  @media all and (max-width: 700px) {
+    margin-top: 155vw;
+  }
 
   .-subpage- & {
     margin-top: 21vw;
