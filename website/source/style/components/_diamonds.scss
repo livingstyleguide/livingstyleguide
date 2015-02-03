@@ -77,15 +77,24 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
   }
 
   .-subpage- & {
-    opacity: 0;
-
-    &:nth-child(3),
-    &:nth-child(4),
-    &:nth-child(9),
-    &:nth-child(13),
-    &:nth-child(14),
-    &:nth-child(17) {
-      opacity: 1;
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(5),
+    &:nth-child(6),
+    &:nth-child(7),
+    &:nth-child(8),
+    &:nth-child(10),
+    &:nth-child(11),
+    &:nth-child(12),
+    &:nth-child(15),
+    &:nth-child(16),
+    &:nth-child(18),
+    &:nth-child(19),
+    &:nth-child(20),
+    &:nth-child(21) {
+      &:after {
+        background: transparent;
+      }
     }
 
     &:nth-child(9) {
@@ -142,7 +151,8 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
 
 .diamonds--item-version,
 .diamonds--item-version-title,
-.diamonds--item-changelog {
+.diamonds--item-changelog,
+.diamonds--item-link {
   color: mix($pink, black, 80%);
   position: relative;
   text-transform: uppercase;
@@ -164,9 +174,18 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
   }
 }
 
-.diamonds--item-version {
+.diamonds--item-version,
+.diamonds--item-link {
   font-size: 24px;
   font-weight: bold;
+}
+
+.diamonds--item-link {
+  left: 50%;
+  padding: 2px 8px 0;
+  position: absolute;
+  top: 75%;
+  @include transform(translate(-50%, -50%));
 }
 
 .diamonds--item-changelog {
@@ -175,7 +194,10 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
   .diamonds--item:hover & {
     @extend %display-inline-block;
   }
+}
 
+.diamonds--item-changelog,
+.diamonds--item-link {
   &:hover {
     background: $pink;
     color: $white;
