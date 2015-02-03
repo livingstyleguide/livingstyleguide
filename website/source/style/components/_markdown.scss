@@ -32,10 +32,10 @@ $livingstyleguide--full-width-padding: 0;
 @import "livingstyleguide/code";
 
 .markdown {
+  max-width: $livingstyleguide--width + 2 * 40px;
   padding: 40px;
   overflow: hidden;
   text-align: left;
-  width: $livingstyleguide--width + 2 * 40px;
 
   a {
     color: darken($turquoise, 20%);
@@ -59,11 +59,13 @@ $livingstyleguide--full-width-padding: 0;
   .livingstyleguide--headline {
     font-size: 3em;
     margin: 0 0 0.5em;
+    width: auto;
   }
 
   .livingstyleguide--sub-headline {
     font-size: 2em;
     margin: 1.5em 0 0.5em;
+    width: auto;
   }
 
   p,
@@ -75,6 +77,7 @@ $livingstyleguide--full-width-padding: 0;
     font-weight: 200;
     line-height: 1.5;
     margin: 0 0 0.75em;
+    width: auto;
   }
 
   .livingstyleguide--unordered-list {

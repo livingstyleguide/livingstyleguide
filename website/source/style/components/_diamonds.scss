@@ -10,6 +10,20 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
                       #ECA2B8;
 
 .diamonds {
+  display: block;
+  height: 61vw;
+  min-height: 480px;
+  max-height: 700px;
+  @include transition(all, 0.5s);
+
+  .-subpage- & {
+    height: 21vw;
+    min-height: 220px;
+  }
+}
+
+
+.diamonds--container {
   left: 50%;
   position: absolute;
   top: 0;
