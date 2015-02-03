@@ -11,18 +11,15 @@
 
 
 .layout--container {
-  margin: 59vw auto 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+
+
+.layout--content {
+  margin: auto;
   max-width: 680px;
   position: relative;
   z-index: 2;
-  @include transition(margin, 0.5s);
-
-  @media all and (max-width: 700px) {
-    margin-top: 155vw;
-  }
-
-  .-subpage- & {
-    margin-top: 21vw;
-  }
 }
-

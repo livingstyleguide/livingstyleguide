@@ -20,9 +20,9 @@
       e.preventDefault();
       var url = this.href;
       $('body')[url.match(/\/$/) ? 'removeClass' : 'addClass']('-subpage-');
-      $('.layout--container').animate({ opacity: 0 });
+      $('.layout--content').animate({ opacity: 0 });
       $.get(url).done(function(html) {
-        $('.layout--container').replaceWith($(html)[27])
+        $('.layout--content').replaceWith($(html).find('.layout--content'))
         history.pushState({}, $('title').text(), url);
       })
     })

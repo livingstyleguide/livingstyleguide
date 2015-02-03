@@ -2,9 +2,10 @@
 %html
   = partial 'layouts/head'
   %body.layout(class="#{'-subpage-' unless data.page.root}")
-    = partial 'layouts/header'
     .layout--container
-      %h1.blog--headline= data.page.title
-      .markdown
-        = yield
-    = partial 'layouts/footer'
+      = partial 'layouts/header'
+      .layout--content
+        %h1.blog--headline= data.page.title
+        .markdown
+          = yield
+      = partial 'layouts/footer'
