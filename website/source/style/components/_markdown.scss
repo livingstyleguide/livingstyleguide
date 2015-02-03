@@ -67,8 +67,13 @@ $livingstyleguide--full-width-padding: 0;
   }
 
   p,
-  .livingstyleguide--paragraph {
+  .livingstyleguide--paragraph,
+  .livingstyleguide--unordered-list,
+  .livingstyleguide--unordered-list-item {
     font-size: 18px;
+    font-family: 'source sans pro', 'arial', 'helvetica', sans-serif;
+    font-weight: 200;
+    line-height: 1.5;
     margin: 0 0 0.75em;
   }
 
@@ -77,7 +82,6 @@ $livingstyleguide--full-width-padding: 0;
   }
 
   .livingstyleguide--unordered-list-item {
-    font-size: 18px;
     margin-left: 3em;
 
     &:before {
@@ -92,8 +96,12 @@ $livingstyleguide--full-width-padding: 0;
   }
 
   .livingstyleguide--code {
+    background: mix($pink, $white, 3%);
+    border-radius: 4px;
     display: inline;
-    font-family: "courier new", courier, monospace;
+    font-family: 'courier new', monospace;
+    font-size: inherit;
+    padding: 0 4px;
   }
 
   .livingstyleguide--code-block {
