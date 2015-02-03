@@ -1,0 +1,21 @@
+.diamonds
+  - 4.times do
+    .diamonds--item
+  .diamonds--item
+    .diamonds--item-version-title Version
+    = link_to 'Open Changelog', 'changelog.html', class: 'diamonds--item-changelog'
+    .diamonds--item-version= livingstyleguide_gem_version
+  - 3.times do
+    .diamonds--item
+  %a.diamonds--item(href="/")
+  - 3.times do
+    .diamonds--item
+  %a.diamonds--item(href="/")
+  %a.diamonds--item(href="/")
+  - 2.times do
+    .diamonds--item
+  %a.diamonds--item(href="/")
+    %h1.diamonds--item-tagline
+      Helps you to create awesome front-end style guides with Sass and Markdown
+  - 4.times do
+    .diamonds--item
