@@ -39,7 +39,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def source
-    @source ||= erb.gsub(/<%.*?%>\n?/, '')
+    @source ||= erb.gsub(/<%.*?%>\n?/, '').gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
   end
 
   def css
@@ -63,7 +63,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def evaluate(scope, locals, &block)
     @scope = scope
     depend_on file if file and options.has_key?(:livingstyleguide)
-    result = ERB.new(erb).result(@filters.get_binding)
+    result = set_highlights(ERB.new(erb).result(@filters.get_binding))
     @html = case @type
     when :plain, :example, :html, :javascript
       result
@@ -82,6 +82,12 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def depend_on(file)
     @scope.depend_on(File.expand_path(file)) if @scope.respond_to?(:depend_on)
+  end
+
+  private
+  def set_highlights(code)
+    code.gsub!(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(\n<strong class="livingstyleguide--code-highlight-block">\\1</strong>\n))
+    code.gsub(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="livingstyleguide--code-highlight">\\1</strong>))
   end
 
   private
