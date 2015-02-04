@@ -53,28 +53,6 @@ describe LivingStyleGuide::Document do
       OUTPUT
     end
 
-    it "allows to set the type to Coffee-Script" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-        @coffee-script
-        alert "Test"
-      INPUT
-        (function() {
-          alert("Test");
-        }).call(this);
-      OUTPUT
-    end
-
-    it "allows to set the type to Coffee-Script with short version" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-        @coffee
-        alert "Test"
-      INPUT
-        (function() {
-          alert("Test");
-        }).call(this);
-      OUTPUT
-    end
-
   end
 
   describe "filter syntax" do
