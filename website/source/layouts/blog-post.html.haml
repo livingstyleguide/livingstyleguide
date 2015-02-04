@@ -8,4 +8,11 @@
         %h1.blog--headline= data.page.title
         .markdown
           = yield
+        .social-buttons
+          .social-buttons--item
+            .fb-like(data-action="like" data-href="#{current_url}" data-layout="box_count" data-share="false")
+          .social-buttons--item
+            %a(href="Tweet" class="twitter-share-button" data-count="vertical" data-related="livingstyleguide" data-text="#{data.page.title}—LivingStyleGuide" data-url="#{current_url}") https://twitter.com/share
+          .social-buttons--item
+            .g-plusone(data-size="tall")
       = partial 'layouts/footer'
