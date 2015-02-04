@@ -68,7 +68,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     when :plain, :example, :html, :javascript
       result
     when :markdown
-      renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide::Engine.default_options, self)
+      renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide.default_options, self)
       redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
       redcarpet.render(result)
     else

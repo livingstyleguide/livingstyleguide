@@ -1,6 +1,6 @@
-require 'example_test_helper'
+require 'document_test_helper'
 
-class JavaScriptTest < ExampleTestCase
+class ScssTest < DocumentTestCase
 
   def test_adding_scss
     doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
