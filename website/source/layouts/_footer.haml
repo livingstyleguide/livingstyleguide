@@ -31,5 +31,32 @@
       $.get(url).done(function(html) {
         $('.layout--content').replaceWith($(html).find('.layout--content'))
         history.pushState({}, $('title').text(), url);
+        initSocialMedia();
       })
     })
+    function initSocialMedia() {
+      fb = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=565452553545873";
+        fjs.parentNode.insertBefore(js, fjs);
+      });
+      window.setTimeout(function(){fb(document, 'script', 'facebook-jssdk');}, 250);
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js?onload=onLoadCallback';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+      !function(d, s, id){
+        var js,fjs = d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.async = true;
+          js.src = "//platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js,fjs);
+        }
+      }(document,"script","twitter-wjs");
+    };
+    initSocialMedia();

@@ -49,6 +49,10 @@ helpers do
   def current_branch
     `git rev-parse --abbrev-ref HEAD`.strip
   end
+
+  def current_url
+    "http://livingstyleguide.org#{current_page.url}"
+  end
 end
 
 LivingStyleGuide::Example.add_filter :markdown do
