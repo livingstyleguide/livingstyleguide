@@ -2,23 +2,22 @@ $links--item-size: 160px;
 
 
 .links {
+  
+}
+
+.links--container {
   display: block;
   font-size: 0;
-  margin: 100px auto;
+  left: 50%;
+  margin: 100px 0;
   padding-top: 114px;
+  position: relative;
   width: 2 * $diamonds--item-rotated-size;
   z-index: 2;
+  @include transform(translateX(-50%));
 
-  $last-max-width: 0;
-  @for $i from 3 to 8 {
-    $scale: $i / 5 - 0.3;
-    $max-width: $i * 200px;
-    @media all and (min-width: #{$last-max-width + 1px}) and (max-width: #{$max-width}) {
-      left: 680px * $scale;
-      top: 112px * $scale;
-      @include transform(scale($scale));
-    }
-    $last-max-width: $max-width;
+  @media all and (min-width: 1000px) {
+    width: auto;
   }
 }
 
