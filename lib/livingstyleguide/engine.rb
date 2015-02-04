@@ -3,20 +3,8 @@ module LivingStyleGuide
   class Engine
     attr_accessor :markdown, :files, :options, :variables
 
-    @@default_options = {
-      default_language: :example,
-      title: 'Living Style Guide',
-      header: '<h1 class="livingstyleguide--page-title">Living Style Guide</h1>',
-      footer: '<div class="livingstyleguide--footer"><a class="livingstyleguide--logo" href="http://livingstyleguide.org">Made with the LivingStyleGuide gem.</a></div>',
-      root: '/'
-    }
-
-    def self.default_options
-      @@default_options
-    end
-
     def initialize(options, sass_options)
-      @options = @@default_options.merge(options)
+      @options = LivingStyleGuide.default_options.merge(options)
       @sass_options = sass_options
       @variables = {}
       @files = []

@@ -11,7 +11,7 @@ module LivingStyleGuide
 
     desc 'compile input_file output_file', 'Compiles the living style guide to HTML.'
     def compile(input_file = nil, output_file = nil)
-      template = LivingStyleGuide::TiltTemplate.new(input_file) do
+      template = LivingStyleGuide::Document.new(input_file) do
         input(input_file)
       end
       output template.render, input_file, output_file

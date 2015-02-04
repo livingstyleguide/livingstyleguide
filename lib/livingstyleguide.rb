@@ -7,19 +7,25 @@ rescue LoadError
 end
 
 module LivingStyleGuide
+  @@default_options = {
+    default_language: :example,
+    title: 'Living Style Guide',
+    header: '<h1 class="livingstyleguide--page-title">Living Style Guide</h1>',
+    footer: '<div class="livingstyleguide--footer"><a class="livingstyleguide--logo" href="http://livingstyleguide.org">Made with the LivingStyleGuide gem.</a></div>',
+    root: '/'
+  }
+
+  def self.default_options
+    @@default_options
+  end
+
   def self.add_filter(*keys, &block)
     Filters.add_filter(*keys, &block)
   end
 end
 
 require 'livingstyleguide/version'
-require 'livingstyleguide/filter_hooks'
-require 'livingstyleguide/sass_extensions'
-require 'livingstyleguide/engine'
 require 'livingstyleguide/markdown_extensions'
-require 'livingstyleguide/tilt_template'
-require 'livingstyleguide/code_block'
-require 'livingstyleguide/example'
 require 'livingstyleguide/document'
 require 'livingstyleguide/filters'
 require 'livingstyleguide/integration'

@@ -24,7 +24,7 @@ class ColorsTest < DocumentTestCase
     INPUT
       <ul class="livingstyleguide--color-swatches -lsg-2-columns">
         <li class="livingstyleguide--color-swatch $my-orange">$my-orange</li>
-        <li class="livingstyleguide--color-swatch $my-green">$my_green</li>
+        <li class="livingstyleguide--color-swatch $my_green">$my_green</li>
       </ul>
     OUTPUT
   end

@@ -22,7 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'redcarpet', '>= 3.2.3'
   gem.add_dependency 'tilt'
   gem.add_dependency 'thor'
-  gem.add_dependency 'hooks', '0.3.3'
 
   gem.add_development_dependency 'compass'
   gem.add_development_dependency 'rake'
