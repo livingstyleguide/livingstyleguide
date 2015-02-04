@@ -65,7 +65,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     depend_on file if file and options.has_key?(:livingstyleguide)
     result = ERB.new(erb).result(@filters.get_binding)
     @html = case @type
-    when :plain, :example, :html
+    when :plain, :example, :html, :javascript
       result
     when :markdown
       renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide::Engine.default_options, self)
