@@ -1,0 +1,6 @@
+<section class="<%= classes.join(' ') %>" id="<%= id %>">
+  <script><%= html %></script>
+  <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><%=
+    [:plain].index(type) ? source : ::MiniSyntax.highlight(source, type)
+  %></code></pre>
+</section>
