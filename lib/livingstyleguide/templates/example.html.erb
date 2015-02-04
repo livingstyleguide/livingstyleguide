@@ -3,6 +3,6 @@
     <%= html %>
   </div>
   <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><%=
-    [:plain].index(type) ? source : ::MiniSyntax.highlight(source, type)
+    [:plain].index(type) ? source : ::MiniSyntax.highlight(ERB::Util.h(source), type)
   %></code></pre>
 </section>
