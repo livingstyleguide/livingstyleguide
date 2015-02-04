@@ -257,6 +257,22 @@ describe LivingStyleGuide::Document do
 
     it "should use the example template" do
       assert_document_equals <<-INPUT, <<-OUTPUT
+        ```
+        <div>Test</div>
+        ```
+      INPUT
+        <section class="livingstyleguide--example livingstyleguide--html-example" id="section-61ecba">
+          <div class="livingstyleguide--html">
+            <div>Test</div>
+          </div>
+          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><b>&lt;<em>div</em></b><b>&gt;</b>Test<b>&lt;/<em>div</em>&gt</b>
+        </code></pre>
+        </section>
+      OUTPUT
+    end
+
+    it "should use the example template" do
+      assert_document_equals <<-INPUT, <<-OUTPUT
         ``` example
         @haml
         %div Test
