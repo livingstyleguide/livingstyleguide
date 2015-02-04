@@ -317,4 +317,34 @@ describe LivingStyleGuide::Document do
 
   end
 
+  describe "highlights in code" do
+
+    it "should highlight text in a line" do
+      doc = LivingStyleGuide::Document.new { "This is ***highlighted*** text." }
+      doc.type = :plain
+      doc.template = :plain
+      doc.render
+      assert_equal "This is highlighted text.", doc.source
+      assert_equal 'This is <strong class="livingstyleguide--code-highlight">highlighted</strong> text.', doc.html
+    end
+
+    it "should highlight text spanning several lines" do
+      doc = LivingStyleGuide::Document.new do
+        <<-INPUT.unindent
+          This is
+          ***
+          highlighted
+          ***
+          text.
+        INPUT
+      end
+      doc.type = :plain
+      doc.template = :plain
+      doc.render
+      assert_equal "This is\n\nhighlighted\n\ntext.\n", doc.source
+      assert_equal "This is\n\n<strong class=\"livingstyleguide--code-highlight-block\">highlighted</strong>\ntext.\n", doc.html
+    end
+
+  end
+
 end
