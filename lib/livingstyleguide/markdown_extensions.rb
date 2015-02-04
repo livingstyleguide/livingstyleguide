@@ -46,7 +46,7 @@ module LivingStyleGuide
       language = language.to_s.strip.to_sym
       language = @options[:default_language] if language == :''
       document = Document.new(livingstyleguide: @document) { code }
-      document.type = language == :example ? :plain : language
+      document.type = language == :example ? :html : language
       document.template = template_for(language)
       document.render(@document.scope)
     end
