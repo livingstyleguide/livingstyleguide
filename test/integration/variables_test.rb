@@ -11,6 +11,7 @@ class VariablesImporterTest < Minitest::Test
   end
 
   def test_variables_outside_of_root
+    skip "need rewrite of fixtures"
     html = render('test/fixtures/standalone/variables/gemfile/styleguide/styleguide.html.lsg')
     assert_match %r(\.\\\$green), html
     assert_match %r(\.\\\$red), html
