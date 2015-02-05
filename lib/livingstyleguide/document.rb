@@ -39,7 +39,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def source
-    @source ||= erb.gsub(/<%.*?%>\n?/, '').gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
+    @source ||= set_highlights(@erb.gsub(/<%.*?%>\n?/, ''))
   end
 
   def css
@@ -63,17 +63,17 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def evaluate(scope, locals, &block)
     @scope = scope
     depend_on file if file and options.has_key?(:livingstyleguide)
-    result = set_highlights(ERB.new(erb).result(@filters.get_binding))
+    result = ERB.new(erb).result(@filters.get_binding)
     @html = case @type
     when :plain, :example, :html, :javascript
-      result
+      remove_highlights(result)
     when :markdown
       renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide.default_options, self)
       redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
-      redcarpet.render(result)
+      remove_highlights(redcarpet.render(result))
     else
       require "tilt/#{@type}"
-      template_class.new{ result }.render(@scope, @locals.merge(locals))
+      template_class.new{ remove_highlights(result) }.render(@scope, @locals.merge(locals))
     end
     @classes.unshift "livingstyleguide--#{@type}-example"
     @classes.unshift "livingstyleguide--example"
@@ -88,6 +88,11 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def set_highlights(code)
     code.gsub!(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(\n<strong class="livingstyleguide--code-highlight-block">\\1</strong>\n))
     code.gsub(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="livingstyleguide--code-highlight">\\1</strong>))
+  end
+
+  private
+  def remove_highlights(code)
+    code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
   end
 
   private

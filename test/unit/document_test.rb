@@ -324,8 +324,8 @@ describe LivingStyleGuide::Document do
       doc.type = :plain
       doc.template = :plain
       doc.render
-      assert_equal "This is highlighted text.", doc.source
-      assert_equal 'This is <strong class="livingstyleguide--code-highlight">highlighted</strong> text.', doc.html
+      assert_equal "This is highlighted text.", doc.html
+      assert_equal 'This is <strong class="livingstyleguide--code-highlight">highlighted</strong> text.', doc.source
     end
 
     it "should highlight text spanning several lines" do
@@ -341,8 +341,8 @@ describe LivingStyleGuide::Document do
       doc.type = :plain
       doc.template = :plain
       doc.render
-      assert_equal "This is\n\nhighlighted\n\ntext.\n", doc.source
-      assert_equal "This is\n\n<strong class=\"livingstyleguide--code-highlight-block\">highlighted</strong>\ntext.\n", doc.html
+      assert_equal "This is\n\nhighlighted\n\ntext.\n", doc.html
+      assert_equal "This is\n\n<strong class=\"livingstyleguide--code-highlight-block\">highlighted</strong>\ntext.\n", doc.source
     end
 
   end
