@@ -1,8 +1,3 @@
-require 'rubygems'
-begin
-require 'bundler/setup'
-rescue LoadError
-end
 require 'thor'
 require 'tilt'
 
@@ -11,10 +6,10 @@ module LivingStyleGuide
 
     desc 'compile input_file output_file', 'Compiles the living style guide to HTML.'
     def compile(input_file = nil, output_file = nil)
-      template = LivingStyleGuide::Document.new(input_file) do
+      doc = LivingStyleGuide::Document.new(input_file) do
         input(input_file)
       end
-      output template.render, input_file, output_file
+      output doc.render, input_file, output_file
     end
 
     desc 'version', 'Shows the current version of the Gem'

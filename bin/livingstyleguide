@@ -1,7 +1,16 @@
 #!/usr/bin/env ruby
 
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'livingstyleguide'))
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'livingstyleguide', 'command_line_interface'))
+require 'rubygems'
+begin
+require 'bundler/setup'
+rescue LoadError
+end
+
+lib = File.expand_path('../lib', File.dirname(__FILE__))
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'livingstyleguide'
+require 'livingstyleguide/command_line_interface'
 
 LivingStyleGuide::CommandLineInterface.start(ARGV)
 
