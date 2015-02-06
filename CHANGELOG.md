@@ -1,6 +1,17 @@
 # Changelog
 
-## 2.0.0-alpha.1
+## 2.0.0.alpha.2
+
+* Upgraded [@javascript filter](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/javascript_test.rb) to v2
+* Upgraded [@coffee-script/@coffee filter](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/coffee_script_test.rb) to v2
+* Upgraded the command line interface to use v2
+* Added ID to examples to allow CSS scoping
+* Fixed HTML (non-Haml) examples
+* Upgraded code highlights to v2
+* Removed obsolete v1 code and tests
+
+
+## 2.0.0.alpha.1
 
 * [New filter syntax everywhere](http://www.hagenburger.net/BLOG/livingstyleguide-2.html) (as it used to be within examples: Now everywhere in the file and the root document)
 * [Importing](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/import_test.rb#L9) (`@import coding-style.lsg`) of other files (LivingStyleGuide documents, HTML, Haml, …)
