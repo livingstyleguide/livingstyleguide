@@ -33,8 +33,8 @@ describe "LivingStyleGuide::CommandLineInterface" do
   end
 
   it "should read from STDIN and write to STDOUT" do
-    cli 'compile', <<-STDIN do |stdout|
-      source: style.scss
+    cli 'compile', <<-STDIN.unindent do |stdout|
+      @import modules/buttons
     STDIN
       File.exists?('styleguide.html').must_equal false
       stdout.must_match %r(<button class="button">)
