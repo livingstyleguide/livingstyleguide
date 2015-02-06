@@ -1,0 +1,21 @@
+---
+title: Living Style Guide 2.0.0.alpha.2 is out!
+---
+
+The LivingStyleGuide v2 just got a second alpha release! We've upgraded some features from v1, as well as some bug fixes. Another change is that where 2.0.0.alpha.1 was only accessible when embedded in Rails, 2.0.0.alpha.2 can now also be used from the command line. We also added JavaScript and CoffeeScript filters.
+
+Here's a closer look at what we've done for the second alpha release:
+
+* Upgraded [@javascript filter](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/javascript_test.rb) to v2
+* Upgraded [@coffee-script/@coffee filter](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/coffee_script_test.rb) to v2
+* Upgraded the command line interface to use v2
+* Added ID to examples to allow CSS scoping
+* Fixed HTML (non-Haml) examples
+* Upgraded code highlights to v2
+* Removed obsolete v1 code and tests
+
+For a full list of the LivingStyleGuide 2.0.0.alpha.2 features, check out the release notes [here on GitHub](https://github.com/hagenburger/livingstyleguide/releases/tag/v2.0.0.alpha.2).
+
+LivingStyleGuide's second alpha is already in use, and you can see a real, live example of an open-source use case coming up in the next few days when [Eurucamp](http://style-guide.eurucamp.org/latest/) gets upgraded. Stay tuned for more details by following [@LSGorg](https://twitter.com/LSGorg) for updates. 
+
+Tweet about LSG v2 by using [#LSG2](https://twitter.com/search?q=%23lsg2), and as always we'd love to have your feedback!
