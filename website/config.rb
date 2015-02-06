@@ -55,21 +55,6 @@ helpers do
   end
 end
 
-LivingStyleGuide::Example.add_filter :markdown do
-  begin
-    @syntax = :markdown
-
-    pre_processor do |markdown|
-      renderer = LivingStyleGuide::RedcarpetHTML.new({})
-      redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
-      %Q(<article class="markdown">\n#{redcarpet.render(markdown)}\n</article>)
-    end
-
-  rescue LoadError
-    raise "Please make sure `gem 'haml'` is added to your Gemfile."
-  end
-end
-
 activate :blog do |blog|
   blog.sources = 'blog/:year-:month-:day-:title.html'
   blog.permalink = ':title.html'
