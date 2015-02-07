@@ -22,6 +22,23 @@ class ImportTest < DocumentTestCase
     OUTPUT
   end
 
+  def test_import_lsg_relative
+    file = "test/fixtures/import/index.html.lsg"
+    assert_render_match <<-INPUT, <<-OUTPUT, template: :default, file: file
+      Before
+
+      @import headline.lsg
+
+      After
+    INPUT
+      <p.+?>Before</p>
+      .*?
+      <h2.+?>Imported</h2>
+      .*?
+      <p.+?>After</p>
+    OUTPUT
+  end
+
   def test_import_lsg_partial_with_underscore
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
