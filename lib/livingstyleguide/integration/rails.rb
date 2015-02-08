@@ -6,6 +6,7 @@ if defined?(Rails) and defined?(Rails::Railtie)
       Rails.application.config.assets.configure do |env|
         env.register_engine('.lsg', ::LivingStyleGuide::Document)
       end
+      LivingStyleGuide.default_options[:scss_template] = ::Sass::Rails::ScssTemplate
     end
   end
 

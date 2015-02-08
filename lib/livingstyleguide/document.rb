@@ -44,7 +44,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def css
     scss_with_lsg = "#{scss}; @import 'livingstyleguide';"
-    ::Sass::Engine.new(scss_with_lsg, syntax: :scss).render
+    render_scss(scss_with_lsg)
   end
 
   def id
@@ -149,6 +149,17 @@ class LivingStyleGuide::Document < ::Tilt::Template
     else
       "section-#{Digest::SHA256.hexdigest(data)[0...6]}"
     end
+  end
+
+  private
+  def scss_template
+    ::LivingStyleGuide.default_options[:scss_template] || Tilt['scss']
+  end
+
+  private
+  def render_scss(scss)
+    sass_options = options.merge(custom: { sprockets_context: @scope })
+    scss_template.new(file, sass_options){ scss }.render(@scope)
   end
 end
 
