@@ -39,7 +39,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def source
-    @source ||= set_highlights(@erb.gsub(/<%.*?%>\n?/, ''))
+    @source ||= set_highlights(erb.gsub(/<%.*?%>\n?/, ''))
   end
 
   def css
