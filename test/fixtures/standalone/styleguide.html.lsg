@@ -1,6 +1,6 @@
 #source: "style.scss"
 #title: "My Nice & Beautiful Living Style Guide"
 
-@import test/fixtures/standalone/style.scss
+@import style.scss
 
-@import test/fixtures/standalone/modules/buttons
+@import modules/buttons
