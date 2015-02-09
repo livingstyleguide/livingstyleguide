@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.0.alpha.3
+
+* Refactored Sass rendering: Better support for helpers and load paths
+  for Rails/Sprockets/Middleman/Compass
+* `@import` uses relative paths (to current _*.lsg_ file) from now on
+* Sass dependencies are considered for cache invalidation in Sprockets
+* ERB templates are rendered as expected
+
+
 ## 2.0.0.alpha.2
 
 * Upgraded [@javascript filter](https://github.com/hagenburger/livingstyleguide/blob/v2/test/unit/filters/javascript_test.rb) to v2
