@@ -8,7 +8,7 @@ LivingStyleGuide.add_filter :import do |glob, data = nil|
   end
 
   if data
-    require 'json'
+    Kernel.require 'json'
     data = JSON.parse("{#{data}}")
   end
 
