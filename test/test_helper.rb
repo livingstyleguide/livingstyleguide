@@ -3,7 +3,7 @@ require 'compass'
 require 'livingstyleguide'
 require 'heredoc_unindent'
 
-Compass.configuration.add_import_path File.join(%w(test fixtures stylesheets))
+Compass.configuration.add_import_path '.'
 
 def parse_file(filename)
   filename = File.join(File.dirname(__FILE__), 'fixtures', filename.split('/'))
