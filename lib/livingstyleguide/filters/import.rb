@@ -18,7 +18,9 @@ LivingStyleGuide.add_filter :import do |glob, data = nil|
       document.scss << %Q(@import "#{file}";\n)
       nil
     else
-      ::Tilt.new(file, livingstyleguide: document).render(document.scope, data)
+      html = ::Tilt.new(file, livingstyleguide: document).render(document.scope, data)
+      html.gsub!("\n", "\n  ")
+      "\n<div>\n#{html}\n</div>\n"
     end
   end.join
 end

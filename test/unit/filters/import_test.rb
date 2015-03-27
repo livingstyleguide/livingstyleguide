@@ -115,7 +115,9 @@ class ImportTest < DocumentTestCase
       After
     INPUT
       <p.+?>Before</p>
-      <div class='foo'>Bar</div>
+      <div>
+        <div class='foo'>Bar</div>
+      </div>
       <p.+?>After</p>
     OUTPUT
   end
