@@ -159,6 +159,12 @@ class LivingStyleGuide::Document < ::Tilt::Template
   private
   def render_scss(scss)
     sass_options = options.merge(custom: { sprockets_context: @scope })
+    if defined?(Compass)
+      sass_options[:load_paths] ||= []
+      Compass.sass_engine_options[:load_paths].each do |path|
+        sass_options[:load_paths] << path
+      end
+    end
     scss_template.new(file, sass_options){ scss }.render(@scope)
   end
 end
