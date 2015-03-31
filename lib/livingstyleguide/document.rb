@@ -47,7 +47,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
       source
     else
       prepared_source = type == :html ? ERB::Util.h(source) : source
-      highlighted = ::MiniSyntax.highlight(prepared_source, type)
+      highlighted = ::MiniSyntax.highlight(prepared_source.strip, type)
       highlighted.gsub("\n", "<br>")
     end
   end
