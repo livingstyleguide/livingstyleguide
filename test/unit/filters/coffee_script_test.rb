@@ -9,7 +9,7 @@ class CoffeeScriptTest < DocumentTestCase
     INPUT
       <section class="livingstyleguide--example livingstyleguide--coffee-example" id="section-9de304"> <script>(function() { alert(\"Hello world!\"); }).call(this); </script>
       <pre class="livingstyleguide--code-block">
-        <code class="livingstyleguide--code">alert "Hello world!"<br> </code>
+        <code class="livingstyleguide--code">alert "Hello world!"</code>
       </pre> </section>
     OUTPUT
   end
@@ -21,7 +21,7 @@ class CoffeeScriptTest < DocumentTestCase
     INPUT
       <section class="livingstyleguide--example livingstyleguide--coffee-example" id="section-1791e9"> <script>(function() { alert(\"Hello world!\"); }).call(this); </script>
       <pre class="livingstyleguide--code-block">
-        <code class="livingstyleguide--code">alert "Hello world!"<br> </code>
+        <code class="livingstyleguide--code">alert "Hello world!"</code>
       </pre> </section>
     OUTPUT
   end

@@ -9,7 +9,7 @@ class JavaScriptTest < DocumentTestCase
     INPUT
       <section class="livingstyleguide--example livingstyleguide--javascript-example" id="section-c1ffd7"> <script> alert("Hello world!"); </script>
       <pre class="livingstyleguide--code-block">
-        <code class="livingstyleguide--code">alert(<q>"<b>Hello</b> world!"</q>);<br> </code>
+        <code class="livingstyleguide--code">alert(<q>"<b>Hello</b> world!"</q>);</code>
       </pre> </section>
     OUTPUT
   end
