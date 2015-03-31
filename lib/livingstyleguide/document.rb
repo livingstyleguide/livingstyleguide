@@ -42,6 +42,16 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @source ||= set_highlights(erb.gsub(/<%.*?%>\n?/, ''))
   end
 
+  def highlighted_source
+    if type == :plain
+      source
+    else
+      prepared_source = type == :html ? ERB::Util.h(source) : source
+      highlighted = ::MiniSyntax.highlight(prepared_source, type)
+      highlighted.gsub("\n", "<br>")
+    end
+  end
+
   def css
     scss_with_lsg = "#{scss}; @import 'livingstyleguide';"
     render_scss(scss_with_lsg)

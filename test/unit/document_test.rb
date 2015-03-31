@@ -243,8 +243,7 @@ describe LivingStyleGuide::Document do
           <div class="livingstyleguide--html">
             <div>Test</div>
           </div>
-          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><b>&lt;<em>div</em></b><b>&gt;</b>Test<b>&lt;/<em>div</em>&gt</b>
-        </code></pre>
+          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><b>&lt;<em>div</em></b><b>&gt;</b>Test<b>&lt;/<em>div</em>&gt</b><br></code></pre>
         </section>
       OUTPUT
     end
@@ -260,8 +259,7 @@ describe LivingStyleGuide::Document do
           <div class="livingstyleguide--html">
             <div>Test</div>
           </div>
-          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><em>%div</em> Test
-        </code></pre>
+          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><em>%div</em> Test<br></code></pre>
         </section>
       OUTPUT
     end
