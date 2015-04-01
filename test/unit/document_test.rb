@@ -177,6 +177,20 @@ describe LivingStyleGuide::Document do
       OUTPUT
     end
 
+    it "can have filters with an indented block at the end of the file" do
+      LivingStyleGuide::Filters.add_filter :x_indented do |block|
+        block.gsub(/\w/, 'X')
+      end
+      assert_document_equals <<-INPUT.strip, <<-OUTPUT, type: :plain
+        @x-indented
+          Lorem ipsum
+          dolor
+      INPUT
+        XXXXX XXXXX
+        XXXXX
+      OUTPUT
+    end
+
     it "can have filters with multiple arguments and an indented block" do
       LivingStyleGuide::Filters.add_filter :y_indented do |arg1, arg2, block|
         "arg1: #{arg1}\narg2: #{arg2}\n#{block.gsub(/\w/, 'Y')}"
