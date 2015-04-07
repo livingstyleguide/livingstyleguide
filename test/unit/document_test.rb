@@ -257,7 +257,7 @@ describe LivingStyleGuide::Document do
           <div class="livingstyleguide--html">
             <div>Test</div>
           </div>
-          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><b>&lt;<em>div</em></b><b>&gt;</b>Test<b>&lt;/<em>div</em>&gt</b></code></pre>
+          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><b>&lt;<em>div</em></b><b>&gt;</b>Test<b>&lt;/<em>div</em>&gt;</b></code></pre>
         </section>
       OUTPUT
     end
@@ -337,7 +337,16 @@ describe LivingStyleGuide::Document do
       doc.template = :plain
       doc.render
       assert_equal "This is highlighted text.", doc.html
-      assert_equal 'This is <strong class="livingstyleguide--code-highlight">highlighted</strong> text.', doc.source
+      assert_equal 'This is <strong class="livingstyleguide--code-highlight">highlighted</strong> text.', doc.highlighted_source
+    end
+
+    it "should highlight text in source code" do
+      doc = LivingStyleGuide::Document.new { "<b>This</b> is ***highlighted*** <b class=\"***class***\">text</b>." }
+      doc.type = :html
+      doc.template = :plain
+      doc.render
+      assert_equal "<b>This</b> is highlighted <b class=\"class\">text</b>.", doc.html
+      assert_equal "<b>&lt;<em>b</em></b><b>&gt;</b>This<b>&lt;/<em>b</em>&gt;</b> is <strong class=\"livingstyleguide--code-highlight\">highlighted</strong> &lt;b class=&quot;<strong class=\"livingstyleguide--code-highlight\">class</strong>&quot;&gt;text<b>&lt;/<em>b</em>&gt;</b>.", doc.highlighted_source
     end
 
     it "should highlight text spanning several lines" do
@@ -354,7 +363,7 @@ describe LivingStyleGuide::Document do
       doc.template = :plain
       doc.render
       assert_equal "This is\n\nhighlighted\n\ntext.\n", doc.html
-      assert_equal "This is\n\n<strong class=\"livingstyleguide--code-highlight-block\">highlighted</strong>\ntext.\n", doc.source
+      assert_equal "This is<br><strong class=\"livingstyleguide--code-highlight\"><br>highlighted<br></strong><br>text.", doc.highlighted_source
     end
 
   end
