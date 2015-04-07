@@ -39,17 +39,18 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def source
-    @source ||= set_highlights(erb.gsub(/<%.*?%>\n?/, ''))
+    @source ||= erb.gsub(/<%.*?%>\n?/, '').strip
   end
 
   def highlighted_source
-    if type == :plain
-      source
-    else
-      prepared_source = type == :html ? ERB::Util.h(source) : source
-      highlighted = ::MiniSyntax.highlight(prepared_source.strip, type)
-      highlighted.gsub("\n", "<br>")
-    end
+    set_highlights(source.strip) do |without_highlights|
+      if type == :plain
+        without_highlights
+      else
+        without_highlights = ERB::Util.h(without_highlights) if type == :html
+        ::MiniSyntax.highlight(without_highlights, type)
+      end
+    end.gsub("\n", "<br>")
   end
 
   def css
@@ -95,14 +96,64 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   private
-  def set_highlights(code)
-    code.gsub!(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(\n<strong class="livingstyleguide--code-highlight-block">\\1</strong>\n))
-    code.gsub(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="livingstyleguide--code-highlight">\\1</strong>))
+  def set_highlights(code, &block)
+    code, positions = remove_highlight_marker_and_save_positions(code)
+    html = yield(code)
+    insert_html_highlight_marker(html, positions)
+  end
+
+  private
+  def remove_highlight_marker_and_save_positions(code)
+    positions = []
+    index = 0
+    code_without_highlights = code.gsub(/(.*?)\*\*\*/m) do
+      positions << index += $1.length
+      $1
+    end
+    [code_without_highlights, positions]
+  end
+
+  private
+  def insert_html_highlight_marker(html, positions)
+    code_with_highlights = ""
+    index = 0
+    next_position = positions.shift
+    inside_highlight = false
+    inside_character = false
+    inside_html = false
+    html.each_char do |char|
+      if char == "<"
+        inside_html = true
+      elsif char == ">"
+        inside_html = false
+      elsif not inside_html
+        if index == next_position
+          if inside_highlight
+            code_with_highlights << %Q(</strong>)
+            inside_highlight = false
+          else
+            code_with_highlights << %Q(<strong class="livingstyleguide--code-highlight">)
+            inside_highlight = true
+          end
+          next_position = positions.shift
+        end
+        if char == "&"
+          inside_character = true
+        elsif inside_character and char == ";"
+          inside_character = false
+          index += 1
+        elsif not inside_character
+          index += 1
+        end
+      end
+      code_with_highlights << char
+    end
+    code_with_highlights
   end
 
   private
   def remove_highlights(code)
-    code.gsub(/\*\*\*(.+?)\*\*\*/m, '\\1')
+    code.gsub(/\*\*\*/, '')
   end
 
   private
