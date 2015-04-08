@@ -28,16 +28,22 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
 1. Setup
    ```
-   $ gem install livingstyleguide
+   $ gem install livingstyleguide -v2.0.0.alpha.3
    ```
 
 2. Create *_sass/styleguide.lsg_* (replace `sass/` with the directory name of your Sass files) with:
-   ``` yaml
-   source: 'application.scss' # replace with your default Sass/SCSS file name
-   title: 'My Living Style Guide'
+   ```
+   // Replace with your default Sass/SCSS file name:
+   @import application.css.scss
+
+   // Set the HTML title of the document:
+   @title: My Living Style Guide
+
+   // Import all your style guide files
+   @import sass/**/*.lsg
    ```
 
-3. Write documentation for each module *sass/partials/_buttons.md* (to describe *_buttons.scss* in the same folder):
+3. Write documentation for each module *sass/partials/_buttons.lsg* (to describe *_buttons.scss* in the same folder):
 
         Buttons
         =======
@@ -71,7 +77,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
    Add this line to your application’s _Gemfile_:
 
    ``` ruby
-    gem 'livingstyleguide'
+    gem 'livingstyleguide', '2.0.0.alpha.3'
    ```
 
    And then execute:
@@ -82,12 +88,18 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
    ```
 
 2. Create *_app/assets/stylesheets/styleguide.html.lsg_* with:
-   ``` yaml
-   source: 'application.css.scss' # replace with your default Sass/SCSS file name
-   title: 'My Living Style Guide'
+   ```
+   // Replace with your default Sass/SCSS file name:
+   @import application.css.scss
+
+   // Set the HTML title of the document:
+   @title: My Living Style Guide
+
+   // Import all your style guide files
+   @import **/*.lsg
    ```
 
-3.  Write documentation for each module *app/assets/stylesheets/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
+3.  Write documentation for each module *app/assets/stylesheets/partials/_buttons.lsg* (to describe *_buttons.sass* in the same folder):
 
         Buttons
         =======
@@ -120,8 +132,9 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
    # Gemfile:
    gem 'sass-rails', '~> 5.0.0.beta1'
    ```
-   
+
    See [issue #99](https://github.com/livingstyleguide/livingstyleguide/issues/99) for discussions.
+
 
 ### Using it with Rails 4
 
@@ -134,7 +147,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
    Add this line to your application’s _Gemfile_:
 
    ```
-    gem 'livingstyleguide'
+    gem 'livingstyleguide', '2.0.0.alpha.3'
    ```
 
    And then execute:
@@ -145,12 +158,18 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
    ```
 
 2. Create *_source/styleguide.html.lsg_* with:
-   ``` yaml
-   source: 'css/application.css.scss' # replace with your default Sass/SCSS file name
-   title: 'My Living Style Guide'
+   ```
+   // Replace with your default Sass/SCSS file name:
+   @import application.css.scss
+
+   // Set the HTML title of the document:
+   @title: My Living Style Guide
+
+   // Import all your style guide files
+   @import css/**/*.lsg
    ```
 
-3. Write documentation for each module *source/css/partials/_buttons.md* (to describe *_buttons.sass* in the same folder):
+3. Write documentation for each module *source/css/partials/_buttons.lsg* (to describe *_buttons.sass* in the same folder):
 
         Buttons
         =======
@@ -199,6 +218,61 @@ See [hagenburger/broccoli-livingstyleguide](https://github.com/hagenburger/brocc
 ----
 
 
+## Writing the style guide
+
+Just write normal Markdown. The style guide examples are written in code blocks surrounded by three backticks:
+
+    ```
+    <h1>This is an example</h1>
+    ```
+
+Just make sure, when you write a headline, put a space between `#` and the headline.
+In other words: `# Headline`, not `#Headline`.
+
+In addition to Markdown, there are several commands (starting with an `@`) which automate things to make generating style guides more fun. Commands can be used within and outside of code blocks, but will have a different meaning. Commands available are:
+
+* [@import](#importing-files)
+* [@colors](#colors)
+* [@haml](#haml-examples)
+* [@scss](#manipulating-css-per-example)
+* [@javascript](#javascript-examples)
+* [@coffee-script/@coffee](#coffeescript-examples)
+* [@font-example](#font-example)
+* [@require](#require-ruby-files-or-gems)
+
+
+## Importing Files
+
+You can import any other *.lsg file at any place within any *.lsg file:
+
+    ```
+    // Import a file:
+    @import folder/file.lsg
+
+    // Import a file (`.lsg` will be added by default):
+    @import folder/file
+
+    // Import a file starting with `_` (folder/_file.lsg); this works automatically:
+    @import folder/file
+
+    // Import multiple files:
+    @import folder/*.lsg
+    @import folder/*
+
+    // Importing from multiple folders:
+    @import **/*.lsg
+    @import **/*
+
+    // Importing a Haml file (the resulting HTML will be rendered into the style guide):
+    @import folder/file.haml
+    @import folder/*.haml
+    @import **/*.haml
+    ```
+
+All file types supported by [Tilt](https://github.com/rtomayko/tilt#readme) can be imported.
+By default, `@import` is looking for `*.lsg` files.
+
+
 ## Writing Examples
 
 A default example outputs the HTML source as:
@@ -212,25 +286,22 @@ Example:
     <button class="button">Example button</button>
     ```
 
-There are more **filters** to generate output. They start with an `@` and can be put in the code block:
+There are more **commands** to generate output. They start with an `@` and can be put in the code block:
 
 
 ### Colors
 
 This will generate a list ($name + #value in a circle of that color) of all color variables found in *variables/_colors.scss*:
 
-    ```
     @colors variables/colors
-    ```
 
 Alternatively you can set the colors you want to output yourself (much better for grouping different shades of one color). `-` leaves a cell in the matrix empty:
 
-    ```
-    @colors
-    -       $light-red  $gray
-    $green  $red        -
-    -       $dark-red   $black
-    ```
+    @colors {
+      -       $light-red  $gray
+      $green  $red        -
+      -       $dark-red   $black
+    }
 
 
 ### Haml Examples
@@ -244,9 +315,59 @@ source as Haml ([learn how to use Haml by default](#default-filters)):
     ```
 
 
+### Manipulating CSS per example
+
+You can add any CSS to each example if it helps to make it better in the style guide only.
+For example, add some margin between elements:
+
+    ```
+    <button class="button">Example button</button>
+    <button class="button -primary">Example button</button>
+    @scss {
+      .button + .button {
+        margin-left: 3em;
+      }
+    }
+    ```
+
+This adds `3em` margin between both buttons.
+To avoid this to affect other examples, the Sass code will be scoped to this example only (each example automatically gets a unique id).
+
+If you need the same CSS code for several examples, you can put the CSS outside of the example.
+This way it will be scoped to the current file:
+
+
+    ```
+    <button class="button">Example button</button>
+    <button class="button -primary">Example button</button>
+    ```
+
+    ```
+    <a class="button">Example button</a>
+    <a class="button -primary">Example button</a>
+    ```
+
+    @scss {
+      .button + .button {
+        margin-left: 3em;
+      }
+    }
+
+Within the `@scss` helper, all variables, mixins, … of your project are available.
+For example, if `my-styles.scss` sets `$my-project-margin`, you can write this:
+
+    @import my-styles.scss
+
+    @scss {
+      .button + .button {
+        margin-left: $my-project-margin;
+      }
+    }
+
+
 ### Handlebars.js (and other JavaScript templating languages) Examples
 
-This requires some configuration which is explained in a [blog post on how to use Handlebars.js in the LivingStyleGuide](http://www.hagenburger.net/BLOG/handlebars-js-templates-living-style-guide.html). This blog post also shows how to load templates from other locations and use JSON to compile them in the style guide.
+~~This requires some configuration which is explained in a [blog post on how to use Handlebars.js in the LivingStyleGuide](http://www.hagenburger.net/BLOG/handlebars-js-templates-living-style-guide.html). This blog post also shows how to load templates from other locations and use JSON to compile them in the style guide.~~ (This blog post shows v1 syntax.)
 
 
 ### JavaScript Examples
@@ -278,17 +399,27 @@ executed as JavaScript and displayed as CoffeeScript:
 
 Show which fonts should be used on your website—this will output and example text block (A—Z, a—z, 0—9, and some special characters) of the given font. It accepts valid CSS like for `font: 32px Comic Sans;`.
 
-    ```
+
     @font-example 32px Comic Sans
-    ```
+
 
 Use your own text (defaults to “ABC…\nabc…\n123…\n!&…” if not set):
 
-    ```
-    @font-example 32px Comic Sans
-    Schweißgequält zündet Typograf Jakob
-    verflixt öde Pangramme an.
-    ```
+    @font-example 32px Comic Sans {
+      Schweißgequält zündet Typograf Jakob
+      verflixt öde Pangramme an.
+    }
+
+
+### Require Ruby files or Gems
+
+You can require any Ruby file (e.g. for custom filters) or Ruby Gems (e.g. a Compass plugin:
+
+    Loads `my-ruby-file.rb`:
+    @require my-ruby-file
+
+    Loads the Susy Gem (must be installed on your system):
+    @require susy
 
 
 ### Output Code
@@ -308,37 +439,24 @@ No syntax highlighter:
 
 ### Default Filters
 
-You can set filters to apply to all examples.
+~~You can set filters to apply to all examples.
 This is useful, when you depend on Haml or other templating engines.
-Add a list of default filters to your _styleguide.html.lsg_:
+Add a list of default filters to your _styleguide.html.lsg_:~~
 
-``` yaml
-default-filters:
-  - '@haml'
 ```
-
-**Info:** YAML will fail if you don’t use quotation marks here. You should not use `@coffee-script` as default filter.
+(not available in v2 yet)
+```
 
 
 ## Styling the Style Guide
 
 ### Custom Header
 
-The examples in [the screenshot above](#readme) use custom headers to have an individual look.
-You can add whatever HTML you want and some Sass to style it to your _styleguide.html.lsg:_
+~~The examples in [the screenshot above](#readme) use custom headers to have an individual look.
+You can add whatever HTML you want and some Sass to style it to your _styleguide.html.lsg:_~~
 
 ``` yaml
-header: |
-  <div class="my-header">
-    <img src="logo.svg">
-  </div>
-
-styleguide-scss: |
-  .my-header {
-    background: red;
-    text-align: center;
-    padding: 100px;
-  }
+(not available in v2 yet)
 ```
 
 [Here’s the code](https://github.com/eurucamp/livingstyleguide-eurucamp/blob/master/source/index.html.lsg#L71-L80) of the custom header in the example of the screenshot.
@@ -346,22 +464,29 @@ styleguide-scss: |
 
 ### Custom Footer
 
-See [Custom Header](#custom-header), just use `footer:`.
+~~See [Custom Header](#custom-header), just use `footer:`.~~
 
 
 ### Custom Settings
 
-Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_
+~~Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_~~
 
-``` yaml
-style:
-  base-font: 'Comic Sans MS, Arial, sans-serif'
-  base-font-size: '7em'
-  background-color: 'red'
-  border-color: '$my-color'
-  color: '#eee'
-  code-color: 'darken(red, 10%)'
-  color-swatch-border-radius: '0'
+```
+(not available in v2 yet)
+```
+
+Until this is implemented in v2, set them by using:
+
+``` scss
+@scss {
+  $livingstyleguide--base-font: 'Comic Sans MS', 'Arial', sans-serif !global;
+  $livingstyleguide--base-font-size: 7em !global;
+  $livingstyleguide--background-color: red !global;
+  $livingstyleguide--border-color: $my-color !global;
+  $livingstyleguide--color: #eee !global;
+  $livingstyleguide--code-color: darken(red, 10%) !global;
+  $livingstyleguide--color-swatch-border-radius: 0 !global;
+}
 ```
 
 * For a full list of options, [have a look at the source](https://github.com/livingstyleguide/livingstyleguide/blob/master/stylesheets/_livingstyleguide.scss) (just strip `$livingstyleguide--` from the variables).
@@ -375,22 +500,13 @@ Just play a bit and create an individual style guide which represents your perso
 
 ## Including JavaScript
 
-If you need external JavaScript files to be included in the style guide, there are two options: before (in the `<head>`) or after (just before the closing `</body>`). It accepts a list of URLs (ending with `*.js`) or plain JavaScript code:
+~~If you need external JavaScript files to be included in the style guide, there are two options: before (in the `<head>`) or after (just before the closing `</body>`). It accepts a list of URLs (ending with `*.js`) or plain JavaScript code:~~
 
-``` yaml
-javascript-before:
-  - "assets/modernizr.js"
-
-javascript-after:
-  - "http://code.jquery.com/jquery-1.11.1.min.js"
-  - "assets/application.js"
-  - |
-    $(function() {
-      // custom code
-    });
+```
+(not available in v2 yet)
 ```
 
-If you use [@javascript](#javascript-examples) or [@coffee-script](#coffeescript-examples), your application files and jQuery might need to be included in the `javascript-before` section.
+~~If you use [@javascript](#javascript-examples) or [@coffee-script](#coffeescript-examples), your application files and jQuery might need to be included in the `javascript-before` section.~~
 
 
 ----
@@ -430,7 +546,6 @@ Or install it yourself as:
 
 ## Copyright
 
-Copyright 2012—2014 [Nico Hagenburger](http://www.hagenburger.net).
+Copyright 2012—2015 [Nico Hagenburger](http://www.hagenburger.net).
 See [MIT-LICENSE.md](MIT-LICENSE.md) for details.
 Get in touch with [@hagenburger](http://twitter.com/hagenburger) on Twitter or [open an issue](https://github.com/livingstyleguide/livingstyleguide/issues/new).
-
