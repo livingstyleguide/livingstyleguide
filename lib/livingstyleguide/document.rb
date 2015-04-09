@@ -74,20 +74,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def evaluate(scope, locals, &block)
     @scope = scope
     result = ERB.new(erb).result(@filters.get_binding)
-    @html = case @type
-    when :plain, :example, :html, :javascript
-      remove_highlights(result)
-    when :lsg
-      renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide.default_options, self)
-      redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
-      remove_highlights(redcarpet.render(result))
-    else
-      begin
-        require "tilt/#{template_name}"
-      rescue LoadError
-      end
-      Tilt[@type].new{ remove_highlights(result) }.render(@scope, @locals.merge(locals))
-    end
+    @html = render_html(result, locals)
     @classes.unshift "livingstyleguide--#{@type}-example"
     @classes.unshift "livingstyleguide--example"
     ERB.new(template_erb).result(binding).gsub(/\n\n+/, "\n")
@@ -95,6 +82,23 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def depend_on(file)
     @scope.depend_on(File.expand_path(file)) if @scope.respond_to?(:depend_on)
+  end
+
+  private
+  def render_html(result, locals)
+    if @type == :lsg
+      renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide.default_options, self)
+      redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
+      remove_highlights(redcarpet.render(result))
+    elsif engine = Tilt[@type]
+      begin
+        require "tilt/#{template_name}"
+      rescue LoadError
+      end
+      engine.new{ remove_highlights(result) }.render(@scope, @locals.merge(locals))
+    else
+      remove_highlights(result)
+    end
   end
 
   private
