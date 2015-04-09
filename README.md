@@ -34,7 +34,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 2. Create *_sass/styleguide.lsg_* (replace `sass/` with the directory name of your Sass files) with:
    ```
    // Replace with your default Sass/SCSS file name:
-   @import application.css.scss
+   @css application.css.scss
 
    // Set the HTML title of the document:
    @title: My Living Style Guide
@@ -90,7 +90,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 2. Create *_app/assets/stylesheets/styleguide.html.lsg_* with:
    ```
    // Replace with your default Sass/SCSS file name:
-   @import application.css.scss
+   @css application.css.scss
 
    // Set the HTML title of the document:
    @title: My Living Style Guide
@@ -160,7 +160,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
 2. Create *_source/styleguide.html.lsg_* with:
    ```
    // Replace with your default Sass/SCSS file name:
-   @import application.css.scss
+   @css application.css.scss
 
    // Set the HTML title of the document:
    @title: My Living Style Guide
@@ -323,7 +323,7 @@ For example, add some margin between elements:
     ```
     <button class="button">Example button</button>
     <button class="button -primary">Example button</button>
-    @scss {
+    @css {
       .button + .button {
         margin-left: 3em;
       }
@@ -347,18 +347,18 @@ This way it will be scoped to the current file:
     <a class="button -primary">Example button</a>
     ```
 
-    @scss {
+    @css {
       .button + .button {
         margin-left: 3em;
       }
     }
 
-Within the `@scss` helper, all variables, mixins, … of your project are available.
+Within the `@css` helper, all variables, mixins, … of your project are available.
 For example, if `my-styles.scss` sets `$my-project-margin`, you can write this:
 
-    @import my-styles.scss
+    @css my-styles.scss
 
-    @scss {
+    @css {
       .button + .button {
         margin-left: $my-project-margin;
       }
@@ -478,7 +478,7 @@ You can add whatever HTML you want and some Sass to style it to your _styleguide
 Until this is implemented in v2, set them by using:
 
 ``` scss
-@scss {
+@css {
   $livingstyleguide--base-font: 'Comic Sans MS', 'Arial', sans-serif !global;
   $livingstyleguide--base-font-size: 7em !global;
   $livingstyleguide--background-color: red !global;

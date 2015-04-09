@@ -1,6 +1,9 @@
 require 'tilt'
 
 LivingStyleGuide.add_filter :import do |glob, data = nil|
+  if glob =~ /\.s[ac]ss$/
+    raise "Error: Please use `@css #{glob}` instead of `@import #{glob}` for importing Sass."
+  end
   glob << '.lsg' unless glob =~ /\.(\w+|\*)$/
   glob.gsub!(/[^\/]+$/, '{_,}\\0')
   if document.file
@@ -13,14 +16,8 @@ LivingStyleGuide.add_filter :import do |glob, data = nil|
   end
 
   Dir.glob(glob).map do |file|
-    if file =~ /\.s[ac]ss$/
-      document.depend_on file
-      document.scss << %Q(@import "#{file}";\n)
-      nil
-    else
-      html = ::Tilt.new(file, livingstyleguide: document).render(document.scope, data)
-      html.gsub!("\n", "\n  ")
-      "\n<div>\n#{html}\n</div>\n"
-    end
+    html = ::Tilt.new(file, livingstyleguide: document).render(document.scope, data)
+    html.gsub!("\n", "\n  ")
+    "\n<div>\n#{html}\n</div>\n"
   end.join
 end

@@ -1,6 +1,6 @@
 #source: "style.scss"
 #title: "My Nice & Beautiful Living Style Guide"
 
-@import style.scss
+@css style.scss
 
 @import modules/buttons
