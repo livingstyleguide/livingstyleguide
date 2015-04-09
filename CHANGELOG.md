@@ -1,6 +1,22 @@
 # Changelog
 
 
+## 2.0.0.alpha.4
+
+* [Added `@require` to load any Ruby file or Gem](https://github.com/hagenburger/livingstyleguide/issues/109)
+* [Renamed `@scss` command to `@css`](https://github.com/hagenburger/livingstyleguide/issues/128)
+* [Use `@css my-styles.scss` instead of `@import my-styles.scss` for
+  Sass/CSS files](https://github.com/hagenburger/livingstyleguide/issues/128)
+* Refactored `***` highlights in code to not conflict with the syntax
+  highlighter; now it’s possible to place them anywher without breaking
+  the code
+* Compass support within Sass code
+* Avoid HTML escaping/rewriting/parsing by Markdown
+* Fixed parsing of indented filters at the end of the file
+* [Fixed Sprockets dependencies for non-LSG files](https://github.com/hagenburger/livingstyleguide/issues/127)
+* Added `@title` filter to set the title of the HTML document
+
+
 ## 2.0.0.alpha.3
 
 * Refactored Sass rendering: Better support for helpers and load paths
