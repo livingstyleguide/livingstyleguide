@@ -16,6 +16,7 @@ LivingStyleGuide.add_filter :import do |glob, data = nil|
   end
 
   Dir.glob(glob).map do |file|
+    document.depend_on file
     html = ::Tilt.new(file, livingstyleguide: document).render(document.scope, data)
     html.gsub!("\n", "\n  ")
     "\n<div>\n#{html}\n</div>\n"
