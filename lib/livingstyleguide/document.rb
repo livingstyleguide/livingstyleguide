@@ -29,7 +29,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def prepare
-    @type = :markdown
+    @type = :lsg
     @filters = LivingStyleGuide::Filters.new(self)
     @template = options.has_key?(:livingstyleguide) ? :default : :layout
     @classes = []
@@ -77,12 +77,12 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @html = case @type
     when :plain, :example, :html, :javascript
       remove_highlights(result)
-    when :markdown
+    when :lsg
       renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide.default_options, self)
       redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
       remove_highlights(redcarpet.render(result))
     else
-      require "tilt/#{@type}"
+      require "tilt/#{template_name}"
       template_class.new{ remove_highlights(result) }.render(@scope, @locals.merge(locals))
     end
     @classes.unshift "livingstyleguide--#{@type}-example"
@@ -178,7 +178,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def gsub_content(regexp, &block)
-    if @type == :markdown
+    if @type == :lsg
       data.gsub(/\G(.+?)((```.+?```)|\Z)/m) do
         content, code_block = $1, $2
         content.to_s.gsub(regexp, &block) + code_block
@@ -190,14 +190,15 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def template_name
-    @type == :markdown ? :redcarpet : @type
+    (@type == :lsg or @type == :markdown) ? :redcarpet : @type
   end
 
   private
   def template_class
     case @type
-    when :coffee then Tilt::CoffeeScriptTemplate
-    when :erb    then Tilt::ERBTemplate
+    when :coffee   then Tilt::CoffeeScriptTemplate
+    when :erb      then Tilt::ERBTemplate
+    when :markdown then Tilt::RedcarpetTemplate
     else Tilt.const_get(@type.to_s.capitalize + 'Template')
     end
   end

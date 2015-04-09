@@ -5,7 +5,7 @@ describe LivingStyleGuide::Document do
   def assert_document_equals(input, output, options = {})
     input.gsub!(/^        /, '')
     @doc = LivingStyleGuide::Document.new { input }
-    @doc.type = options[:type] || :markdown
+    @doc.type = options[:type] || :lsg
     @doc.template = options[:template] || 'plain'
     actual = @doc.render(nil, options[:data]).gsub(/\n\n+/, "\n").strip
     expected = output.gsub(/^        /, '').gsub(/\n\n+/, "\n").strip
@@ -40,7 +40,7 @@ describe LivingStyleGuide::Document do
         @markdown
         *Test*
       INPUT
-        <p class="livingstyleguide--paragraph"><em>Test</em></p>
+        <p><em>Test</em></p>
       OUTPUT
     end
 
