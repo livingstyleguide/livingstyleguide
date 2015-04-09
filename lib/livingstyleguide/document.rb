@@ -73,7 +73,6 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def evaluate(scope, locals, &block)
     @scope = scope
-    depend_on file if file and options.has_key?(:livingstyleguide)
     result = ERB.new(erb).result(@filters.get_binding)
     @html = case @type
     when :plain, :example, :html, :javascript
