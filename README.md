@@ -37,7 +37,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
    @css application.css.scss
 
    // Set the HTML title of the document:
-   @title: My Living Style Guide
+   @title My Living Style Guide
 
    // Import all your style guide files
    @import sass/**/*.lsg
@@ -93,7 +93,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
    @css application.css.scss
 
    // Set the HTML title of the document:
-   @title: My Living Style Guide
+   @title My Living Style Guide
 
    // Import all your style guide files
    @import **/*.lsg
@@ -162,7 +162,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
    @css application.css.scss
 
    // Set the HTML title of the document:
-   @title: My Living Style Guide
+   @title My Living Style Guide
 
    // Import all your style guide files
    @import css/**/*.lsg
