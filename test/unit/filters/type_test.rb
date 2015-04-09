@@ -34,4 +34,17 @@ class TypeTest < DocumentTestCase
     OUTPUT
   end
 
+  def test_unknown_templating_engine
+    assert_render_match <<-INPUT, <<-OUTPUT
+      @type foo
+      >foo<
+        "Bar"
+      >oof/<
+    INPUT
+      >foo<
+        "Bar"
+      >oof/<
+    OUTPUT
+  end
+
 end
