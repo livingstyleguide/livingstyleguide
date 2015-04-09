@@ -82,8 +82,11 @@ class LivingStyleGuide::Document < ::Tilt::Template
       redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
       remove_highlights(redcarpet.render(result))
     else
-      require "tilt/#{template_name}"
-      template_class.new{ remove_highlights(result) }.render(@scope, @locals.merge(locals))
+      begin
+        require "tilt/#{template_name}"
+      rescue LoadError
+      end
+      Tilt[@type].new{ remove_highlights(result) }.render(@scope, @locals.merge(locals))
     end
     @classes.unshift "livingstyleguide--#{@type}-example"
     @classes.unshift "livingstyleguide--example"
@@ -191,16 +194,6 @@ class LivingStyleGuide::Document < ::Tilt::Template
   private
   def template_name
     (@type == :lsg or @type == :markdown) ? :redcarpet : @type
-  end
-
-  private
-  def template_class
-    case @type
-    when :coffee   then Tilt::CoffeeScriptTemplate
-    when :erb      then Tilt::ERBTemplate
-    when :markdown then Tilt::RedcarpetTemplate
-    else Tilt.const_get(@type.to_s.capitalize + 'Template')
-    end
   end
 
   private
