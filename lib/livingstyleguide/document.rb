@@ -89,7 +89,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     if @type == :lsg
       renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide.default_options, self)
       redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
-      remove_highlights(redcarpet.render(result))
+      redcarpet.render(result)
     elsif engine = Tilt[@type]
       begin
         require "tilt/#{template_name}"
