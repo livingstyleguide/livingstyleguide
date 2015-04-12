@@ -1,0 +1,98 @@
+---
+title: Why should I use code markers?
+---
+
+From the [very beginning](https://github.com/hagenburger/livingstyleguide/commit/a1aa7851658d93259d42335afc93e977c125cd31),
+an important part of writing style guide examples was to communicate to other developers:
+What’s important/different in this example?
+When styling with [CSS class names only](http://www.hagenburger.net/BLOG/Modular-CSS-Class-Names.html),
+while choosing the HTML tag doesn’t change the visual output, it helps to visualize this in the example by
+marking the parts, which style that current example:
+
+``` html
+<div class="***user***">
+  <h1 class="***user--name***">Homer Simpson</h1>
+</div>
+```
+
+To make this work, `***…***` is used to set the markers—a bit like setting bold text in Markdown with `**…**`:
+
+@plain-code
+  <div class="***user***">
+    <h1 class="***user--name***">Homer Simpson</h1>
+  </div>
+
+So the example shown above would also work with the following code:
+
+``` html
+<h1 class="***user***">
+  <a href="#" class="***user--name***">Homer Simpson</a>
+</h1>
+```
+
+Otherwise it should have been marked in yellow:
+
+``` html
+<div class="***user***">
+  <***h1*** class="***user--name***">Homer Simpson</***h1***>
+</div>
+```
+
+
+## Using other templating engines
+
+This works well with every templating engine.
+Here’s how you add code markers to Haml
+
+``` html
+***.user***
+  %h1***.user--name*** Homer Simpson
+```
+
+@plain-code
+  @haml
+  ***.user***
+    %h1***.user--name*** Homer Simpson
+
+
+## Documenting the diffrence between examples:
+
+For every example that only slightly changes to the previous one,
+just mark the changes:
+
+```
+<a class="***my-button***">Button</a>
+```
+
+```
+<a class="my-button ***-primary***">Button</a>
+```
+
+```
+<a class="my-button ***-danger***">Button</a>
+```
+
+<style>
+  .my-button {
+    background: #7f7f7f;
+    color: white !important;
+    display: inline-block;
+    font-weight: bold;
+    padding: 5px 10px;
+  }
+  .my-button.-primary {
+    background: #3ef0be;
+  }
+  .my-button.-danger {
+    background: #c82570;
+  }
+</style>
+
+
+## Conclusion
+
+I always try to write code that is easy to understand for people who are looking at it for the first time.
+Without code markers, the HTML examples—when used for more than a button–can get very complex.
+Code markers help people to find the important parts more easily.
+
+So, happy marking the important parts of your examples :)
