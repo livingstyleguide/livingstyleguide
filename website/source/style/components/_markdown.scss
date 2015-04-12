@@ -1,5 +1,5 @@
 $livingstyleguide--color: $black;
-$livingstyleguide--code-background-color: #F3D5DE;
+$livingstyleguide--code-background-color: mix(white, $turquoise, 90%);
 $livingstyleguide--code-color: $pink;
 $livingstyleguide--code-font: "courier new", courier, monospace;
 $livingstyleguide--base-font-size: 13px;
@@ -12,7 +12,7 @@ $livingstyleguide--code-line-height: 1.1;
 $livingstyleguide--code-font-weight: normal;
 $livingstyleguide--width: 600px;
 $livingstyleguide--gap-width: 20px;
-$livingstyleguide--highlight-color: $light-pink;
+$livingstyleguide--highlight-color: $yellow;
 $livingstyleguide--highlight-border-radius: 0;
 $livingstyleguide--base-font: Gubia, "Helvetica Neue", Helvetica, Arial;
 $livingstyleguide--headline-font: Gubia, "Helvetica Neue", Helvetica, Arial;
@@ -70,6 +70,8 @@ $livingstyleguide--full-width-padding: 0;
 
   p,
   .livingstyleguide--paragraph,
+  .livingstyleguide--ordered-list,
+  .livingstyleguide--ordered-list-item,
   .livingstyleguide--unordered-list,
   .livingstyleguide--unordered-list-item {
     font-size: 18px;
@@ -81,24 +83,47 @@ $livingstyleguide--full-width-padding: 0;
   }
 
   .livingstyleguide--unordered-list {
+    counter-reset: ul;
     margin: 0 0 0.75em;
   }
 
+  .livingstyleguide--ordered-list-item,
   .livingstyleguide--unordered-list-item {
+    list-style: none;
     margin-left: 3em;
+  }
 
+  .livingstyleguide--unordered-list-item {
     &:before {
-      background: $yellow;
+      background: $turquoise;
       content: "";
       height: 6px;
-      margin: 0.55em 0 0 -0.9em;
+      margin: 0.7em 0 0 -0.9em;
       position: absolute;
       width: 6px;
       @include transform(rotateZ(45deg));
     }
   }
 
-  .livingstyleguide--code {
+  .livingstyleguide--ordered-list-item {
+    counter-increment: ul;
+
+    &:before {
+      background: $livingstyleguide--code-background-color;
+      color: $turquoise;
+      content: counter(ul);
+      height: 1.3em;
+      font-size: 0.8em;
+      font-weight: bold;
+      line-height: 1.25em;
+      margin: 0.4em 0 0 -1.7em;
+      position: absolute;
+      text-align: center;
+      width: 1.3em;
+    }
+  }
+
+  .livingstyleguide--code-span {
     background: mix($pink, $white, 3%);
     border-radius: 4px;
     display: inline;
@@ -108,12 +133,27 @@ $livingstyleguide--full-width-padding: 0;
   }
 
   .livingstyleguide--code-block {
-    margin-left: -6px;
-    margin-right: -6px;
+    background: $livingstyleguide--code-background-color;
+    margin: 0;
+    padding: $livingstyleguide--gap-width;
+  }
+
+  .livingstyleguide--example {
+    margin: $livingstyleguide--gap-width 0;
+    padding: 0;
   }
 
   .livingstyleguide--container {
     min-height: 0;
+  }
+
+  .livingstyleguide--code-highlight {
+    font-weight: inherit;
+  }
+
+  .livingstyleguide--html {
+    background: $livingstyleguide--code-background-color;
+    padding: 20px 20px 0;
   }
 }
 
