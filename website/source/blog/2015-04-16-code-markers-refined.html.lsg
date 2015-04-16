@@ -1,0 +1,134 @@
+---
+title: From a RegExp to a parser in Ruby
+---
+
+
+In the first part of a series of blog posts on __code markers,__
+I wrote about [how and why to use them at all](code-markers.html).
+This post is about __the technical implementation in Ruby__ and
+how it got improved from version 1.x to 2.x of the [LivingStyleGuide gem](https://rubygems.org/gems/livingstyleguide).
+
+As example, the yellow parts are code marker which work independently to the syntax highlighter:
+
+``` html
+<div class="***user***">
+  <h1 class="***user--name***">Homer Simpson</h1>
+</div>
+```
+
+To make this work, `***…***` is used to set the markers—a bit like setting bold text in Markdown with `**…**`:
+
+@plain-code
+  <div class="***user***">
+    <h1 class="***user--name***">Homer Simpson</h1>
+  </div>
+
+
+## The point where it gets complicated
+
+Works well, but only this far.
+In version 1.x of the LivingStyleGuide a slightly more complex example looked like this:
+
+@old-code-markers html
+  <div class="***user***">
+    <***h1*** class="***user--name***">Homer Simpson</***h1***>
+  </div>
+
+Almost OK. But looking at the details, the syntax highlighter missed something.
+Just have a look at `h1` which is underlined in the examples in the beginning but it this example it isn’t anymore.
+
+Even worse things happen when doing more than just HTML.
+Here’s Ruby with Haml:
+
+@plain-code
+  ***.user***
+    = link_to "Homer Simpson", "#", class: "***user--name***"
+
+@old-code-markers haml
+  ***.user***
+    = link_to "Homer Simpson", "#", class: "***user--name***"
+
+So this happens when you insert additional HTML and a syntax highlighter.
+There must be a better way.
+
+
+## A new implementation
+
+As of [v2.0.0.alpha.4](https://github.com/hagenburger/livingstyleguide/releases/tag/v2.0.0.alpha.4),
+the code markers got a major refactoring.
+Now the same example looks like this:
+
+``` haml
+***.user***
+  = link_to "Homer Simpson", "#", class: "***user--name***"
+```
+
+It’s even possible to mark within words:
+
+``` haml
+.user
+  = lin***k_to "Ho***mer Simpson", "***#", class: "use***r--name"
+```
+
+Let’s have a look at the old code. Only one call, but …
+
+``` ruby
+code.gsub! /\*\*\*(.+?)\*\*\*/,
+  %Q(&lt;strong class="livingstyleguide--code-highlight">\\1&lt;strong>)
+```
+
+The major problem: Should this be done before or after the syntax highlighter takes action?
+
+* __Before:__ It conflicts with the inserted HTML
+* __After:__ It conflicts with the `***`
+
+The new implementation takes another approach:
+
+1. It saves all positions of the `***`,
+2. removes them,
+3. HTML escapes the source,
+4. then runs the syntax highlighter.
+5. After that, it counts every visible character of the HTML returned by the syntax highlighter and inserts the HTML to highlight the code
+on the same positions.
+
+<img src="images/blog/before-after-syntax-highlighting.svg" alt="Chart on translating character by character" width="100%">
+
+Step 1 and 2 can be easily done with a regular expression:
+
+``` ruby
+code_without_highlights = code.gsub(/(.*?)\*\*\*/m) do
+  positions << index += $1.length   # safe position and count characters
+  $1                                # return the part before *** only
+end
+```
+
+In step 5, a parser checks every character and saves some information, about where it it:
+
+``` ruby
+# ...
+html.each_char do |char|
+  if char == "<"
+    inside_html = true
+  elsif char == ">"
+    inside_html = false
+  elsif not inside_html
+    if index == next_position
+      if inside_highlight
+        # ...
+```
+
+OK, the Ruby implementation increased from about 1 to about 50 lines.
+But it just works as it should be.
+The full code [can be found on GitHub](https://github.com/hagenburger/livingstyleguide/blob/4593a11b926ff9e7634c106440007091eeead40c/lib/livingstyleguide/document.rb#L97-L151).
+
+
+## Conclusion
+
+When trying out new features, a RegExp for me usually feels very handy and is written much faster
+and flexible than a parser like this.
+In this example the disadvantage of this way showed up to often.
+At the end, it was more easy to write the parser than I would have expected.
+
+Feel free to intensively use code markers from v2.0.0.alpha.4 on.
+It should work perfectly by now.
+If you don’t know why you should use them at all, [read my other post on code markers](code-markers.html).
