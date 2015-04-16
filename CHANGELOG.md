@@ -1,6 +1,16 @@
 # Changelog
 
 
+## (unreleased)
+
+* [Use Tilt to render examples](https://github.com/hagenburger/livingstyleguide/issues/120) and allow all templating engines supperted by Tilt by `@type enginename`
+* Markdown files (_*.md_) are rendered as Markdown (was rendered as LSG
+  file)
+* `@type` to change type of document within the document
+* Normal code blocks (without example, just syntax highlighted) work
+  from now on
+
+
 ## 2.0.0.alpha.4
 
 * [Added `@require` to load any Ruby file or Gem](https://github.com/hagenburger/livingstyleguide/issues/109)
