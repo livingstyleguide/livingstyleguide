@@ -96,3 +96,9 @@ Without code markers, the HTML examples—when used for more than a button–can
 Code markers help people to find the important parts more easily.
 
 So, happy marking the important parts of your examples :)
+
+
+## Update Apr 16, 2015
+
+If you are interested how this has been implemented in Ruby:
+[I wrote a follow-up post on RegExp and parsers.](code-markers-refined)
