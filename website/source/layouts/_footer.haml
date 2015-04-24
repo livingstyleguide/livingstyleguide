@@ -18,6 +18,7 @@
     _paq.push(["enableLinkTracking"]);
 
     (function() {
+      #{"return;" unless environment == :build}
       var u=(("https:" == document.location.protocol) ? "https" : "http") + "://nh.fornax.uberspace.de/piwik/";
       _paq.push(["setTrackerUrl", u+"piwik.php"]);
       _paq.push(["setSiteId", "2"]);
