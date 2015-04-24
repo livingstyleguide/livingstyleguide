@@ -96,6 +96,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
       rescue LoadError
       end
       engine.new{ remove_highlights(result) }.render(@scope, @locals.merge(locals))
+    elsif @type == :escaped
+      ERB::Util.h(remove_highlights(result))
     else
       remove_highlights(result)
     end
