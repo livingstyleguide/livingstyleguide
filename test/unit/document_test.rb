@@ -3,12 +3,11 @@ require 'test_helper'
 describe LivingStyleGuide::Document do
 
   def assert_document_equals(input, output, options = {})
-    input.gsub!(/^        /, '')
-    @doc = LivingStyleGuide::Document.new { input }
+    @doc = LivingStyleGuide::Document.new { input.unindent(ignore_blank: true) }
     @doc.type = options[:type] || :lsg
     @doc.template = options[:template] || 'plain'
     actual = @doc.render(nil, options[:data]).gsub(/\n\n+/, "\n").strip
-    expected = output.gsub(/^        /, '').gsub(/\n\n+/, "\n").strip
+    expected = output.unindent(ignore_blank: true).gsub(/\n\n+/, "\n").strip
     actual.must_equal expected
   end
 
@@ -181,7 +180,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide::Filters.add_filter :x_indented do |block|
         block.gsub(/\w/, 'X')
       end
-      assert_document_equals <<-INPUT.strip, <<-OUTPUT, type: :plain
+      assert_document_equals <<-INPUT.rstrip, <<-OUTPUT, type: :plain
         @x-indented
           Lorem ipsum
           dolor
@@ -207,6 +206,59 @@ describe LivingStyleGuide::Document do
         YYYYY
         Lorem ipsum
       OUTPUT
+    end
+
+    describe "filters with blocks ending by newline" do
+
+      it "can have filters with an indented block" do
+        LivingStyleGuide::Filters.add_filter :x_newline do |block|
+          block.gsub(/\w/, 'X')
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @x-newline:
+          Lorem ipsum
+          dolor
+
+          Lorem ipsum
+        INPUT
+          XXXXX XXXXX
+          XXXXX
+          Lorem ipsum
+        OUTPUT
+      end
+
+      it "can have filters with an indented block at the end of the file" do
+        LivingStyleGuide::Filters.add_filter :x_newline do |block|
+          block.gsub(/\w/, 'X')
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @x-newline:
+          Lorem ipsum
+          dolor
+        INPUT
+          XXXXX XXXXX
+          XXXXX
+        OUTPUT
+      end
+
+      it "can have filters with multiple arguments and an indented block" do
+        LivingStyleGuide::Filters.add_filter :y_newline do |arg1, arg2, block|
+          "arg1: #{arg1}\narg2: #{arg2}\n#{block.gsub(/\w/, 'Y')}"
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @y-newline 1, 2:
+          Lorem ipsum
+          dolor
+
+          Lorem ipsum
+        INPUT
+          arg1: 1
+          arg2: 2
+          YYYYY YYYYY
+          YYYYY
+          Lorem ipsum
+        OUTPUT
+      end
     end
 
     it "blocks should allow indented CSS (nested {})" do

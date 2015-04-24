@@ -67,7 +67,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
       arguments = arguments.map do |argument|
         %Q("#{argument.gsub('"', '\\"').gsub("\n", '\\n')}")
       end
-      "<%= #{name}(#{arguments.join(', ')}) %>"
+      "<%= #{name}(#{arguments.join(', ')}) %>\n"
     end
   end
 
@@ -171,8 +171,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def parse_filters
     data.gsub('<%', '<%%').gsub(/\G(.*?)((```.+?```)|\Z)/m) do
       content, code_block = $1, $2
-      content.gsub(/^@([\w\d_-]+)(?: ([^\{\n]+))?(?: *\{\n((?:.|\n)*?)\n\}|\n((?:  .*(\n|\Z))+))?/) do
-        name, arguments, block = $1, $2 || '', $3 || $4
+      content.gsub(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|\n((?:  .*(?:\n|\Z))+)| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
+        name, arguments, block = $1, $2 || '', $3 || $4 || $5
         name = name.gsub('-', '_').to_sym
         arguments = arguments.split(',').map(&:strip)
         if block
