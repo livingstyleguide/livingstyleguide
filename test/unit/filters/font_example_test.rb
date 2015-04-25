@@ -45,7 +45,9 @@ class FontExampleTest < DocumentTestCase
   end
 
   def test_default_font_example_with_defaut_custom_text
-    assert_render_equals <<-INPUT, <<-OUTPUT, font_example: { text: "zażółć\ngęślą\njaźń" }
+    backup = LivingStyleGuide.default_options[:font_example]
+    LivingStyleGuide.default_options[:font_example] = { text: "zażółć\ngęślą\njaźń" }
+    assert_render_equals <<-INPUT, <<-OUTPUT
       @font-example 72px Drogowskaz
     INPUT
       <div class="livingstyleguide--font-example" style="font: 72px Drogowskaz">
@@ -54,6 +56,7 @@ class FontExampleTest < DocumentTestCase
         jaźń
       </div>
     OUTPUT
+    LivingStyleGuide.default_options[:font_example] = backup
   end
 
 end
