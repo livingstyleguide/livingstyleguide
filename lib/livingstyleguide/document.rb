@@ -63,11 +63,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def erb
-    @erb ||= parse_filters do |name, arguments|
-      arguments = arguments.map do |argument|
-        %Q("#{argument.gsub('"', '\\"').gsub("\n", '\\n')}")
-      end
-      "<%= #{name}(#{arguments.join(', ')}) %>\n"
+    @erb ||= parse_filters do |name, arguments, block|
+      "<%= #{name}(#{arguments.inspect}, #{block.inspect}) %>\n"
     end
   end
 
@@ -175,12 +172,13 @@ class LivingStyleGuide::Document < ::Tilt::Template
       content, code_block = $1, $2
       content.gsub(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|\n((?:  .*(?:\n|\Z))+)| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
         name, arguments, block = $1, $2 || '', $3 || $4 || $5
+        block_type = $3 ? :braces : $4 ? :indented : $5 ? :block : :none
         name = name.gsub('-', '_').to_sym
         arguments = arguments.split(',').map(&:strip)
-        if block
-          arguments << block.gsub(/\A(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, '') }
+        if block_type == :indented
+          block.gsub!(/\A(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, '') }
         end
-        yield name, arguments
+        yield name, arguments, block
       end + code_block
     end
   end

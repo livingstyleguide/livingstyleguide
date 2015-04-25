@@ -57,8 +57,8 @@ describe LivingStyleGuide::Document do
   describe "filter syntax" do
 
     it "can have filters with an argument" do
-      LivingStyleGuide::Filters.add_filter :my_filter do |arg|
-        "arg: #{arg}"
+      LivingStyleGuide::Filters.add_filter :my_filter do |arguments, block|
+        "arg: #{arguments.first}"
       end
       assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @my-filter Test
@@ -70,8 +70,8 @@ describe LivingStyleGuide::Document do
     end
 
     it "can have filters with multiple arguments" do
-      LivingStyleGuide::Filters.add_filter :my_second_filter do |arg1, arg2|
-        "arg1: #{arg1}\narg2: #{arg2}"
+      LivingStyleGuide::Filters.add_filter :my_second_filter do |arguments, block|
+        "arg1: #{arguments[0]}\narg2: #{arguments[1]}"
       end
       assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @my-second-filter Test, More test
@@ -84,7 +84,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "can have filters with a block" do
-      LivingStyleGuide::Filters.add_filter :x do |block|
+      LivingStyleGuide::Filters.add_filter :x do |arguments, block|
         block.gsub(/\w/, 'X')
       end
       assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -94,15 +94,15 @@ describe LivingStyleGuide::Document do
         }
         Lorem ipsum
       INPUT
-        XXXXX XXXXX
-        XXXXX
+          XXXXX XXXXX
+          XXXXX
         Lorem ipsum
       OUTPUT
     end
 
     it "can have filters with multiple arguments and a block" do
-      LivingStyleGuide::Filters.add_filter :y do |arg1, arg2, block|
-        "arg1: #{arg1}\narg2: #{arg2}\n#{block.gsub(/\w/, 'Y')}"
+      LivingStyleGuide::Filters.add_filter :y do |arguments, block|
+        "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
       end
       assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @y 1, 2 {
@@ -113,14 +113,14 @@ describe LivingStyleGuide::Document do
       INPUT
         arg1: 1
         arg2: 2
-        YYYYY YYYYY
-        YYYYY
+          YYYYY YYYYY
+          YYYYY
         Lorem ipsum
       OUTPUT
     end
 
     it "blocks should allow CSS (nested {})" do
-      LivingStyleGuide::Filters.add_filter :css_test do |block|
+      LivingStyleGuide::Filters.add_filter :css_test do |arguments, block|
         block
       end
       assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -143,25 +143,25 @@ describe LivingStyleGuide::Document do
         }
         Lorem ipsum
       INPUT
-        .my-class {
-          background: black;
-          &:hover {
-            background: red;
+          .my-class {
+            background: black;
+            &:hover {
+              background: red;
+            }
           }
-        }
         Lorem ipsum
-        .my-class {
-          background: black;
-          &:hover {
-            background: red;
+          .my-class {
+            background: black;
+            &:hover {
+              background: red;
+            }
           }
-        }
         Lorem ipsum
       OUTPUT
     end
 
     it "can have filters with an indented block" do
-      LivingStyleGuide::Filters.add_filter :x_indented do |block|
+      LivingStyleGuide::Filters.add_filter :x_indented do |arguments, block|
         block.gsub(/\w/, 'X')
       end
       assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -177,7 +177,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "can have filters with an indented block at the end of the file" do
-      LivingStyleGuide::Filters.add_filter :x_indented do |block|
+      LivingStyleGuide::Filters.add_filter :x_indented do |arguments, block|
         block.gsub(/\w/, 'X')
       end
       assert_document_equals <<-INPUT.rstrip, <<-OUTPUT, type: :plain
@@ -191,8 +191,8 @@ describe LivingStyleGuide::Document do
     end
 
     it "can have filters with multiple arguments and an indented block" do
-      LivingStyleGuide::Filters.add_filter :y_indented do |arg1, arg2, block|
-        "arg1: #{arg1}\narg2: #{arg2}\n#{block.gsub(/\w/, 'Y')}"
+      LivingStyleGuide::Filters.add_filter :y_indented do |arguments, block|
+        "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
       end
       assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
         @y-indented 1, 2
@@ -211,7 +211,7 @@ describe LivingStyleGuide::Document do
     describe "filters with blocks ending by newline" do
 
       it "can have filters with an indented block" do
-        LivingStyleGuide::Filters.add_filter :x_newline do |block|
+        LivingStyleGuide::Filters.add_filter :x_newline do |arguments, block|
           block.gsub(/\w/, 'X')
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -228,7 +228,7 @@ describe LivingStyleGuide::Document do
       end
 
       it "can have filters with an indented block at the end of the file" do
-        LivingStyleGuide::Filters.add_filter :x_newline do |block|
+        LivingStyleGuide::Filters.add_filter :x_newline do |arguments, block|
           block.gsub(/\w/, 'X')
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -242,8 +242,8 @@ describe LivingStyleGuide::Document do
       end
 
       it "can have filters with multiple arguments and an indented block" do
-        LivingStyleGuide::Filters.add_filter :y_newline do |arg1, arg2, block|
-          "arg1: #{arg1}\narg2: #{arg2}\n#{block.gsub(/\w/, 'Y')}"
+        LivingStyleGuide::Filters.add_filter :y_newline do |arguments, block|
+          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @y-newline 1, 2:
@@ -262,7 +262,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "blocks should allow indented CSS (nested {})" do
-      LivingStyleGuide::Filters.add_filter :css_test_indented do |block|
+      LivingStyleGuide::Filters.add_filter :css_test_indented do |arguments, block|
         block
       end
       assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain

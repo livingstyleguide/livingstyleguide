@@ -1,4 +1,5 @@
-LivingStyleGuide.add_filter :set do |option|
+LivingStyleGuide.add_filter :set do |arguments, block|
+  option = arguments.first
   if option =~ /^([\w\-]+):\s+(.+)$/
     key, value = $1, $2
     key = key.downcase.gsub('-', '_').to_sym

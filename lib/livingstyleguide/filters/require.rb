@@ -1,4 +1,4 @@
-LivingStyleGuide.add_filter :require do |file|
-  Kernel.require file
+LivingStyleGuide.add_filter :require do |arguments, block|
+  Kernel.require arguments.first
   nil
 end

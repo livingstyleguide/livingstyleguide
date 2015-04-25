@@ -1,4 +1,4 @@
-LivingStyleGuide.add_filter :type do |name|
-  document.type = name.to_sym
+LivingStyleGuide.add_filter :type do |arguments, block|
+  document.type = arguments.first.to_sym
   nil
 end

@@ -5,11 +5,11 @@ LivingStyleGuide.default_options[:font_example] = { text: <<-TEXT }
   !&/()$=@;:,.
 TEXT
 
-LivingStyleGuide.add_filter :font_example do |font, text = nil|
+LivingStyleGuide.add_filter :font_example do |arguments, text|
   text ||= LivingStyleGuide.default_options[:font_example][:text]
   text = ERB::Util.html_escape(text)
   text.strip!
   text.gsub!(/\n/, "<br>\n")
-  font = ERB::Util.html_escape(font)
+  font = ERB::Util.html_escape(arguments.first)
   ERB.new(File.read("#{File.dirname(__FILE__)}/../templates/font-example.html.erb")).result(binding)
 end

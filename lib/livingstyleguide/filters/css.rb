@@ -1,10 +1,11 @@
-LivingStyleGuide.add_filter :css, :scss do |source|
-  if source =~ /\.(css|scss|sass)$/
+LivingStyleGuide.add_filter :css, :scss do |arguments, source|
+  file = arguments.first
+  if file =~ /\.(css|scss|sass)$/
     if document.file
-      source = File.join(File.dirname(document.file), source)
+      file = File.join(File.dirname(document.file), file)
     end
-    document.depend_on source
-    document.scss << %Q(@import "#{source}";\n)
+    document.depend_on file
+    document.scss << %Q(@import "#{file}";\n)
   else
     document.scss << "##{document.id.gsub('/', '\\/')} {\n#{source}\n}\n"
   end
