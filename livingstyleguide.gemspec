@@ -29,5 +29,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'heredoc_unindent', '~> 1.2.0'
   gem.add_development_dependency 'minitest'
   gem.add_development_dependency 'coffee-script'
+  gem.add_development_dependency 'i18n'
 end
 
