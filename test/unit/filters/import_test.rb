@@ -2,7 +2,7 @@ require 'document_test_helper'
 
 class ImportTest < DocumentTestCase
 
-  LivingStyleGuide::Filters.add_filter :foo do |arguments, block|
+  LivingStyleGuide::Filters.add_filter :foo do |arguments, options, block|
     text = arguments.first
     "# #{text.capitalize} #{text.capitalize}"
   end

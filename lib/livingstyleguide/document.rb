@@ -63,8 +63,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def erb
-    @erb ||= parse_filters do |name, arguments, block|
-      "<%= #{name}(#{arguments.inspect}, #{block.inspect}) %>\n"
+    @erb ||= parse_filters do |name, arguments, options, block|
+      "<%= #{name}(#{arguments.inspect}, #{options.inspect}, #{block.inspect}) %>\n"
     end
   end
 
@@ -171,16 +171,33 @@ class LivingStyleGuide::Document < ::Tilt::Template
     data.gsub('<%', '<%%').gsub(/\G(.*?)((```.+?```)|\Z)/m) do
       content, code_block = $1, $2
       content.gsub(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|\n((?:  .*(?:\n|\Z))+)| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
-        name, arguments, block = $1, $2 || '', $3 || $4 || $5
-        block_type = $3 ? :braces : $4 ? :indented : $5 ? :block : :none
+        name, arguments_string, block = $1, $2 || '', $3 || $4 || $5
+        options = {
+          block_type: $3 ? :braces : $4 ? :indented : $5 ? :block : :none
+        }
         name = name.gsub('-', '_').to_sym
-        arguments = arguments.split(',').map(&:strip)
-        if block_type == :indented
+        arguments = parse_arguments(arguments_string, options)
+        if options[:block_type] == :indented
           block.gsub!(/\A(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, '') }
         end
-        yield name, arguments, block
+        yield name, arguments, options, block
       end + code_block
     end
+  end
+
+  private
+  def parse_arguments(arguments_string, options)
+    arguments = arguments_string.split(',')
+    arguments.map! do |argument|
+      argument.strip!
+      if /^(?<key>[a-zA-Z0-9_\-]+):(?<value>.+)$/ =~ argument
+        options[key.downcase.gsub('-', '_').to_sym] = value.strip
+        nil
+      else
+        argument
+      end
+    end
+    arguments.compact
   end
 
   private

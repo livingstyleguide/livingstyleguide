@@ -1,9 +1,6 @@
-LivingStyleGuide.add_filter :set do |arguments, block|
-  option = arguments.first
-  if option =~ /^([\w\-]+):\s+(.+)$/
-    key, value = $1, $2
-    key = key.downcase.gsub('-', '_').to_sym
-    value = case value
+LivingStyleGuide.add_filter :set do |arguments, options, block|
+  options.each do |key, value|
+    document.options[key] = case value
     when 'true'
       true
     when 'false'
@@ -13,7 +10,6 @@ LivingStyleGuide.add_filter :set do |arguments, block|
     else
       value
     end
-    document.options[key] = value
   end
   nil
 end
