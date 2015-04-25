@@ -1,6 +1,6 @@
 require 'tilt'
 
-LivingStyleGuide.add_filter :import do |arguments, data|
+LivingStyleGuide.add_filter :import do |arguments, options, data|
   glob = arguments.first
   if glob =~ /\.s[ac]ss$/
     raise "Error: Please use `@css #{glob}` instead of `@import #{glob}` for importing Sass."

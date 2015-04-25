@@ -59,7 +59,7 @@ describe LivingStyleGuide::Document do
     describe "filters without blocks" do
 
       it "can have filters with an argument" do
-        LivingStyleGuide::Filters.add_filter :my_filter do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :my_filter do |arguments, options, block|
           "arg: #{arguments.first}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -72,7 +72,7 @@ describe LivingStyleGuide::Document do
       end
 
       it "can have filters with multiple arguments" do
-        LivingStyleGuide::Filters.add_filter :my_second_filter do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :my_second_filter do |arguments, options, block|
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -85,12 +85,26 @@ describe LivingStyleGuide::Document do
         OUTPUT
       end
 
+      it "can have options" do
+        LivingStyleGuide::Filters.add_filter :my_option_filter do |arguments, options, block|
+          "a: #{options[:a]}\nb: #{options[:b]}"
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @my-option-filter b: 1, a: Lorem
+          Lorem ipsum
+        INPUT
+          a: Lorem
+          b: 1
+          Lorem ipsum
+        OUTPUT
+      end
+
     end
 
     describe "filters with blocks in braces" do
 
       it "can have filters with a block" do
-        LivingStyleGuide::Filters.add_filter :x do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :x do |arguments, options, block|
           block.gsub(/\w/, 'X')
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -107,7 +121,7 @@ describe LivingStyleGuide::Document do
       end
 
       it "can have filters with multiple arguments and a block" do
-        LivingStyleGuide::Filters.add_filter :y do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :y do |arguments, options, block|
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -126,7 +140,7 @@ describe LivingStyleGuide::Document do
       end
 
       it "blocks should allow CSS (nested {})" do
-        LivingStyleGuide::Filters.add_filter :css_test do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :css_test do |arguments, options, block|
           block
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -171,7 +185,7 @@ describe LivingStyleGuide::Document do
     describe "filters with indented blocks" do
 
       it "can have filters with an indented block" do
-        LivingStyleGuide::Filters.add_filter :x_indented do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :x_indented do |arguments, options, block|
           block.gsub(/\w/, 'X')
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -187,7 +201,7 @@ describe LivingStyleGuide::Document do
       end
 
       it "can have filters with an indented block at the end of the file" do
-        LivingStyleGuide::Filters.add_filter :x_indented do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :x_indented do |arguments, options, block|
           block.gsub(/\w/, 'X')
         end
         assert_document_equals <<-INPUT.rstrip, <<-OUTPUT, type: :plain
@@ -201,7 +215,7 @@ describe LivingStyleGuide::Document do
       end
 
       it "can have filters with multiple arguments and an indented block" do
-        LivingStyleGuide::Filters.add_filter :y_indented do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :y_indented do |arguments, options, block|
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -223,7 +237,7 @@ describe LivingStyleGuide::Document do
     describe "filters with blocks ending by newline" do
 
       it "can have filters with an indented block" do
-        LivingStyleGuide::Filters.add_filter :x_newline do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :x_newline do |arguments, options, block|
           block.gsub(/\w/, 'X')
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -240,7 +254,7 @@ describe LivingStyleGuide::Document do
       end
 
       it "can have filters with an indented block at the end of the file" do
-        LivingStyleGuide::Filters.add_filter :x_newline do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :x_newline do |arguments, options, block|
           block.gsub(/\w/, 'X')
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -254,7 +268,7 @@ describe LivingStyleGuide::Document do
       end
 
       it "can have filters with multiple arguments and an indented block" do
-        LivingStyleGuide::Filters.add_filter :y_newline do |arguments, block|
+        LivingStyleGuide::Filters.add_filter :y_newline do |arguments, options, block|
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
@@ -274,7 +288,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "blocks should allow indented CSS (nested {})" do
-      LivingStyleGuide::Filters.add_filter :css_test_indented do |arguments, block|
+      LivingStyleGuide::Filters.add_filter :css_test_indented do |arguments, options, block|
         block
       end
       assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
