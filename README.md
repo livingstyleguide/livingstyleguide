@@ -125,7 +125,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
    ``` ruby
    config.assets.precompile += ['styleguide.html']
    ```
-* There is a [Rails example application](https://github.com/livingstyleguide/livingstyleguide-example/tree/master/rails-example) available on Github.
+* There is a [Rails example application](https://github.com/livingstyleguide/examples/tree/master/rails-example) available on Github.
 *  Use _sass-rails_ > v5 to allow _Sass_ > v3.2:
 
    ``` ruby
@@ -191,7 +191,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
 ### Tips for Middleman
 
 * Don’t put the _styleguide.html.lsg_ into your CSS folder (`source/css/`). It won’t work.
-* There is a [Middleman example application](https://github.com/livingstyleguide/livingstyleguide-example/tree/master/middleman-example) available on Github.
+* There is a [Middleman example application](https://github.com/livingstyleguide/examples/tree/master/middleman-example) available on Github.
 * A more complex production project can [be found online](http://livingstyleguide.com/eurucamp/). The complete source of this Middleman project [is available on Github](https://github.com/eurucamp/livingstyleguide-eurucamp). You’ll find a lot of configuration on how to make the style guide look beautiful.
 
 
@@ -207,12 +207,12 @@ See [efacilitation/gulp-livingstyleguide](https://github.com/efacilitation/gulp-
 
 ## Broccoli
 
-See [hagenburger/broccoli-livingstyleguide](https://github.com/hagenburger/broccoli-livingstyleguide#usage).
+See [livingstyleguide/broccoli-livingstyleguide](https://github.com/livingstyleguide/broccoli-livingstyleguide#usage).
 
 
 ## Ember CLI
 
-See [hagenburger/broccoli-livingstyleguide](https://github.com/hagenburger/broccoli-livingstyleguide#usage) (comments on Ember CLI can be found there).
+See [livingstyleguide/broccoli-livingstyleguide](https://github.com/livingstyleguide/broccoli-livingstyleguide#usage) (comments on Ember CLI can be found there).
 
 
 ----
