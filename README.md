@@ -297,11 +297,10 @@ This will generate a list ($name + #value in a circle of that color) of all colo
 
 Alternatively you can set the colors you want to output yourself (much better for grouping different shades of one color). `-` leaves a cell in the matrix empty:
 
-    @colors {
-      -       $light-red  $gray
-      $green  $red        -
-      -       $dark-red   $black
-    }
+    @colors:
+    -       $light-red  $gray
+    $green  $red        -
+    -       $dark-red   $black
 
 
 ### Haml Examples
@@ -323,10 +322,9 @@ For example, add some margin between elements:
     ```
     <button class="button">Example button</button>
     <button class="button -primary">Example button</button>
-    @css {
-      .button + .button {
-        margin-left: 3em;
-      }
+    @css:
+    .button + .button {
+      margin-left: 3em;
     }
     ```
 
@@ -347,10 +345,9 @@ This way it will be scoped to the current file:
     <a class="button -primary">Example button</a>
     ```
 
-    @css {
-      .button + .button {
-        margin-left: 3em;
-      }
+    @css:
+    .button + .button {
+      margin-left: 3em;
     }
 
 Within the `@css` helper, all variables, mixins, … of your project are available.
@@ -358,10 +355,9 @@ For example, if `my-styles.scss` sets `$my-project-margin`, you can write this:
 
     @css my-styles.scss
 
-    @css {
-      .button + .button {
-        margin-left: $my-project-margin;
-      }
+    @css:
+    .button + .button {
+      margin-left: $my-project-margin;
     }
 
 
@@ -405,10 +401,9 @@ Show which fonts should be used on your website—this will output and example t
 
 Use your own text (defaults to “ABC…\nabc…\n123…\n!&…” if not set):
 
-    @font-example 32px Comic Sans {
-      Schweißgequält zündet Typograf Jakob
-      verflixt öde Pangramme an.
-    }
+    @font-example 32px Comic Sans:
+    Schweißgequält zündet Typograf Jakob
+    verflixt öde Pangramme an.
 
 
 ### Require Ruby files or Gems
@@ -478,15 +473,14 @@ You can add whatever HTML you want and some Sass to style it to your _styleguide
 Until this is implemented in v2, set them by using:
 
 ``` scss
-@css {
-  $livingstyleguide--base-font: 'Comic Sans MS', 'Arial', sans-serif !global;
-  $livingstyleguide--base-font-size: 7em !global;
-  $livingstyleguide--background-color: red !global;
-  $livingstyleguide--border-color: $my-color !global;
-  $livingstyleguide--color: #eee !global;
-  $livingstyleguide--code-color: darken(red, 10%) !global;
-  $livingstyleguide--color-swatch-border-radius: 0 !global;
-}
+@css:
+$livingstyleguide--base-font: 'Comic Sans MS', 'Arial', sans-serif !global;
+$livingstyleguide--base-font-size: 7em !global;
+$livingstyleguide--background-color: red !global;
+$livingstyleguide--border-color: $my-color !global;
+$livingstyleguide--color: #eee !global;
+$livingstyleguide--code-color: darken(red, 10%) !global;
+$livingstyleguide--color-swatch-border-radius: 0 !global;
 ```
 
 * For a full list of options, [have a look at the source](https://github.com/livingstyleguide/livingstyleguide/blob/master/stylesheets/_livingstyleguide.scss) (just strip `$livingstyleguide--` from the variables).
