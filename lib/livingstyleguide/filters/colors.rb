@@ -1,5 +1,5 @@
-LivingStyleGuide.add_filter :colors do |content|
-  colors = content.split(/\n+/).map{ |l| l.split(/\s+/) }
+LivingStyleGuide.add_filter :colors do |arguments, content|
+  colors = content.split(/\n+/).map{ |l| l.strip.split(/\s+/) }
   columns = colors.map{ |l| l.size }.max
   colors = colors.flatten
   document.scss << <<-SCSS
