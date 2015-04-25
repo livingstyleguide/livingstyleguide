@@ -56,156 +56,168 @@ describe LivingStyleGuide::Document do
 
   describe "filter syntax" do
 
-    it "can have filters with an argument" do
-      LivingStyleGuide::Filters.add_filter :my_filter do |arguments, block|
-        "arg: #{arguments.first}"
-      end
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-        @my-filter Test
-        Lorem ipsum
-      INPUT
-        arg: Test
-        Lorem ipsum
-      OUTPUT
-    end
+    describe "filters without blocks" do
 
-    it "can have filters with multiple arguments" do
-      LivingStyleGuide::Filters.add_filter :my_second_filter do |arguments, block|
-        "arg1: #{arguments[0]}\narg2: #{arguments[1]}"
-      end
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-        @my-second-filter Test, More test
-        Lorem ipsum
-      INPUT
-        arg1: Test
-        arg2: More test
-        Lorem ipsum
-      OUTPUT
-    end
-
-    it "can have filters with a block" do
-      LivingStyleGuide::Filters.add_filter :x do |arguments, block|
-        block.gsub(/\w/, 'X')
-      end
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-        @x {
+      it "can have filters with an argument" do
+        LivingStyleGuide::Filters.add_filter :my_filter do |arguments, block|
+          "arg: #{arguments.first}"
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @my-filter Test
           Lorem ipsum
-          dolor
-        }
-        Lorem ipsum
-      INPUT
+        INPUT
+          arg: Test
+          Lorem ipsum
+        OUTPUT
+      end
+
+      it "can have filters with multiple arguments" do
+        LivingStyleGuide::Filters.add_filter :my_second_filter do |arguments, block|
+          "arg1: #{arguments[0]}\narg2: #{arguments[1]}"
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @my-second-filter Test, More test
+          Lorem ipsum
+        INPUT
+          arg1: Test
+          arg2: More test
+          Lorem ipsum
+        OUTPUT
+      end
+
+    end
+
+    describe "filters with blocks in braces" do
+
+      it "can have filters with a block" do
+        LivingStyleGuide::Filters.add_filter :x do |arguments, block|
+          block.gsub(/\w/, 'X')
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @x {
+            Lorem ipsum
+            dolor
+          }
+          Lorem ipsum
+        INPUT
+            XXXXX XXXXX
+            XXXXX
+          Lorem ipsum
+        OUTPUT
+      end
+
+      it "can have filters with multiple arguments and a block" do
+        LivingStyleGuide::Filters.add_filter :y do |arguments, block|
+          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @y 1, 2 {
+            Lorem ipsum
+            dolor
+          }
+          Lorem ipsum
+        INPUT
+          arg1: 1
+          arg2: 2
+            YYYYY YYYYY
+            YYYYY
+          Lorem ipsum
+        OUTPUT
+      end
+
+      it "blocks should allow CSS (nested {})" do
+        LivingStyleGuide::Filters.add_filter :css_test do |arguments, block|
+          block
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @css-test {
+            .my-class {
+              background: black;
+              &:hover {
+                background: red;
+              }
+            }
+          }
+          Lorem ipsum
+          @css-test {
+            .my-class {
+              background: black;
+              &:hover {
+                background: red;
+              }
+            }
+          }
+          Lorem ipsum
+        INPUT
+            .my-class {
+              background: black;
+              &:hover {
+                background: red;
+              }
+            }
+          Lorem ipsum
+            .my-class {
+              background: black;
+              &:hover {
+                background: red;
+              }
+            }
+          Lorem ipsum
+        OUTPUT
+      end
+
+    end
+
+    describe "filters with indented blocks" do
+
+      it "can have filters with an indented block" do
+        LivingStyleGuide::Filters.add_filter :x_indented do |arguments, block|
+          block.gsub(/\w/, 'X')
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @x-indented
+            Lorem ipsum
+            dolor
+          Lorem ipsum
+        INPUT
           XXXXX XXXXX
           XXXXX
-        Lorem ipsum
-      OUTPUT
-    end
-
-    it "can have filters with multiple arguments and a block" do
-      LivingStyleGuide::Filters.add_filter :y do |arguments, block|
-        "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
-      end
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-        @y 1, 2 {
           Lorem ipsum
-          dolor
-        }
-        Lorem ipsum
-      INPUT
-        arg1: 1
-        arg2: 2
+        OUTPUT
+      end
+
+      it "can have filters with an indented block at the end of the file" do
+        LivingStyleGuide::Filters.add_filter :x_indented do |arguments, block|
+          block.gsub(/\w/, 'X')
+        end
+        assert_document_equals <<-INPUT.rstrip, <<-OUTPUT, type: :plain
+          @x-indented
+            Lorem ipsum
+            dolor
+        INPUT
+          XXXXX XXXXX
+          XXXXX
+        OUTPUT
+      end
+
+      it "can have filters with multiple arguments and an indented block" do
+        LivingStyleGuide::Filters.add_filter :y_indented do |arguments, block|
+          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
+        end
+        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+          @y-indented 1, 2
+            Lorem ipsum
+            dolor
+          Lorem ipsum
+        INPUT
+          arg1: 1
+          arg2: 2
           YYYYY YYYYY
           YYYYY
-        Lorem ipsum
-      OUTPUT
-    end
-
-    it "blocks should allow CSS (nested {})" do
-      LivingStyleGuide::Filters.add_filter :css_test do |arguments, block|
-        block
-      end
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-        @css-test {
-          .my-class {
-            background: black;
-            &:hover {
-              background: red;
-            }
-          }
-        }
-        Lorem ipsum
-        @css-test {
-          .my-class {
-            background: black;
-            &:hover {
-              background: red;
-            }
-          }
-        }
-        Lorem ipsum
-      INPUT
-          .my-class {
-            background: black;
-            &:hover {
-              background: red;
-            }
-          }
-        Lorem ipsum
-          .my-class {
-            background: black;
-            &:hover {
-              background: red;
-            }
-          }
-        Lorem ipsum
-      OUTPUT
-    end
-
-    it "can have filters with an indented block" do
-      LivingStyleGuide::Filters.add_filter :x_indented do |arguments, block|
-        block.gsub(/\w/, 'X')
-      end
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-        @x-indented
           Lorem ipsum
-          dolor
-        Lorem ipsum
-      INPUT
-        XXXXX XXXXX
-        XXXXX
-        Lorem ipsum
-      OUTPUT
-    end
-
-    it "can have filters with an indented block at the end of the file" do
-      LivingStyleGuide::Filters.add_filter :x_indented do |arguments, block|
-        block.gsub(/\w/, 'X')
+        OUTPUT
       end
-      assert_document_equals <<-INPUT.rstrip, <<-OUTPUT, type: :plain
-        @x-indented
-          Lorem ipsum
-          dolor
-      INPUT
-        XXXXX XXXXX
-        XXXXX
-      OUTPUT
-    end
 
-    it "can have filters with multiple arguments and an indented block" do
-      LivingStyleGuide::Filters.add_filter :y_indented do |arguments, block|
-        "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
-      end
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-        @y-indented 1, 2
-          Lorem ipsum
-          dolor
-        Lorem ipsum
-      INPUT
-        arg1: 1
-        arg2: 2
-        YYYYY YYYYY
-        YYYYY
-        Lorem ipsum
-      OUTPUT
     end
 
     describe "filters with blocks ending by newline" do
