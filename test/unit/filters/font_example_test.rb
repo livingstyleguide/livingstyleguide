@@ -6,9 +6,9 @@ class FontExampleTest < DocumentTestCase
 
   def test_default_font_example
     assert_render_equals <<-INPUT, <<-OUTPUT
-      @font-example 42px Comic Sans
+      @font-example 42px Comic Sans, sans-serif
     INPUT
-      <div class="livingstyleguide--font-example" style="font: 42px Comic Sans">
+      <div class="livingstyleguide--font-example" style="font: 42px Comic Sans, sans-serif">
         ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
         abcdefghijklmnopqrstuvwxyz<br>
         0123456789<br>

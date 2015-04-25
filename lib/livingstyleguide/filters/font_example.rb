@@ -10,6 +10,6 @@ LivingStyleGuide.add_filter :font_example do |arguments, options, text|
   text = ERB::Util.html_escape(text)
   text.strip!
   text.gsub!(/\n/, "<br>\n")
-  font = ERB::Util.html_escape(arguments.first)
+  font = ERB::Util.html_escape(arguments.join(", "))
   ERB.new(File.read("#{File.dirname(__FILE__)}/../templates/font-example.html.erb")).result(binding)
 end
