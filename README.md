@@ -73,6 +73,9 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
 ## Rails Integration
 
+Be aware: From LSG v2 on Rails 3.x is not supported due to outdated
+Sprockets and Tilt versions.
+
 1. Setup:
    Add this line to your application’s _Gemfile_:
 
@@ -135,7 +138,6 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
    See [issue #99](https://github.com/livingstyleguide/livingstyleguide/issues/99) for discussions.
 
-### Using it with Rails 4
 
 Since Rails 4 non-digest assets are not created anymore. If you want a public sharable url consider using something like [Non Stupid Digest Assets](https://github.com/alexspeller/non-stupid-digest-assets)
 
