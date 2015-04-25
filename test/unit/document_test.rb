@@ -424,7 +424,7 @@ describe LivingStyleGuide::Document do
       doc.template = :plain
       doc.render
       assert_equal "<b>This</b> is highlighted <b class=\"class\">text</b>.", doc.html
-      assert_equal "<b>&lt;<em>b</em></b><b>&gt;</b>This<b>&lt;/<em>b</em>&gt;</b> is <strong class=\"livingstyleguide--code-highlight\">highlighted</strong> &lt;b class=&quot;<strong class=\"livingstyleguide--code-highlight\">class</strong>&quot;&gt;text<b>&lt;/<em>b</em>&gt;</b>.", doc.highlighted_source
+      assert_equal "<b>&lt;<em>b</em></b><b>&gt;</b>This<b>&lt;/<em>b</em>&gt;</b> is <strong class=\"livingstyleguide--code-highlight\">highlighted</strong> <b>&lt;<em>b</em></b> <b>class</b>=&quot;<strong class=\"livingstyleguide--code-highlight\">class</strong>&quot;<b>&gt;</b>text<b>&lt;/<em>b</em>&gt;</b>.", doc.highlighted_source
     end
 
     it "should highlight text spanning several lines" do
