@@ -73,6 +73,9 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
 ## Rails Integration
 
+Be aware: From LSG v2 on Rails 3.x is not supported due to outdated
+Sprockets and Tilt versions.
+
 1. Setup:
    Add this line to your application’s _Gemfile_:
 
