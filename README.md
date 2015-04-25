@@ -290,7 +290,7 @@ There are more **commands** to generate output. They start with an `@` and can b
 
 ### Colors
 
-This will generate a list ($name + #value in a circle of that color) of all color variables found in *variables/_colors.scss*:
+~~This will generate a list ($name + #value in a circle of that color) of all color variables found in *variables/_colors.scss*:~~
 
     @colors variables/colors
 
