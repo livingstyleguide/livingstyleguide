@@ -9,6 +9,13 @@
 * `@type` to change type of document within the document
 * Normal code blocks (without example, just syntax highlighted) work
   from now on
+* Commands can have blocks without braces or indented code from now on
+  (add a colon at the end of the command to use this)
+* Commands can have options (like JSON/Ruby hashes)
+* `@set` can set multiple options
+* Adding custom filters has been refactored to:
+  `LivingStyleGuide.add_filter :name do |array_of_arguments, options_hash, block_string|`
+* `@font-example` works with multiple fonts separated by comma
 
 
 ## 2.0.0.alpha.4
