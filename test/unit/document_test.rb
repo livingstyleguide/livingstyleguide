@@ -76,11 +76,11 @@ describe LivingStyleGuide::Document do
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\narg3: #{arguments[2]}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-          @my-second-filter 'Test\'', Test\\, with comma, "More test\""
+          @my-second-filter 'Test\''; Test\\; with semicolon; "More test\""
           Lorem ipsum
         INPUT
           arg1: Test'
-          arg2: Test, with comma
+          arg2: Test; with semicolon
           arg3: More test"
           Lorem ipsum
         OUTPUT
@@ -91,12 +91,12 @@ describe LivingStyleGuide::Document do
           "a: #{options[:a]}\nb: #{options[:b]}\nc: #{options[:c]}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-          @my-option-filter b: '1\'', c: 1\\, 2, a: "Lorem\""
+          @my-option-filter b: '1\''; c: 1\\; 2; a: "Lorem\""
           Lorem ipsum
         INPUT
           a: Lorem"
           b: 1'
-          c: 1, 2
+          c: 1; 2
           Lorem ipsum
         OUTPUT
       end
@@ -127,7 +127,7 @@ describe LivingStyleGuide::Document do
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-          @y 1, 2 {
+          @y 1; 2 {
             Lorem ipsum
             dolor
           }
@@ -221,7 +221,7 @@ describe LivingStyleGuide::Document do
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-          @y-indented 1, 2
+          @y-indented 1; 2
             Lorem ipsum
             dolor
           Lorem ipsum
@@ -274,7 +274,7 @@ describe LivingStyleGuide::Document do
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-          @y-newline 1, 2:
+          @y-newline 1; 2:
           Lorem ipsum
           dolor
 
