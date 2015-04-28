@@ -73,28 +73,30 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with multiple arguments" do
         LivingStyleGuide::Filters.add_filter :my_second_filter do |arguments, options, block|
-          "arg1: #{arguments[0]}\narg2: #{arguments[1]}"
+          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\narg3: #{arguments[2]}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-          @my-second-filter Test, More test
+          @my-second-filter 'Test\'', Test\\, with comma, "More test\""
           Lorem ipsum
         INPUT
-          arg1: Test
-          arg2: More test
+          arg1: Test'
+          arg2: Test, with comma
+          arg3: More test"
           Lorem ipsum
         OUTPUT
       end
 
       it "can have options" do
         LivingStyleGuide::Filters.add_filter :my_option_filter do |arguments, options, block|
-          "a: #{options[:a]}\nb: #{options[:b]}"
+          "a: #{options[:a]}\nb: #{options[:b]}\nc: #{options[:c]}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
-          @my-option-filter b: 1, a: Lorem
+          @my-option-filter b: '1\'', c: 1\\, 2, a: "Lorem\""
           Lorem ipsum
         INPUT
-          a: Lorem
-          b: 1
+          a: Lorem"
+          b: 1'
+          c: 1, 2
           Lorem ipsum
         OUTPUT
       end
