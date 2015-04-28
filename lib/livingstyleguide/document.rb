@@ -187,10 +187,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def parse_arguments(arguments_string, options)
-    arguments = arguments_string.split(/(?<!\\),/)
+    arguments = arguments_string.split(/(?<!\\);/)
     arguments.map! do |argument|
       argument.strip!
-      argument.gsub! "\\,", ","
+      argument.gsub! "\\;", ";"
       if /^(?<key>[a-zA-Z0-9_\-]+):(?<value>.+)$/ =~ argument
         options[key.downcase.gsub('-', '_').to_sym] = remove_quots(value.strip)
         nil
