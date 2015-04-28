@@ -1,7 +1,7 @@
 # Changelog
 
 
-## (unreleased)
+## 2.0.0.alpha.5
 
 * [Use Tilt to render examples](https://github.com/hagenburger/livingstyleguide/issues/120) and allow all templating engines supperted by Tilt by `@type enginename`
 * Markdown files (_*.md_) are rendered as Markdown (was rendered as LSG
