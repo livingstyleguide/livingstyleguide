@@ -465,23 +465,16 @@ You can add whatever HTML you want and some Sass to style it to your _styleguide
 
 ### Custom Settings
 
-~~Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_~~
-
-```
-(not available in v2 yet)
-```
-
-Until this is implemented in v2, set them by using:
+Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_
 
 ``` scss
-@css:
-$livingstyleguide--base-font: 'Comic Sans MS', 'Arial', sans-serif !global;
-$livingstyleguide--base-font-size: 7em !global;
-$livingstyleguide--background-color: red !global;
-$livingstyleguide--border-color: $my-color !global;
-$livingstyleguide--color: #eee !global;
-$livingstyleguide--code-color: darken(red, 10%) !global;
-$livingstyleguide--color-swatch-border-radius: 0 !global;
+@style base-font: 'Comic Sans MS', 'Arial', sans-serif
+@style base-font-size: 7em
+@style background-color: red
+@style border-color: $my-color
+@style color: #eee
+@style code-color: darken(red, 10%)
+@style color-swatch-border-radius: 0
 ```
 
 * For a full list of options, [have a look at the source](https://github.com/livingstyleguide/livingstyleguide/blob/master/stylesheets/_livingstyleguide.scss) (just strip `$livingstyleguide--` from the variables).
