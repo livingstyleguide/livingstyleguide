@@ -1,4 +1,4 @@
-# LivingStyleGuide ![Build Status Images](https://travis-ci.org/hagenburger/livingstyleguide.png)
+# LivingStyleGuide ![Build Status Images](https://travis-ci.org/livingstyleguide/livingstyleguide.png)
 
 Easily create living style guides/front-end style guides/pattern libraries by adding Markdown documentation to
 your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
@@ -113,7 +113,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
    ``` ruby
    config.assets.precompile += ['styleguide.html']
    ```
-* There is a [Rails example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/rails-example) available on Github.
+* There is a [Rails example application](https://github.com/livingstyleguide/livingstyleguide-example/tree/master/rails-example) available on Github.
 *  Use _sass-rails_ > v5 to allow _Sass_ > v3.2:
 
    ``` ruby
@@ -121,7 +121,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
    gem 'sass-rails', '~> 5.0.0.beta1'
    ```
    
-   See [issue #99](https://github.com/hagenburger/livingstyleguide/issues/99) for discussions.
+   See [issue #99](https://github.com/livingstyleguide/livingstyleguide/issues/99) for discussions.
 
 ### Using it with Rails 4
 
@@ -172,7 +172,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
 ### Tips for Middleman
 
 * Don’t put the _styleguide.html.lsg_ into your CSS folder (`source/css/`). It won’t work.
-* There is a [Middleman example application](https://github.com/hagenburger/livingstyleguide-example/tree/master/middleman-example) available on Github.
+* There is a [Middleman example application](https://github.com/livingstyleguide/livingstyleguide-example/tree/master/middleman-example) available on Github.
 * A more complex production project can [be found online](http://livingstyleguide.com/eurucamp/). The complete source of this Middleman project [is available on Github](https://github.com/eurucamp/livingstyleguide-eurucamp). You’ll find a lot of configuration on how to make the style guide look beautiful.
 
 
@@ -364,7 +364,7 @@ style:
   color-swatch-border-radius: '0'
 ```
 
-* For a full list of options, [have a look at the source](https://github.com/hagenburger/livingstyleguide/blob/master/stylesheets/_livingstyleguide.scss) (just strip `$livingstyleguide--` from the variables).
+* For a full list of options, [have a look at the source](https://github.com/livingstyleguide/livingstyleguide/blob/master/stylesheets/_livingstyleguide.scss) (just strip `$livingstyleguide--` from the variables).
 * Every Sass expression is allowed
 * Variables defined in your production Sass are available
 * `code-color` generates a whole color scheme for syntax highlighting in your corporate colors
@@ -432,4 +432,5 @@ Or install it yourself as:
 
 Copyright 2012—2014 [Nico Hagenburger](http://www.hagenburger.net).
 See [MIT-LICENSE.md](MIT-LICENSE.md) for details.
-Get in touch with [@hagenburger](http://twitter.com/hagenburger) on Twitter or [open an issue](https://github.com/hagenburger/livingstyleguide/issues/new).
+Get in touch with [@hagenburger](http://twitter.com/hagenburger) on Twitter or [open an issue](https://github.com/livingstyleguide/livingstyleguide/issues/new).
+
