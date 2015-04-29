@@ -15,6 +15,7 @@ describe LivingStyleGuide::Document do
 
     it "outputs the source" do
       doc = LivingStyleGuide::Document.new { "Test" }
+      doc.render
       doc.source.must_equal "Test"
     end
 

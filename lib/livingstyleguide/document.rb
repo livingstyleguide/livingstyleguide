@@ -38,10 +38,6 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @locals = {}
   end
 
-  def source
-    @source ||= erb.gsub(/<%.*?%>\n?/, '').strip
-  end
-
   def highlighted_source
     set_highlights(source.strip) do |without_highlights|
       if type == :plain
@@ -71,6 +67,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def evaluate(scope, locals, &block)
     @scope = scope
     result = ERB.new(erb).result(@filters.get_binding)
+    @source = result
     @html = render_html(result, locals)
     @classes.unshift "livingstyleguide--#{@type}-example"
     @classes.unshift "livingstyleguide--example"
