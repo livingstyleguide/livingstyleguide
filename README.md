@@ -1,4 +1,4 @@
-# LivingStyleGuide ![Build Status Images](https://travis-ci.org/livingstyleguide/livingstyleguide.png)
+# LivingStyleGuide ![Build Status Images](https://travis-ci.org/livingstyleguide/livingstyleguide.svg)
 
 Easily create living style guides/front-end style guides/pattern libraries by adding Markdown documentation to
 your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
