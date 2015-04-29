@@ -1,5 +1,10 @@
 # Changelog
 
+## (unreleased)
+
+* `@source` imports template as source (without execution)
+
+
 ## 2.0.0.alpha.5
 
 * [Use Tilt to render examples](https://github.com/hagenburger/livingstyleguide/issues/120) and allow all templating engines supperted by Tilt by `@type enginename`

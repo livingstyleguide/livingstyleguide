@@ -1,6 +1,6 @@
 require 'document_test_helper'
 
-class ImportTest < DocumentTestCase
+class ImportAndSourceTest < DocumentTestCase
 
   LivingStyleGuide::Filters.add_filter :foo do |arguments, options, block|
     text = arguments.first
@@ -134,6 +134,32 @@ class ImportTest < DocumentTestCase
         <div>Bar</div>
       OUTPUT
     end
+  end
+
+  def test_haml_source
+    require 'tilt/haml'
+    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+      Before
+
+      ```
+      @type haml
+      @source test/fixtures/import/data.haml
+      @data {
+        "text": "Bar"
+      }
+      ```
+
+      After
+    INPUT
+      <section class=\"livingstyleguide--example livingstyleguide--haml-example\" id=\"section-[a-f0-9]+\">
+        <div class=\"livingstyleguide--html\">
+          <div class='foo'>Bar</div>
+        </div>
+        <pre class=\"livingstyleguide--code-block\">
+          <code class=\"livingstyleguide--code\"> <b>.foo</b>= text</code>
+        </pre>
+      </section>
+    OUTPUT
   end
 
 end
