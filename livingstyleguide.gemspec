@@ -26,6 +26,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'compass'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'haml'
+  gem.add_development_dependency 'erubis'
   gem.add_development_dependency 'heredoc_unindent', '~> 1.2.0'
   gem.add_development_dependency 'minitest'
   gem.add_development_dependency 'coffee-script'
