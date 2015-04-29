@@ -8,6 +8,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
   attr_accessor :css, :id, :locals
   attr_accessor :title
+  attr_accessor :defaults
   attr_reader :scope
 
   %w(scss head header footer).each do |attr|
@@ -36,6 +37,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @scss = ''
     @css = ''
     @locals = {}
+    @defaults = {}
   end
 
   def highlighted_source
@@ -60,6 +62,9 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def erb
     @erb ||= parse_filters do |name, arguments, options, block|
+      if options.has_key?("@#{name}".to_sym)
+        options = @defaults["@#{name}".to_sym].merge(options)
+      end
       "<%= #{name}(#{arguments.inspect}, #{options.inspect}, #{block.inspect}) %>\n"
     end
   end

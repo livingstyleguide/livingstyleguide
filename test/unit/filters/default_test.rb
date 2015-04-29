@@ -1,0 +1,33 @@
+require 'document_test_helper'
+
+class DefaultTest < DocumentTestCase
+
+  LivingStyleGuide::Filters.add_filter :test_default do |arguments, options, block|
+    options[:foo]
+  end
+
+  def test_not_set
+    assert_render_match <<-INPUT, <<-OUTPUT
+      @test-default
+    INPUT
+    OUTPUT
+  end
+
+  def test_set_global
+    assert_render_match <<-INPUT, <<-OUTPUT
+      @default @test-default; foo: bar
+      @test-default
+    INPUT
+      bar
+    OUTPUT
+  end
+
+  def test_set_local
+    assert_render_match <<-INPUT, <<-OUTPUT
+      @test-default foo: BAR
+    INPUT
+      BAR
+    OUTPUT
+  end
+
+end
