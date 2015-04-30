@@ -136,14 +136,14 @@ class ImportAndSourceTest < DocumentTestCase
     end
   end
 
-  def test_haml_source
+  def test_use_haml
     require 'tilt/haml'
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
       ```
       @type haml
-      @source test/fixtures/import/data.haml
+      @use test/fixtures/import/data.haml
       @data {
         "text": "Bar"
       }
