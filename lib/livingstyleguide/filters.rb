@@ -18,7 +18,7 @@ end
 
 require 'livingstyleguide/filters/options'
 require 'livingstyleguide/filters/default'
-require 'livingstyleguide/filters/import_and_source'
+require 'livingstyleguide/filters/import_and_use'
 require 'livingstyleguide/filters/require'
 require 'livingstyleguide/filters/full_width'
 require 'livingstyleguide/filters/haml'
