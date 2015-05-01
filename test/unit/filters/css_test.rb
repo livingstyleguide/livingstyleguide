@@ -23,14 +23,17 @@ class CssTest < DocumentTestCase
   end
 
   def test_adding_sass
-    doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
+    doc = LivingStyleGuide::Document.new do <<-INPUT.unindent(ignore_blank: true)
         @css preprocessor: sass
           #adding-sass
             background: blue
+
+          .adding-sass
+            background: yellow
       INPUT
     end
     doc.render
-    assert_match(/##{doc.id} #adding-sass\s*\{\s*background: blue;\s*\}/m, doc.css)
+    assert_match(/##{doc.id} #adding-sass\s*\{\s*background: blue;\s*\}.*.adding-sass\s*\{\s*background: yellow;\s*\}/m, doc.css)
   end
 
   def test_adding_scss_inside_examples
