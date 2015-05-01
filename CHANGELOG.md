@@ -8,6 +8,8 @@
 * `@data` supports YAML data
 * Ruby < 2.0 not officially supported anymore
 * `@head`, `@header`, and `@footer` commands for injecting HTML
+* `@css` also supports Sass’ indented syntax by setting
+  `@css preprocessor: sass`
 
 
 ## 2.0.0.alpha.5
