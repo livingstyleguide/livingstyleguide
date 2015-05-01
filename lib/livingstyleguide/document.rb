@@ -37,7 +37,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @scss = ''
     @css = ''
     @locals = {}
-    @defaults = {}
+    @defaults = { global: {} }
     @head = ""
     @header = ""
     @footer = ""
@@ -65,7 +65,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def erb
     @erb ||= parse_filters do |name, arguments, options, block|
-      options = %Q((document.defaults[:@#{name}] || {}).merge(#{options.inspect}))
+      options = %Q(document.defaults[:global].merge(document.defaults[:@#{name}] || {}).merge(#{options.inspect}))
       "<%= #{name}(#{arguments.inspect}, #{options}, #{block.inspect}) %>\n"
     end
   end

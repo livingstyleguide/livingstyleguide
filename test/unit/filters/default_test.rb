@@ -15,6 +15,16 @@ class DefaultTest < DocumentTestCase
 
   def test_set_global
     assert_render_match <<-INPUT, <<-OUTPUT
+      @default foo: global
+      @test-default
+    INPUT
+      global
+    OUTPUT
+  end
+
+  def test_set_global_per_command
+    assert_render_match <<-INPUT, <<-OUTPUT
+      @default foo: global
       @default @test-default; foo: bar
       @test-default
     INPUT
@@ -24,6 +34,8 @@ class DefaultTest < DocumentTestCase
 
   def test_set_local
     assert_render_match <<-INPUT, <<-OUTPUT
+      @default foo: global
+      @default @test-default; foo: bar
       @test-default foo: BAR
     INPUT
       BAR
