@@ -173,7 +173,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def parse_filters
     data.gsub('<%', '<%%').gsub(/\G(.*?)((```.+?```)|\Z)/m) do
       content, code_block = $1, $2
-      content.gsub(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|\n((?:  .*(?:\n|\Z))+)| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
+      content.gsub(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|((?:\n+  .*)+(?=\n|\Z))| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
         name, arguments_string, block = $1, $2 || '', $3 || $4 || $5
         options = {
           block_type: $3 ? :braces : $4 ? :indented : $5 ? :block : :none
@@ -181,7 +181,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
         name = name.gsub('-', '_').to_sym
         arguments = parse_arguments(arguments_string, options)
         if options[:block_type] == :indented
-          block.gsub!(/\A(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, '') }
+          block.gsub!(/\A\n(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, '') }
         end
         yield name, arguments, options, block
       end + code_block
