@@ -15,8 +15,8 @@ class HtmlHeadTest < DocumentTestCase
       @head:
       <link>
 
-      @head:
-      <meta>
+      @head type: haml:
+      %meta
     INPUT
       <head>.*<link>.*<meta>.*</head>
     OUTPUT
@@ -25,24 +25,24 @@ class HtmlHeadTest < DocumentTestCase
   def test_header
     assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
       @header:
-      My
+      <span>My</span>
 
-      @header:
-      Header
+      @header type: haml:
+      %b Header
     INPUT
-      <body.*My.*Header.*</body>
+      <body.*<span>My</span>.*<b>Header</b>.*</body>
     OUTPUT
   end
 
   def test_footer
     assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
       @footer:
-      My
+      <span>My</span>
 
-      @footer:
-      Footer
+      @footer type: haml:
+      %b Footer
     INPUT
-      <body.*My.*Footer.*</body>
+      <body.*<span>My</span>.*<b>Footer</b>..*</body>
     OUTPUT
   end
 
