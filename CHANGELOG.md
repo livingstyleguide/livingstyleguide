@@ -8,6 +8,7 @@
   filters](https://github.com/livingstyleguide/livingstyleguide/issues/125)
 * `@data` supports YAML data
 * Ruby < 2.0 not officially supported anymore
+* `@head`, `@header`, and `@footer` commands for injecting HTML
 
 
 ## 2.0.0.alpha.5

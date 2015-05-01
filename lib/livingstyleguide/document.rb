@@ -38,6 +38,9 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @css = ''
     @locals = {}
     @defaults = {}
+    @head = ""
+    @header = ""
+    @footer = ""
   end
 
   def highlighted_source
