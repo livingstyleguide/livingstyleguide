@@ -65,10 +65,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def erb
     @erb ||= parse_filters do |name, arguments, options, block|
-      if options.has_key?("@#{name}".to_sym)
-        options = @defaults["@#{name}".to_sym].merge(options)
-      end
-      "<%= #{name}(#{arguments.inspect}, #{options.inspect}, #{block.inspect}) %>\n"
+      options = %Q((document.defaults[:@#{name}] || {}).merge(#{options.inspect}))
+      "<%= #{name}(#{arguments.inspect}, #{options}, #{block.inspect}) %>\n"
     end
   end
 
