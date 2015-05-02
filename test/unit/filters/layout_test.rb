@@ -46,4 +46,30 @@ class HtmlHeadTest < DocumentTestCase
     OUTPUT
   end
 
+  def test_javascript_before
+    assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
+      @javascript-before application.js
+      @javascript-before {
+        alert("Hello World!");
+      }
+      @javascript-before transpiler: coffee-script
+        alert "Hello Coffee World!"
+    INPUT
+      <head>.*<script src="application.js"><\/script> <script> alert\\("Hello World!"\\); <\/script> <script>.+alert\\("Hello Coffee World!"\\);.*<\/script>.*</head>
+    OUTPUT
+  end
+
+  def test_javascript_after
+    assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
+      @javascript-after application.js
+      @javascript-after {
+        alert("Good Bye World!");
+      }
+      @javascript-after transpiler: coffee-script
+        alert "Good Bye Coffee World!"
+    INPUT
+      <body.*<script src="application.js"><\/script> <script> alert\\("Good Bye World!"\\); <\/script> <script>.+alert\\("Good Bye Coffee World!"\\);.*<\/script>.*</body>
+    OUTPUT
+  end
+
 end

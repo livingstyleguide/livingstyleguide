@@ -488,14 +488,37 @@ Just play a bit and create an individual style guide which represents your perso
 
 ## Including JavaScript
 
-~~If you need external JavaScript files to be included in the style guide, there are two options: before (in the `<head>`) or after (just before the closing `</body>`). It accepts a list of URLs (ending with `*.js`) or plain JavaScript code:~~
+If you need external JavaScript files to be included in the style guide, there are two options: before (in the `<head>`) or after (just before the closing `</body>`). It accepts a list of URLs (ending with `*.js`) or plain JavaScript code:
 
 ```
-(not available in v2 yet)
+@javascript-before assets/modernizr.js
+
+@javascript-after http://code.jquery.com/jquery-2.1.3.min.js
+@javascript-after assets/application.js
+@javascript-after:
+$(function() {
+  // custom code
+});
 ```
 
-~~If you use [@javascript](#javascript-examples) or [@coffee-script](#coffeescript-examples), your application files and jQuery might need to be included in the `javascript-before` section.~~
+If you use [@javascript](#javascript-examples) or [@coffee-script](#coffeescript-examples), your application files and jQuery might need to be included in the `javascript-before` section.
 
+
+### Using CoffeeScript
+
+Same example as above, just using CoffeeScript. Note, it is using the
+indented syntax (no colon but indent following lines by two spaces)
+which works well with CoffeeScript.
+
+```
+@javascript-before assets/modernizr.js
+
+@javascript-after http://code.jquery.com/jquery-2.1.3.min.js
+@javascript-after assets/application.js
+@javascript-after transpiler: coffee-script
+  $ ->
+    # custom code
+```
 
 ----
 
