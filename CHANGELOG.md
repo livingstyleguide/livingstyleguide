@@ -10,6 +10,8 @@
 * `@head`, `@header`, and `@footer` commands for injecting HTML
 * `@css` also supports Sass’ indented syntax by setting
   `@css preprocessor: sass`
+* `@javascript-before` and `@javascript-after` commands to link or
+  insert JavaScript into the document
 
 
 ## 2.0.0.alpha.5
