@@ -435,26 +435,132 @@ No syntax highlighter:
     ```
 
 
-### Default Filters
+### Default Options
 
-~~You can set filters to apply to all examples.
+You can set options to apply to all commands or all commands giving a
+name.
 This is useful, when you depend on Haml or other templating engines.
-Add a list of default filters to your _styleguide.html.lsg_:~~
+Add a list of default filters to your _styleguide.html.lsg_:
+
+For example, if you want to use Sass’ indented syntax:
 
 ```
-(not available in v2 yet)
+@css preprocessor: sass
+  color: red
+
+@css preprocessor: sass
+  background: blue
 ```
+
+You can define this option globally just once:
+
+```
+@default preprocessor: sass
+
+@css
+  color: red
+
+@css
+  background: blue
+```
+
+I the example about, you are free to set the default option globally or
+limit it to the `@css` command:
+
+```
+@default preprocessor: sass
+@default @css; preprocessor: sass
+```
+
+
+## Working with Existing View Templates
+
+If you want your style guide to work as an API, you might have views
+already written somewhere else and don’t want to write the same HTML
+code into the style guide.
+
+First, there is the `@data` command, which sets local variables to
+render the view:
+
+    ```
+    <h1><%= foo %></h1>
+    @type erb
+    @data:
+    {
+      "foo": "bar"
+    }
+    ```
+
+This will render as `<h1>bar</h1>` in the HTML but show the ERB source
+below. The data is written using JSON syntax. If you prefer YAML, you
+can (remember, you can also [set this globally as default
+option](#default-options)):
+
+    ```
+    <h1><%= foo %></h1>
+    @type erb
+    @data format: yaml:
+    foo: bar
+    ```
+
+If there is already a view template, let’s name it
+`views/headline.html.erb`, you can use it:
+
+    ```
+    @use views/headline.html.erb
+    @data:
+    {
+      "foo": "bar"
+    }
+    ```
+
+Note: You don’t need to set the `@type` as this is taken from the view
+template file suffix.
+
+
+### Tipp: Edge Cases
+
+By repeating using the same template with different data, you can show
+edge cases—like very long user names or missing values—in your style
+guide.
+
+
+### Tipp: Less Noisy Code
+
+As Markdown should not look too technical, using YAML data, setting
+`@default format: yaml` in your index file and using indented syntax for
+the command (no colon but indent following lines by two spaces) helps to
+keep it visually more minimal:
+
+    ```
+    @use views/headline.html.erb
+    @data
+      foo: bar
+    ```
 
 
 ## Styling the Style Guide
 
 ### Custom Header
 
-~~The examples in [the screenshot above](#readme) use custom headers to have an individual look.
-You can add whatever HTML you want and some Sass to style it to your _styleguide.html.lsg:_~~
+The examples in [the screenshot above](#readme) use custom headers to have an individual look.
+You can add whatever HTML you want and some Sass to style it to your _styleguide.html.lsg:_
 
-``` yaml
-(not available in v2 yet)
+```
+@header:
+<div class="my-header">
+  <img src="my-style-guide-logo.svg" alt="My Style Guide">
+  <h1>My Style Guide</h1>
+</div>
+```
+
+You can use any templating engine supported by Tilt:
+
+```
+@header type: haml:
+.my-header
+  %img(src="my-style-guide-logo.svg" alt="My Style Guide")
+  %h1 My Style Guide
 ```
 
 [Here’s the code](https://github.com/eurucamp/livingstyleguide-eurucamp/blob/master/source/index.html.lsg#L71-L80) of the custom header in the example of the screenshot.
@@ -462,14 +568,20 @@ You can add whatever HTML you want and some Sass to style it to your _styleguide
 
 ### Custom Footer
 
-~~See [Custom Header](#custom-header), just use `footer:`.~~
+See [Custom Header](#custom-header), just use `@footer:`.
+
+
+### Custom Head Elements
+
+See [Custom Header](#custom-header), just use `@head:`. This way you can
+add any `<meta>` tag or link additional files.
 
 
 ### Custom Settings
 
 Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_
 
-``` scss
+```
 @style base-font: 'Comic Sans MS', 'Arial', sans-serif
 @style base-font-size: 7em
 @style background-color: red
