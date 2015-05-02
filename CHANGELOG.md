@@ -3,7 +3,7 @@
 
 ## (unreleased)
 
-* `@source` imports template as source (without execution)
+* `@use` imports template as source (without execution)
 * `@default option: value` and `@default @command; option: value` to [set default options for
   filters](https://github.com/livingstyleguide/livingstyleguide/issues/125)
 * `@data` supports YAML data
