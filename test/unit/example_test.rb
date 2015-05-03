@@ -9,7 +9,7 @@ class ExampleTest < ExampleTestCase
       <div class="livingstyleguide--example"> <button>Hello World</button> </div>
       <pre class="livingstyleguide--code-block">
         <code class="livingstyleguide--code">
-          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt;</b>
         </code>
       </pre>
     OUTPUT
@@ -29,7 +29,7 @@ class ExampleTest < ExampleTestCase
         <div class="livingstyleguide--example"> TEST </div>
         <pre class="livingstyleguide--code-block">
           <code class="livingstyleguide--code">
-            <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+            <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt;</b>
           </code>
         </pre>
       OUTPUT
@@ -48,7 +48,7 @@ class ExampleTest < ExampleTestCase
       <div class="livingstyleguide--example"> TEST </div>
       <pre class="livingstyleguide--code-block">
         <code class="livingstyleguide--code">
-          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt;</b>
         </code>
       </pre>
     OUTPUT
@@ -67,7 +67,7 @@ class ExampleTest < ExampleTestCase
       <div class="livingstyleguide--example"> Another Test </div>
       <pre class="livingstyleguide--code-block">
         <code class="livingstyleguide--code">
-          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt;</b>
         </code>
       </pre>
     OUTPUT
@@ -85,7 +85,7 @@ class ExampleTest < ExampleTestCase
       <div class="livingstyleguide--example"> TEST </div>
       <pre class="livingstyleguide--code-block">
         <code class="livingstyleguide--code">
-          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt;</b>
         </code>
       </pre>
     OUTPUT
@@ -101,7 +101,7 @@ class ExampleTest < ExampleTestCase
       <span> <button>Hello World</button> </span>
       <pre class="livingstyleguide--code-block">
         <code class="livingstyleguide--code">
-          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt</b>
+          <b>&lt;<em>button</em></b><b>&gt;</b>Hello World<b>&lt;/<em>button</em>&gt;</b>
         </code>
       </pre>
     OUTPUT
