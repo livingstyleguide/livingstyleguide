@@ -95,7 +95,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
         require "tilt/#{template_name}"
       rescue LoadError
       end
-      engine.new{ remove_highlights(result) }.render(@scope, @locals.merge(locals))
+      engine.new{ remove_highlights(result) }.render(@scope || Object.new, @locals.merge(locals))
     elsif @type == :escaped
       ERB::Util.h(remove_highlights(result))
     else
@@ -249,7 +249,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
         sass_options[:load_paths] << path
       end
     end
-    scss_template.new(file, sass_options){ scss }.render(@scope)
+    scss_template.new(file, sass_options){ scss }.render(@scope || Object.new)
   end
 end
 
