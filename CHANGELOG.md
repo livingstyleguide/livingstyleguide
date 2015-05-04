@@ -1,10 +1,11 @@
 # Changelog
 
-## (unreleased)
+## 2.0.0.alpha.7
 
 * `@syntax` to set the syntax highlighter’s language if needed
 * `@data` now also accepts arrays and renders the template Array.length
   times.
+* Fixed an error with Tilt, Haml and Ruby 2.2
 
 
 ## 2.0.0.alpha.6
