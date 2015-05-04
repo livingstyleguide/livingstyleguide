@@ -9,6 +9,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :css, :id, :locals
   attr_accessor :title
   attr_accessor :defaults
+  attr_accessor :syntax
   attr_reader :scope
 
   %w(scss head header footer).each do |attr|
@@ -48,8 +49,9 @@ class LivingStyleGuide::Document < ::Tilt::Template
       if type == :plain
         without_highlights
       else
-        without_highlights = ERB::Util.h(without_highlights) if type == :html
-        ::MiniSyntax.highlight(without_highlights, type)
+        @syntax ||= type
+        without_highlights = ERB::Util.h(without_highlights) if @syntax == :html
+        ::MiniSyntax.highlight(without_highlights, @syntax || type)
       end
     end.gsub("\n", "<br>")
   end
