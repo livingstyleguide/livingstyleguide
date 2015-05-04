@@ -4,6 +4,8 @@
 ## (unreleased)
 
 * `@syntax` to set the syntax highlighter’s language if needed
+* `@data` now also accepts arrays and renders the template Array.length
+  times.
 
 
 ## 2.0.0.alpha.6
