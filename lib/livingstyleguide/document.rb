@@ -8,11 +8,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
   attr_accessor :css, :id, :locals
   attr_accessor :title
-  attr_accessor :defaults
   attr_accessor :syntax
   attr_reader :scope
 
-  %w(scss head header footer).each do |attr|
+  %w(scss head header footer defaults).each do |attr|
     define_method attr do
       if options.has_key?(:livingstyleguide)
         options[:livingstyleguide].send(attr)
