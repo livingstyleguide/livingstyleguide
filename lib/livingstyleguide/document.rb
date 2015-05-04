@@ -97,7 +97,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
         require "tilt/#{template_name}"
       rescue LoadError
       end
-      engine.new{ remove_highlights(result) }.render(@scope || Object.new, @locals.merge(locals))
+      template = engine.new{ remove_highlights(result) }
+      (@locals.is_a?(Array) ? @locals : [@locals]).map do |current_locals|
+        template.render(@scope || Object.new, current_locals.merge(locals))
+      end.join("\n")
     elsif @type == :escaped
       ERB::Util.h(remove_highlights(result))
     else
