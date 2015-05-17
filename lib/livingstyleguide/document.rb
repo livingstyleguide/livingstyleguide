@@ -64,6 +64,16 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @id ||= generate_id
   end
 
+  def path
+    if file
+      File.dirname(file)
+    elsif options.has_key?(:livingstyleguide)
+      options[:livingstyleguide].path
+    else
+      "."
+    end
+  end
+
   def erb
     @erb ||= parse_filters do |name, arguments, options, block|
       options = %Q(document.defaults[:global].merge(document.defaults[:@#{name}] || {}).merge(#{options.inspect}))
