@@ -3,9 +3,7 @@ require 'tilt'
 def map_files(glob, &block)
   glob << '.lsg' unless glob =~ /\.(\w+|\*)$/
   glob.gsub!(/[^\/]+$/, '{_,}\\0')
-  if document.file
-    glob = File.join(File.dirname(document.file), glob)
-  end
+  glob = File.join(document.path, glob)
 
   Dir.glob(glob).map do |file|
     document.depend_on file
