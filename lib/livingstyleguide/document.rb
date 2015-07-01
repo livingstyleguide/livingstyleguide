@@ -38,9 +38,6 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @css = ''
     @locals = {}
     @defaults = { global: {} }
-    @head = ""
-    @header = ""
-    @footer = ""
   end
 
   def highlighted_source
@@ -82,6 +79,9 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def evaluate(scope, locals, &block)
+    @head = ""
+    @header = ""
+    @footer = ""
     @scope = scope
     result = ERB.new(erb).result(@filters.get_binding)
     @source = result
