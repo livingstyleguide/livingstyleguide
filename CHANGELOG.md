@@ -1,6 +1,16 @@
 # Changelog
 
 
+## 2.0.0.alpha.8
+
+* Head/header/footer will be rendered only once (especially in
+  Middleman)
+* Fixed load paths when called a file via command line in a sub
+  directory (e. g. `livingstyleguide compile path/to/my-file.lsg`)
+* Fixed loading paths within code blocks
+
+
+
 ## 2.0.0.alpha.7
 
 * `@syntax` to set the syntax highlighter’s language if needed
