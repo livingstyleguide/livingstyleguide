@@ -10,7 +10,7 @@ LivingStyleGuide.add_filter :css, :scss do |arguments, options, source|
     if options[:preprocessor] == "sass"
       source = Sass::Engine.new(source).to_tree.to_scss
     end
-    document.scss << "##{document.id.gsub('/', '\\/')} {\n#{source}\n}\n"
+    document.scss << "##{document.id.gsub(/[\/\.]/, '\\\0')} {\n#{source}\n}\n"
   end
   nil
 end
