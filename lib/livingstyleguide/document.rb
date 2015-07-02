@@ -3,6 +3,7 @@
 require 'tilt'
 require 'erb'
 require 'digest'
+require 'pathname'
 
 class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
@@ -63,7 +64,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def path
     if file
-      File.dirname(file)
+      Pathname.new(File.dirname(file)).cleanpath.to_s
     elsif options.has_key?(:livingstyleguide)
       options[:livingstyleguide].path
     else
@@ -243,7 +244,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
   private
   def generate_id
     if @file
-      @file.sub('/_', '/').gsub(/\.\w+/, '')
+      id = Pathname.new(@file).cleanpath.to_s
+      id.sub('/_', '/').gsub(/\.\w+/, '')
     else
       "section-#{Digest::SHA256.hexdigest(data)[0...6]}"
     end
