@@ -378,6 +378,65 @@ describe LivingStyleGuide::Document do
 
   describe "IDs" do
 
+    it "should generate IDs by headline" do
+      doc = LivingStyleGuide::Document.new do
+        <<-MARKDOWN.unindent(ignore_blank: true)
+          # My Component
+
+          ```
+          <div></div>
+          ```
+
+          ```
+          <div></div>
+          ```
+
+          ## Another Component
+
+          ```
+          <div></div>
+          ```
+        MARKDOWN
+      end
+      html = doc.render
+      html.must_match(/id="my-component-1"/)
+      html.must_match(/id="my-component-2"/)
+      html.must_match(/id="another-component-1"/)
+    end
+
+    it "should generate IDs by headline and document name" do
+      doc = LivingStyleGuide::Document.new "folder/_my-file.lsg" do
+        <<-MARKDOWN.unindent(ignore_blank: true)
+          # My File
+
+          ```
+          <div></div>
+          ```
+
+          # My Component
+
+          ```
+          <div></div>
+          ```
+
+          ```
+          <div></div>
+          ```
+
+          ## Another Component
+
+          ```
+          <div></div>
+          ```
+        MARKDOWN
+      end
+      html = doc.render
+      html.must_match(/id="my-file-1"/)
+      html.must_match(/id="my-file-my-component-1"/)
+      html.must_match(/id="my-file-my-component-2"/)
+      html.must_match(/id="my-file-another-component-1"/)
+    end
+
     it "should generate IDs by hash" do
       doc = LivingStyleGuide::Document.new { '# Test' }
       doc.id.must_match(/^section-[0-9a-f]{6}$/)
