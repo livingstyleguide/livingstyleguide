@@ -14,16 +14,17 @@ module LivingStyleGuide
   }
 
   class RedcarpetHTML < ::Redcarpet::Render::HTML
-
     def initialize(options = {}, document)
       @options = options
       @options[:prefix] ||= 'livingstyleguide--'
       @document = document
+      @header = nil
+      @headers = {}
       super @options
     end
 
     def header(text, header_level)
-      id = slug(text)
+      @header = id = slug(text)
       klass = %w(page-title headline sub-headline sub-sub-headline)[header_level]
       header_level += 1
       %Q(<h#{header_level} class="#{@options[:prefix]}#{klass}" id="#{id}"><a class="livingstyleguide--anchor" href="##{id}"></a>#{text}</h#{header_level}>\n)
@@ -46,6 +47,7 @@ module LivingStyleGuide
       language = language.to_s.strip.to_sym
       language = @options[:default_language] if language == :''
       document = Document.new(livingstyleguide: @document) { code }
+      document.id = document_id
       document.type = language == :example ? :html : language
       document.template = template_for(language)
       document.render(@document.scope)
@@ -62,6 +64,16 @@ module LivingStyleGuide
       ::ActiveSupport::Inflector.parameterize(text, '-')
     rescue LoadError
       text.downcase.gsub(/[ _\.\-!\?\(\)\[\]]+/, '-').gsub(/^-|-$/, '')
+    end
+
+    private
+    def document_id
+      if @header
+        file = File.basename(@document.file, ".lsg").sub(/^_/, "") if @document.file
+        @headers[@header] ||= 0
+        @headers[@header] += 1
+        "#{file + "-" if file && file != @header}#{@header}-#{@headers[@header]}"
+      end
     end
 
     private
