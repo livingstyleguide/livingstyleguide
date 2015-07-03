@@ -19,7 +19,7 @@ module LivingStyleGuide
       @options[:prefix] ||= 'livingstyleguide--'
       @document = document
       @header = nil
-      @headers = {}
+      @ids = {}
       super @options
     end
 
@@ -68,11 +68,12 @@ module LivingStyleGuide
 
     private
     def document_id
-      if @header
-        file = File.basename(@document.file, ".lsg").sub(/^_/, "") if @document.file
-        @headers[@header] ||= 0
-        @headers[@header] += 1
-        "#{file + "-" if file && file != @header}#{@header}-#{@headers[@header]}"
+      file = File.basename(@document.file, ".lsg").sub(/^_/, "") if @document.file
+      id = [file, @header].compact.uniq.join("-")
+      if id != ""
+        @ids[id] ||= 0
+        @ids[id] += 1
+        [id, @ids[id]].join("-")
       end
     end
 

@@ -407,6 +407,10 @@ describe LivingStyleGuide::Document do
     it "should generate IDs by headline and document name" do
       doc = LivingStyleGuide::Document.new "folder/_my-file.lsg" do
         <<-MARKDOWN.unindent(ignore_blank: true)
+          ```
+          <div></div>
+          ```
+
           # My File
 
           ```
@@ -432,6 +436,7 @@ describe LivingStyleGuide::Document do
       end
       html = doc.render
       html.must_match(/id="my-file-1"/)
+      html.must_match(/id="my-file-2"/)
       html.must_match(/id="my-file-my-component-1"/)
       html.must_match(/id="my-file-my-component-2"/)
       html.must_match(/id="my-file-another-component-1"/)
