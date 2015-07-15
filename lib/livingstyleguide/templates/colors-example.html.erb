@@ -2,9 +2,12 @@
   document.addEventListener('DOMContentLoaded', function() {
     var colorSwatches = document.getElementsByClassName('livingstyleguide--color-swatch');
     for (var i = 0; i < colorSwatches.length; i++){
-      colorSwatches[i].addEventListener('click', function(event) {
-        selectCopyRange(this);
-      });
+    
+      if (colorSwatches[i].innerHTML != "-"){
+        colorSwatches[i].addEventListener('click', function(event) {
+          selectCopyRange(this);
+        });
+      }
     }
   });
 
