@@ -1,0 +1,28 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var colorSwatches = document.getElementsByClassName('livingstyleguide--color-swatch');
+    for (var i = 0; i < colorSwatches.length; i++){
+      colorSwatches[i].addEventListener('click', function(event) {
+        selectCopyRange(this);
+      });
+    }
+  });
+
+  function selectCopyRange(copyElementSelect){
+    var range = document.createRange();
+    range.selectNode(copyElementSelect);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+
+    try {
+
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Copy color command was ' + msg);
+    } catch(err) {
+      console.log('Oops, unable to copy');
+    }
+
+    window.getSelection().removeAllRanges();
+  }
+</script>
