@@ -2,6 +2,9 @@ LivingStyleGuide.add_filter :colors do |arguments, options, content|
   colors = content.split(/\n+/).map{ |l| l.strip.split(/\s+/) }
   columns = colors.map{ |l| l.size }.max
   colors = colors.flatten
+
+  document.head << ERB.new(File.read("#{File.dirname(__FILE__)}/../templates/colors-example.html.erb")).result
+
   document.scss << <<-SCSS
     $lsg--variables: () !default;
     $lsg--variables: join(
