@@ -2,30 +2,49 @@
   document.addEventListener('DOMContentLoaded', function() {
     var colorSwatches = document.getElementsByClassName('livingstyleguide--color-swatch');
     for (var i = 0; i < colorSwatches.length; i++){
-    
+
       if (colorSwatches[i].innerHTML != "-"){
         colorSwatches[i].addEventListener('click', function(event) {
-          selectCopyRange(this);
+          if(event.altKey){
+            var copyHexColors = window.getComputedStyle(this, ':after').getPropertyValue('content');
+            console.log(copyHexColors)
+            selectElementRange(createDiv(copyHexColors));
+          }
+          else{
+            selectElementRange(this);
+          }
         });
       }
     }
   });
 
-  function selectCopyRange(copyElementSelect){
+  function createDiv(copyHexColors){
+    var divCopy = document.createElement('div');
+    divCopy.className = 'remove';
+    divCopy.setAttribute('style', 'opacity:0; position: absolute; top: -10000px');
+    divCopy.appendChild(document.createTextNode(copyHexColors));
+    document.body.appendChild(divCopy);
+    return divCopy
+  }
+
+  function selectElementRange(copyElementSelect){
     var range = document.createRange();
     range.selectNode(copyElementSelect);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
 
     try {
-
       var successful = document.execCommand('copy');
+
+      if (copyElementSelect.classList.contains('remove')){
+         document.body.removeChild(copyElementSelect);
+      }
       var msg = successful ? 'successful' : 'unsuccessful';
       console.log('Copy color command was ' + msg);
     } catch(err) {
-      console.log('Oops, unable to copy');
+      console.log('Oops, unable to copy:' + err);
     }
-
+    
     window.getSelection().removeAllRanges();
   }
 </script>
