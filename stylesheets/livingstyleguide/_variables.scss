@@ -19,6 +19,9 @@ $lsg--variables: () !default;
         &:before {
           background: $value;
         }
+        &:hover:before{
+          background: transparentize($value, 0.8);
+        }
       }
 
       &:after {
