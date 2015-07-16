@@ -26,6 +26,10 @@
     z-index: -1;
   }
 
+  &:hover:before {
+    color: black;
+  }
+
   &:after {
     display: block;
     font-weight: normal;
@@ -60,4 +64,3 @@
     display: none;
   }
 }
-
