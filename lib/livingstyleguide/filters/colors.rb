@@ -19,7 +19,9 @@ LivingStyleGuide.add_filter :colors do |arguments, options, content|
     if variable == '-'
       css_class = '-lsg-empty'
     end
-    %Q(<li class="lsg--color-swatch #{css_class || variable}">#{variable}</li>\n)
+    html = %Q(<li class="lsg--color-swatch #{css_class || variable}">#{variable}</li>\n)
+    html += %Q(<div class="-copy-color"></div>\n) unless css_class
+    html
   end.join("\n")
   %(<ul class="lsg--color-swatches -lsg-#{columns}-columns">\n#{colors_html}\n</ul>\n)
 end
