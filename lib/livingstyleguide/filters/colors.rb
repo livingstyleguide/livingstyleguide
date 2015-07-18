@@ -19,8 +19,10 @@ LivingStyleGuide.add_filter :colors do |arguments, options, content|
     if variable == '-'
       css_class = '-lsg-empty'
     end
-    html = %Q(<li class="lsg--color-swatch #{css_class || variable}">#{variable}</li>\n)
-    html += %Q(<div class="-copy-color"></div>\n) unless css_class
+    html =  %Q(<li class="lsg--color-swatch #{css_class || variable}">)
+    html += %Q(<span class="-copy-color">Click to copy variable<br>Alt + Click to copy hex-code</span>) unless css_class
+    html += %Q(<span>#{variable}</span>)
+    html += %Q(</li>\n)
     html
   end.join("\n")
   %(<ul class="lsg--color-swatches -lsg-#{columns}-columns">\n#{colors_html}\n</ul>\n)

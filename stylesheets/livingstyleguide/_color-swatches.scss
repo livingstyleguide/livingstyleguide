@@ -28,13 +28,35 @@
 
   &:hover:before {
     color: black;
+    cursor: pointer;
   }
 
   &:after {
+    cursor: pointer;
     display: block;
     font-weight: normal;
     text-align: center;
   }
+}
+.-copy-color{
+  background-color: hsla(333, 100%, 0%, 0.6);
+  border-radius:7%;
+  color: #FFF;
+  cursor: pointer;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 0.8em;
+  height:2em;
+  left: 0;
+  line-height:1.2em;
+  padding: 3px 0 3px 0;
+  position: absolute;
+  top:127px;
+  visibility: hidden;
+  width: 100%;
+  z-index: 1;
+}
+li:hover .-copy-color{
+  visibility: visible;
 }
 
 .lsg--color-swatches {
