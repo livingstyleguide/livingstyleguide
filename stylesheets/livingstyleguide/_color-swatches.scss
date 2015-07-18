@@ -38,7 +38,7 @@
     text-align: center;
   }
 }
-.-copy-color{
+.-lsg-copy-color{
   background-color: hsla(333, 100%, 0%, 0.6);
   border-radius:7%;
   color: #FFF;
@@ -55,7 +55,7 @@
   width: 100%;
   z-index: 1;
 }
-li:hover .-copy-color{
+li:hover .-lsg-copy-color{
   visibility: visible;
 }
 
