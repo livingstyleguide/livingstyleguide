@@ -7,11 +7,10 @@
         colorSwatches[i].addEventListener('click', function(event) {
           if(event.altKey){
             var copyHexColors = window.getComputedStyle(this, ':after').getPropertyValue('content');
-            console.log(copyHexColors)
             selectElementRange(createDiv(copyHexColors));
           }
           else{
-            selectElementRange(this);
+            selectElementRange(this.children[1]);
           }
         });
       }
@@ -44,7 +43,7 @@
     } catch(err) {
       console.log('Oops, unable to copy:' + err);
     }
-    
+
     window.getSelection().removeAllRanges();
   }
 </script>
