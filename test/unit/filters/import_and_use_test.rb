@@ -151,12 +151,12 @@ class ImportAndSourceTest < DocumentTestCase
 
       After
     INPUT
-      <section class=\"livingstyleguide--example livingstyleguide--haml-example\" id=\"section-[a-f0-9]+\">
-        <div class=\"livingstyleguide--html\">
+      <section class=\"lsg--example lsg--haml-example\" id=\"section-[a-f0-9]+\">
+        <div class=\"lsg--html\">
           <div class='foo'>Bar</div>
         </div>
-        <pre class=\"livingstyleguide--code-block\">
-          <code class=\"livingstyleguide--code\"> <b>.foo</b>= text</code>
+        <pre class=\"lsg--code-block\">
+          <code class=\"lsg--code\"> <b>.foo</b>= text</code>
         </pre>
       </section>
     OUTPUT

@@ -8,7 +8,7 @@ class FullWidthTest < DocumentTestCase
       @full-width
       ```
     INPUT
-      class=".*?livingstyleguide--example.+?-lsg-has-full-width.*?"
+      class=".*?lsg--example.+?-lsg-has-full-width.*?"
     OUTPUT
   end
 

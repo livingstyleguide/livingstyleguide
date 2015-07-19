@@ -86,8 +86,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
     result = ERB.new(erb).result(@filters.get_binding)
     @source = result
     @html = render_html(result, locals)
-    @classes.unshift "livingstyleguide--#{@type}-example"
-    @classes.unshift "livingstyleguide--example"
+    @classes.unshift "lsg--#{@type}-example"
+    @classes.unshift "lsg--example"
     ERB.new(template_erb).result(binding).gsub(/\n\n+/, "\n")
   end
 
@@ -154,7 +154,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
             code_with_highlights << %Q(</strong>)
             inside_highlight = false
           else
-            code_with_highlights << %Q(<strong class="livingstyleguide--code-highlight">)
+            code_with_highlights << %Q(<strong class="lsg--code-highlight">)
             inside_highlight = true
           end
           next_position = positions.shift

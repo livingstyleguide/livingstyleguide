@@ -14,7 +14,7 @@ style:
   sub-headline-font-size: 22px
 
 styleguide-scss: |
-  .livingstyleguide--example {
+  .lsg--example {
     @extend .layout;
 
     &.-diamonds {
@@ -26,26 +26,26 @@ styleguide-scss: |
     }
   }
 
-  .livingstyleguide--color-swatches {
+  .lsg--color-swatches {
     @extend %pie-clearfix;
     margin-bottom: 50px;
     margin-top: 40px;
     overflow: visible;
   }
 
-  .livingstyleguide--color-swatch:before {
+  .lsg--color-swatch:before {
     @include transform(rotateZ(45deg));
   }
 
-  .livingstyleguide--page-title,
-  .livingstyleguide--headline,
-  .livingstyleguide--sub-headline,
-  .livingstyleguide--sub-sub-headline {
+  .lsg--page-title,
+  .lsg--headline,
+  .lsg--sub-headline,
+  .lsg--sub-sub-headline {
     text-align: center;
     text-transform: uppercase;
   }
 
-  .livingstyleguide--example > .diamonds--item {
+  .lsg--example > .diamonds--item {
     float: none;
     margin: 33px auto;
   }

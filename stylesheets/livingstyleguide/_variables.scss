@@ -1,6 +1,6 @@
-$livingstyleguide--variables: () !default;
+$lsg--variables: () !default;
 
-@each $variable, $value in $livingstyleguide--variables {
+@each $variable, $value in $lsg--variables {
   $value: null !default;
   @if $value != null {
     $selector: $variable;
@@ -12,8 +12,8 @@ $livingstyleguide--variables: () !default;
     }
     .#{$selector} {
       @if type-of($value) == color {
-        @if (lightness($value) < lightness($livingstyleguide--color)) {
-          color: $livingstyleguide--background-color;
+        @if (lightness($value) < lightness($lsg--color)) {
+          color: $lsg--background-color;
         }
 
         &:before {
@@ -22,7 +22,7 @@ $livingstyleguide--variables: () !default;
       }
 
       &:after {
-        @extend %livingstyleguide--code !optional;
+        @extend %lsg--code !optional;
         content: "#{inspect($value)}";
       }
     }

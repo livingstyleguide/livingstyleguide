@@ -1,23 +1,23 @@
-.livingstyleguide--code {
-  @extend %livingstyleguide--reset;
+.lsg--code {
+  @extend %lsg--reset;
 }
 
-.livingstyleguide--code-span,
-.livingstyleguide--code-block {
-  @extend %livingstyleguide--reset;
-  background: $livingstyleguide--code-background-color;
-  border-radius: $livingstyleguide--code-border-radius;
-  color: $livingstyleguide--code-color;
+.lsg--code-span,
+.lsg--code-block {
+  @extend %lsg--reset;
+  background: $lsg--code-background-color;
+  border-radius: $lsg--code-border-radius;
+  color: $lsg--code-color;
   display: inline;
-  font-family: $livingstyleguide--code-font;
-  font-size: $livingstyleguide--code-font-size;
-  font-weight: $livingstyleguide--code-font-weight;
+  font-family: $lsg--code-font;
+  font-size: $lsg--code-font-size;
+  font-weight: $lsg--code-font-weight;
   overflow: scroll;
   padding: 0 3px;
   -webkit-font-smoothing: subpixel-antialiased;
 
   kbd {
-    @extend %livingstyleguide--reset;
+    @extend %lsg--reset;
     display: block;
     font-weight: bold;
 
@@ -27,8 +27,8 @@
   }
 
   em {
-    @extend %livingstyleguide--reset;
-    color: lighten($livingstyleguide--code-color, 10%);
+    @extend %lsg--reset;
+    color: lighten($lsg--code-color, 10%);
     display: inline;
     font-style: normal;
     font-weight: bold;
@@ -37,23 +37,23 @@
   }
 
   b {
-    @extend %livingstyleguide--reset;
-    color: lighten($livingstyleguide--code-color, 20%);
+    @extend %lsg--reset;
+    color: lighten($lsg--code-color, 20%);
     display: inline;
     font-weight: bold;
     vertical-align: baseline;
   }
 
   i {
-    @extend %livingstyleguide--reset;
-    color: lighten($livingstyleguide--code-color, 30%);
+    @extend %lsg--reset;
+    color: lighten($lsg--code-color, 30%);
     display: inline;
     vertical-align: baseline;
   }
 
   q {
-    @extend %livingstyleguide--reset;
-    color: lighten($livingstyleguide--code-color, 30%);
+    @extend %lsg--reset;
+    color: lighten($lsg--code-color, 30%);
     display: inline;
     vertical-align: baseline;
 
@@ -64,61 +64,61 @@
   }
 
   var {
-    @extend %livingstyleguide--reset;
+    @extend %lsg--reset;
     display: inline;
     text-decoration: underline;
     vertical-align: baseline;
   }
 }
 
-.livingstyleguide--code-block {
+.lsg--code-block {
   display: block;//none;
-  line-height: $livingstyleguide--code-line-height;
-  padding: 3px $livingstyleguide--gap-width;
-  width: $livingstyleguide--width;
+  line-height: $lsg--code-line-height;
+  padding: 3px $lsg--gap-width;
+  width: $lsg--width;
 
   .show-code & {
     display: block;
   }
 }
 
-.livingstyleguide--example + .livingstyleguide--code-block {
+.lsg--example + .lsg--code-block {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   margin-top: 0;
 }
 
-.livingstyleguide--layout-example + .livingstyleguide--code-block {
-  background: $livingstyleguide--code-background-color;
+.lsg--layout-example + .lsg--code-block {
+  background: $lsg--code-background-color;
   border-radius: 0;
-  margin: 0 0 $livingstyleguide--gap-width;
-  padding: $livingstyleguide--gap-width 0;
+  margin: 0 0 $lsg--gap-width;
+  padding: $lsg--gap-width 0;
   width: 100%;
 
-  .livingstyleguide--code {
+  .lsg--code {
     display: block;
     margin: auto;
-    width: $livingstyleguide--width;
+    width: $lsg--width;
   }
 }
 
-.livingstyleguide--font-example {
-  @extend .livingstyleguide--example;
+.lsg--font-example {
+  @extend .lsg--example;
 }
 
-.livingstyleguide--code-highlight {
-  @extend %livingstyleguide--reset;
-  background-color: $livingstyleguide--highlight-color;
-  border-radius: $livingstyleguide--highlight-border-radius;
+.lsg--code-highlight {
+  @extend %lsg--reset;
+  background-color: $lsg--highlight-color;
+  border-radius: $lsg--highlight-border-radius;
   display: inline;
   font-style: inherit;
   font-weight: inherit;
   vertical-align: baseline;
 }
 
-.livingstyleguide--code-highlight-block {
-  @extend %livingstyleguide--reset;
-  @extend .livingstyleguide--code-highlight;
+.lsg--code-highlight-block {
+  @extend %lsg--reset;
+  @extend .lsg--code-highlight;
   display: block;
 }
 
