@@ -4,48 +4,42 @@ class CssTest < DocumentTestCase
 
   def test_importing_file
     assert_render_match <<-INPUT, '\A\s*\Z'
-      @css test/fixtures/import/test.scss
+      @css test/fixtures/import/test.css
     INPUT
-    assert_match(%r(@import "test/fixtures/import/test.scss";), @doc.scss)
+    assert_match("@import url(test/fixtures/import/test.css);", @doc.css)
   end
 
-  def test_adding_scss
+  def test_adding_css
     doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
         @css {
-          #adding-scss {
+          #adding-css {
             background: red;
+          }
+          #adding-more-css-with,
+          #multiple-selctors {
+            color: green;
           }
         }
       INPUT
     end
     doc.render
-    assert_match(/##{doc.id} #adding-scss\s*\{\s*background: red;\s*\}/m, doc.css)
+    assert_match(Regexp.new(<<-CSS, Regexp::EXTENDED), doc.css)
+      ##{doc.id} #adding-css \{ background: red; \}
+      ##{doc.id} #adding-more-css-with,
+      ##{doc.id} #multiple-selctors \{ color: green; \}
+    CSS
   end
 
-  def test_adding_sass
-    doc = LivingStyleGuide::Document.new do <<-INPUT.unindent(ignore_blank: true)
-        @css preprocessor: sass
-          #adding-sass
-            background: blue
-
-          .adding-sass
-            background: yellow
-      INPUT
-    end
-    doc.render
-    assert_match(/##{doc.id} #adding-sass\s*\{\s*background: blue;\s*\}.*.adding-sass\s*\{\s*background: yellow;\s*\}/m, doc.css)
-  end
-
-  def test_adding_scss_inside_examples
+  def test_adding_css_inside_examples
     doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
         @css {
-          #adding-scss {
+          #adding-css {
             background: red;
           }
         }
         ```
         @css {
-          #adding-more-scss {
+          #adding-more-css {
             background: green;
           }
         }
@@ -53,10 +47,8 @@ class CssTest < DocumentTestCase
       INPUT
     end
     doc.render
-    assert_match(/##{doc.id} #adding-scss\s*\{\s*background: red;\s*\}/m, doc.css)
-    assert_match(/#section-\w{6} #adding-more-scss\s*\{\s*background: green;\s*\}/m, doc.css)
+    assert_match(/##{doc.id} #adding-css\s*\{\s*background: red;\s*\}/m, doc.css)
+    assert_match(/#section-\w{6} #adding-more-css\s*\{\s*background: green;\s*\}/m, doc.css)
   end
 
 end
-
-

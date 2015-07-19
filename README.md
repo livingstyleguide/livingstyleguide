@@ -34,7 +34,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 2. Create *_sass/styleguide.lsg_* (replace `sass/` with the directory name of your Sass files) with:
    ```
    // Replace with your default Sass/SCSS file name:
-   @css application.css.scss
+   @scss application.css.scss
 
    // Set the HTML title of the document:
    @title My Living Style Guide
@@ -93,7 +93,7 @@ Sprockets and Tilt versions.
 2. Create *_app/assets/stylesheets/styleguide.html.lsg_* with:
    ```
    // Replace with your default Sass/SCSS file name:
-   @css application.css.scss
+   @scss application.css.scss
 
    // Set the HTML title of the document:
    @title My Living Style Guide
@@ -163,7 +163,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
 2. Create *_source/styleguide.html.lsg_* with:
    ```
    // Replace with your default Sass/SCSS file name:
-   @css application.css.scss
+   @scss application.css.scss
 
    // Set the HTML title of the document:
    @title My Living Style Guide
@@ -325,14 +325,15 @@ For example, add some margin between elements:
     ```
     <button class="button">Example button</button>
     <button class="button -primary">Example button</button>
-    @css:
-    .button + .button {
-      margin-left: 3em;
+    @css {
+      .button + .button {
+        margin-left: 3em;
+      }
     }
     ```
 
 This adds `3em` margin between both buttons.
-To avoid this to affect other examples, the Sass code will be scoped to this example only (each example automatically gets a unique id).
+To avoid this to affect other examples, the CSS code will be scoped to this example only (each example automatically gets a unique id).
 
 If you need the same CSS code for several examples, you can put the CSS outside of the example.
 This way it will be scoped to the current file:
@@ -348,19 +349,34 @@ This way it will be scoped to the current file:
     <a class="button -primary">Example button</a>
     ```
 
-    @css:
-    .button + .button {
-      margin-left: 3em;
+    @css {
+      .button + .button {
+        margin-left: 3em;
+      }
     }
 
-Within the `@css` helper, all variables, mixins, … of your project are available.
-For example, if `my-styles.scss` sets `$my-project-margin`, you can write this:
+For Sass you can also use `@sass` and `@scss`:
 
-    @css my-styles.scss
+    @sass
+      .button + .button
+        margin-left: 3em
 
-    @css:
-    .button + .button {
-      margin-left: $my-project-margin;
+    @scss {
+      .button + .button {
+        margin-left: 3em;
+      }
+    }
+
+Within the `@scss`/`@sass` helper, all variables, mixins, … of your project are
+available. For example, if `my-styles.scss` sets `$my-project-margin`, you can
+write this:
+
+    @scss my-styles.scss
+
+    @scss {
+      .button + .button {
+        margin-left: $my-project-margin;
+      }
     }
 
 
@@ -441,36 +457,6 @@ You can set options to apply to all commands or all commands giving a
 name.
 This is useful, when you depend on Haml or other templating engines.
 Add a list of default filters to your _styleguide.html.lsg_:
-
-For example, if you want to use Sass’ indented syntax:
-
-```
-@css preprocessor: sass
-  color: red
-
-@css preprocessor: sass
-  background: blue
-```
-
-You can define this option globally just once:
-
-```
-@default preprocessor: sass
-
-@css
-  color: red
-
-@css
-  background: blue
-```
-
-I the example about, you are free to set the default option globally or
-limit it to the `@css` command:
-
-```
-@default preprocessor: sass
-@default @css; preprocessor: sass
-```
 
 
 ## Working with Existing View Templates
