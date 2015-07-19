@@ -1,13 +1,5 @@
-require 'json'
-require 'yaml'
-
 LivingStyleGuide.add_filter :data do |arguments, options, data|
-  if options[:format] == "yaml"
-    data = Psych.load(data)
-  else
-    data = "{#{data}}" unless data.strip =~ /^[\[\{]/
-    data = JSON.parse(data)
-  end
+  data = LivingStyleGuide.parse_data(data)
   if data.is_a?(Array)
     document.locals = [] unless document.locals.is_a?(Array)
     document.locals.push(*data)
