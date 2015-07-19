@@ -7,7 +7,7 @@ class OptionsTest < DocumentTestCase
       "@style base-font: 'comic sans ms', serif"
     end
     doc.render
-    assert_match /\$livingstyleguide--base-font: 'comic sans ms', serif;/, doc.scss
+    assert_match /\$lsg--base-font: 'comic sans ms', serif;/, doc.scss
   end
 
 end

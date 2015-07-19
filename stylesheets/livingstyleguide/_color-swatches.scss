@@ -1,22 +1,22 @@
-.livingstyleguide--color-swatch {
-  @extend %livingstyleguide--reset;
-  color: $livingstyleguide--color-swatch-color;
+.lsg--color-swatch {
+  @extend %lsg--reset;
+  color: $lsg--color-swatch-color;
   float: left;
-  font-family: $livingstyleguide--code-font;
-  font-size: $livingstyleguide--code-font-size;
+  font-family: $lsg--code-font;
+  font-size: $lsg--code-font-size;
   font-weight: bold;
-  height: 4em * $livingstyleguide--base-line-height;
-  line-height: 1em * $livingstyleguide--base-line-height;
+  height: 4em * $lsg--base-line-height;
+  line-height: 1em * $lsg--base-line-height;
   list-style: none;
-  margin: 0 $livingstyleguide--gap-width $livingstyleguide--gap-width 0;
+  margin: 0 $lsg--gap-width $lsg--gap-width 0;
   position: relative;
   text-align: center;
   z-index: 1;
 
   &:before {
-    @extend %livingstyleguide--reset;
-    border: $livingstyleguide--color-swatch-border-width $livingstyleguide--color-swatch-border-color solid;
-    border-radius: $livingstyleguide--color-swatch-border-radius;
+    @extend %lsg--reset;
+    border: $lsg--color-swatch-border-width $lsg--color-swatch-border-color solid;
+    border-radius: $lsg--color-swatch-border-radius;
     content: "";
     height: 100%;
     left: 0;
@@ -33,24 +33,24 @@
   }
 }
 
-.livingstyleguide--color-swatches {
-  @extend %livingstyleguide--reset;
-  margin: $livingstyleguide--gap-width auto (-$livingstyleguide--gap-width) auto;
+.lsg--color-swatches {
+  @extend %lsg--reset;
+  margin: $lsg--gap-width auto (-$lsg--gap-width) auto;
   overflow: hidden;
-  padding-left: $livingstyleguide--gap-width;
-  width: $livingstyleguide--width + 2 * $livingstyleguide--gap-width;
+  padding-left: $lsg--gap-width;
+  width: $lsg--width + 2 * $lsg--gap-width;
 }
 
 @for $i from 1 through 12 {
-  .livingstyleguide--color-swatches.-lsg-#{$i}-columns .livingstyleguide--color-swatch {
-    $size: floor(($livingstyleguide--width - ($i - 1) * $livingstyleguide--gap-width) / $i);
+  .lsg--color-swatches.-lsg-#{$i}-columns .lsg--color-swatch {
+    $size: floor(($lsg--width - ($i - 1) * $lsg--gap-width) / $i);
     height: $size;
     padding-top: $size / 2 + ($size / 5 - 20px);
     width: $size;
   }
 }
 
-.livingstyleguide--color-swatch.-lsg-empty {
+.lsg--color-swatch.-lsg-empty {
   overflow: hidden;
   text-align: left;
   text-indent: -119988px;

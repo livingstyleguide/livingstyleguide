@@ -27,7 +27,7 @@ describe LivingStyleGuide::Document do
       assert_document_equals <<-INPUT, <<-OUTPUT
         *Test*
       INPUT
-        <p class="livingstyleguide--paragraph"><em>Test</em></p>
+        <p class="lsg--paragraph"><em>Test</em></p>
       OUTPUT
     end
 
@@ -334,11 +334,11 @@ describe LivingStyleGuide::Document do
         <div>Test</div>
         ```
       INPUT
-        <section class="livingstyleguide--example livingstyleguide--html-example" id="section-61ecba">
-          <div class="livingstyleguide--html">
+        <section class="lsg--example lsg--html-example" id="section-61ecba">
+          <div class="lsg--html">
             <div>Test</div>
           </div>
-          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><b>&lt;<em>div</em></b><b>&gt;</b>Test<b>&lt;/<em>div</em>&gt;</b></code></pre>
+          <pre class="lsg--code-block"><code class="lsg--code"><b>&lt;<em>div</em></b><b>&gt;</b>Test<b>&lt;/<em>div</em>&gt;</b></code></pre>
         </section>
       OUTPUT
     end
@@ -350,11 +350,11 @@ describe LivingStyleGuide::Document do
         %div Test
         ```
       INPUT
-        <section class="livingstyleguide--example livingstyleguide--haml-example" id="section-b6e9ab">
-          <div class="livingstyleguide--html">
+        <section class="lsg--example lsg--haml-example" id="section-b6e9ab">
+          <div class="lsg--html">
             <div>Test</div>
           </div>
-          <pre class="livingstyleguide--code-block"><code class="livingstyleguide--code"><em>%div</em> Test</code></pre>
+          <pre class="lsg--code-block"><code class="lsg--code"><em>%div</em> Test</code></pre>
         </section>
       OUTPUT
     end
@@ -482,7 +482,7 @@ describe LivingStyleGuide::Document do
       doc.template = :plain
       doc.render
       assert_equal "This is highlighted text.", doc.html
-      assert_equal 'This is <strong class="livingstyleguide--code-highlight">highlighted</strong> text.', doc.highlighted_source
+      assert_equal 'This is <strong class="lsg--code-highlight">highlighted</strong> text.', doc.highlighted_source
     end
 
     it "should highlight text in source code" do
@@ -491,7 +491,7 @@ describe LivingStyleGuide::Document do
       doc.template = :plain
       doc.render
       assert_equal "<b>This</b> is highlighted <b class=\"class\">text</b>.", doc.html
-      assert_equal "<b>&lt;<em>b</em></b><b>&gt;</b>This<b>&lt;/<em>b</em>&gt;</b> is <strong class=\"livingstyleguide--code-highlight\">highlighted</strong> <b>&lt;<em>b</em></b> <b>class</b>=&quot;<strong class=\"livingstyleguide--code-highlight\">class</strong>&quot;<b>&gt;</b>text<b>&lt;/<em>b</em>&gt;</b>.", doc.highlighted_source
+      assert_equal "<b>&lt;<em>b</em></b><b>&gt;</b>This<b>&lt;/<em>b</em>&gt;</b> is <strong class=\"lsg--code-highlight\">highlighted</strong> <b>&lt;<em>b</em></b> <b>class</b>=&quot;<strong class=\"lsg--code-highlight\">class</strong>&quot;<b>&gt;</b>text<b>&lt;/<em>b</em>&gt;</b>.", doc.highlighted_source
     end
 
     it "should highlight text spanning several lines" do
@@ -508,7 +508,7 @@ describe LivingStyleGuide::Document do
       doc.template = :plain
       doc.render
       assert_equal "This is\n\nhighlighted\n\ntext.\n", doc.html
-      assert_equal "This is<br><strong class=\"livingstyleguide--code-highlight\"><br>highlighted<br></strong><br>text.", doc.highlighted_source
+      assert_equal "This is<br><strong class=\"lsg--code-highlight\"><br>highlighted<br></strong><br>text.", doc.highlighted_source
     end
 
   end

@@ -16,7 +16,7 @@ module LivingStyleGuide
   class RedcarpetHTML < ::Redcarpet::Render::HTML
     def initialize(options = {}, document)
       @options = options
-      @options[:prefix] ||= 'livingstyleguide--'
+      @options[:prefix] ||= 'lsg--'
       @document = document
       @header = nil
       @ids = {}
@@ -27,7 +27,7 @@ module LivingStyleGuide
       @header = id = slug(text)
       klass = %w(page-title headline sub-headline sub-sub-headline)[header_level]
       header_level += 1
-      %Q(<h#{header_level} class="#{@options[:prefix]}#{klass}" id="#{id}"><a class="livingstyleguide--anchor" href="##{id}"></a>#{text}</h#{header_level}>\n)
+      %Q(<h#{header_level} class="#{@options[:prefix]}#{klass}" id="#{id}"><a class="lsg--anchor" href="##{id}"></a>#{text}</h#{header_level}>\n)
     end
 
     def paragraph(text)

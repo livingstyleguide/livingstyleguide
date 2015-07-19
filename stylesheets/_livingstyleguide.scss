@@ -1,52 +1,52 @@
 //// INTEGRATION ////
 
-$livingstyleguide--layout-selector: body !default;
+$lsg--layout-selector: body !default;
 
 //// TYPOGRAPHY ////
 
-$livingstyleguide--base-font: 'Georgia', 'Times New Roman', serif !default;
-$livingstyleguide--base-font-size: 14px !default;
-$livingstyleguide--base-font-weight: normal !default;
-$livingstyleguide--base-line-height: 1.4 !default;
-$livingstyleguide--base-text-align: left !default;
-$livingstyleguide--page-title-font-size: 30px !default;
-$livingstyleguide--headline-font: $livingstyleguide--base-font !default;
-$livingstyleguide--headline-font-size: 22px !default;
-$livingstyleguide--headline-text-align: left !default;
-$livingstyleguide--sub-headline-font-size: 16px !default;
-$livingstyleguide--sub-sub-headline-font-size: $livingstyleguide--base-font-size !default;
-$livingstyleguide--headline-font-weight: bold !default;
-$livingstyleguide--headline-line-height: 1.1 !default;
-$livingstyleguide--code-font: Courier, "Courier New", monospace !default;
-$livingstyleguide--code-font-size: 12px !default;
-$livingstyleguide--code-font-weight: normal !default;
-$livingstyleguide--code-line-height: 1.5 !default;
+$lsg--base-font: 'Georgia', 'Times New Roman', serif !default;
+$lsg--base-font-size: 14px !default;
+$lsg--base-font-weight: normal !default;
+$lsg--base-line-height: 1.4 !default;
+$lsg--base-text-align: left !default;
+$lsg--page-title-font-size: 30px !default;
+$lsg--headline-font: $lsg--base-font !default;
+$lsg--headline-font-size: 22px !default;
+$lsg--headline-text-align: left !default;
+$lsg--sub-headline-font-size: 16px !default;
+$lsg--sub-sub-headline-font-size: $lsg--base-font-size !default;
+$lsg--headline-font-weight: bold !default;
+$lsg--headline-line-height: 1.1 !default;
+$lsg--code-font: Courier, "Courier New", monospace !default;
+$lsg--code-font-size: 12px !default;
+$lsg--code-font-weight: normal !default;
+$lsg--code-line-height: 1.5 !default;
 
 //// STYLING ////
 
-$livingstyleguide--background-color: #f7f7f7 !default;
-$livingstyleguide--border-width: 1px !default;
-$livingstyleguide--border-color: silver !default;
-$livingstyleguide--border-radius: 0 !default;
-$livingstyleguide--color: #505050 !default;
-$livingstyleguide--width: 640px !default;
-$livingstyleguide--gap-width: 10px !default;
-$livingstyleguide--full-width-padding: $livingstyleguide--gap-width !default;
+$lsg--background-color: #f7f7f7 !default;
+$lsg--border-width: 1px !default;
+$lsg--border-color: silver !default;
+$lsg--border-radius: 0 !default;
+$lsg--color: #505050 !default;
+$lsg--width: 640px !default;
+$lsg--gap-width: 10px !default;
+$lsg--full-width-padding: $lsg--gap-width !default;
 
-$livingstyleguide--code-background-color: #dddddd !default;
-$livingstyleguide--code-color: #505050 !default;
-$livingstyleguide--code-border-width: $livingstyleguide--border-width !default;
-$livingstyleguide--code-border-color: $livingstyleguide--border-color !default;
-$livingstyleguide--code-border-radius: $livingstyleguide--border-radius !default;
+$lsg--code-background-color: #dddddd !default;
+$lsg--code-color: #505050 !default;
+$lsg--code-border-width: $lsg--border-width !default;
+$lsg--code-border-color: $lsg--border-color !default;
+$lsg--code-border-radius: $lsg--border-radius !default;
 
-$livingstyleguide--color-swatch-color: black !default;
-$livingstyleguide--color-swatch-border-width: 4px !default;
-$livingstyleguide--color-swatch-border-color: rgba(black, 0.05) !default;
-$livingstyleguide--color-swatch-border-radius: 50% !default;
-$livingstyleguide--color-swatches-per-line: 2 !default;
+$lsg--color-swatch-color: black !default;
+$lsg--color-swatch-border-width: 4px !default;
+$lsg--color-swatch-border-color: rgba(black, 0.05) !default;
+$lsg--color-swatch-border-radius: 50% !default;
+$lsg--color-swatches-per-line: 2 !default;
 
-$livingstyleguide--highlight-color: #f6ffa3 !default;
-$livingstyleguide--highlight-border-radius: 2px;
+$lsg--highlight-color: #f6ffa3 !default;
+$lsg--highlight-border-radius: 2px;
 
 //// IMPORTS ////
 

@@ -8,7 +8,7 @@ class AddWrapperClassTest < DocumentTestCase
       @add-wrapper-class my-class
       ```
     INPUT
-      class="livingstyleguide--example.+?my-class"
+      class="lsg--example.+?my-class"
     OUTPUT
   end
 

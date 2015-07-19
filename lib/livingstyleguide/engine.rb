@@ -108,7 +108,7 @@ module LivingStyleGuide
     def style_variables
       return unless @options.has_key?(:style)
       @options[:style].map do |key, value|
-        "$livingstyleguide--#{key}: #{value}"
+        "$lsg--#{key}: #{value}"
       end
     end
 
