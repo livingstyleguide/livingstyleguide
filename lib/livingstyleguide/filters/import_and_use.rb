@@ -17,10 +17,7 @@ LivingStyleGuide.add_filter :import do |arguments, options, data|
     raise "Error: Please use `@css #{glob}` instead of `@import #{glob}` for importing Sass."
   end
 
-  if data
-    Kernel.require 'json'
-    data = JSON.parse("{#{data}}")
-  end
+  data = LivingStyleGuide.parse_data(data)
 
   map_files glob do |file|
     html = ::Tilt.new(file, livingstyleguide: document).render(document.scope, data)
