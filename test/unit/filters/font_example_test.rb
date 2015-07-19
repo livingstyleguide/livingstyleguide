@@ -8,7 +8,7 @@ class FontExampleTest < DocumentTestCase
     assert_render_equals <<-INPUT, <<-OUTPUT
       @font-example 42px Comic Sans, sans-serif
     INPUT
-      <div class="livingstyleguide--font-example" style="font: 42px Comic Sans, sans-serif">
+      <div class="lsg--font-example" style="font: 42px Comic Sans, sans-serif">
         ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
         abcdefghijklmnopqrstuvwxyz<br>
         0123456789<br>
@@ -21,7 +21,7 @@ class FontExampleTest < DocumentTestCase
     assert_render_equals <<-INPUT, <<-OUTPUT
       @font-example 42px "Comic Neue"
     INPUT
-      <div class="livingstyleguide--font-example" style="font: 42px &quot;Comic Neue&quot;">
+      <div class="lsg--font-example" style="font: 42px &quot;Comic Neue&quot;">
         ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
         abcdefghijklmnopqrstuvwxyz<br>
         0123456789<br>
@@ -37,7 +37,7 @@ class FontExampleTest < DocumentTestCase
         verflixt öde Pangramme an.
       }
     INPUT
-      <div class="livingstyleguide--font-example" style="font: 14px Helvetica">
+      <div class="lsg--font-example" style="font: 14px Helvetica">
         Schweißgequält zündet Typograf Jakob<br>
         verflixt öde Pangramme an.
       </div>
@@ -50,7 +50,7 @@ class FontExampleTest < DocumentTestCase
     assert_render_equals <<-INPUT, <<-OUTPUT
       @font-example 72px Drogowskaz
     INPUT
-      <div class="livingstyleguide--font-example" style="font: 72px Drogowskaz">
+      <div class="lsg--font-example" style="font: 72px Drogowskaz">
         zażółć<br>
         gęślą<br>
         jaźń

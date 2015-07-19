@@ -7,9 +7,9 @@ class CoffeeScriptTest < DocumentTestCase
       @coffee-script
       alert "Hello world!"
     INPUT
-      <section class="livingstyleguide--example livingstyleguide--coffee-example" id="section-9de304"> <script>(function() { alert(\"Hello world!\"); }).call(this); </script>
-      <pre class="livingstyleguide--code-block">
-        <code class="livingstyleguide--code">alert "Hello world!"</code>
+      <section class="lsg--example lsg--coffee-example" id="section-9de304"> <script>(function() { alert(\"Hello world!\"); }).call(this); </script>
+      <pre class="lsg--code-block">
+        <code class="lsg--code">alert "Hello world!"</code>
       </pre> </section>
     OUTPUT
   end
@@ -19,9 +19,9 @@ class CoffeeScriptTest < DocumentTestCase
       @coffee
       alert "Hello world!"
     INPUT
-      <section class="livingstyleguide--example livingstyleguide--coffee-example" id="section-1791e9"> <script>(function() { alert(\"Hello world!\"); }).call(this); </script>
-      <pre class="livingstyleguide--code-block">
-        <code class="livingstyleguide--code">alert "Hello world!"</code>
+      <section class="lsg--example lsg--coffee-example" id="section-1791e9"> <script>(function() { alert(\"Hello world!\"); }).call(this); </script>
+      <pre class="lsg--code-block">
+        <code class="lsg--code">alert "Hello world!"</code>
       </pre> </section>
     OUTPUT
   end

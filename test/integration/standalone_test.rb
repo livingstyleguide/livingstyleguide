@@ -21,7 +21,7 @@ class MarkdownTest < Minitest::Test
   def test_custom_styles
     skip "need rewrite of fixtures"
     html = render('test/fixtures/standalone/styleguide-with-style.html.lsg')
-    assert_match %r(.livingstyleguide--ordered-list { color: red;), html
+    assert_match %r(.lsg--ordered-list { color: red;), html
     assert_match %r(border-radius: 3px), html
     assert_match %r(em { color: green;), html
   end
@@ -86,7 +86,7 @@ class MarkdownTest < Minitest::Test
   def test_duplicate_imports_rendered_once
     skip "need rewrite of fixtures"
     html = render('test/fixtures/standalone/styleguide-dup-imports.html.lsg')
-    assert_equal 1, html.scan(%r(<h2 class="livingstyleguide--headline" id="buttons")).size
+    assert_equal 1, html.scan(%r(<h2 class="lsg--headline" id="buttons")).size
   end
 
   private
