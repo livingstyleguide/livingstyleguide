@@ -1,4 +1,5 @@
 require 'tilt'
+require 'yaml'
 
 def map_files(glob, &block)
   glob << '.lsg' unless glob =~ /\.(\w+|\*)$/
@@ -18,8 +19,7 @@ LivingStyleGuide.add_filter :import do |arguments, options, data|
   end
 
   if data
-    Kernel.require 'json'
-    data = JSON.parse("{#{data}}")
+    data = Psych.safe_load(data)
   end
 
   map_files glob do |file|
