@@ -1,16 +1,19 @@
-LivingStyleGuide.add_filter :css, :scss do |arguments, options, source|
+LivingStyleGuide.add_filter :css do |arguments, options, css|
   file = arguments.first
-  if file =~ /\.(css|scss|sass)$/
+  if file =~ /\.css$/
     if document.file
       file = File.join(File.dirname(document.file), file)
     end
     document.depend_on file
     document.scss << %Q(@import "#{file}";\n)
   else
-    if options[:preprocessor] == "sass"
-      source = Sass::Engine.new(source).to_tree.to_scss
+    scope = "#" + document.id.gsub(/[\/\.]/, '\\\0')
+    scoped_css = css.gsub(/(?<=\}|\A|;)[^@\};]+?(?=\{)/) do |selector|
+      selector.split(",").map do |single_selector|
+        "#{scope} #{single_selector}"
+      end.join(",")
     end
-    document.scss << "##{document.id.gsub(/[\/\.]/, '\\\0')} {\n#{source}\n}\n"
+    document.scss << scoped_css
   end
   nil
 end
