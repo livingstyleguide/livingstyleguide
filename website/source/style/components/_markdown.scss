@@ -1,38 +1,38 @@
-$livingstyleguide--color: $black;
-$livingstyleguide--code-background-color: mix(white, $turquoise, 90%);
-$livingstyleguide--code-color: $pink;
-$livingstyleguide--code-font: "courier new", courier, monospace;
-$livingstyleguide--base-font-size: 13px;
-$livingstyleguide--base-font-weight: normal;
-$livingstyleguide--base-line-height: 1.1;
-$livingstyleguide--base-text-align: left;
-$livingstyleguide--code-font-size: 13px;
-$livingstyleguide--code-border-radius: 0;
-$livingstyleguide--code-line-height: 1.1;
-$livingstyleguide--code-font-weight: normal;
-$livingstyleguide--width: 600px;
-$livingstyleguide--gap-width: 20px;
-$livingstyleguide--highlight-color: $yellow;
-$livingstyleguide--highlight-border-radius: 0;
-$livingstyleguide--base-font: Gubia, "Helvetica Neue", Helvetica, Arial;
-$livingstyleguide--headline-font: Gubia, "Helvetica Neue", Helvetica, Arial;
-$livingstyleguide--headline-font-size: 36px;
-$livingstyleguide--headline-font-weight: bold;
-$livingstyleguide--headline-line-height: 1.3;
-$livingstyleguide--headline-text-align: center;
-$livingstyleguide--page-title-font-size: 44px;
-$livingstyleguide--sub-headline-font-size: 22px;
-$livingstyleguide--sub-sub-headline-font-size: 16px;
-$livingstyleguide--border-radius: 0;
-$livingstyleguide--layout-selector: ".layout";
-$livingstyleguide--full-width-padding: 0;
+$lsg--color: $black;
+$lsg--code-background-color: mix(white, $turquoise, 90%);
+$lsg--code-color: $pink;
+$lsg--code-font: "courier new", courier, monospace;
+$lsg--base-font-size: 13px;
+$lsg--base-font-weight: normal;
+$lsg--base-line-height: 1.1;
+$lsg--base-text-align: left;
+$lsg--code-font-size: 13px;
+$lsg--code-border-radius: 0;
+$lsg--code-line-height: 1.1;
+$lsg--code-font-weight: normal;
+$lsg--width: 600px;
+$lsg--gap-width: 20px;
+$lsg--highlight-color: $yellow;
+$lsg--highlight-border-radius: 0;
+$lsg--base-font: Gubia, "Helvetica Neue", Helvetica, Arial;
+$lsg--headline-font: Gubia, "Helvetica Neue", Helvetica, Arial;
+$lsg--headline-font-size: 36px;
+$lsg--headline-font-weight: bold;
+$lsg--headline-line-height: 1.3;
+$lsg--headline-text-align: center;
+$lsg--page-title-font-size: 44px;
+$lsg--sub-headline-font-size: 22px;
+$lsg--sub-sub-headline-font-size: 16px;
+$lsg--border-radius: 0;
+$lsg--layout-selector: ".layout";
+$lsg--full-width-padding: 0;
 
 @import "livingstyleguide/reset";
 @import "livingstyleguide/content";
 @import "livingstyleguide/code";
 
 .markdown {
-  max-width: $livingstyleguide--width + 2 * 40px;
+  max-width: $lsg--width + 2 * 40px;
   padding: 40px;
   overflow: hidden;
   text-align: left;
@@ -56,24 +56,24 @@ $livingstyleguide--full-width-padding: 0;
     @extend %font-weight-bold;
   }
 
-  .livingstyleguide--headline {
+  .lsg--headline {
     font-size: 3em;
     margin: 0 0 0.5em;
     width: auto;
   }
 
-  .livingstyleguide--sub-headline {
+  .lsg--sub-headline {
     font-size: 2em;
     margin: 1.5em 0 0.5em;
     width: auto;
   }
 
   p,
-  .livingstyleguide--paragraph,
-  .livingstyleguide--ordered-list,
-  .livingstyleguide--ordered-list-item,
-  .livingstyleguide--unordered-list,
-  .livingstyleguide--unordered-list-item {
+  .lsg--paragraph,
+  .lsg--ordered-list,
+  .lsg--ordered-list-item,
+  .lsg--unordered-list,
+  .lsg--unordered-list-item {
     font-size: 18px;
     font-family: 'source sans pro', 'arial', 'helvetica', sans-serif;
     font-weight: 200;
@@ -82,18 +82,18 @@ $livingstyleguide--full-width-padding: 0;
     width: auto;
   }
 
-  .livingstyleguide--unordered-list {
+  .lsg--unordered-list {
     counter-reset: ul;
     margin: 0 0 0.75em;
   }
 
-  .livingstyleguide--ordered-list-item,
-  .livingstyleguide--unordered-list-item {
+  .lsg--ordered-list-item,
+  .lsg--unordered-list-item {
     list-style: none;
     margin-left: 3em;
   }
 
-  .livingstyleguide--unordered-list-item {
+  .lsg--unordered-list-item {
     &:before {
       background: $turquoise;
       content: "";
@@ -105,11 +105,11 @@ $livingstyleguide--full-width-padding: 0;
     }
   }
 
-  .livingstyleguide--ordered-list-item {
+  .lsg--ordered-list-item {
     counter-increment: ul;
 
     &:before {
-      background: $livingstyleguide--code-background-color;
+      background: $lsg--code-background-color;
       color: $turquoise;
       content: counter(ul);
       height: 1.3em;
@@ -123,7 +123,7 @@ $livingstyleguide--full-width-padding: 0;
     }
   }
 
-  .livingstyleguide--code-span {
+  .lsg--code-span {
     background: mix($pink, $white, 3%);
     border-radius: 4px;
     display: inline;
@@ -132,27 +132,27 @@ $livingstyleguide--full-width-padding: 0;
     padding: 0 4px;
   }
 
-  .livingstyleguide--code-block {
-    background: $livingstyleguide--code-background-color;
+  .lsg--code-block {
+    background: $lsg--code-background-color;
     margin: 0;
-    padding: $livingstyleguide--gap-width;
+    padding: $lsg--gap-width;
   }
 
-  .livingstyleguide--example {
-    margin: $livingstyleguide--gap-width 0;
+  .lsg--example {
+    margin: $lsg--gap-width 0;
     padding: 0;
   }
 
-  .livingstyleguide--container {
+  .lsg--container {
     min-height: 0;
   }
 
-  .livingstyleguide--code-highlight {
+  .lsg--code-highlight {
     font-weight: inherit;
   }
 
-  .livingstyleguide--html {
-    background: $livingstyleguide--code-background-color;
+  .lsg--html {
+    background: $lsg--code-background-color;
     padding: 20px 20px 0;
   }
 }

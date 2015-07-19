@@ -3,9 +3,9 @@ LivingStyleGuide.add_filter :colors do |arguments, options, content|
   columns = colors.map{ |l| l.size }.max
   colors = colors.flatten
   document.scss << <<-SCSS
-    $livingstyleguide--variables: () !default;
-    $livingstyleguide--variables: join(
-      $livingstyleguide--variables, (#{
+    $lsg--variables: () !default;
+    $lsg--variables: join(
+      $lsg--variables, (#{
         colors.reject{ |c| c == '-' }.map do |variable|
           %Q("#{variable}": #{variable})
         end.join(', ')
@@ -16,7 +16,7 @@ LivingStyleGuide.add_filter :colors do |arguments, options, content|
     if variable == '-'
       css_class = '-lsg-empty'
     end
-    %Q(<li class="livingstyleguide--color-swatch #{css_class || variable}">#{variable}</li>\n)
+    %Q(<li class="lsg--color-swatch #{css_class || variable}">#{variable}</li>\n)
   end.join("\n")
-  %(<ul class="livingstyleguide--color-swatches -lsg-#{columns}-columns">\n#{colors_html}\n</ul>\n)
+  %(<ul class="lsg--color-swatches -lsg-#{columns}-columns">\n#{colors_html}\n</ul>\n)
 end

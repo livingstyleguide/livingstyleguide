@@ -1,46 +1,46 @@
-.livingstyleguide--paragraph,
-.livingstyleguide--code-block,
-.livingstyleguide--unordered-list,
-.livingstyleguide--ordered-list {
-  @extend %livingstyleguide--reset;
-  color: $livingstyleguide--color;
-  font-family: $livingstyleguide--base-font;
-  font-size: $livingstyleguide--base-font-size;
-  font-weight: $livingstyleguide--base-font-weight;
-  line-height: $livingstyleguide--base-line-height;
-  margin: $livingstyleguide--gap-width auto;
-  text-align: $livingstyleguide--base-text-align;
-  width: $livingstyleguide--width;
+.lsg--paragraph,
+.lsg--code-block,
+.lsg--unordered-list,
+.lsg--ordered-list {
+  @extend %lsg--reset;
+  color: $lsg--color;
+  font-family: $lsg--base-font;
+  font-size: $lsg--base-font-size;
+  font-weight: $lsg--base-font-weight;
+  line-height: $lsg--base-line-height;
+  margin: $lsg--gap-width auto;
+  text-align: $lsg--base-text-align;
+  width: $lsg--width;
   -webkit-font-smoothing: antialiased;
 }
 
-.livingstyleguide--unordered-list-item,
-.livingstyleguide--ordered-list-item {
-  @extend %livingstyleguide--reset;
+.lsg--unordered-list-item,
+.lsg--ordered-list-item {
+  @extend %lsg--reset;
   display: list-item;
   list-style: disc;
-  margin: ceil($livingstyleguide--gap-width / 2) 0 ceil($livingstyleguide--gap-width / 2) (2 * $livingstyleguide--gap-width);
+  margin: ceil($lsg--gap-width / 2) 0 ceil($lsg--gap-width / 2) (2 * $lsg--gap-width);
 }
 
-.livingstyleguide--page-title,
-.livingstyleguide--headline,
-.livingstyleguide--sub-headline,
-.livingstyleguide--sub-sub-headline {
-  @extend %livingstyleguide--reset;
-  color: $livingstyleguide--color;
+.lsg--page-title,
+.lsg--headline,
+.lsg--sub-headline,
+.lsg--sub-sub-headline {
+  @extend %lsg--reset;
+  color: $lsg--color;
   display: block;
-  font-family: $livingstyleguide--headline-font;
-  font-size: $livingstyleguide--headline-font-size;
-  font-weight: $livingstyleguide--headline-font-weight;
-  line-height: $livingstyleguide--headline-line-height;
-  margin: (3 * $livingstyleguide--gap-width) auto $livingstyleguide--gap-width;
-  text-align: $livingstyleguide--headline-text-align;
-  width: $livingstyleguide--width;
+  font-family: $lsg--headline-font;
+  font-size: $lsg--headline-font-size;
+  font-weight: $lsg--headline-font-weight;
+  line-height: $lsg--headline-line-height;
+  margin: (3 * $lsg--gap-width) auto $lsg--gap-width;
+  text-align: $lsg--headline-text-align;
+  width: $lsg--width;
   -webkit-font-smoothing: antialiased;
 }
 
-.livingstyleguide--anchor {
-  @extend %livingstyleguide--reset;
+.lsg--anchor {
+  @extend %lsg--reset;
   color: inherit;
   display: inline;
   margin-left: -1em;
@@ -49,9 +49,9 @@
   text-decoration: none;
   width: 1em;
 
-  .livingstyleguide--headline:hover &,
-  .livingstyleguide--sub-headline:hover &,
-  .livingstyleguide--sub-sub-headline:hover & {
+  .lsg--headline:hover &,
+  .lsg--sub-headline:hover &,
+  .lsg--sub-sub-headline:hover & {
     opacity: 0.5;
 
     &:hover {
@@ -64,41 +64,41 @@
   }
 }
 
-.livingstyleguide--page-title {
+.lsg--page-title {
   display: block;
-  font-size: $livingstyleguide--page-title-font-size;
+  font-size: $lsg--page-title-font-size;
 }
 
-.livingstyleguide--sub-headline {
+.lsg--sub-headline {
   display: block;
-  font-size: $livingstyleguide--sub-headline-font-size;
+  font-size: $lsg--sub-headline-font-size;
 }
 
-.livingstyleguide--sub-sub-headline {
+.lsg--sub-sub-headline {
   display: block;
-  font-size: $livingstyleguide--sub-sub-headline-font-size;
+  font-size: $lsg--sub-sub-headline-font-size;
 }
 
-.livingstyleguide--example {
-  @extend %livingstyleguide--reset;
+.lsg--example {
+  @extend %lsg--reset;
   background: white;
-  border-top-left-radius: $livingstyleguide--border-radius;
-  border-top-right-radius: $livingstyleguide--border-radius;
+  border-top-left-radius: $lsg--border-radius;
+  border-top-right-radius: $lsg--border-radius;
   display: block;
-  margin: $livingstyleguide--gap-width auto 0;
+  margin: $lsg--gap-width auto 0;
   overflow: hidden;
-  padding: $livingstyleguide--gap-width;
+  padding: $lsg--gap-width;
   position: relative;
-  width: $livingstyleguide--width;
+  width: $lsg--width;
 
   &.-lsg-has-full-width {
-    @extend #{$livingstyleguide--layout-selector} !optional;
+    @extend #{$lsg--layout-selector} !optional;
     border-radius: 0;
     display: block;
     height: auto;
     margin: 0 auto;
     min-height: auto;
-    padding: $livingstyleguide--full-width-padding;
+    padding: $lsg--full-width-padding;
     width: 100%;
   }
 
@@ -106,9 +106,9 @@
     display: none;
   }
 
-  .livingstyleguide--code-block {
-    margin-bottom: -$livingstyleguide--gap-width;
-    margin-left: -$livingstyleguide--gap-width;
-    margin-right: -$livingstyleguide--gap-width;
+  .lsg--code-block {
+    margin-bottom: -$lsg--gap-width;
+    margin-left: -$lsg--gap-width;
+    margin-right: -$lsg--gap-width;
   }
 }

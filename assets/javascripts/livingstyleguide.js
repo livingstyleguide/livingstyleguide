@@ -65,7 +65,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    var switches = document.getElementsByClassName('livingstyleguide--code-switch');
+    var switches = document.getElementsByClassName('lsg--code-switch');
     for (var i = 0; i < switches.length; i++) {
       switches[i].addEventListener('click', toggleCode);
     }
