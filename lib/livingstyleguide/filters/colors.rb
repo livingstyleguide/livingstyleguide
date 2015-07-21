@@ -2,6 +2,9 @@ LivingStyleGuide.add_filter :colors do |arguments, options, content|
   colors = content.split(/\n+/).map{ |l| l.strip.split(/\s+/) }
   columns = colors.map{ |l| l.size }.max
   colors = colors.flatten
+
+  document.head << ERB.new(File.read("#{File.dirname(__FILE__)}/../templates/colors-example.html.erb")).result
+
   document.scss << <<-SCSS
     $lsg--variables: () !default;
     $lsg--variables: join(
@@ -16,7 +19,7 @@ LivingStyleGuide.add_filter :colors do |arguments, options, content|
     if variable == '-'
       css_class = '-lsg-empty'
     end
-    %Q(<li class="lsg--color-swatch #{css_class || variable}">#{variable}</li>\n)
-  end.join("\n")
-  %(<ul class="lsg--color-swatches -lsg-#{columns}-columns">\n#{colors_html}\n</ul>\n)
-end
+      %Q(<li class="lsg--color-swatch #{css_class || variable}"><span>#{variable}</span></li>\n)
+    end.join("\n")
+      %(<ul class="lsg--color-swatches -lsg-#{columns}-columns">\n#{colors_html}\n</ul>\n)
+    end

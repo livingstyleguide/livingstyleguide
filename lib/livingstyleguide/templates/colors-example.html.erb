@@ -1,0 +1,64 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (testCopy()){
+
+      var colorSwatches = document.getElementsByClassName('lsg--color-swatch');
+      for (var i = 0; i < colorSwatches.length; i++){
+
+        if (!colorSwatches[i].classList.contains('-lsg-empty')){
+          colorSwatches[i].appendChild(createSpan());
+          colorSwatches[i].addEventListener('click', function(event) {
+            if(event.altKey){
+              var copyHexColors = window.getComputedStyle(this, ':after').getPropertyValue('content');
+              copyHexColors = copyHexColors.replace(/'/g, "");
+              selectElementRange(createDiv(copyHexColors));
+            }
+            else {
+              selectElementRange(this.children[0]);
+            }
+          });
+        }
+      }
+    }
+  });
+
+  function createDiv(copyHexColors){
+    var divCopy = document.createElement('div');
+    divCopy.className = '-lsg-remove';
+    divCopy.setAttribute('style', 'opacity:0; position: absolute; top: -10000px');
+    divCopy.appendChild(document.createTextNode(copyHexColors));
+    document.body.appendChild(divCopy);
+    return divCopy
+  }
+
+  function createSpan(){
+    var spanHover = document.createElement('span');
+    spanHover.className = '-lsg-copy-color';
+    spanHover.appendChild(document.createTextNode("Click to copy-variable\n Alt + Click to copy hex-code"));
+    return spanHover
+  }
+
+  function selectElementRange(copyElementSelect){
+    var range = document.createRange();
+    range.selectNode(copyElementSelect);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+
+    document.execCommand('copy');
+
+    if (copyElementSelect.classList.contains('-lsg-remove')){
+       document.body.removeChild(copyElementSelect);
+    }
+
+    window.getSelection().removeAllRanges();
+  }
+
+  function testCopy() {
+    try {
+      document.execCommand('copy');
+      return true;
+    } catch(err) {
+      return false;
+    }
+  }
+</script>

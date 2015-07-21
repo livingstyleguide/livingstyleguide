@@ -26,11 +26,37 @@
     z-index: -1;
   }
 
+  &:hover:before {
+    color: black;
+    cursor: pointer;
+  }
+
   &:after {
+    cursor: pointer;
     display: block;
     font-weight: normal;
     text-align: center;
   }
+}
+.-lsg-copy-color{
+  background: $lsg--background-color;
+  border-radius: $lsg--border-radius;
+  color: $lsg--color;
+  cursor: pointer;
+  font-family: $lsg--base-font;
+  font-size: 0.8em;
+  left: 0;
+  line-height:1.2em;
+  padding: 3px 0 3px 0;
+  position: absolute;
+  visibility: hidden;
+  white-space: pre-wrap;
+  width: 100%;
+  z-index: 1;
+
+}
+li:hover .-lsg-copy-color{
+  visibility: visible;
 }
 
 .lsg--color-swatches {
@@ -60,4 +86,3 @@
     display: none;
   }
 }
-
