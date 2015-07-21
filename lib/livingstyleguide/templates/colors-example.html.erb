@@ -1,24 +1,27 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var colorSwatches = document.getElementsByClassName('livingstyleguide--color-swatch');
-    for (var i = 0; i < colorSwatches.length; i++){
+    if (testCopy()) {
+      var colorSwatches = document.getElementsByClassName('lsg--color-swatch');
+      for (var i = 0; i < colorSwatches.length; i++) {
 
-      if (colorSwatches[i].innerHTML != "-"){
-        colorSwatches[i].addEventListener('click', function(event) {
-          if(event.altKey){
-            var copyHexColors = window.getComputedStyle(this, ':after').getPropertyValue('content');
-            copyHexColors = copyHexColors.replace(/'/g, "");
-            selectElementRange(createDiv(copyHexColors));
-          }
-          else{
-            selectElementRange(this.children[1]);
-          }
-        });
+        if (!colorSwatches[i].classList.contains('-lsg-empty')) {
+          colorSwatches[i].appendChild(createSpan());
+          colorSwatches[i].addEventListener('click', function(event) {
+            if (event.altKey) {
+              var copyHexColors = window.getComputedStyle(this, ':after').getPropertyValue('content');
+              copyHexColors = copyHexColors.replace(/'/g, "");
+              selectElementRange(createDiv(copyHexColors));
+            }
+            else {
+              selectElementRange(this.children[0]);
+            }
+          });
+        }
       }
     }
   });
 
-  function createDiv(copyHexColors){
+  function createDiv(copyHexColors) {
     var divCopy = document.createElement('div');
     divCopy.className = '-lsg-remove';
     divCopy.setAttribute('style', 'opacity:0; position: absolute; top: -10000px');
@@ -27,24 +30,35 @@
     return divCopy
   }
 
-  function selectElementRange(copyElementSelect){
+  function createSpan() {
+    var spanHover = document.createElement('span');
+    spanHover.className = 'lsg--copy-color';
+    spanHover.appendChild(document.createTextNode("Click to copy variable\nAlt + click to copy HEX code"));
+    return spanHover
+  }
+
+  function selectElementRange(copyElementSelect) {
     var range = document.createRange();
     range.selectNode(copyElementSelect);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
 
-    try {
-      var successful = document.execCommand('copy');
+    document.execCommand('copy');
 
-      if (copyElementSelect.classList.contains('-lsg-remove')){
-         document.body.removeChild(copyElementSelect);
-      }
-      var msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Copy color command was ' + msg);
-    } catch(err) {
-      console.log('Oops, unable to copy:' + err);
+    if (copyElementSelect.classList.contains('-lsg-remove')) {
+       document.body.removeChild(copyElementSelect);
     }
 
     window.getSelection().removeAllRanges();
+  }
+
+  function testCopy() {
+    try {
+      document.execCommand('copy');
+      return true;
+    }
+    catch(err) {
+      return false;
+    }
   }
 </script>
