@@ -99,7 +99,25 @@
     display: block;
     margin: auto;
     width: $lsg--width;
+
   }
+}
+.lsg--code:hover .lsg--button{
+  visibility:visible;
+}
+
+.lsg--button {
+  background-color: $lsg--background-color;
+  background-image: $lsg--copy-background-image;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  border-color: $lsg--border-color;
+  display: block;
+  float: right;
+  height: $lsg--button-height;
+  visibility: hidden;
+  width: $lsg--button-width;
 }
 
 .lsg--font-example {
@@ -121,4 +139,3 @@
   @extend .lsg--code-highlight;
   display: block;
 }
-

@@ -3,6 +3,7 @@ LivingStyleGuide.add_filter :colors do |arguments, options, content|
   columns = colors.map{ |l| l.size }.max
   colors = colors.flatten
 
+  document.head << ERB.new(File.read("#{File.dirname(__FILE__)}/../templates/javascript-copy.html.erb")).result
   document.head << ERB.new(File.read("#{File.dirname(__FILE__)}/../templates/colors-example.html.erb")).result
 
   document.scss << <<-SCSS
