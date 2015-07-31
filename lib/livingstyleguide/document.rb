@@ -85,6 +85,9 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def evaluate(scope, locals, &block)
     @head = ""
+    @head << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/javascript-copy.html.erb")).result(binding)
+    @head << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/code-example.html.erb")).result(binding)
+    @head << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/colors-example.html.erb")).result(binding)
     @header = ""
     @footer = ""
     @scope = scope
