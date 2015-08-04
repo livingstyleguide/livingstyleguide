@@ -1,0 +1,27 @@
+<input type="text" id= "search-box" value="" placeholder="Search box">
+<script>
+  document.getElementById("search-box").addEventListener('keydown', function(event){
+    var searchBox = this.value;
+    var selection = document.querySelectorAll(".lsg--example, .lsg--headline, .lsg--color-swatches, .lsg--font-example");
+    var regexp = new RegExp(searchBox, 'i');
+    var matched = [];
+    var unmatched = [];
+
+    for (var i = 0; i < selection.length; i++) {
+
+      if (selection[i].innerHTML.match(regexp)){
+
+          matched.push(selection[i]);
+          matched.map(function(item){
+            return item.setAttribute('style', 'display:block');
+          });
+      }
+      else{
+          unmatched.push(selection[i]);
+          unmatched.map(function(item){
+            return item.setAttribute('style', 'display:none');
+          });
+      }
+    }
+  });
+</script>
