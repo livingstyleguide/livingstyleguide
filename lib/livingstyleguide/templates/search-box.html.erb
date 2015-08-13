@@ -1,27 +1,116 @@
 <input type="text" id= "search-box" value="" placeholder="Search box">
 <script>
-  document.getElementById("search-box").addEventListener('keydown', function(event){
-    var searchBox = this.value;
-    var selection = document.querySelectorAll(".lsg--example, .lsg--headline, .lsg--color-swatches, .lsg--font-example");
-    var regexp = new RegExp(searchBox, 'i');
-    var matched = [];
-    var unmatched = [];
-
-    for (var i = 0; i < selection.length; i++) {
-
-      if (selection[i].innerHTML.match(regexp)){
-
-          matched.push(selection[i]);
-          matched.map(function(item){
-            return item.setAttribute('style', 'display:block');
-          });
-      }
-      else{
-          unmatched.push(selection[i]);
-          unmatched.map(function(item){
-            return item.setAttribute('style', 'display:none');
-          });
-      }
+    function hasClass(ele,cls) {
+      return ele.classList.contains(cls)
     }
-  });
+
+    function addMatch(matched, node) {
+     if (node.nodeType !== Node.TEXT_NODE) {
+       if (node.className.includes("lsg--")) {
+         matched.push(node)
+       }
+
+       if (node.hasChildNodes()) {
+          for (var i = 0; i < node.childNodes.length; i++) {
+            addMatch(matched, node.childNodes[i]);
+          }
+       }
+     }
+    }
+    document.getElementById("search-box").addEventListener('input', function(event) {
+       var searchBox = this.value;
+       console.log("buscando: ", searchBox);
+       var selection = document.querySelectorAll(".lsg--example, .lsg--color-swatches, .lsg--font-example, .lsg--paragraph, .lsg--unordered-list, .lsg--ordered-list, .lsg--headline, .lsg--sub-headline, .lsg--sub-sub-headline");
+       var regexp = new RegExp(searchBox, 'i');
+       selection = Array.prototype.slice.call(selection);
+       var matched = [];
+       var unmatched = [];
+      for (var i = 0; i < selection.length; i++) {
+        if (selection[i].innerHTML.match(regexp)){
+
+           if (matched.indexOf(selection[i]) === -1) {
+             addMatch(matched, selection[i]);
+           };
+           if (hasClass(selection[i], 'lsg--headline')) {
+              var j = i;
+              while(j < selection.length){
+                  var elementoSiguiente = selection[j].nextSibling.nextElementSibling;
+
+                  if (elementoSiguiente === null) {
+                    break;
+                  };
+
+                  if (hasClass(elementoSiguiente, "lsg--headline")) {
+                    break;
+                  } else {
+                      if (matched.indexOf(elementoSiguiente) === -1) {
+                       addMatch(matched, elementoSiguiente)
+                      }
+                      j++;
+                  }
+                }
+            }
+            else {
+
+              var j = i;
+
+              while( j >= 0){
+                  var elementoAnterior = selection[j].previousSibling.previousElementSibling;
+
+                  if (elementoAnterior === null){
+                    selection[j].parentElement;
+                    addMatch(matched, selection[j].parentElement.previousSibling.previousElementSibling);
+                    j--;
+                    continue;
+                  }
+                  if (matched.indexOf(elementoAnterior) === -1) {
+                    addMatch(matched, elementoAnterior);
+                  }
+
+                   if(hasClass(elementoAnterior, "lsg--headline")){
+                      addMatch(matched, elementoAnterior);
+                      break;
+
+                    } else{
+                    j--;
+                   }
+              }
+
+              var j = i;
+              while( j < selection.length){
+
+                  var elementoSiguiente = selection[j].nextSibling.nextElementSibling;
+                  if (elementoSiguiente === null){
+                    break;
+                  }
+
+                  if (hasClass(elementoSiguiente, "lsg--headline")) {
+                    break;
+                  } else {
+                      if (matched.indexOf(elementoSiguiente) === -1) {
+                       addMatch(matched, elementoSiguiente);
+                      }
+                      j++;
+                  }
+               }
+            }
+         };
+      };
+
+      unmatched = selection.filter(function(elem) {
+          return matched.indexOf(elem) === -1
+      });
+      unmatched.map(function(item){
+        item.setAttribute('style', 'display: none');
+      });
+
+      matched.map(function(item){
+        if (item.tagName === "LI") {
+           item.setAttribute('style', 'visibility:visible');
+        } else {
+          item.setAttribute('style', 'display: block');
+        }
+      });
+    });
+
 </script>
