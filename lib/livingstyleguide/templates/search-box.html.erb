@@ -1,116 +1,73 @@
 <input type="text" id= "search-box" value="" placeholder="Search box">
 <script>
-    function hasClass(ele,cls) {
-      return ele.classList.contains(cls)
-    }
 
-    function addMatch(matched, node) {
-     if (node.nodeType !== Node.TEXT_NODE) {
-       if (node.className.includes("lsg--")) {
-         matched.push(node)
-       }
+ function hasClass(ele,cls) {
+   return ele.classList.contains(cls)
+ }
 
-       if (node.hasChildNodes()) {
-          for (var i = 0; i < node.childNodes.length; i++) {
-            addMatch(matched, node.childNodes[i]);
-          }
-       }
+ function addMatch(matched, node) {
+   if (node.nodeType !== Node.TEXT_NODE) {
+     if (node.className.includes("lsg--")) {
+       matched.push(node)
      }
-    }
-    document.getElementById("search-box").addEventListener('input', function(event) {
-       var searchBox = this.value;
-       console.log("buscando: ", searchBox);
-       var selection = document.querySelectorAll(".lsg--example, .lsg--color-swatches, .lsg--font-example, .lsg--paragraph, .lsg--unordered-list, .lsg--ordered-list, .lsg--headline, .lsg--sub-headline, .lsg--sub-sub-headline");
-       var regexp = new RegExp(searchBox, 'i');
-       selection = Array.prototype.slice.call(selection);
-       var matched = [];
-       var unmatched = [];
-      for (var i = 0; i < selection.length; i++) {
-        if (selection[i].innerHTML.match(regexp)){
+   }
+ }
 
-           if (matched.indexOf(selection[i]) === -1) {
-             addMatch(matched, selection[i]);
-           };
-           if (hasClass(selection[i], 'lsg--headline')) {
-              var j = i;
-              while(j < selection.length){
-                  var elementoSiguiente = selection[j].nextSibling.nextElementSibling;
+ var addNextElement = function(selection, matched, i) {
+   var j = i + 1;
+     while(j < selection.length){
+       if (hasClass(selection[j], "lsg--headline")) {
+         break;
+       }
+       addMatch(matched, selection[j]);
+       j++;
+     }
+   }
 
-                  if (elementoSiguiente === null) {
-                    break;
-                  };
+ var addPreviousElement = function(selection, matched, i) {
+   var j = i - 1;
+     while( j >= 0){
+       addMatch(matched, selection[j]);
+       if(hasClass(selection[j], "lsg--headline")) {
+         break;
+       }
+       j--;
+     }
+   }
 
-                  if (hasClass(elementoSiguiente, "lsg--headline")) {
-                    break;
-                  } else {
-                      if (matched.indexOf(elementoSiguiente) === -1) {
-                       addMatch(matched, elementoSiguiente)
-                      }
-                      j++;
-                  }
-                }
-            }
-            else {
+ document.getElementById("search-box").addEventListener('input', function(event) {
 
-              var j = i;
+   var searchBox = this.value;
+   console.log("buscando: ", searchBox);
+   var selection = document.querySelectorAll(".lsg--example, .lsg--color-swatches, .lsg--font-example, .lsg--paragraph, .lsg--unordered-list, .lsg--ordered-list, .lsg--headline, .lsg--sub-headline, .lsg--sub-sub-headline");
+   var regexp = new RegExp(searchBox, 'i');
+   selection = Array.prototype.slice.call(selection);
+   var matched = [];
+   var unmatched = [];
 
-              while( j >= 0){
-                  var elementoAnterior = selection[j].previousSibling.previousElementSibling;
+   for (var i = 0; i < selection.length; i++) {
 
-                  if (elementoAnterior === null){
-                    selection[j].parentElement;
-                    addMatch(matched, selection[j].parentElement.previousSibling.previousElementSibling);
-                    j--;
-                    continue;
-                  }
-                  if (matched.indexOf(elementoAnterior) === -1) {
-                    addMatch(matched, elementoAnterior);
-                  }
+     if (selection[i].textContent.match(regexp)) {
+       addMatch(matched, selection[i]);
 
-                   if(hasClass(elementoAnterior, "lsg--headline")){
-                      addMatch(matched, elementoAnterior);
-                      break;
+       addNextElement(selection, matched, i);
 
-                    } else{
-                    j--;
-                   }
-              }
+       if (!hasClass(selection[i], 'lsg--headline')) {
+         addPreviousElement(selection, matched, i);
+       }
+     };
+   };
 
-              var j = i;
-              while( j < selection.length){
+ unmatched = selection.filter(function(elem) {
+   return matched.indexOf(elem) === -1
+ });
 
-                  var elementoSiguiente = selection[j].nextSibling.nextElementSibling;
-                  if (elementoSiguiente === null){
-                    break;
-                  }
+ unmatched.map(function(item) {
+   item.setAttribute('style', 'display: none');
+ });
 
-                  if (hasClass(elementoSiguiente, "lsg--headline")) {
-                    break;
-                  } else {
-                      if (matched.indexOf(elementoSiguiente) === -1) {
-                       addMatch(matched, elementoSiguiente);
-                      }
-                      j++;
-                  }
-               }
-            }
-         };
-      };
-
-      unmatched = selection.filter(function(elem) {
-          return matched.indexOf(elem) === -1
-      });
-      unmatched.map(function(item){
-        item.setAttribute('style', 'display: none');
-      });
-
-      matched.map(function(item){
-        if (item.tagName === "LI") {
-           item.setAttribute('style', 'visibility:visible');
-        } else {
-          item.setAttribute('style', 'display: block');
-        }
-      });
-    });
-
+ matched.map(function(item) {
+   item.setAttribute('style', 'display: block');
+ });
+});
 </script>
