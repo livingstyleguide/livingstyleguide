@@ -240,7 +240,7 @@ In addition to Markdown, there are several commands (starting with an `@`) which
 * [@scss](#manipulating-css-per-example)
 * [@javascript](#javascript-examples)
 * [@coffee-script/@coffee](#coffeescript-examples)
-* [@font-example](#font-example)
+* [@font-example](#font-examples)
 * [@require](#require-ruby-files-or-gems)
 
 
