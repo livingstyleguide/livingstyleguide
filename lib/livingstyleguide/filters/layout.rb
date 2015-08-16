@@ -22,10 +22,9 @@ end
 %w(head header footer).each do |part|
   eval <<-RUBY
     LivingStyleGuide.add_filter :#{part} do |arguments, options, block|
-      if template = Tilt[options[:type]]
-        block = template.new{ block }.render
-      end
-      document.#{part} << block + "\n"
+      html = LivingStyleGuide::Document.new(livingstyleguide: document) { block }
+      html.type = options[:type]
+      document.#{part} << html.render + "\n"
       nil
     end
   RUBY

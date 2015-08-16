@@ -456,6 +456,27 @@ name.
 This is useful, when you depend on Haml or other templating engines.
 Add a list of default filters to your _styleguide.html.lsg_:
 
+For example without defaults:
+
+    @header
+      @haml
+      .my-header My Style Guide
+
+    ```
+    @haml
+    .my-example
+    ```
+
+With defaults:
+
+    @default type: haml
+
+    @header
+      .my-header My Style Guide
+
+    ```
+    .my-example
+    ```
 
 ## Working with Existing View Templates
 
