@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0.alpha.x
+
+* allow commands inside of command blocks (e.g. setting `@haml` inside of
+  `@header`)
+
+
 ## 2.0.0.alpha.9
 
 * Copy color variables and HEX codes (RGSoC)

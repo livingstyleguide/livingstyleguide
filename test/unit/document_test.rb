@@ -11,6 +11,15 @@ describe LivingStyleGuide::Document do
     actual.must_equal expected
   end
 
+  def assert_document_matches(input, output, options = {})
+    @doc = LivingStyleGuide::Document.new { input.unindent(ignore_blank: true) }
+    @doc.type = options[:type] || :lsg
+    @doc.template = options[:template] || 'plain'
+    actual = @doc.render(nil, options[:data]).gsub(/\n\n+/, "\n").strip
+    expected = output.unindent(ignore_blank: true).gsub(/\n\n+/, "\n").strip
+    actual.must_match Regexp.new(expected, Regexp::MULTILINE)
+  end
+
   describe "base features" do
 
     it "outputs the source" do
@@ -183,6 +192,22 @@ describe LivingStyleGuide::Document do
         OUTPUT
       end
 
+      it "can have filters within filters" do
+        LivingStyleGuide::Filters.add_filter :inner do |arguments, options, block|
+          "<inner>"
+        end
+        LivingStyleGuide::Filters.add_filter :outer do |arguments, options, block|
+          inner = LivingStyleGuide::Document.new(livingstyleguide: document){ block }.render
+          "<outer>#{inner}</outer>"
+        end
+        assert_document_matches <<-INPUT, <<-OUTPUT, type: :plain
+          @outer {
+          @inner
+          }
+        INPUT
+          <outer>.*<inner>.*</outer>
+        OUTPUT
+      end
     end
 
     describe "filters with indented blocks" do
@@ -318,6 +343,21 @@ describe LivingStyleGuide::Document do
       OUTPUT
     end
 
+    it "can have filters within filters" do
+      LivingStyleGuide::Filters.add_filter :inner do |arguments, options, block|
+        "<inner>"
+      end
+      LivingStyleGuide::Filters.add_filter :outer do |arguments, options, block|
+        inner = LivingStyleGuide::Document.new(livingstyleguide: document){ block }.render
+        "<outer>#{inner}</outer>"
+      end
+      assert_document_matches <<-INPUT, <<-OUTPUT, type: :plain
+        @outer
+          @inner
+      INPUT
+        <outer>.*<inner>.*</outer>
+      OUTPUT
+    end
   end
 
   describe "templates" do
