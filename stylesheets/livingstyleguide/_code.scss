@@ -75,7 +75,7 @@
   display: block;//none;
   line-height: $lsg--code-line-height;
   padding: 3px $lsg--gap-width;
-  width: $lsg--width;
+  max-width: $lsg--width;
 
   .show-code & {
     display: block;
@@ -98,7 +98,7 @@
   .lsg--code {
     display: block;
     margin: auto;
-    width: $lsg--width;
+    max-width: $lsg--width;
   }
 }
 

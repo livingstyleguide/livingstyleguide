@@ -10,7 +10,7 @@
   line-height: $lsg--base-line-height;
   margin: $lsg--gap-width auto;
   text-align: $lsg--base-text-align;
-  width: $lsg--width;
+  max-width: $lsg--width;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -35,7 +35,7 @@
   line-height: $lsg--headline-line-height;
   margin: (3 * $lsg--gap-width) auto $lsg--gap-width;
   text-align: $lsg--headline-text-align;
-  width: $lsg--width;
+  max-width: $lsg--width;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -89,7 +89,7 @@
   overflow: hidden;
   padding: $lsg--gap-width;
   position: relative;
-  width: $lsg--width;
+  max-width: $lsg--width;
 
   &.-lsg-has-full-width {
     @extend #{$lsg--layout-selector} !optional;
