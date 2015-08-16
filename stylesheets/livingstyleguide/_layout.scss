@@ -14,7 +14,7 @@
   @extend %lsg--reset;
   display: block;
   margin: (4 * $lsg--gap-width) auto;
-  width: $lsg--width;
+  max-width: $lsg--width;
 }
 
 .lsg--logo {

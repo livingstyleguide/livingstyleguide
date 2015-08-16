@@ -65,7 +65,7 @@
   margin: $lsg--gap-width auto (-$lsg--gap-width) auto;
   overflow: hidden;
   padding-left: $lsg--gap-width;
-  width: $lsg--width + 2 * $lsg--gap-width;
+  max-width: $lsg--width + 2 * $lsg--gap-width;
 }
 
 @for $i from 1 through 12 {
