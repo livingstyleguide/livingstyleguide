@@ -26,8 +26,8 @@
   }
 
   var addPreviousElement = function(selection, matched, i) {
-    var j = i - 1;
-    while( j >= 0) {
+    var j = i;
+    while(j >= 0) {
       addMatch(matched, selection[j]);
       if(hasClass(selection[j], "lsg--headline")) {
         break;
@@ -51,10 +51,8 @@
         addMatch(matched, selection[i]);
 
         addNextElement(selection, matched, i);
-
-        if (!hasClass(selection[i], 'lsg--headline')) {
-          addPreviousElement(selection, matched, i);
-        }
+        addPreviousElement(selection, matched, i);
+        
       };
     };
 
