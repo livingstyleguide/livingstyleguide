@@ -4,6 +4,7 @@
 
 * allow commands inside of command blocks (e.g. setting `@haml` inside of
   `@header`)
+* `@default type: xyz` now also applies for code examples
 
 
 ## 2.0.0.alpha.9
