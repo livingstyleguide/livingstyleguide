@@ -38,7 +38,11 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @scss = ''
     @css = ''
     @locals = {}
-    @defaults = { global: {} }
+    @defaults = {
+      global: {
+        type: :html
+      }
+    }
   end
 
   def highlighted_source

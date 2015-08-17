@@ -64,6 +64,22 @@ describe LivingStyleGuide::Document do
 
   end
 
+  describe "set default type" do
+
+    it "allows to set the default type to Markdown" do
+      assert_document_matches <<-INPUT, <<-OUTPUT
+        @default type: markdown
+
+        ```
+        *Test*
+        ```
+      INPUT
+        <p><em>Test</em></p>
+      OUTPUT
+    end
+
+  end
+
   describe "filter syntax" do
 
     describe "filters without blocks" do
