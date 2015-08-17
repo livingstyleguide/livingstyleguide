@@ -1,73 +1,73 @@
-<div id="search"><input type= "text" id= "search-box" value= "" placeholder= "Search box"></div>
+<div id="search">
+  <input type="text" id="search-box" value="" placeholder="Search box">
+</div>
 <script>
+  function hasClass(ele, cls) {
+    return ele.classList.contains(cls)
+  }
 
- function hasClass(ele,cls) {
-   return ele.classList.contains(cls)
- }
+  function addMatch(matched, node) {
+    if (node.nodeType !== Node.TEXT_NODE) {
+      if (node.className.includes("lsg--")) {
+        matched.push(node)
+      }
+    }
+  }
 
- function addMatch(matched, node) {
-   if (node.nodeType !== Node.TEXT_NODE) {
-     if (node.className.includes("lsg--")) {
-       matched.push(node)
-     }
-   }
- }
+  var addNextElement = function(selection, matched, i) {
+    var j = i + 1;
+    while(j < selection.length) {
+      if (hasClass(selection[j], "lsg--headline")) {
+        break;
+      }
+      addMatch(matched, selection[j]);
+      j++;
+    }
+  }
 
- var addNextElement = function(selection, matched, i) {
-   var j = i + 1;
-     while(j < selection.length){
-       if (hasClass(selection[j], "lsg--headline")) {
-         break;
-       }
-       addMatch(matched, selection[j]);
-       j++;
-     }
-   }
+  var addPreviousElement = function(selection, matched, i) {
+    var j = i - 1;
+    while( j >= 0) {
+      addMatch(matched, selection[j]);
+      if(hasClass(selection[j], "lsg--headline")) {
+        break;
+      }
+      j--;
+    }
+  }
 
- var addPreviousElement = function(selection, matched, i) {
-   var j = i - 1;
-     while( j >= 0){
-       addMatch(matched, selection[j]);
-       if(hasClass(selection[j], "lsg--headline")) {
-         break;
-       }
-       j--;
-     }
-   }
+  document.getElementById("search-box").addEventListener('input', function(event) {
+    var searchBox = this.value;
 
- document.getElementById("search-box").addEventListener('input', function(event) {
+    var selection = document.querySelectorAll(".lsg--example, .lsg--color-swatches, .lsg--font-example, .lsg--paragraph, .lsg--unordered-list, .lsg--ordered-list, .lsg--headline, .lsg--sub-headline, .lsg--sub-sub-headline");
+    var regexp = new RegExp(searchBox, 'i');
+    selection = Array.prototype.slice.call(selection);
+    var matched = [];
+    var unmatched = [];
 
-   var searchBox = this.value;
-   console.log("buscando: ", searchBox);
-   var selection = document.querySelectorAll(".lsg--example, .lsg--color-swatches, .lsg--font-example, .lsg--paragraph, .lsg--unordered-list, .lsg--ordered-list, .lsg--headline, .lsg--sub-headline, .lsg--sub-sub-headline");
-   var regexp = new RegExp(searchBox, 'i');
-   selection = Array.prototype.slice.call(selection);
-   var matched = [];
-   var unmatched = [];
+    for (var i = 0; i < selection.length; i++) {
 
-   for (var i = 0; i < selection.length; i++) {
+      if (selection[i].textContent.match(regexp)) {
+        addMatch(matched, selection[i]);
 
-     if (selection[i].textContent.match(regexp)) {
-       addMatch(matched, selection[i]);
+        addNextElement(selection, matched, i);
 
-       addNextElement(selection, matched, i);
+        if (!hasClass(selection[i], 'lsg--headline')) {
+          addPreviousElement(selection, matched, i);
+        }
+      };
+    };
 
-       if (!hasClass(selection[i], 'lsg--headline')) {
-         addPreviousElement(selection, matched, i);
-       }
-     };
-   };
+    unmatched = selection.filter(function(elem) {
+      return matched.indexOf(elem) === -1
+    });
 
- unmatched = selection.filter(function(elem) {
-   return matched.indexOf(elem) === -1
- });
+    unmatched.map(function(item) {
+      item.setAttribute('style', 'display: none');
+    });
 
- unmatched.map(function(item) {
-   item.setAttribute('style', 'display: none');
- });
-
- matched.map(function(item) {
-   item.setAttribute('style', 'display: block');
- });
-});
+    matched.map(function(item) {
+      item.setAttribute('style', 'display: block');
+    });
+  });
 </script>
