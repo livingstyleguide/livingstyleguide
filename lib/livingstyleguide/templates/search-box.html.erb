@@ -3,13 +3,13 @@
 </div>
 <script>
   function hasClass(ele, cls) {
-    return ele.classList.contains(cls)
+    return ele.classList.contains(cls);
   }
 
   function addMatch(matched, node) {
     if (node.nodeType !== Node.TEXT_NODE) {
       if (node.className.match(/lsg--/)) {
-        matched.push(node)
+        matched.push(node);
       }
     }
   }
@@ -36,36 +36,33 @@
     }
   }
 
-  document.querySelector(".lsg--search-box").addEventListener('input', function(event) {
-    var searchBox = this.value;
+  document.querySelector(".lsg--search-box").addEventListener("input", function(event) {
+    var searchTerm = this.value;
 
     var selection = document.querySelectorAll(".lsg--example, .lsg--color-swatches, .lsg--font-example, .lsg--paragraph, .lsg--unordered-list, .lsg--ordered-list, .lsg--headline, .lsg--sub-headline, .lsg--sub-sub-headline");
-    var regexp = new RegExp(searchBox, 'i');
+    var regexp = new RegExp(searchTerm, "i");
     selection = Array.prototype.slice.call(selection);
     var matched = [];
     var unmatched = [];
 
     for (var i = 0; i < selection.length; i++) {
-
       if (selection[i].textContent.match(regexp)) {
         addMatch(matched, selection[i]);
-
         addNextElement(selection, matched, i);
         addPreviousElement(selection, matched, i);
-        
       };
     };
 
     unmatched = selection.filter(function(elem) {
-      return matched.indexOf(elem) === -1
+      return matched.indexOf(elem) === -1;
     });
 
     unmatched.map(function(item) {
-      item.setAttribute('style', 'display: none');
+      item.style.display = "none";
     });
 
     matched.map(function(item) {
-      item.setAttribute('style', 'display: block');
+      item.style.display = "block";
     });
   });
 </script>

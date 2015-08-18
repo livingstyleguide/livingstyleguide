@@ -1,5 +1,5 @@
 LivingStyleGuide.default_options[:search_box] = {
-  placeholder: "Search..."
+  placeholder: "Search …"
 }
 
 LivingStyleGuide.add_filter :search_box do |arguments, options, content|
