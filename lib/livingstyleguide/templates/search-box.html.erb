@@ -8,7 +8,7 @@
 
   function addMatch(matched, node) {
     if (node.nodeType !== Node.TEXT_NODE) {
-      if (node.className.includes("lsg--")) {
+      if (node.className.match(/lsg--/)) {
         matched.push(node)
       }
     }
