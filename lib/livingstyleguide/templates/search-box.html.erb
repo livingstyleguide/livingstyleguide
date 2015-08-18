@@ -1,5 +1,5 @@
-<div id="search">
-  <input type="text" id="search-box" value="" placeholder="Search box">
+<div class="lsg--search">
+  <input type="text" class="lsg--search-box" value="" placeholder="Search box">
 </div>
 <script>
   function hasClass(ele, cls) {
@@ -16,7 +16,7 @@
 
   var addNextElement = function(selection, matched, i) {
     var j = i + 1;
-    while(j < selection.length) {
+    while (j < selection.length) {
       if (hasClass(selection[j], "lsg--headline")) {
         break;
       }
@@ -27,16 +27,16 @@
 
   var addPreviousElement = function(selection, matched, i) {
     var j = i;
-    while(j >= 0) {
+    while (j >= 0) {
       addMatch(matched, selection[j]);
-      if(hasClass(selection[j], "lsg--headline")) {
+      if (hasClass(selection[j], "lsg--headline")) {
         break;
       }
       j--;
     }
   }
 
-  document.getElementById("search-box").addEventListener('input', function(event) {
+  document.querySelector(".lsg--search-box").addEventListener('input', function(event) {
     var searchBox = this.value;
 
     var selection = document.querySelectorAll(".lsg--example, .lsg--color-swatches, .lsg--font-example, .lsg--paragraph, .lsg--unordered-list, .lsg--ordered-list, .lsg--headline, .lsg--sub-headline, .lsg--sub-sub-headline");

@@ -1,10 +1,8 @@
-#search {
+.lsg--search {
   margin: 0px auto;
-  width:  $lsg--width + ($lsg--width / 2);
+  width: $lsg--width + ($lsg--width / 2);
 }
 
-#search-box{
-  bottom: 2 * $lsg--gap-width;
-  float: right;
-  position: relative;
+.lsg--search-box {
+  margin: 2 * $lsg--gap-width $lsg--width + ($lsg--width / 4);
 }
