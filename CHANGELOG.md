@@ -2,6 +2,7 @@
 
 ## 2.0.0.alpha.x
 
+* Inline search in the style guide via `@search-box` (RGSoC)
 * allow commands inside of command blocks (e.g. setting `@haml` inside of
   `@header`)
 * `@default type: xyz` now also applies for code examples

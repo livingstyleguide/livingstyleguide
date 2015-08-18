@@ -582,6 +582,23 @@ See [Custom Header](#custom-header), just use `@head:`. This way you can
 add any `<meta>` tag or link additional files.
 
 
+### Search
+
+Enable search for the style guide:
+
+```
+@search-box
+```
+
+This will add a search box on top of the style guide which filters the content via JavaScript.
+
+You can also customize (e.g. translate) the placeholder for the search box:
+
+```
+@search-box placeholder: Buscar
+```
+
+
 ### Custom Settings
 
 Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_
