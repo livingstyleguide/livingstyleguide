@@ -9,6 +9,7 @@
 * Ugly scrollbars on code are hidden by default now
 * Code examples also got a copy button (RGSoC)
 * Added viewport for mobile view
+* Fixed escaping of IDs in CSS
 
 
 ## 2.0.0.alpha.9
