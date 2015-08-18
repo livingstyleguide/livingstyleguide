@@ -7,6 +7,7 @@
   `@header`)
 * `@default type: xyz` now also applies for code examples
 * Ugly scrollbars on code are hidden by default now
+* Code examples also got a copy button (RGSoC)
 
 
 ## 2.0.0.alpha.9
