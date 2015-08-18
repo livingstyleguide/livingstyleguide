@@ -1,0 +1,8 @@
+.lsg--search {
+  margin: 0px auto;
+  width: $lsg--width + ($lsg--width / 2);
+}
+
+.lsg--search-box {
+  margin: 2 * $lsg--gap-width $lsg--width + ($lsg--width / 4);
+}
