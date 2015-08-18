@@ -120,6 +120,7 @@
   background-size: 90%;
   border-radius: $lsg--border-radius;
   bottom: floor($lsg--gap-width / 2);
+  cursor: pointer;
   height: $lsg--button-height;
   position: absolute;
   right: floor($lsg--gap-width / 2);
