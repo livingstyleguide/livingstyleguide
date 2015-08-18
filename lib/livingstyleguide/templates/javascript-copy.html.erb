@@ -1,14 +1,14 @@
 <script>
-  function selectElementRange(copyElementSelect){
+  function selectElementRange(copyElementSelect) {
     var range = document.createRange();
     range.selectNode(copyElementSelect);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
 
-    document.execCommand('copy');
+    document.execCommand("copy");
 
-    if (copyElementSelect.classList.contains('-lsg-remove')){
-       document.body.removeChild(copyElementSelect);
+    if (copyElementSelect.classList.contains("-lsg-remove")) {
+      document.body.removeChild(copyElementSelect);
     }
 
     window.getSelection().removeAllRanges();
@@ -16,9 +16,10 @@
 
   function testCopy() {
     try {
-      document.execCommand('copy');
+      document.execCommand("copy");
       return true;
-    } catch(err) {
+    }
+    catch(err) {
       return false;
     }
   }

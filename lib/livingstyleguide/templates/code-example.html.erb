@@ -1,22 +1,21 @@
 <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (testCopy()) {
+      var code = document.getElementsByClassName("lsg--code");
 
-  document.addEventListener('DOMContentLoaded', function() {
-    if (testCopy()){
-      var code = document.getElementsByClassName('lsg--code');
-
-      for (var i = 0; i < code.length; i++){
-        var new_button = createButton()
-        code[i].appendChild(new_button)
-        new_button.addEventListener('click', function(event) {
+      for (var i = 0; i < code.length; i++) {
+        var newButton = createButton()
+        code[i].appendChild(newButton)
+        newButton.addEventListener("click", function(event) {
           selectElementRange(this.parentNode);
         })
       }
     }
   });
 
-  function createButton(copyCodeSelect){
-    var buttonCopy = document.createElement('button');
+  function createButton(copyCodeSelect) {
+    var buttonCopy = document.createElement("button");
     buttonCopy.className = "lsg--button";
-    return buttonCopy
+    return buttonCopy;
   }
 </script>
