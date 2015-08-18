@@ -82,7 +82,6 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def evaluate(scope, locals, &block)
     @head = ""
     @header = ""
-    @header << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/search-box.html.erb")).result(binding)
     @footer = ""
     @scope = scope
     result = ERB.new(erb).result(@filters.get_binding)
