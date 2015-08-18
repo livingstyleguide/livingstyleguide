@@ -7,7 +7,7 @@ LivingStyleGuide.add_filter :css do |arguments, options, css|
     document.depend_on file
     document.scss << %Q(@import "#{file}";\n)
   else
-    scope = "#" + document.id.gsub(/[\/\.]/, '\\\0')
+    scope = "#" + document.id.gsub(/[\/\.]/, '\\\\\0')
     scoped_css = css.gsub(/(?<=\}|\A|;)[^@\};]+?(?=\{)/) do |selector|
       selector.split(",").map do |single_selector|
         "#{scope} #{single_selector}"
