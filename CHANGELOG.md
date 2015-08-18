@@ -6,6 +6,7 @@
 * allow commands inside of command blocks (e.g. setting `@haml` inside of
   `@header`)
 * `@default type: xyz` now also applies for code examples
+* Ugly scrollbars on code are hidden by default now
 
 
 ## 2.0.0.alpha.9
