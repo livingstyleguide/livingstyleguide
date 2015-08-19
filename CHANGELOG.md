@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0.alpha.x
+## 2.0.0.alpha.10
 
 * Inline search in the style guide via `@search-box` (RGSoC)
 * allow commands inside of command blocks (e.g. setting `@haml` inside of
