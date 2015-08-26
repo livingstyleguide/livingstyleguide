@@ -72,7 +72,7 @@
 }
 
 .lsg--code-block {
-  display: block;
+  display: none;
   min-height: $lsg--gap-width + $lsg--button-height;
   line-height: $lsg--code-line-height;
   padding: 3px $lsg--gap-width;

@@ -1,0 +1,22 @@
+.show-eye {
+  margin: 0 auto;
+  width: 642px;
+}
+.lsg--code-switch {
+  background-color: $lsg--background-color;
+  background-image: $lsg--code-switch-image;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  border-radius: $lsg--border-radius;
+  height: $lsg--button-height;
+  width: $lsg--button-width;
+  position: relative;
+  float: right;
+  bottom: 41px;
+  right: 10px;
+}
+
+.lsg--code-switch.show-eye {
+  background-image: $lsg--show-code;
+}
