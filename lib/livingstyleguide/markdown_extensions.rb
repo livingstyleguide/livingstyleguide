@@ -27,6 +27,7 @@ module LivingStyleGuide
       @header = id = slug(text)
       klass = %w(page-title headline sub-headline sub-sub-headline)[header_level]
       header_level += 1
+      LivingStyleGuide::Document.add_navigation(%Q(<a class="#{@options[:prefix]}#{klass}" href="##{id}">#{text}</a>))
       %Q(<h#{header_level} class="#{@options[:prefix]}#{klass}" id="#{id}"><a class="lsg--anchor" href="##{id}"></a>#{text}</h#{header_level}>\n)
     end
 

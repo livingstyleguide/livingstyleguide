@@ -1,0 +1,24 @@
+nav.lsg--navigation {
+  
+  left: 0px;
+  position: fixed;
+  
+  ul {
+    list-style: none;
+     
+    li:hover > ul {
+      display: block;
+    }
+     
+    li a {
+        color: $lsg--color;
+        font-size: $lsg--base-font-size;
+        font-style: $lsg--base-font;        
+    }
+      
+    ul{
+      display: none;
+    }
+  }
+}
+
