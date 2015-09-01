@@ -72,16 +72,12 @@
 }
 
 .lsg--code-block {
-  display: none;
+  display: block;
   min-height: $lsg--gap-width + $lsg--button-height;
   line-height: $lsg--code-line-height;
   padding: 3px $lsg--gap-width;
   max-width: $lsg--width;
   -ms-overflow-style: none;
-
-  .show-code & {
-    display: block;
-  }
 
   &::-webkit-scrollbar {
     width: 0 !important;
