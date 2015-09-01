@@ -1,0 +1,32 @@
+.lsg--code-switch-container {
+  margin: 0 auto;
+  width: $lsg--width;
+}
+
+.lsg--code-switch {
+  background-color: $lsg--background-color;
+  background-image: $lsg--code-switch-show;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  border-radius: $lsg--border-radius;
+  bottom: 4 * $lsg--gap-width;
+  float: right;
+  height: $lsg--button-height;
+  position: relative;
+  right: $lsg--gap-width;
+  width: $lsg--button-width;
+}
+
+.lsg--hide-code {
+
+  .lsg--code-switch {
+    background-image: $lsg--code-switch-hide;
+  }
+
+  .lsg--code-block {
+    display: none;
+  }
+
+}
+
