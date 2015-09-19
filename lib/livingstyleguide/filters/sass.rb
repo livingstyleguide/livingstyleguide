@@ -1,3 +1,5 @@
+require 'sass'
+
 LivingStyleGuide.add_filter :scss do |arguments, options, scss|
   file = arguments.first
   if file
