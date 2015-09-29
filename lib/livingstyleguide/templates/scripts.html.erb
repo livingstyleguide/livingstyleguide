@@ -1,0 +1,3 @@
+<% %w{ copy copy_code copy_colors}.each do |partial| %>
+ <%= ERB.new(File.read("#{scripts_path}/#{partial}.html.erb")).result %>
+<% end %>
