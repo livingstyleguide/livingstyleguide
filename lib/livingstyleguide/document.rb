@@ -12,7 +12,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :syntax
   attr_reader :scope
 
-  %w(scss head header footer defaults).each do |attr|
+  %w(scss head header footer defaults javascript).each do |attr|
     define_method attr do
       if options.has_key?(:livingstyleguide)
         options[:livingstyleguide].send(attr)
@@ -84,10 +84,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def evaluate(scope, locals, &block)
+    scripts_path = "#{File.dirname(__FILE__)}/templates/scripts"
     @head = ""
-    @head << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/javascript-copy.html.erb")).result(binding)
-    @head << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/code-example.html.erb")).result(binding)
-    @head << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/colors-example.html.erb")).result(binding)
+    @javascript = ""
+    @javascript << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/scripts.html.erb")).result(binding)
     @header = ""
     @footer = ""
     @scope = scope
