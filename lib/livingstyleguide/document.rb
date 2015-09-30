@@ -31,6 +31,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
       end
     end
   end
+
   def self.add_navigation(anchor)
     @@navigation << anchor
   end
