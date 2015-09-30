@@ -9,7 +9,9 @@ module LivingStyleGuide
       doc = LivingStyleGuide::Document.new(input_file) do
         input(input_file)
       end
-      output doc.render, input_file, output_file
+      html = doc.render
+      html.gsub!('<div class="lsg--container">', '<div class="lsg--container">' + LivingStyleGuide::Document.navigation)
+      output html, input_file, output_file
     end
 
     desc 'version', 'Shows the current version of the Gem'

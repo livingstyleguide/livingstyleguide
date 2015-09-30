@@ -12,6 +12,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :syntax
   attr_reader :scope
 
+  @@navigation = []
+
   %w(scss head header footer defaults).each do |attr|
     define_method attr do
       if options.has_key?(:livingstyleguide)
@@ -28,6 +30,66 @@ class LivingStyleGuide::Document < ::Tilt::Template
         instance_variable_get("@#{attr}", value)
       end
     end
+  end
+
+  def self.add_navigation(anchor)
+    @@navigation << anchor
+  end
+
+  def self.navigation
+    menu = '<nav class="lsg--navigation"><ul>'
+    index = 0
+    headline_closed         = true
+    sub_headline_closed     = true
+    sub_sub_headline_closed = true
+
+    while index < @@navigation.length
+      if @@navigation[index] =~ /lsg--headline/
+
+        unless sub_headline_closed
+          menu << '</ul>'
+          sub_headline_closed = true
+        end
+
+        unless sub_sub_headline_closed
+          menu << '</ul>'
+          sub_sub_headline_closed = true
+        end
+
+        menu << '<li>'
+        menu << @@navigation[index]
+        index += 1
+        next
+
+      end
+
+      if @@navigation[index] =~ /lsg--sub-headline/
+
+        unless sub_sub_headline_closed
+          menu << '</ul>'
+          sub_sub_headline_closed = true
+        end
+        menu << '<ul>' if sub_headline_closed
+        menu << '<li>'
+        menu << @@navigation[index]
+        sub_headline_closed = false
+        index += 1
+        next
+      end
+
+      if @@navigation[index] =~ /lsg--sub-sub-headline/
+        menu << '<ul>' if sub_sub_headline_closed
+        menu << '<li>'
+        menu << @@navigation[index]
+        menu << '</li>'
+        sub_sub_headline_closed = false
+        index += 1
+        next
+      end
+
+    end
+    menu << '</ul></nav>'
+    menu
   end
 
   def prepare
