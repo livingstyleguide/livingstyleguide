@@ -12,7 +12,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :syntax
   attr_reader :scope
 
-  %w(scss head header footer defaults javascript).each do |attr|
+  %w(scss head header footer defaults javascript before after).each do |attr|
     define_method attr do
       if options.has_key?(:livingstyleguide)
         options[:livingstyleguide].send(attr)
@@ -91,6 +91,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
       @javascript << ERB.new(File.read("#{scripts_path}/#{partial}.js.erb")).result(binding)
     end
     @header = ""
+    @before = ""
+    @after = ""
     @footer = ""
     @scope = scope
     result = ERB.new(erb).result(@filters.get_binding)
