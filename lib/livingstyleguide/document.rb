@@ -87,7 +87,9 @@ class LivingStyleGuide::Document < ::Tilt::Template
     scripts_path = "#{File.dirname(__FILE__)}/templates/scripts"
     @head = ""
     @javascript = ""
-    @javascript << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/scripts.html.erb")).result(binding)
+    %w{ copy copy_code copy_colors }.each do |partial|
+      @javascript << ERB.new(File.read("#{scripts_path}/#{partial}.js.erb")).result(binding)
+    end
     @header = ""
     @footer = ""
     @scope = scope
