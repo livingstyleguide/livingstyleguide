@@ -12,7 +12,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :syntax
   attr_reader :scope
 
-  %w(scss head header footer defaults).each do |attr|
+  %w(scss head header footer defaults before after).each do |attr|
     define_method attr do
       if options.has_key?(:livingstyleguide)
         options[:livingstyleguide].send(attr)
@@ -89,6 +89,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @head << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/code-example.html.erb")).result(binding)
     @head << ERB.new(File.read("#{File.dirname(__FILE__)}/templates/colors-example.html.erb")).result(binding)
     @header = ""
+    @before = ""
+    @after = ""
     @footer = ""
     @scope = scope
     result = ERB.new(erb).result(@filters.get_binding)
