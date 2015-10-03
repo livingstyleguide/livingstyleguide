@@ -3,6 +3,11 @@ require "compass"
 require "livingstyleguide"
 require "heredoc_unindent"
 
+require "tilt/erubis"
+require "tilt/redcarpet"
+require "tilt/haml"
+require "tilt/coffee"
+
 Compass.configuration.add_import_path "."
 
 def parse_file(filename)

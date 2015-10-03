@@ -133,7 +133,7 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with a block" do
         LivingStyleGuide.command :x do |arguments, options, block|
-          block.gsub(/\w/, "X")
+          block.unindent.gsub(/\w/, "X")
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @x {
@@ -142,8 +142,8 @@ describe LivingStyleGuide::Document do
           }
           Lorem ipsum
         INPUT
-            XXXXX XXXXX
-            XXXXX
+          XXXXX XXXXX
+          XXXXX
           Lorem ipsum
         OUTPUT
       end
@@ -169,7 +169,7 @@ describe LivingStyleGuide::Document do
 
       it "blocks should allow CSS (nested {})" do
         LivingStyleGuide.command :css_test do |arguments, options, block|
-          block
+          block.unindent
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @css-test {
@@ -191,19 +191,19 @@ describe LivingStyleGuide::Document do
           }
           Lorem ipsum
         INPUT
-            .my-class {
-              background: black;
-              &:hover {
-                background: red;
-              }
+          .my-class {
+            background: black;
+            &:hover {
+              background: red;
             }
+          }
           Lorem ipsum
-            .my-class {
-              background: black;
-              &:hover {
-                background: red;
-              }
+          .my-class {
+            background: black;
+            &:hover {
+              background: red;
             }
+          }
           Lorem ipsum
         OUTPUT
       end
