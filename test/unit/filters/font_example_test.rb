@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require 'document_test_helper'
+require "document_test_helper"
 
 class FontExampleTest < DocumentTestCase
 
@@ -60,5 +60,3 @@ class FontExampleTest < DocumentTestCase
   end
 
 end
-
-

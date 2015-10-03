@@ -1,16 +1,15 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
+require "rubygems"
 begin
-require 'bundler/setup'
+require "bundler/setup"
 rescue LoadError
 end
 
-lib = File.expand_path('../lib', File.dirname(__FILE__))
+lib = File.expand_path("../lib", File.dirname(__FILE__))
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'livingstyleguide'
-require 'livingstyleguide/command_line_interface'
+require "livingstyleguide"
+require "livingstyleguide/command_line_interface"
 
 LivingStyleGuide::CommandLineInterface.start(ARGV)
-

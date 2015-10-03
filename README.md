@@ -6,7 +6,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 ![preview](https://cloud.githubusercontent.com/assets/103399/3854622/2fb68574-1eda-11e4-862c-33e7d7943c56.jpg)
 
 * On the left: http://www.homify.de/assets/styleguide.html (non-public repository)
-* On the right: http://livingstyleguide.com/eurucamp/ ([public repository](https://github.com/eurucamp/livingstyleguide-eurucamp))
+* On the right: http://style-guide.eurucamp.org/2015/ ([public repository](https://github.com/eurucamp/livingstyleguide-eurucamp))
 
 ----
 
@@ -45,8 +45,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
 3. Write documentation for each module *sass/partials/_buttons.lsg* (to describe *_buttons.scss* in the same folder):
 
-        Buttons
-        =======
+        # Buttons
 
         ```
         <button class="button">Example button</button>
@@ -80,14 +79,14 @@ Sprockets and Tilt versions.
    Add this line to your application’s _Gemfile_:
 
    ``` ruby
-    gem 'livingstyleguide', '2.0.0.alpha.10'
+   gem "livingstyleguide", "2.0.0.alpha.10"
    ```
 
    And then execute:
 
    ```
-    $ bundle
-    $ rails s
+   $ bundle
+   $ rails s
    ```
 
 2. Create *_app/assets/stylesheets/styleguide.html.lsg_* with:
@@ -104,8 +103,7 @@ Sprockets and Tilt versions.
 
 3.  Write documentation for each module *app/assets/stylesheets/partials/_buttons.lsg* (to describe *_buttons.sass* in the same folder):
 
-        Buttons
-        =======
+        # Buttons
 
         ```
         <button class="button">Example button</button>
@@ -126,14 +124,14 @@ Sprockets and Tilt versions.
 *  Add the _styleguide.html_ to the precompile list in _config/application.rb_:
 
    ``` ruby
-   config.assets.precompile += ['styleguide.html']
+   config.assets.precompile += ["styleguide.html"]
    ```
 * There is a [Rails example application](https://github.com/livingstyleguide/examples/tree/master/rails-example) available on Github.
 *  Use _sass-rails_ > v5 to allow _Sass_ > v3.2:
 
    ``` ruby
    # Gemfile:
-   gem 'sass-rails', '~> 5.0.0.beta1'
+   gem "sass-rails", "~> 5.0.0.beta1"
    ```
 
    See [issue #99](https://github.com/livingstyleguide/livingstyleguide/issues/99) for discussions.
@@ -148,14 +146,14 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
    Add this line to your application’s _Gemfile_:
 
    ```
-    gem 'livingstyleguide', '2.0.0.alpha.10'
+   gem "livingstyleguide", "2.0.0.alpha.10"
    ```
 
    And then execute:
 
    ```
-    $ bundle
-    $ middleman
+   $ bundle
+   $ middleman
    ```
 
 2. Create *_source/styleguide.html.lsg_* with:
@@ -172,8 +170,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
 
 3. Write documentation for each module *source/css/partials/_buttons.lsg* (to describe *_buttons.sass* in the same folder):
 
-        Buttons
-        =======
+        # Buttons
 
         ```
         <button class="button">Example button</button>
@@ -298,10 +295,11 @@ There are more **commands** to generate output. They start with an `@` and can b
 
 Alternatively you can set the colors you want to output yourself (much better for grouping different shades of one color). `-` leaves a cell in the matrix empty:
 
-    @colors:
-    -       $light-red  $gray
-    $green  $red        -
-    -       $dark-red   $black
+    @colors {
+      -       $light-red  $gray
+      $green  $red        -
+      -       $dark-red   $black
+    }
 
 
 ### Haml Examples
@@ -389,10 +387,11 @@ This will show and execute the JavaScript, e. g. you designed tabs and
 need few lines of jQuery to bring them alive.
 
     ```
-    @javascript
-    $('.button').click(function() {
-      alert('Hello World!');
-    });
+    @javascript {
+      $(".button").click(function() {
+        alert("Hello World!");
+      });
+    }
     ```
 
 
@@ -403,24 +402,25 @@ executed as JavaScript and displayed as CoffeeScript:
 
     ```
     @coffee-script
-    $('.button').click ->
-      alert 'Hello World!'
+      $(".button").click ->
+        alert "Hello World!"
     ```
 
 
 ### Font Examples
 
-Show which fonts should be used on your website—this will output and example text block (A—Z, a—z, 0—9, and some special characters) of the given font. It accepts valid CSS like for `font: 32px Comic Sans;`.
+Show which fonts should be used on your website—this will output and example text block (A—Z, a—z, 0—9, and some special characters) of the given font. It accepts valid CSS like for `font: 32px comic sans ms;`.
 
 
-    @font-example 32px Comic Sans
+    @font-example 32px comic sans ms
 
 
 Use your own text (defaults to “ABC…\nabc…\n123…\n!&…” if not set):
 
-    @font-example 32px Comic Sans:
-    Schweißgequält zündet Typograf Jakob
-    verflixt öde Pangramme an.
+    @font-example 32px comic sans ms {
+      Schweißgequält zündet Typograf Jakob
+      verflixt öde Pangramme an.
+    }
 
 
 ### Require Ruby files or Gems
@@ -490,22 +490,20 @@ render the view:
     ```
     <h1><%= foo %></h1>
     @type erb
-    @data:
-    {
+    @data {
       "foo": "bar"
     }
     ```
 
 This will render as `<h1>bar</h1>` in the HTML but show the ERB source
-below. The data is written using JSON syntax. If you prefer YAML, you
-can (remember, you can also [set this globally as default
-option](#default-options)):
+below. The data is written using JSON or YAML syntax (as JSON is a subset of
+YAML):
 
     ```
     <h1><%= foo %></h1>
     @type erb
-    @data format: yaml:
-    foo: bar
+    @data format: yaml
+      foo: bar
     ```
 
 If there is already a view template, let’s name it
@@ -513,8 +511,7 @@ If there is already a view template, let’s name it
 
     ```
     @use views/headline.html.erb
-    @data:
-    {
+    @data {
       "foo": "bar"
     }
     ```
@@ -530,20 +527,6 @@ edge cases—like very long user names or missing values—in your style
 guide.
 
 
-### Tipp: Less Noisy Code
-
-As Markdown should not look too technical, using YAML data, setting
-`@default format: yaml` in your index file and using indented syntax for
-the command (no colon but indent following lines by two spaces) helps to
-keep it visually more minimal:
-
-    ```
-    @use views/headline.html.erb
-    @data
-      foo: bar
-    ```
-
-
 ## Styling the Style Guide
 
 ### Custom Header
@@ -552,20 +535,21 @@ The examples in [the screenshot above](#readme) use custom headers to have an in
 You can add whatever HTML you want and some Sass to style it to your _styleguide.html.lsg:_
 
 ```
-@header:
-<div class="my-header">
-  <img src="my-style-guide-logo.svg" alt="My Style Guide">
-  <h1>My Style Guide</h1>
-</div>
+@header {
+  <div class="my-header">
+    <img src="my-style-guide-logo.svg" alt="My Style Guide">
+    <h1>My Style Guide</h1>
+  </div>
+}
 ```
 
 You can use any templating engine supported by Tilt:
 
 ```
-@header type: haml:
-.my-header
-  %img(src="my-style-guide-logo.svg" alt="My Style Guide")
-  %h1 My Style Guide
+@header type: haml
+  .my-header
+    %img(src="my-style-guide-logo.svg" alt="My Style Guide")
+    %h1 My Style Guide
 ```
 
 [Here’s the code](https://github.com/eurucamp/livingstyleguide-eurucamp/blob/master/source/index.html.lsg#L71-L80) of the custom header in the example of the screenshot.
@@ -573,12 +557,12 @@ You can use any templating engine supported by Tilt:
 
 ### Custom Footer
 
-See [Custom Header](#custom-header), just use `@footer:`.
+See [Custom Header](#custom-header), just use `@footer`.
 
 
 ### Custom Head Elements
 
-See [Custom Header](#custom-header), just use `@head:`. This way you can
+See [Custom Header](#custom-header), just use `@head`. This way you can
 add any `<meta>` tag or link additional files.
 
 
@@ -604,7 +588,7 @@ You can also customize (e.g. translate) the placeholder for the search box:
 Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_
 
 ```
-@style base-font: 'Comic Sans MS', 'Arial', sans-serif
+@style base-font: comic sans ms, arial, sans-serif
 @style base-font-size: 7em
 @style background-color: red
 @style border-color: $my-color
@@ -631,10 +615,11 @@ If you need external JavaScript files to be included in the style guide, there a
 
 @javascript-after http://code.jquery.com/jquery-2.1.3.min.js
 @javascript-after assets/application.js
-@javascript-after:
-$(function() {
-  // custom code
-});
+@javascript-after {
+  $(function() {
+    // custom code
+  });
+}
 ```
 
 If you use [@javascript](#javascript-examples) or [@coffee-script](#coffeescript-examples), your application files and jQuery might need to be included in the `javascript-before` section.
@@ -664,7 +649,7 @@ which works well with CoffeeScript.
 Add this line to your application’s Gemfile:
 
 ``` ruby
-gem 'livingstyleguide', '2.0.0.alpha.10'
+gem "livingstyleguide", "2.0.0.alpha.10"
 ```
 
 And then execute:
@@ -683,7 +668,7 @@ Or install it yourself as:
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
+3. Commit your changes (`git commit -am "Add some feature"`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 

@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
   if (testCopy()) {
     var code = document.getElementsByClassName("lsg--code");
@@ -8,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
       code[i].appendChild(newButton)
       newButton.addEventListener("click", function(event) {
         selectElementRange(this.parentNode);
-      })
+      });
     }
   }
 });
@@ -18,4 +17,3 @@ function createButton(copyCodeSelect) {
   buttonCopy.className = "lsg--button";
   return buttonCopy;
 }
-

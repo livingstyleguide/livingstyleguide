@@ -19,7 +19,7 @@ end
   RUBY
 end
 
-%w(head header footer).each do |part|
+%w(head header footer before after).each do |part|
   eval <<-RUBY
     LivingStyleGuide.add_filter :#{part} do |arguments, options, block|
       html = LivingStyleGuide::Document.new(livingstyleguide: document) { block }

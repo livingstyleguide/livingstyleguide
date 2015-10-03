@@ -12,7 +12,6 @@ $gap-width: 3 * $grid;
 //// COLORS ////
 
 @import "base/colors";
-
 @import "base/typography";
 
 
@@ -150,7 +149,7 @@ style {
 
 .installation {
   color: $turquoise;
-  font-family: "courier new", courier, monospace;
+  font-family: courier new, courier, monospace;
   font-size: 2.5rem;
   margin: 2em 0;
 

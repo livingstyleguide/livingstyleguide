@@ -1,4 +1,4 @@
-require 'document_test_helper'
+require "document_test_helper"
 
 class AfterTest < DocumentTestCase
 

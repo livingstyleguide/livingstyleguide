@@ -1,5 +1,4 @@
-#source: "style.scss"
-#title: "My Nice & Beautiful Living Style Guide"
+@title My Nice & Beautiful Living Style Guide
 
 @scss style.scss
 

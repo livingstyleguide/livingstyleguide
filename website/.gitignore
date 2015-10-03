@@ -20,4 +20,3 @@ Gemfile.lock
 # Ignore Compass’ sprites
 /source/images/graphics-*.png
 /source/fonts/
-

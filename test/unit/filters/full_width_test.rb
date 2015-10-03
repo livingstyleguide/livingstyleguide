@@ -1,4 +1,4 @@
-require 'document_test_helper'
+require "document_test_helper"
 
 class FullWidthTest < DocumentTestCase
 
@@ -13,5 +13,3 @@ class FullWidthTest < DocumentTestCase
   end
 
 end
-
-

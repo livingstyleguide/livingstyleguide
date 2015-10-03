@@ -1,5 +1,4 @@
-Typography
-==========
+# Typography
 
 ```
 @font-example 3em Gubia, Helvetica Neue, Helvetica, Arial
@@ -8,4 +7,3 @@ Typography
 ```
 @font-example bold 3em Gubia, Helvetica Neue, Helvetica, Arial
 ```
-

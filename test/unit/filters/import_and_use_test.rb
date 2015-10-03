@@ -1,4 +1,4 @@
-require 'document_test_helper'
+require "document_test_helper"
 
 class ImportAndSourceTest < DocumentTestCase
 
@@ -107,7 +107,7 @@ class ImportAndSourceTest < DocumentTestCase
   end
 
   def test_import_haml
-    require 'tilt/haml'
+    require "tilt/haml"
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
@@ -124,7 +124,7 @@ class ImportAndSourceTest < DocumentTestCase
   end
 
   def test_import_with_data
-    { erb: 'erubis', haml: 'haml' }.each do |type, file|
+    { erb: "erubis", haml: "haml" }.each do |type, file|
       require "tilt/#{file}"
       assert_render_match <<-INPUT, <<-OUTPUT, template: :default
         @import test/fixtures/import/with-data.#{type} {
@@ -137,7 +137,7 @@ class ImportAndSourceTest < DocumentTestCase
   end
 
   def test_use_haml
-    require 'tilt/haml'
+    require "tilt/haml"
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
