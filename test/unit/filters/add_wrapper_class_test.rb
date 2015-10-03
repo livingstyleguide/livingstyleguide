@@ -1,4 +1,4 @@
-require 'document_test_helper'
+require "document_test_helper"
 
 class AddWrapperClassTest < DocumentTestCase
 
@@ -13,4 +13,3 @@ class AddWrapperClassTest < DocumentTestCase
   end
 
 end
-

@@ -1,9 +1,9 @@
 LivingStyleGuide.add_filter :set do |arguments, options, block|
   options.each do |key, value|
     document.options[key] = case value
-    when 'true'
+    when "true"
       true
-    when 'false'
+    when "false"
       false
     when /^\d+$/
       value.to_i

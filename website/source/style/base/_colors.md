@@ -1,8 +1,6 @@
-Colors
-======
+# Colors
 
-Primary
--------
+## Primary
 
 ```
 @colors
@@ -10,11 +8,9 @@ $pink $yellow $turquoise
 ```
 
 
-Secondary
----------
+## Secondary
 
 ```
 @colors
 $black $white $gray $light-pink
 ```
-

@@ -6,7 +6,7 @@ AddDefaultCharset utf-8
 # Set default domain
 
 <%
-  subdomain = current_branch == 'master' ? '' : current_branch.gsub('/', '-') + '.preview.'
+  subdomain = current_branch == "master" ? "" : current_branch.gsub("/", "-") + ".preview."
 %>
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -55,7 +55,7 @@ AddDefaultCharset utf-8
 
 
   # Compress all output labeled with one of the following MIME-types
-  # (for Apache versions below 2.3.7, you don't need to enable `mod_filter`
+  # (for Apache versions below 2.3.7, you don’t need to enable `mod_filter`
   #  and can remove the `<IfModule mod_filter.c>` and `</IfModule>` lines
   #  as `AddOutputFilterByType` is still in the core directives).
 
@@ -143,4 +143,3 @@ FileETag None
   ExpiresByType image/svg+xml                         "access plus 1 month"
 
 </IfModule>
-

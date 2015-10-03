@@ -4,17 +4,17 @@ Encoding.default_internal = Encoding::UTF_8
 require "yaml"
 
 begin
-  require 'compass'
+  require "compass"
 rescue LoadError
 end
 
 module LivingStyleGuide
   @@default_options = {
     default_language: :example,
-    title: 'Living Style Guide',
-    header: '<h1 class="lsg--page-title">Living Style Guide</h1>',
-    footer: '<div class="lsg--footer"><a class="lsg--logo" href="http://livingstyleguide.org">Made with the LivingStyleGuide gem.</a></div>',
-    root: '/'
+    title: "Living Style Guide",
+    header: %Q(<h1 class="lsg--page-title">Living Style Guide</h1>),
+    footer: %Q(<div class="lsg--footer"><a class="lsg--logo" href="http://livingstyleguide.org">Made with the LivingStyleGuide gem.</a></div>),
+    root: "/"
   }
 
   def self.default_options
@@ -36,8 +36,8 @@ module LivingStyleGuide
   end
 end
 
-require 'livingstyleguide/version'
-require 'livingstyleguide/markdown_extensions'
-require 'livingstyleguide/document'
-require 'livingstyleguide/filters'
-require 'livingstyleguide/integration'
+require "livingstyleguide/version"
+require "livingstyleguide/markdown_extensions"
+require "livingstyleguide/document"
+require "livingstyleguide/filters"
+require "livingstyleguide/integration"

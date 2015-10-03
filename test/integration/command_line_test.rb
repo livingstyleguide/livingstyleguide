@@ -1,13 +1,13 @@
-require 'test_helper'
-require 'open3'
+require "test_helper"
+require "open3"
 
 describe "LivingStyleGuide::CommandLineInterface" do
 
   # COMPILE
 
   it "should output the style guide from *.html.lsg source" do
-    cli 'compile styleguide.html.lsg' do |stdout|
-      File.exists?('styleguide.html').must_equal true
+    cli "compile styleguide.html.lsg" do |stdout|
+      File.exists?("styleguide.html").must_equal true
       stdout.strip.must_equal <<-STDOUT.strip
         Successfully generated a living style guide at styleguide.html.
       STDOUT
@@ -15,8 +15,8 @@ describe "LivingStyleGuide::CommandLineInterface" do
   end
 
   it "should output the style guide from *.lsg source" do
-    cli 'compile styleguide.lsg' do |stdout|
-      File.exists?('styleguide.html').must_equal true
+    cli "compile styleguide.lsg" do |stdout|
+      File.exists?("styleguide.html").must_equal true
       stdout.strip.must_equal <<-STDOUT.strip
         Successfully generated a living style guide at styleguide.html.
       STDOUT
@@ -24,8 +24,8 @@ describe "LivingStyleGuide::CommandLineInterface" do
   end
 
   it "should use different output file" do
-    cli 'compile styleguide.lsg hello-world.html' do |stdout|
-      File.exists?('hello-world.html').must_equal true
+    cli "compile styleguide.lsg hello-world.html" do |stdout|
+      File.exists?("hello-world.html").must_equal true
       stdout.strip.must_equal <<-STDOUT.strip
         Successfully generated a living style guide at hello-world.html.
       STDOUT
@@ -33,10 +33,10 @@ describe "LivingStyleGuide::CommandLineInterface" do
   end
 
   it "should read from STDIN and write to STDOUT" do
-    cli 'compile', <<-STDIN.unindent do |stdout|
+    cli "compile", <<-STDIN.unindent do |stdout|
       @import modules/buttons
     STDIN
-      File.exists?('styleguide.html').must_equal false
+      File.exists?("styleguide.html").must_equal false
       stdout.must_match %r(<button class="button">)
     end
   end
@@ -44,7 +44,7 @@ describe "LivingStyleGuide::CommandLineInterface" do
   # VERSION
 
   it "should show the current version" do
-    cli 'version' do |stdout|
+    cli "version" do |stdout|
       stdout.must_match %r(LivingStyleGuide #{LivingStyleGuide::VERSION})
     end
   end
@@ -61,16 +61,15 @@ describe "LivingStyleGuide::CommandLineInterface" do
 
   before do
     @current_path = Dir.pwd
-    Dir.chdir 'test/fixtures/standalone'
-    @files = Dir.glob('*')
+    Dir.chdir "test/fixtures/standalone"
+    @files = Dir.glob("*")
   end
 
   after do
-    (Dir.glob('*') - @files).each do |file|
+    (Dir.glob("*") - @files).each do |file|
       File.unlink file
     end
     Dir.chdir @current_path
   end
 
 end
-

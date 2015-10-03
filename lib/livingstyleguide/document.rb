@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-require 'tilt'
-require 'erb'
-require 'digest'
-require 'pathname'
+require "tilt"
+require "erb"
+require "digest"
+require "pathname"
 
 class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :source, :type, :filters, :template, :classes, :html
@@ -35,8 +35,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @filters = LivingStyleGuide::Filters.new(self)
     @template = options.has_key?(:livingstyleguide) ? :default : :layout
     @classes = []
-    @scss = ''
-    @css = ''
+    @scss = ""
+    @css = ""
     @locals = {}
     @defaults = {
       global: {
@@ -58,7 +58,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def css
-    scss_with_lsg = "#{scss}; @import 'livingstyleguide';"
+    scss_with_lsg = %Q(#{scss}; @import "livingstyleguide";)
     render_scss(scss_with_lsg)
   end
 
@@ -87,7 +87,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     scripts_path = "#{File.dirname(__FILE__)}/templates/scripts"
     @head = ""
     @javascript = ""
-    %w{ copy copy_code copy_colors }.each do |partial|
+    %w(copy copy_code copy_colors toggle_code).each do |partial|
       @javascript << ERB.new(File.read("#{scripts_path}/#{partial}.js.erb")).result(binding)
     end
     @header = ""
@@ -187,7 +187,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def remove_highlights(code)
-    code.gsub(/\*\*\*/, '')
+    code.gsub(/\*\*\*/, "")
   end
 
   private
@@ -197,17 +197,17 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def parse_filters
-    data.gsub('<%', '<%%').gsub(/\G(.*?)((```.+?```)|\Z)/m) do
+    data.gsub("<%", "<%%").gsub(/\G(.*?)((```.+?```)|\Z)/m) do
       content, code_block = $1, $2
       content.gsub(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|((?:\n+  .*)+(?=\n|\Z))| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
-        name, arguments_string, block = $1, $2 || '', $3 || $4 || $5
+        name, arguments_string, block = $1, $2 || "", $3 || $4 || $5
         options = {
           block_type: $3 ? :braces : $4 ? :indented : $5 ? :block : :none
         }
-        name = name.gsub('-', '_').to_sym
+        name = name.gsub("-", "_").to_sym
         arguments = parse_arguments(arguments_string, options)
         if options[:block_type] == :indented
-          block.gsub!(/\A\n(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, '') }
+          block.gsub!(/\A\n(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, "") }
         end
         yield name, arguments, options, block
       end + code_block
@@ -221,7 +221,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
       argument.strip!
       argument.gsub! "\\;", ";"
       if /^(?<key>[a-zA-Z0-9_\-]+):(?<value>.+)$/ =~ argument
-        options[key.downcase.gsub('-', '_').to_sym] = remove_quots(value.strip)
+        options[key.downcase.gsub("-", "_").to_sym] = remove_quots(value.strip)
         nil
       else
         remove_quots(argument)
@@ -232,7 +232,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def remove_quots(string)
-    string.sub(/^"(.*)"$|^'(.*)'$|^(.*)$/, '\\1\\2\\3').gsub(/\\("|')/, "\\1")
+    string.sub(/^"(.*)"$|^"(.*)"$|^(.*)$/, "\\1\\2\\3").gsub(/\\("|")/, "\\1")
   end
 
   private
@@ -256,7 +256,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def generate_id
     if @file
       id = Pathname.new(@file).cleanpath.to_s
-      id.sub('/_', '/').gsub(/\.\w+/, '')
+      id.sub("/_", "/").gsub(/\.\w+/, "")
     else
       "section-#{Digest::SHA256.hexdigest(data)[0...6]}"
     end
@@ -264,7 +264,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def scss_template
-    ::LivingStyleGuide.default_options[:scss_template] || Tilt['scss']
+    ::LivingStyleGuide.default_options[:scss_template] || Tilt["scss"]
   end
 
   private
@@ -281,4 +281,4 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 end
 
-Tilt.register 'lsg', LivingStyleGuide::Document
+Tilt.register "lsg", LivingStyleGuide::Document
