@@ -79,10 +79,6 @@
   max-width: $lsg--width;
   -ms-overflow-style: none;
 
-  .show-code & {
-    display: block;
-  }
-
   &::-webkit-scrollbar {
     width: 0 !important;
   }
