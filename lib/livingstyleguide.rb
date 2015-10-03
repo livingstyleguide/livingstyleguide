@@ -34,6 +34,12 @@ module LivingStyleGuide
       end
     end
   end
+
+  def self.template(file, scope)
+    file = "#{File.dirname(__FILE__)}/livingstyleguide/templates/#{file}"
+    erb = File.read(file)
+    ERB.new(erb).result(scope)
+  end
 end
 
 require "livingstyleguide/version"
