@@ -1,4 +1,4 @@
 LivingStyleGuide.command :toggle_code do |arguments, options, content|
-  document.header << ERB.new(File.read("#{File.dirname(__FILE__)}/../templates/toggle_code.html.erb")).result(binding)
+  document.header << LivingStyleGuide.template("toggle_code.html.erb", binding)
   nil
 end
