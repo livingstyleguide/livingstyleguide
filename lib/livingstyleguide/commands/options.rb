@@ -1,4 +1,4 @@
-LivingStyleGuide.add_filter :set do |arguments, options, block|
+LivingStyleGuide.command :set do |arguments, options, block|
   options.each do |key, value|
     document.options[key] = case value
     when "true"

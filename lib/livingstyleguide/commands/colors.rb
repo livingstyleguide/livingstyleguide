@@ -1,4 +1,4 @@
-LivingStyleGuide.add_filter :colors do |arguments, options, content|
+LivingStyleGuide.command :colors do |arguments, options, content|
   colors = content.split(/\n+/).map{ |l| l.strip.split(/\s+/) }
   columns = colors.map{ |l| l.size }.max
   colors = colors.flatten

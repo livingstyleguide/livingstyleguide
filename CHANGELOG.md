@@ -65,7 +65,7 @@
 * Commands can have options (like JSON/Ruby hashes)
 * `@set` can set multiple options
 * Adding custom filters has been refactored to:
-  `LivingStyleGuide.add_filter :name do |array_of_arguments, options_hash, block_string|`
+  `LivingStyleGuide.command :name do |array_of_arguments, options_hash, block_string|`
 * `@font-example` works with multiple fonts separated by comma
 * Commas and quotation marks can be escaped in arguments/options (\, \" \')
 * Added `@style` commands to [customize the style guide’s own style](https://github.com/livingstyleguide/livingstyleguide/issues/126)

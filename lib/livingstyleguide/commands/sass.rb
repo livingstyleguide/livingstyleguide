@@ -1,6 +1,6 @@
 require "sass"
 
-LivingStyleGuide.add_filter :scss do |arguments, options, scss|
+LivingStyleGuide.command :scss do |arguments, options, scss|
   file = arguments.first
   if file
     if document.file
@@ -14,7 +14,7 @@ LivingStyleGuide.add_filter :scss do |arguments, options, scss|
   nil
 end
 
-LivingStyleGuide.add_filter :sass do |arguments, options, sass|
+LivingStyleGuide.command :sass do |arguments, options, sass|
   file = arguments.first
   if file
     if document.file

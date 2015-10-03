@@ -1,4 +1,4 @@
-LivingStyleGuide.add_filter :data do |arguments, options, data|
+LivingStyleGuide.command :data do |arguments, options, data|
   data = LivingStyleGuide.parse_data(data)
   if data.is_a?(Array)
     document.locals = [] unless document.locals.is_a?(Array)

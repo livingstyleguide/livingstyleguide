@@ -4,10 +4,10 @@ class RequireTest < DocumentTestCase
 
   def test_require_custom_ruby_file
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
-      @require fixtures/filters/custom_filter
-      @custom-filter
+      @require fixtures/commands/custom_command
+      @custom-command
     INPUT
-      My Custom Filter
+      My Custom Command
     OUTPUT
   end
 
