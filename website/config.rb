@@ -31,7 +31,7 @@ end
 helpers do
   def livingstyleguide_gem_version
     # Prefer `git tag` over version.rb as tags are released:
-    versions = `cd .. && git tag`.split(/\n/)
+    versions = `cd .. && git tag --sort=version:refname`.split(/\n/)
     current  = versions.last
     current.sub(/^v/, "")
   rescue
