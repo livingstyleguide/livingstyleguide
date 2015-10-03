@@ -1,12 +1,12 @@
-require 'minitest/autorun'
-require 'compass'
-require 'livingstyleguide'
-require 'heredoc_unindent'
+require "minitest/autorun"
+require "compass"
+require "livingstyleguide"
+require "heredoc_unindent"
 
-Compass.configuration.add_import_path '.'
+Compass.configuration.add_import_path "."
 
 def parse_file(filename)
-  filename = File.join(File.dirname(__FILE__), 'fixtures', filename.split('/'))
+  filename = File.join(File.dirname(__FILE__), "fixtures", filename.split("/"))
   syntax   = filename[-4..-1].to_sym
   syntax   = :scss unless [:scss, :sass].include?(syntax)
   options  = {
@@ -20,11 +20,11 @@ def parse_file(filename)
 end
 
 def normalize(html)
-  html.gsub! /\s+/, ' '
-  html.gsub! '><', '> <'
+  html.gsub! /\s+/, " "
+  html.gsub! "><", "> <"
   html.strip!
   html
 end
 
-require 'i18n'
+require "i18n"
 I18n.enforce_available_locales = false

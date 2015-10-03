@@ -1,9 +1,9 @@
 !!!html5
 %html
-  = partial 'layouts/head'
-  %body.layout(class="#{'-subpage-' unless data.page.root}")
+  = partial "layouts/head"
+  %body.layout(class="#{"-subpage-" unless data.page.root}")
     .layout--container
-      = partial 'layouts/header'
+      = partial "layouts/header"
       .layout--content
         = yield
-      = partial 'layouts/footer'
+      = partial "layouts/footer"

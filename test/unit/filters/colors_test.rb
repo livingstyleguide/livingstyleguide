@@ -1,12 +1,12 @@
 # encoding: utf-8
 
-require 'document_test_helper'
+require "document_test_helper"
 
 class ColorsTest < DocumentTestCase
 
   def test_colors_of_file
     skip
-    engine = OpenStruct.new(variables: { 'variables/colors' => %w(red blue) })
+    engine = OpenStruct.new(variables: { "variables/colors" => %w(red blue) })
     assert_render_equals <<-INPUT, <<-OUTPUT, {}, engine
       @colors variables/colors
     INPUT
@@ -80,10 +80,10 @@ class ColorsTest < DocumentTestCase
         <li class="lsg--color-swatch red"><span>red</span></li>
       </ul>
     OUTPUT
-    assert_match '.\$pink', @doc.css
-    assert_match '.purple\(\)', @doc.css
-    assert_match '.\#87c53b', @doc.css
-    assert_match '.red', @doc.css
+    assert_match /.\$pink/, @doc.css
+    assert_match /.purple\(\)/, @doc.css
+    assert_match /.\#87c53b/, @doc.css
+    assert_match /.red/, @doc.css
   end
 
 end

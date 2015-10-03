@@ -1,453 +1,450 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="918px" height="463px" viewBox="0 0 918 463" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.3 (11970) - http://www.bohemiancoding.com/sketch -->
-    <title>before-after-syntax-highlighting</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <linearGradient x1="0%" y1="57.5164497%" x2="100%" y2="57.5164474%" id="linearGradient-1">
-            <stop stop-color="#EBFDF8" stop-opacity="0" offset="0%"></stop>
-            <stop stop-color="#EBFDF8" offset="100%"></stop>
-        </linearGradient>
-    </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <rect id="Rectangle-3" fill="#EBFDF8" sketch:type="MSShapeGroup" x="0" y="0.2578125" width="918" height="462.742188"></rect>
-        <rect id="Rectangle-1-Copy-2" fill="#FAFF8C" sketch:type="MSShapeGroup" x="643" y="356.400006" width="601" height="33"></rect>
-        <text id="&lt;div-class=&quot;user&quot;&gt;-copy" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3063584" font-weight="normal" fill="#C82570">
-            <tspan x="111" y="179">&lt;div class="user"&gt;</tspan>
+  <defs>
+    <linearGradient x1="0%" y1="57.5164497%" x2="100%" y2="57.5164474%" id="linearGradient-1">
+      <stop stop-color="#EBFDF8" stop-opacity="0" offset="0%"></stop>
+      <stop stop-color="#EBFDF8" offset="100%"></stop>
+    </linearGradient>
+  </defs>
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+    <rect id="Rectangle-3" fill="#EBFDF8" sketch:type="MSShapeGroup" x="0" y="0.2578125" width="918" height="462.742188"></rect>
+    <rect id="Rectangle-1-Copy-2" fill="#FAFF8C" sketch:type="MSShapeGroup" x="643" y="356.400006" width="601" height="33"></rect>
+    <text id="&lt;div-class=&quot;user&quot;&gt;-copy" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3063584" font-weight="normal" fill="#C82570">
+      <tspan x="111" y="179">&lt;div class="user"&gt;</tspan>
+    </text>
+    <text id="&lt;b&gt;&amp;lt;&lt;em&gt;div&lt;/em&gt;&lt;" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3312757" font-weight="normal">
+      <tspan x="111" y="405" fill="#EC7EB1">&lt;b&gt;</tspan>
+      <tspan x="153.003132" y="405" fill="#C82570">&amp;lt;</tspan>
+      <tspan x="209.007307" y="405" fill="#EC7EB1">&lt;em&gt;</tspan>
+      <tspan x="265.011483" y="405" fill="#C82570">div</tspan>
+      <tspan x="307.014614" y="405" fill="#EC7EB1">&lt;/em&gt;&lt;/b&gt; &lt;b&gt;</tspan>
+      <tspan x="489.028185" y="405" fill="#C82570">class</tspan>
+      <tspan x="559.033404" y="405" fill="#EC7EB1">&lt;/b&gt;</tspan>
+      <tspan x="615.03758" y="405" fill="#C82570">="&lt;strong class="lsg--code-highlight"&gt;user&lt;/strong&gt;"&lt;b&gt;&amp;gt;&lt;/b&gt;</tspan>
+    </text>
+    <text id="&lt;b&gt;&amp;lt;&lt;em&gt;div&lt;/em&gt;&lt;" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3312757" font-weight="normal">
+      <tspan x="111" y="329" fill="#EC7EB1">&lt;b&gt;</tspan>
+      <tspan x="153.003132" y="329" fill="#C82570">&amp;lt;</tspan>
+      <tspan x="209.007307" y="329" fill="#EC7EB1">&lt;em&gt;</tspan>
+      <tspan x="265.011483" y="329" fill="#C82570">div</tspan>
+      <tspan x="307.014614" y="329" fill="#EC7EB1">&lt;/em&gt;&lt;/b&gt; &lt;b&gt;</tspan>
+      <tspan x="489.028185" y="329" fill="#C82570">class</tspan>
+      <tspan x="559.033404" y="329" fill="#EC7EB1">&lt;/b&gt;</tspan>
+      <tspan x="615.03758" y="329" fill="#C82570">="user"&lt;b&gt;&amp;gt;&lt;/b&gt;</tspan>
+    </text>
+    <text id="&amp;lt;div-class=&quot;user&quot;" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3312757" font-weight="normal">
+      <tspan x="111" y="253.499988" fill="#C82570">&amp;lt;div</tspan>
+      <tspan x="209.007307" y="253.499988" fill="#EC7EB1"> </tspan>
+      <tspan x="223.008351" y="253.499988" fill="#C82570">class="user"&amp;gt;</tspan>
+    </text>
+    <rect id="Rectangle-1-Copy" fill="#FAFF8C" sketch:type="MSShapeGroup" x="279" y="124.399994" width="57" height="33"></rect>
+    <rect id="Rectangle-1-Copy-4" fill="#FAFF8C" sketch:type="MSShapeGroup" x="279" y="49.3999939" width="140" height="33"></rect>
+    <text id="&lt;div-class=&quot;***user*-copy-2" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3063584" font-weight="normal">
+      <tspan x="111" y="104" fill="#C82570">&lt;div class="</tspan>
+      <tspan x="278.833092" y="104" fill="#EC7EB1">***</tspan>
+      <tspan x="320.791366" y="104" fill="#C82570">user</tspan>
+      <tspan x="376.73573" y="104" fill="#EC7EB1">***</tspan>
+      <tspan x="418.694003" y="104" fill="#C82570">"&gt;</tspan>
+    </text>
+    <g id="Group-Copy-2" sketch:type="MSLayerGroup" transform="translate(110.000000, 125.000000)">
+      <path d="M0.5,20.9279582 L0.5,31.7644246" id="Line-Copy-28" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M14.5,20.9279582 L14.5,31.7644246" id="Line-Copy-30" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M28.5,20.9279582 L28.5,31.7644246" id="Line-Copy-31" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M42.5,20.9279582 L42.5,31.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M56.5,20.9279582 L56.5,31.7644246" id="Line-Copy-33" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M70.5,20.9279582 L70.5,31.7644246" id="Line-Copy-34" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M84.5,20.9279582 L84.5,31.7644246" id="Line-Copy-35" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M98.5,20.9279582 L98.5,31.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M112.5,20.9279582 L112.5,31.7644246" id="Line-Copy-37" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M126.5,20.9279582 L126.5,31.7644246" id="Line-Copy-38" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M140.5,20.9279582 L140.5,31.7644246" id="Line-Copy-39" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M154.5,20.9279582 L154.5,31.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M168.5,0.927958171 L168.5,30.9279582" id="Line-Copy-41" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M182.5,20.9279582 L182.5,31.7644246" id="Line-Copy-45" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M196.5,20.9279582 L196.5,31.7644246" id="Line-Copy-46" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M210.5,20.9279582 L210.5,31.7644246" id="Line-Copy-47" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M225.5,1.08795802 L225.5,31.087958" id="Line-Copy-51" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M239.5,21.087958 L239.5,31.9244245" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M253.5,21.087958 L253.5,31.9244245" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <g id="Group" transform="translate(4.000000, 12.000000)" font-weight="normal" font-family="Courier New" fill="#3EF0BE" font-size="14" sketch:alignment="middle" sketch:type="MSTextLayer">
+        <text id="0">
+          <tspan x="0.299316406" y="12">0</tspan>
         </text>
-        <text id="&lt;b&gt;&amp;lt;&lt;em&gt;div&lt;/em&gt;&lt;" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3312757" font-weight="normal">
-            <tspan x="111" y="405" fill="#EC7EB1">&lt;b&gt;</tspan>
-            <tspan x="153.003132" y="405" fill="#C82570">&amp;lt;</tspan>
-            <tspan x="209.007307" y="405" fill="#EC7EB1">&lt;em&gt;</tspan>
-            <tspan x="265.011483" y="405" fill="#C82570">div</tspan>
-            <tspan x="307.014614" y="405" fill="#EC7EB1">&lt;/em&gt;&lt;/b&gt; &lt;b&gt;</tspan>
-            <tspan x="489.028185" y="405" fill="#C82570">class</tspan>
-            <tspan x="559.033404" y="405" fill="#EC7EB1">&lt;/b&gt;</tspan>
-            <tspan x="615.03758" y="405" fill="#C82570">="&lt;strong class="lsg--code-highlight"&gt;user&lt;/strong&gt;"&lt;b&gt;&amp;gt;&lt;/b&gt;</tspan>
+        <text id="1">
+          <tspan x="14.2993164" y="12">1</tspan>
         </text>
-        <text id="&lt;b&gt;&amp;lt;&lt;em&gt;div&lt;/em&gt;&lt;" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3312757" font-weight="normal">
-            <tspan x="111" y="329" fill="#EC7EB1">&lt;b&gt;</tspan>
-            <tspan x="153.003132" y="329" fill="#C82570">&amp;lt;</tspan>
-            <tspan x="209.007307" y="329" fill="#EC7EB1">&lt;em&gt;</tspan>
-            <tspan x="265.011483" y="329" fill="#C82570">div</tspan>
-            <tspan x="307.014614" y="329" fill="#EC7EB1">&lt;/em&gt;&lt;/b&gt; &lt;b&gt;</tspan>
-            <tspan x="489.028185" y="329" fill="#C82570">class</tspan>
-            <tspan x="559.033404" y="329" fill="#EC7EB1">&lt;/b&gt;</tspan>
-            <tspan x="615.03758" y="329" fill="#C82570">="user"&lt;b&gt;&amp;gt;&lt;/b&gt;</tspan>
+        <text id="2">
+          <tspan x="28.2993164" y="12">2</tspan>
         </text>
-        <text id="&amp;lt;div-class=&quot;user&quot;" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3312757" font-weight="normal">
-            <tspan x="111" y="253.499988" fill="#C82570">&amp;lt;div</tspan>
-            <tspan x="209.007307" y="253.499988" fill="#EC7EB1"> </tspan>
-            <tspan x="223.008351" y="253.499988" fill="#C82570">class="user"&amp;gt;</tspan>
+        <text id="3">
+          <tspan x="42.2993164" y="12">3</tspan>
         </text>
-        <rect id="Rectangle-1-Copy" fill="#FAFF8C" sketch:type="MSShapeGroup" x="279" y="124.399994" width="57" height="33"></rect>
-        <rect id="Rectangle-1-Copy-4" fill="#FAFF8C" sketch:type="MSShapeGroup" x="279" y="49.3999939" width="140" height="33"></rect>
-        <text id="&lt;div-class=&quot;***user*-copy-2" sketch:type="MSTextLayer" font-family="Courier New" font-size="23.3063584" font-weight="normal">
-            <tspan x="111" y="104" fill="#C82570">&lt;div class="</tspan>
-            <tspan x="278.833092" y="104" fill="#EC7EB1">***</tspan>
-            <tspan x="320.791366" y="104" fill="#C82570">user</tspan>
-            <tspan x="376.73573" y="104" fill="#EC7EB1">***</tspan>
-            <tspan x="418.694003" y="104" fill="#C82570">"&gt;</tspan>
+        <text id="4">
+          <tspan x="56.2993164" y="12">4</tspan>
         </text>
-        <g id="Group-Copy-2" sketch:type="MSLayerGroup" transform="translate(110.000000, 125.000000)">
-            <path d="M0.5,20.9279582 L0.5,31.7644246" id="Line-Copy-28" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M14.5,20.9279582 L14.5,31.7644246" id="Line-Copy-30" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M28.5,20.9279582 L28.5,31.7644246" id="Line-Copy-31" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M42.5,20.9279582 L42.5,31.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M56.5,20.9279582 L56.5,31.7644246" id="Line-Copy-33" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M70.5,20.9279582 L70.5,31.7644246" id="Line-Copy-34" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M84.5,20.9279582 L84.5,31.7644246" id="Line-Copy-35" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M98.5,20.9279582 L98.5,31.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M112.5,20.9279582 L112.5,31.7644246" id="Line-Copy-37" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M126.5,20.9279582 L126.5,31.7644246" id="Line-Copy-38" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M140.5,20.9279582 L140.5,31.7644246" id="Line-Copy-39" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M154.5,20.9279582 L154.5,31.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M168.5,0.927958171 L168.5,30.9279582" id="Line-Copy-41" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M182.5,20.9279582 L182.5,31.7644246" id="Line-Copy-45" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M196.5,20.9279582 L196.5,31.7644246" id="Line-Copy-46" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M210.5,20.9279582 L210.5,31.7644246" id="Line-Copy-47" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M225.5,1.08795802 L225.5,31.087958" id="Line-Copy-51" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M239.5,21.087958 L239.5,31.9244245" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M253.5,21.087958 L253.5,31.9244245" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <g id="Group" transform="translate(4.000000, 12.000000)" font-weight="normal" font-family="Courier New" fill="#3EF0BE" font-size="14" sketch:alignment="middle" sketch:type="MSTextLayer">
-                <text id="0">
-                    <tspan x="0.299316406" y="12">0</tspan>
-                </text>
-                <text id="1">
-                    <tspan x="14.2993164" y="12">1</tspan>
-                </text>
-                <text id="2">
-                    <tspan x="28.2993164" y="12">2</tspan>
-                </text>
-                <text id="3">
-                    <tspan x="42.2993164" y="12">3</tspan>
-                </text>
-                <text id="4">
-                    <tspan x="56.2993164" y="12">4</tspan>
-                </text>
-                <text id="5">
-                    <tspan x="70.2993164" y="12">5</tspan>
-                </text>
-                <text id="6">
-                    <tspan x="84.2993164" y="12">6</tspan>
-                </text>
-                <text id="7">
-                    <tspan x="98.2993164" y="12">7</tspan>
-                </text>
-                <text id="8">
-                    <tspan x="112.299316" y="12">8</tspan>
-                </text>
-                <text id="9">
-                    <tspan x="126.299316" y="12">9</tspan>
-                </text>
-                <text id="0">
-                    <tspan x="140.299316" y="12">0</tspan>
-                </text>
-                <text id="1-copy-11">
-                    <tspan x="154.299316" y="12">1</tspan>
-                </text>
-                <text id="2">
-                    <tspan x="168.299316" y="12">2</tspan>
-                </text>
-                <text id="3">
-                    <tspan x="182.299316" y="12">3</tspan>
-                </text>
-                <text id="4">
-                    <tspan x="196.299316" y="12">4</tspan>
-                </text>
-                <text id="5">
-                    <tspan x="210.299316" y="12">5</tspan>
-                </text>
-                <text id="6">
-                    <tspan x="225.299316" y="12.1599998">6</tspan>
-                </text>
-                <text id="7">
-                    <tspan x="239.299316" y="12.1599998">7</tspan>
-                </text>
-            </g>
-        </g>
-        <g id="Group-Copy-4" sketch:type="MSLayerGroup" transform="translate(110.000000, 24.000000)">
-            <path d="M0.5,46.9279582 L0.5,57.7644246" id="Line-Copy-28" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M14.5,46.9279582 L14.5,57.7644246" id="Line-Copy-30" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M28.5,46.9279582 L28.5,57.7644246" id="Line-Copy-31" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M42.5,46.9279582 L42.5,57.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M56.5,46.9279582 L56.5,57.7644246" id="Line-Copy-33" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M70.5,46.9279582 L70.5,57.7644246" id="Line-Copy-34" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M84.5,46.9279582 L84.5,57.7644246" id="Line-Copy-35" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M98.5,46.9279582 L98.5,57.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M112.5,46.9279582 L112.5,57.7644246" id="Line-Copy-37" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M126.5,46.9279582 L126.5,57.7644246" id="Line-Copy-38" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M140.5,46.9279582 L140.5,57.7644246" id="Line-Copy-39" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M154.5,46.9279582 L154.5,57.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M168.5,26.9279582 L168.5,56.9279582" id="Line-Copy-41" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M210.5,46.9279582 L210.5,57.7644246" id="Line-Copy-44" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M224.5,46.9279582 L224.5,57.7644246" id="Line-Copy-45" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M238.5,46.9279582 L238.5,57.7644246" id="Line-Copy-46" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M252.5,46.9279582 L252.5,57.7644246" id="Line-Copy-47" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M266.5,46.9279582 L266.5,57.7644246" id="Line-Copy-48" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M308.5,26.9279582 L308.5,56.9279582" id="Line-Copy-51" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M322.5,46.9279582 L322.5,57.7644246" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M336.5,46.9279582 L336.5,57.7644246" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <g id="Group" transform="translate(4.000000, 0.000000)" font-family="Courier New" fill="#3EF0BE" font-size="14" sketch:alignment="middle" sketch:type="MSTextLayer">
-                <text id="0" font-weight="normal">
-                    <tspan x="0.299316406" y="50">0</tspan>
-                </text>
-                <text id="1" font-weight="normal">
-                    <tspan x="14.2993164" y="50">1</tspan>
-                </text>
-                <text id="2" font-weight="normal">
-                    <tspan x="28.2993164" y="50">2</tspan>
-                </text>
-                <text id="3" font-weight="normal">
-                    <tspan x="42.2993164" y="50">3</tspan>
-                </text>
-                <text id="4" font-weight="normal">
-                    <tspan x="56.2993164" y="50">4</tspan>
-                </text>
-                <text id="5" font-weight="normal">
-                    <tspan x="70.2993164" y="50">5</tspan>
-                </text>
-                <text id="6" font-weight="normal">
-                    <tspan x="84.2993164" y="50">6</tspan>
-                </text>
-                <text id="7" font-weight="normal">
-                    <tspan x="98.2993164" y="50">7</tspan>
-                </text>
-                <text id="8" font-weight="normal">
-                    <tspan x="112.299316" y="50">8</tspan>
-                </text>
-                <text id="9" font-weight="normal">
-                    <tspan x="126.299316" y="50">9</tspan>
-                </text>
-                <text id="0" font-weight="normal">
-                    <tspan x="140.299316" y="50">0</tspan>
-                </text>
-                <text id="1-copy-11" font-weight="normal">
-                    <tspan x="154.299316" y="50">1</tspan>
-                </text>
-                <text id="12" font-weight="bold">
-                    <tspan x="155.098633" y="12">12</tspan>
-                </text>
-                <text id="16" font-weight="bold">
-                    <tspan x="296.098633" y="12">16</tspan>
-                </text>
-                <text id="2" font-weight="normal">
-                    <tspan x="210.299316" y="50">2</tspan>
-                </text>
-                <text id="3" font-weight="normal">
-                    <tspan x="224.299316" y="50">3</tspan>
-                </text>
-                <text id="4" font-weight="normal">
-                    <tspan x="238.299316" y="50">4</tspan>
-                </text>
-                <text id="5" font-weight="normal">
-                    <tspan x="252.299316" y="50">5</tspan>
-                </text>
-                <text id="6" font-weight="normal">
-                    <tspan x="308.299316" y="50">6</tspan>
-                </text>
-                <text id="7" font-weight="normal">
-                    <tspan x="322.299316" y="50">7</tspan>
-                </text>
-            </g>
-        </g>
-        <g id="Group-Copy" sketch:type="MSLayerGroup" transform="translate(110.000000, 357.000000)">
-            <path d="M42.5,19.9279582 L42.5,30.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M98.5,19.9279582 L98.5,30.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M154.5,19.9279582 L154.5,30.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M380.5,19.9279582 L380.5,30.7644246" id="Line-Copy-54" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M168.5,19.9279582 L168.5,30.7644246" id="Line-Copy-41" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M394.5,19.9279582 L394.5,30.7644246" id="Line-Copy-55" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M183.5,20 L183.5,31" id="Line-Copy-42" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M409.5,20 L409.5,31" id="Line-Copy-56" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M197.5,20 L197.5,31" id="Line-Copy-43" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M423.5,20 L423.5,31" id="Line-Copy-57" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M505.5,20 L505.5,31" id="Line-Copy-62" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M322.5,19.9279582 L322.5,30.7644246" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M336.5,19.9279582 L336.5,30.7644246" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="66.2993164" y="23">0</tspan>
-            </text>
-            <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="158.299316" y="23">1</tspan>
-            </text>
-            <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="383.299316" y="23">5</tspan>
-            </text>
-            <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="172.299316" y="23">2</tspan>
-            </text>
-            <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="398.299316" y="23">6</tspan>
-            </text>
-            <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="186.299316" y="23">3</tspan>
-            </text>
-            <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="412.299316" y="23">7</tspan>
-            </text>
-            <g id="Group" transform="translate(422.500000, 0.000000)">
-                <path d="M1,19.9279582 L1,30.7644246" id="Line-Copy-58" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-                <path d="M83,19.9279582 L83,30.7644246" id="Line-Copy-63" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-                <path d="M15,19.9279582 L15,30.7644246" id="Line-Copy-59" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-                <path d="M97,19.9279582 L97,30.7644246" id="Line-Copy-64" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-                <path d="M29,20 L29,31" id="Line-Copy-60" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-                <path d="M111.5,0 L111.5,31" id="Line-Copy-65" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-                <text id="8" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                    <tspan x="3.79931641" y="23">8</tspan>
-                </text>
-                <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                    <tspan x="85.7993164" y="23">0</tspan>
-                </text>
-                <text id="9" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                    <tspan x="17.7993164" y="23">9</tspan>
-                </text>
-                <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                    <tspan x="99.7993164" y="23">1</tspan>
-                </text>
-            </g>
-            <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="326.299316" y="23">4</tspan>
-            </text>
-        </g>
-        <rect id="Rectangle-1-Copy-3" fill="#FAFF8C" sketch:type="MSShapeGroup" x="643" y="276.400006" width="57" height="33"></rect>
-        <rect id="Rectangle-1-Copy-5" fill="#FAFF8C" sketch:type="MSShapeGroup" x="322" y="200.899994" width="57" height="33"></rect>
-        <g id="Group-Copy-3" sketch:type="MSLayerGroup" transform="translate(110.000000, 277.000000)">
-            <path d="M42.5,19.9279582 L42.5,30.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M98.5,19.9279582 L98.5,30.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M154.5,19.9279582 L154.5,30.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M380.5,19.9279582 L380.5,30.7644246" id="Line-Copy-54" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M168.5,19.9279582 L168.5,30.7644246" id="Line-Copy-41" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M394.5,19.9279582 L394.5,30.7644246" id="Line-Copy-55" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M183.5,20 L183.5,31" id="Line-Copy-42" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M409.5,20 L409.5,31" id="Line-Copy-56" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M197.5,20 L197.5,31" id="Line-Copy-43" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M423.5,20 L423.5,31" id="Line-Copy-57" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M505.5,20 L505.5,31" id="Line-Copy-62" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M322.5,19.9279582 L322.5,30.7644246" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M336.5,19.9279582 L336.5,30.7644246" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="66.2993164" y="23">0</tspan>
-            </text>
-            <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="158.299316" y="23">1</tspan>
-            </text>
-            <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="383.299316" y="23">5</tspan>
-            </text>
-            <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="172.299316" y="23">2</tspan>
-            </text>
-            <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="398.299316" y="23">6</tspan>
-            </text>
-            <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="186.299316" y="23">3</tspan>
-            </text>
-            <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="412.299316" y="23">7</tspan>
-            </text>
-            <path d="M547.5,20 L547.5,31" id="Line-Copy-71" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="536.299316" y="23">2</tspan>
-            </text>
-            <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="550.299316" y="23">3</tspan>
-            </text>
-            <path d="M423.5,19.9279582 L423.5,30.7644246" id="Line-Copy-58" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M505.5,19.9279582 L505.5,30.7644246" id="Line-Copy-63" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M437.5,19.9279582 L437.5,30.7644246" id="Line-Copy-59" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M519.5,19.9279582 L519.5,30.7644246" id="Line-Copy-64" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M451.5,20 L451.5,31" id="Line-Copy-60" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M534,0 L534,31" id="Line-Copy-65" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M589,0 L589,31" id="Line-Copy-66" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="8" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="426.299316" y="23">8</tspan>
-            </text>
-            <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="508.299316" y="23">0</tspan>
-            </text>
-            <path d="M645.5,19.9279582 L645.5,30.7644246" id="Line-Copy-70" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M699.5,19.9279582 L699.5,30.7644246" id="Line-Copy-69" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="667.299316" y="23">7</tspan>
-            </text>
-            <path d="M589.5,19.9279582 L589.5,30.7644246" id="Line-Copy-68" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M603.5,19.9279582 L603.5,30.7644246" id="Line-Copy-67" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="592.299316" y="23">6</tspan>
-            </text>
-            <text id="9" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="440.299316" y="23">9</tspan>
-            </text>
-            <path d="M561.5,19.9279582 L561.5,30.7644246" id="Line-Copy-73" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M575.5,19.9279582 L575.5,30.7644246" id="Line-Copy-72" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="564.299316" y="23">4</tspan>
-            </text>
-            <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="578.299316" y="23">5</tspan>
-            </text>
-            <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="522.299316" y="23">1</tspan>
-            </text>
-            <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="326.299316" y="23">4</tspan>
-            </text>
-        </g>
-        <g id="Group-Copy-5" sketch:type="MSLayerGroup" transform="translate(110.000000, 201.499988)">
-            <path d="M0.5,19.9279582 L0.5,30.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M56.5,19.9279582 L56.5,30.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M56.5,19.9279582 L56.5,30.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M113.5,19.9279582 L113.5,30.7644246" id="Line-Copy-54" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M70.5,19.9279582 L70.5,30.7644246" id="Line-Copy-41" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M127.5,19.9279582 L127.5,30.7644246" id="Line-Copy-55" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M85.5,20 L85.5,31" id="Line-Copy-42" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M142.5,20 L142.5,31" id="Line-Copy-56" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M99.5,20 L99.5,31" id="Line-Copy-43" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M156.5,20 L156.5,31" id="Line-Copy-57" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M184.5,20 L184.5,31" id="Line-Copy-62" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M99.5,19.9279582 L99.5,30.7644246" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M113.5,19.9279582 L113.5,30.7644246" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="24.2993164" y="23">0</tspan>
-            </text>
-            <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="60.2993164" y="23">1</tspan>
-            </text>
-            <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="116.299316" y="23">5</tspan>
-            </text>
-            <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="74.2993164" y="23">2</tspan>
-            </text>
-            <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="131.299316" y="23">6</tspan>
-            </text>
-            <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="88.2993164" y="23">3</tspan>
-            </text>
-            <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="145.299316" y="23">7</tspan>
-            </text>
-            <path d="M226.5,20 L226.5,31" id="Line-Copy-71" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="215.299316" y="23">2</tspan>
-            </text>
-            <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="229.299316" y="23">3</tspan>
-            </text>
-            <path d="M156.5,19.9279582 L156.5,30.7644246" id="Line-Copy-58" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M184.5,19.9279582 L184.5,30.7644246" id="Line-Copy-63" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M170.5,19.9279582 L170.5,30.7644246" id="Line-Copy-59" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M198.5,19.9279582 L198.5,30.7644246" id="Line-Copy-64" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M184.5,20 L184.5,31" id="Line-Copy-60" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M213,0 L213,31" id="Line-Copy-65" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M268,0 L268,31" id="Line-Copy-66" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="8" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="159.299316" y="23">8</tspan>
-            </text>
-            <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="187.299316" y="23">0</tspan>
-            </text>
-            <path d="M282.5,19.9279582 L282.5,30.7644246" id="Line-Copy-70" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M336.5,19.9279582 L336.5,30.7644246" id="Line-Copy-69" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="304.299316" y="23">7</tspan>
-            </text>
-            <path d="M268.5,19.9279582 L268.5,30.7644246" id="Line-Copy-68" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M282.5,19.9279582 L282.5,30.7644246" id="Line-Copy-67" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="271.299316" y="23">6</tspan>
-            </text>
-            <text id="9" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="173.299316" y="23">9</tspan>
-            </text>
-            <path d="M240.5,19.9279582 L240.5,30.7644246" id="Line-Copy-73" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <path d="M254.5,19.9279582 L254.5,30.7644246" id="Line-Copy-72" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-            <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="243.299316" y="23">4</tspan>
-            </text>
-            <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="257.299316" y="23">5</tspan>
-            </text>
-            <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="201.299316" y="23">1</tspan>
-            </text>
-            <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
-                <tspan x="103.299316" y="23">4</tspan>
-            </text>
-        </g>
-        <g id="Group" sketch:type="MSLayerGroup" transform="translate(45.000000, 97.000000)">
-            <path d="M58,57 C58,46.1986419 53.493401,36.4498564 46.2578985,29.531339 C39.4349658,23.0073169 30.1854624,19 20,19 C-0.986820492,19 -18,36.0131795 -18,57" id="Oval-1-Copy-3" stroke="#3EF0BE" stroke-width="6" sketch:type="MSShapeGroup" transform="translate(20.000000, 38.000000) rotate(-90.000000) translate(-20.000000, -38.000000) "></path>
-            <path d="M52.1289492,185.40239 C45.3060166,178.878368 36.0565132,174.871051 25.8710508,174.871051 C4.88423026,174.871051 -12.1289492,191.88423 -12.1289492,212.871051" id="Oval-1-Copy" stroke="#3EF0BE" stroke-width="6" sketch:type="MSShapeGroup" transform="translate(20.000000, 193.871051) rotate(-90.000000) translate(-20.000000, -193.871051) "></path>
-            <path d="M52.1289492,110.40239 C45.3060166,103.878368 36.0565132,99.8710508 25.8710508,99.8710508 C4.88423026,99.8710508 -12.1289492,116.88423 -12.1289492,137.871051" id="Oval-1-Copy-4" stroke="#3EF0BE" stroke-width="6" sketch:type="MSShapeGroup" transform="translate(20.000000, 118.871051) rotate(-90.000000) translate(-20.000000, -118.871051) "></path>
-            <path d="M37,142.625 L55,150.974242 L37.5389711,159.073485 L37,142.625 L37,142.625 Z" id="Rectangle-4" fill="#3EF0BE" sketch:type="MSShapeGroup"></path>
-            <path d="M37,67.625 L55,75.9742424 L37.5389711,84.0734848 L37,67.625 L37,67.625 Z" id="Rectangle-4-Copy-3" fill="#3EF0BE" sketch:type="MSShapeGroup"></path>
-            <path d="M37,217.625 L55,225.974242 L37.5389711,234.073485 L37,217.625 L37,217.625 Z" id="Rectangle-4-Copy" fill="#3EF0BE" sketch:type="MSShapeGroup"></path>
-            <path d="M52.1289492,261.40239 C45.3060166,254.878368 36.0565132,250.871051 25.8710508,250.871051 C4.88423026,250.871051 -12.1289492,267.88423 -12.1289492,288.871051" id="Oval-1-Copy-2" stroke="#3EF0BE" stroke-width="6" sketch:type="MSShapeGroup" transform="translate(20.000000, 269.871051) rotate(-90.000000) translate(-20.000000, -269.871051) "></path>
-            <path d="M37,293.625 L55,301.974242 L37.5389711,310.073485 L37,293.625 L37,293.625 Z" id="Rectangle-4-Copy-2" fill="#3EF0BE" sketch:type="MSShapeGroup"></path>
-        </g>
-        <rect id="Rectangle-7" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup" x="767" y="346" width="151" height="80"></rect>
+        <text id="5">
+          <tspan x="70.2993164" y="12">5</tspan>
+        </text>
+        <text id="6">
+          <tspan x="84.2993164" y="12">6</tspan>
+        </text>
+        <text id="7">
+          <tspan x="98.2993164" y="12">7</tspan>
+        </text>
+        <text id="8">
+          <tspan x="112.299316" y="12">8</tspan>
+        </text>
+        <text id="9">
+          <tspan x="126.299316" y="12">9</tspan>
+        </text>
+        <text id="0">
+          <tspan x="140.299316" y="12">0</tspan>
+        </text>
+        <text id="1-copy-11">
+          <tspan x="154.299316" y="12">1</tspan>
+        </text>
+        <text id="2">
+          <tspan x="168.299316" y="12">2</tspan>
+        </text>
+        <text id="3">
+          <tspan x="182.299316" y="12">3</tspan>
+        </text>
+        <text id="4">
+          <tspan x="196.299316" y="12">4</tspan>
+        </text>
+        <text id="5">
+          <tspan x="210.299316" y="12">5</tspan>
+        </text>
+        <text id="6">
+          <tspan x="225.299316" y="12.1599998">6</tspan>
+        </text>
+        <text id="7">
+          <tspan x="239.299316" y="12.1599998">7</tspan>
+        </text>
+      </g>
     </g>
+    <g id="Group-Copy-4" sketch:type="MSLayerGroup" transform="translate(110.000000, 24.000000)">
+      <path d="M0.5,46.9279582 L0.5,57.7644246" id="Line-Copy-28" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M14.5,46.9279582 L14.5,57.7644246" id="Line-Copy-30" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M28.5,46.9279582 L28.5,57.7644246" id="Line-Copy-31" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M42.5,46.9279582 L42.5,57.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M56.5,46.9279582 L56.5,57.7644246" id="Line-Copy-33" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M70.5,46.9279582 L70.5,57.7644246" id="Line-Copy-34" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M84.5,46.9279582 L84.5,57.7644246" id="Line-Copy-35" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M98.5,46.9279582 L98.5,57.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M112.5,46.9279582 L112.5,57.7644246" id="Line-Copy-37" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M126.5,46.9279582 L126.5,57.7644246" id="Line-Copy-38" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M140.5,46.9279582 L140.5,57.7644246" id="Line-Copy-39" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M154.5,46.9279582 L154.5,57.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M168.5,26.9279582 L168.5,56.9279582" id="Line-Copy-41" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M210.5,46.9279582 L210.5,57.7644246" id="Line-Copy-44" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M224.5,46.9279582 L224.5,57.7644246" id="Line-Copy-45" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M238.5,46.9279582 L238.5,57.7644246" id="Line-Copy-46" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M252.5,46.9279582 L252.5,57.7644246" id="Line-Copy-47" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M266.5,46.9279582 L266.5,57.7644246" id="Line-Copy-48" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M308.5,26.9279582 L308.5,56.9279582" id="Line-Copy-51" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M322.5,46.9279582 L322.5,57.7644246" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M336.5,46.9279582 L336.5,57.7644246" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <g id="Group" transform="translate(4.000000, 0.000000)" font-family="Courier New" fill="#3EF0BE" font-size="14" sketch:alignment="middle" sketch:type="MSTextLayer">
+        <text id="0" font-weight="normal">
+          <tspan x="0.299316406" y="50">0</tspan>
+        </text>
+        <text id="1" font-weight="normal">
+          <tspan x="14.2993164" y="50">1</tspan>
+        </text>
+        <text id="2" font-weight="normal">
+          <tspan x="28.2993164" y="50">2</tspan>
+        </text>
+        <text id="3" font-weight="normal">
+          <tspan x="42.2993164" y="50">3</tspan>
+        </text>
+        <text id="4" font-weight="normal">
+          <tspan x="56.2993164" y="50">4</tspan>
+        </text>
+        <text id="5" font-weight="normal">
+          <tspan x="70.2993164" y="50">5</tspan>
+        </text>
+        <text id="6" font-weight="normal">
+          <tspan x="84.2993164" y="50">6</tspan>
+        </text>
+        <text id="7" font-weight="normal">
+          <tspan x="98.2993164" y="50">7</tspan>
+        </text>
+        <text id="8" font-weight="normal">
+          <tspan x="112.299316" y="50">8</tspan>
+        </text>
+        <text id="9" font-weight="normal">
+          <tspan x="126.299316" y="50">9</tspan>
+        </text>
+        <text id="0" font-weight="normal">
+          <tspan x="140.299316" y="50">0</tspan>
+        </text>
+        <text id="1-copy-11" font-weight="normal">
+          <tspan x="154.299316" y="50">1</tspan>
+        </text>
+        <text id="12" font-weight="bold">
+          <tspan x="155.098633" y="12">12</tspan>
+        </text>
+        <text id="16" font-weight="bold">
+          <tspan x="296.098633" y="12">16</tspan>
+        </text>
+        <text id="2" font-weight="normal">
+          <tspan x="210.299316" y="50">2</tspan>
+        </text>
+        <text id="3" font-weight="normal">
+          <tspan x="224.299316" y="50">3</tspan>
+        </text>
+        <text id="4" font-weight="normal">
+          <tspan x="238.299316" y="50">4</tspan>
+        </text>
+        <text id="5" font-weight="normal">
+          <tspan x="252.299316" y="50">5</tspan>
+        </text>
+        <text id="6" font-weight="normal">
+          <tspan x="308.299316" y="50">6</tspan>
+        </text>
+        <text id="7" font-weight="normal">
+          <tspan x="322.299316" y="50">7</tspan>
+        </text>
+      </g>
+    </g>
+    <g id="Group-Copy" sketch:type="MSLayerGroup" transform="translate(110.000000, 357.000000)">
+      <path d="M42.5,19.9279582 L42.5,30.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M98.5,19.9279582 L98.5,30.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M154.5,19.9279582 L154.5,30.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M380.5,19.9279582 L380.5,30.7644246" id="Line-Copy-54" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M168.5,19.9279582 L168.5,30.7644246" id="Line-Copy-41" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M394.5,19.9279582 L394.5,30.7644246" id="Line-Copy-55" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M183.5,20 L183.5,31" id="Line-Copy-42" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M409.5,20 L409.5,31" id="Line-Copy-56" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M197.5,20 L197.5,31" id="Line-Copy-43" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M423.5,20 L423.5,31" id="Line-Copy-57" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M505.5,20 L505.5,31" id="Line-Copy-62" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M322.5,19.9279582 L322.5,30.7644246" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M336.5,19.9279582 L336.5,30.7644246" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="66.2993164" y="23">0</tspan>
+      </text>
+      <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="158.299316" y="23">1</tspan>
+      </text>
+      <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="383.299316" y="23">5</tspan>
+      </text>
+      <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="172.299316" y="23">2</tspan>
+      </text>
+      <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="398.299316" y="23">6</tspan>
+      </text>
+      <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="186.299316" y="23">3</tspan>
+      </text>
+      <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="412.299316" y="23">7</tspan>
+      </text>
+      <g id="Group" transform="translate(422.500000, 0.000000)">
+        <path d="M1,19.9279582 L1,30.7644246" id="Line-Copy-58" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+        <path d="M83,19.9279582 L83,30.7644246" id="Line-Copy-63" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+        <path d="M15,19.9279582 L15,30.7644246" id="Line-Copy-59" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+        <path d="M97,19.9279582 L97,30.7644246" id="Line-Copy-64" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+        <path d="M29,20 L29,31" id="Line-Copy-60" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+        <path d="M111.5,0 L111.5,31" id="Line-Copy-65" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+        <text id="8" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+          <tspan x="3.79931641" y="23">8</tspan>
+        </text>
+        <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+          <tspan x="85.7993164" y="23">0</tspan>
+        </text>
+        <text id="9" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+          <tspan x="17.7993164" y="23">9</tspan>
+        </text>
+        <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+          <tspan x="99.7993164" y="23">1</tspan>
+        </text>
+      </g>
+      <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="326.299316" y="23">4</tspan>
+      </text>
+    </g>
+    <rect id="Rectangle-1-Copy-3" fill="#FAFF8C" sketch:type="MSShapeGroup" x="643" y="276.400006" width="57" height="33"></rect>
+    <rect id="Rectangle-1-Copy-5" fill="#FAFF8C" sketch:type="MSShapeGroup" x="322" y="200.899994" width="57" height="33"></rect>
+    <g id="Group-Copy-3" sketch:type="MSLayerGroup" transform="translate(110.000000, 277.000000)">
+      <path d="M42.5,19.9279582 L42.5,30.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M98.5,19.9279582 L98.5,30.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M154.5,19.9279582 L154.5,30.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M380.5,19.9279582 L380.5,30.7644246" id="Line-Copy-54" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M168.5,19.9279582 L168.5,30.7644246" id="Line-Copy-41" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M394.5,19.9279582 L394.5,30.7644246" id="Line-Copy-55" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M183.5,20 L183.5,31" id="Line-Copy-42" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M409.5,20 L409.5,31" id="Line-Copy-56" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M197.5,20 L197.5,31" id="Line-Copy-43" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M423.5,20 L423.5,31" id="Line-Copy-57" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M505.5,20 L505.5,31" id="Line-Copy-62" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M322.5,19.9279582 L322.5,30.7644246" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M336.5,19.9279582 L336.5,30.7644246" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="66.2993164" y="23">0</tspan>
+      </text>
+      <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="158.299316" y="23">1</tspan>
+      </text>
+      <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="383.299316" y="23">5</tspan>
+      </text>
+      <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="172.299316" y="23">2</tspan>
+      </text>
+      <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="398.299316" y="23">6</tspan>
+      </text>
+      <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="186.299316" y="23">3</tspan>
+      </text>
+      <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="412.299316" y="23">7</tspan>
+      </text>
+      <path d="M547.5,20 L547.5,31" id="Line-Copy-71" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="536.299316" y="23">2</tspan>
+      </text>
+      <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="550.299316" y="23">3</tspan>
+      </text>
+      <path d="M423.5,19.9279582 L423.5,30.7644246" id="Line-Copy-58" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M505.5,19.9279582 L505.5,30.7644246" id="Line-Copy-63" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M437.5,19.9279582 L437.5,30.7644246" id="Line-Copy-59" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M519.5,19.9279582 L519.5,30.7644246" id="Line-Copy-64" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M451.5,20 L451.5,31" id="Line-Copy-60" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M534,0 L534,31" id="Line-Copy-65" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M589,0 L589,31" id="Line-Copy-66" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="8" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="426.299316" y="23">8</tspan>
+      </text>
+      <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="508.299316" y="23">0</tspan>
+      </text>
+      <path d="M645.5,19.9279582 L645.5,30.7644246" id="Line-Copy-70" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M699.5,19.9279582 L699.5,30.7644246" id="Line-Copy-69" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="667.299316" y="23">7</tspan>
+      </text>
+      <path d="M589.5,19.9279582 L589.5,30.7644246" id="Line-Copy-68" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M603.5,19.9279582 L603.5,30.7644246" id="Line-Copy-67" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="592.299316" y="23">6</tspan>
+      </text>
+      <text id="9" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="440.299316" y="23">9</tspan>
+      </text>
+      <path d="M561.5,19.9279582 L561.5,30.7644246" id="Line-Copy-73" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M575.5,19.9279582 L575.5,30.7644246" id="Line-Copy-72" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="564.299316" y="23">4</tspan>
+      </text>
+      <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="578.299316" y="23">5</tspan>
+      </text>
+      <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="522.299316" y="23">1</tspan>
+      </text>
+      <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="326.299316" y="23">4</tspan>
+      </text>
+    </g>
+    <g id="Group-Copy-5" sketch:type="MSLayerGroup" transform="translate(110.000000, 201.499988)">
+      <path d="M0.5,19.9279582 L0.5,30.7644246" id="Line-Copy-32" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M56.5,19.9279582 L56.5,30.7644246" id="Line-Copy-36" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M56.5,19.9279582 L56.5,30.7644246" id="Line-Copy-40" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M113.5,19.9279582 L113.5,30.7644246" id="Line-Copy-54" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M70.5,19.9279582 L70.5,30.7644246" id="Line-Copy-41" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M127.5,19.9279582 L127.5,30.7644246" id="Line-Copy-55" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M85.5,20 L85.5,31" id="Line-Copy-42" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M142.5,20 L142.5,31" id="Line-Copy-56" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M99.5,20 L99.5,31" id="Line-Copy-43" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M156.5,20 L156.5,31" id="Line-Copy-57" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M184.5,20 L184.5,31" id="Line-Copy-62" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M99.5,19.9279582 L99.5,30.7644246" id="Line-Copy-52" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M113.5,19.9279582 L113.5,30.7644246" id="Line-Copy-53" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="24.2993164" y="23">0</tspan>
+      </text>
+      <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="60.2993164" y="23">1</tspan>
+      </text>
+      <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="116.299316" y="23">5</tspan>
+      </text>
+      <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="74.2993164" y="23">2</tspan>
+      </text>
+      <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="131.299316" y="23">6</tspan>
+      </text>
+      <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="88.2993164" y="23">3</tspan>
+      </text>
+      <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="145.299316" y="23">7</tspan>
+      </text>
+      <path d="M226.5,20 L226.5,31" id="Line-Copy-71" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="2" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="215.299316" y="23">2</tspan>
+      </text>
+      <text id="3" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="229.299316" y="23">3</tspan>
+      </text>
+      <path d="M156.5,19.9279582 L156.5,30.7644246" id="Line-Copy-58" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M184.5,19.9279582 L184.5,30.7644246" id="Line-Copy-63" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M170.5,19.9279582 L170.5,30.7644246" id="Line-Copy-59" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M198.5,19.9279582 L198.5,30.7644246" id="Line-Copy-64" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M184.5,20 L184.5,31" id="Line-Copy-60" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M213,0 L213,31" id="Line-Copy-65" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M268,0 L268,31" id="Line-Copy-66" stroke="#3EF0BE" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="8" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="159.299316" y="23">8</tspan>
+      </text>
+      <text id="0" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="187.299316" y="23">0</tspan>
+      </text>
+      <path d="M282.5,19.9279582 L282.5,30.7644246" id="Line-Copy-70" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M336.5,19.9279582 L336.5,30.7644246" id="Line-Copy-69" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="7" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="304.299316" y="23">7</tspan>
+      </text>
+      <path d="M268.5,19.9279582 L268.5,30.7644246" id="Line-Copy-68" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M282.5,19.9279582 L282.5,30.7644246" id="Line-Copy-67" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="6" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="271.299316" y="23">6</tspan>
+      </text>
+      <text id="9" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="173.299316" y="23">9</tspan>
+      </text>
+      <path d="M240.5,19.9279582 L240.5,30.7644246" id="Line-Copy-73" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <path d="M254.5,19.9279582 L254.5,30.7644246" id="Line-Copy-72" stroke="#3EF0BE" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+      <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="243.299316" y="23">4</tspan>
+      </text>
+      <text id="5" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="257.299316" y="23">5</tspan>
+      </text>
+      <text id="1" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="201.299316" y="23">1</tspan>
+      </text>
+      <text id="4" sketch:type="MSTextLayer" font-family="Courier New" font-size="14" font-weight="normal" sketch:alignment="middle" fill="#3EF0BE">
+        <tspan x="103.299316" y="23">4</tspan>
+      </text>
+    </g>
+    <g id="Group" sketch:type="MSLayerGroup" transform="translate(45.000000, 97.000000)">
+      <path d="M58,57 C58,46.1986419 53.493401,36.4498564 46.2578985,29.531339 C39.4349658,23.0073169 30.1854624,19 20,19 C-0.986820492,19 -18,36.0131795 -18,57" id="Oval-1-Copy-3" stroke="#3EF0BE" stroke-width="6" sketch:type="MSShapeGroup" transform="translate(20.000000, 38.000000) rotate(-90.000000) translate(-20.000000, -38.000000) "></path>
+      <path d="M52.1289492,185.40239 C45.3060166,178.878368 36.0565132,174.871051 25.8710508,174.871051 C4.88423026,174.871051 -12.1289492,191.88423 -12.1289492,212.871051" id="Oval-1-Copy" stroke="#3EF0BE" stroke-width="6" sketch:type="MSShapeGroup" transform="translate(20.000000, 193.871051) rotate(-90.000000) translate(-20.000000, -193.871051) "></path>
+      <path d="M52.1289492,110.40239 C45.3060166,103.878368 36.0565132,99.8710508 25.8710508,99.8710508 C4.88423026,99.8710508 -12.1289492,116.88423 -12.1289492,137.871051" id="Oval-1-Copy-4" stroke="#3EF0BE" stroke-width="6" sketch:type="MSShapeGroup" transform="translate(20.000000, 118.871051) rotate(-90.000000) translate(-20.000000, -118.871051) "></path>
+      <path d="M37,142.625 L55,150.974242 L37.5389711,159.073485 L37,142.625 L37,142.625 Z" id="Rectangle-4" fill="#3EF0BE" sketch:type="MSShapeGroup"></path>
+      <path d="M37,67.625 L55,75.9742424 L37.5389711,84.0734848 L37,67.625 L37,67.625 Z" id="Rectangle-4-Copy-3" fill="#3EF0BE" sketch:type="MSShapeGroup"></path>
+      <path d="M37,217.625 L55,225.974242 L37.5389711,234.073485 L37,217.625 L37,217.625 Z" id="Rectangle-4-Copy" fill="#3EF0BE" sketch:type="MSShapeGroup"></path>
+      <path d="M52.1289492,261.40239 C45.3060166,254.878368 36.0565132,250.871051 25.8710508,250.871051 C4.88423026,250.871051 -12.1289492,267.88423 -12.1289492,288.871051" id="Oval-1-Copy-2" stroke="#3EF0BE" stroke-width="6" sketch:type="MSShapeGroup" transform="translate(20.000000, 269.871051) rotate(-90.000000) translate(-20.000000, -269.871051) "></path>
+      <path d="M37,293.625 L55,301.974242 L37.5389711,310.073485 L37,293.625 L37,293.625 Z" id="Rectangle-4-Copy-2" fill="#3EF0BE" sketch:type="MSShapeGroup"></path>
+    </g>
+    <rect id="Rectangle-7" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup" x="767" y="346" width="151" height="80"></rect>
+  </g>
 </svg>

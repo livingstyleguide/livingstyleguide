@@ -1,6 +1,5 @@
-
-function hasClass(ele, cls) {
-  return ele.classList.contains(cls);
+function hasClass(element, cls) {
+  return element.classList.contains(cls);
 }
 
 function addMatch(matched, node) {
@@ -11,7 +10,7 @@ function addMatch(matched, node) {
   }
 }
 
-var addNextElement = function(selection, matched, i) {
+function addNextElement(selection, matched, i) {
   var j = i + 1;
   while (j < selection.length) {
     if (hasClass(selection[j], "lsg--headline")) {
@@ -22,7 +21,7 @@ var addNextElement = function(selection, matched, i) {
   }
 }
 
-var addPreviousElement = function(selection, matched, i) {
+function addPreviousElement(selection, matched, i) {
   var j = i;
   while (j >= 0) {
     addMatch(matched, selection[j]);
@@ -52,8 +51,8 @@ document.addEventListener("DOMContentLoaded", function() {
       };
     };
 
-    unmatched = selection.filter(function(elem) {
-      return matched.indexOf(elem) === -1;
+    unmatched = selection.filter(function(element) {
+      return matched.indexOf(element) === -1;
     });
 
     unmatched.map(function(item) {
@@ -65,4 +64,3 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
-

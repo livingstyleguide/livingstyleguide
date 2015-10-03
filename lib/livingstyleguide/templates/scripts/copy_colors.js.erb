@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
   if (testCopy()) {
     var colorSwatches = document.getElementsByClassName("lsg--color-swatch");
@@ -26,13 +25,12 @@ function createDiv(copyHexColors) {
   divCopy.setAttribute("style", "opacity: 0; position: absolute; top: -10000px");
   divCopy.appendChild(document.createTextNode(copyHexColors));
   document.body.appendChild(divCopy);
-  return divCopy
+  return divCopy;
 }
 
 function createSpan() {
   var spanHover = document.createElement("span");
   spanHover.className = "lsg--copy-color";
   spanHover.appendChild(document.createTextNode("Click to copy variable\nAlt + click to copy HEX code"));
-  return spanHover
+  return spanHover;
 }
-

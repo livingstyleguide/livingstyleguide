@@ -1,8 +1,7 @@
 $links--item-size: 160px;
 
-
 .links {
-  
+
 }
 
 .links--container {
@@ -40,7 +39,7 @@ $links--item-size: 160px;
   &:first-child,
   &:last-child {
     clear: left;
-    margin-left: $margin + 1px;// floor($diamonds--item-rotated-size / 2) + $margin + 1px;
+    margin-left: $margin + 1px;
   }
 
   &:hover {
@@ -90,4 +89,3 @@ $links--item-size: 160px;
     }
   }
 }
-

@@ -22,7 +22,6 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
   }
 }
 
-
 .diamonds--container {
   left: 50%;
   position: absolute;
@@ -42,7 +41,6 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
     $last-max-width: $max-width;
   }
 }
-
 
 .diamonds--item {
   $margin: floor(($diamonds--item-rotated-size - $diamonds--item-size) / 2);
@@ -225,4 +223,3 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
     @include transform(scale(0.8));
   }
 }
-

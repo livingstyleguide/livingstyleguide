@@ -1,16 +1,16 @@
-require 'compass-placeholders'
+require "compass-placeholders"
 
 activate :livereload
 
-page '/'
-page '/changelog.html'
-page '/blog.html'
+page "/"
+page "/changelog.html"
+page "/blog.html"
 
-set :css_dir, 'style'
-set :js_dir, 'javascripts'
-set :images_dir, 'images'
+set :css_dir, "style"
+set :js_dir, "javascripts"
+set :images_dir, "images"
 
-set :haml, { attr_wrapper: '"', format: :html5 }
+set :haml, { attr_wrapper: %Q("), format: :html5 }
 
 configure :build do
   activate :minify_css
@@ -19,13 +19,13 @@ configure :build do
 end
 
 after_build do
-  File.rename 'build/.htaccess.html', 'build/.htaccess'
+  File.rename "build/.htaccess.html", "build/.htaccess"
 end
 
-require 'fileutils'
-Dir.glob 'source/images/graphics/*@2x.png' do |file|
-  new_file = file.sub('graphics', 'graphics-2x').sub('@2x', '')
-  FileUtils.mv  file, new_file
+require "fileutils"
+Dir.glob "source/images/graphics/*@2x.png" do |file|
+  new_file = file.sub("graphics", "graphics-2x").sub("@2x", "")
+  FileUtils.mv file, new_file
 end
 
 helpers do
@@ -33,13 +33,13 @@ helpers do
     # Prefer `git tag` over version.rb as tags are released:
     versions = `cd .. && git tag`.split(/\n/)
     current  = versions.last
-    current.sub(/^v/, '')
+    current.sub(/^v/, "")
   rescue
-    '0.0.0'
+    "0.0.0"
   end
 
   def markdown_partial(filename)
-    filename.gsub! /(.+)\/(.+)/, 'source/\\1/_\\2.md' unless filename =~ /\.md$/
+    filename.gsub! /(.+)\/(.+)/, "source/\\1/_\\2.md" unless filename =~ /\.md$/
     markdown = File.read(filename)
     renderer = LivingStyleGuide::RedcarpetHTML.new({})
     redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
@@ -56,12 +56,13 @@ helpers do
 end
 
 activate :blog do |blog|
-  blog.sources = 'blog/:year-:month-:day-:title.html'
-  blog.permalink = ':title.html'
-  blog.layout = 'blog-post'
+  blog.sources = "blog/:year-:month-:day-:title.html"
+  blog.permalink = ":title.html"
+  blog.layout = "blog-post"
 end
 
-LivingStyleGuide.add_filter :old_code_markers do |type, code|
+LivingStyleGuide.add_filter :old_code_markers do |arguments, options, code|
+  type = arguments.first
   code = ERB::Util.h(code)
   code.gsub!(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(\n<strong class="lsg--code-highlight-block">\\1</strong>\n))
   code.gsub!(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="lsg--code-highlight">\\1</strong>))
@@ -74,7 +75,7 @@ LivingStyleGuide.add_filter :old_code_markers do |type, code|
 HTML
 end
 
-LivingStyleGuide.add_filter :plain_code do |code|
+LivingStyleGuide.add_filter :plain_code do |arguments, options, code|
   code = ERB::Util.h(code)
   code.gsub!(/\n/, "<br>")
   <<-HTML

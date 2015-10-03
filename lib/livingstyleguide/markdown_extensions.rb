@@ -1,7 +1,7 @@
-require 'redcarpet'
-require 'tilt'
-require 'minisyntax'
-require 'erb'
+require "redcarpet"
+require "tilt"
+require "minisyntax"
+require "erb"
 
 module LivingStyleGuide
   REDCARPET_RENDER_OPTIONS = {
@@ -16,7 +16,7 @@ module LivingStyleGuide
   class RedcarpetHTML < ::Redcarpet::Render::HTML
     def initialize(options = {}, document)
       @options = options
-      @options[:prefix] ||= 'lsg--'
+      @options[:prefix] ||= "lsg--"
       @document = document
       @header = nil
       @ids = {}
@@ -45,7 +45,7 @@ module LivingStyleGuide
 
     def block_code(code, language)
       language = language.to_s.strip.to_sym
-      language = @options[:default_language] if language == :''
+      language = @options[:default_language] if language == :""
       document = Document.new(livingstyleguide: @document) { code }
       document.id = document_id
       document.type = language == :example ? @document.defaults[:global][:type] : language
@@ -60,10 +60,10 @@ module LivingStyleGuide
 
     private
     def slug(text)
-      require 'active_support/core_ext/string/inflections'
-      ::ActiveSupport::Inflector.parameterize(text, '-')
+      require "active_support/core_ext/string/inflections"
+      ::ActiveSupport::Inflector.parameterize(text, "-")
     rescue LoadError
-      text.downcase.gsub(/[ _\.\-!\?\(\)\[\]]+/, '-').gsub(/^-|-$/, '')
+      text.downcase.gsub(/[ _\.\-!\?\(\)\[\]]+/, "-").gsub(/^-|-$/, "")
     end
 
     private

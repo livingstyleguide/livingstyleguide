@@ -1,8 +1,8 @@
-require 'tilt'
+require "tilt"
 
 def map_files(glob, &block)
-  glob << '.lsg' unless glob =~ /\.(\w+|\*)$/
-  glob.gsub!(/[^\/]+$/, '{_,}\\0')
+  glob << ".lsg" unless glob =~ /\.(\w+|\*)$/
+  glob.gsub!(/[^\/]+$/, "{_,}\\0")
   glob = File.join(document.path, glob)
 
   Dir.glob(glob).map do |file|

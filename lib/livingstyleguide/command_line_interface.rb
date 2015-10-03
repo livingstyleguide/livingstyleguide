@@ -1,10 +1,10 @@
-require 'thor'
-require 'tilt'
+require "thor"
+require "tilt"
 
 module LivingStyleGuide
   class CommandLineInterface < Thor
 
-    desc 'compile input_file output_file', 'Compiles the living style guide to HTML.'
+    desc "compile input_file output_file", "Compiles the living style guide to HTML."
     def compile(input_file = nil, output_file = nil)
       doc = LivingStyleGuide::Document.new(input_file) do
         input(input_file)
@@ -12,7 +12,7 @@ module LivingStyleGuide
       output doc.render, input_file, output_file
     end
 
-    desc 'version', 'Shows the current version of the Gem'
+    desc "version", "Shows the current version of the Gem"
     def version
       puts "LivingStyleGuide #{LivingStyleGuide::VERSION}"
     end
@@ -31,7 +31,7 @@ module LivingStyleGuide
       if input_file.nil?
         puts html
       else
-        output_file = input_file.sub(/(\.html)?\.lsg$/, '.html') if output_file.nil?
+        output_file = input_file.sub(/(\.html)?\.lsg$/, ".html") if output_file.nil?
         if defined?(Compass)
           Compass.add_project_configuration
           output_file = output_file.sub(/^#{Compass.configuration.sass_dir}/, Compass.configuration.css_dir)
@@ -43,4 +43,3 @@ module LivingStyleGuide
 
   end
 end
-

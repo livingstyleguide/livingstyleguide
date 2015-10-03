@@ -1,11 +1,11 @@
-require 'test_helper'
+require "test_helper"
 
 describe LivingStyleGuide::Document do
 
   def assert_document_equals(input, output, options = {})
     @doc = LivingStyleGuide::Document.new { input.unindent(ignore_blank: true) }
     @doc.type = options[:type] || :lsg
-    @doc.template = options[:template] || 'plain'
+    @doc.template = options[:template] || "plain"
     actual = @doc.render(nil, options[:data]).gsub(/\n\n+/, "\n").strip
     expected = output.unindent(ignore_blank: true).gsub(/\n\n+/, "\n").strip
     actual.must_equal expected
@@ -14,7 +14,7 @@ describe LivingStyleGuide::Document do
   def assert_document_matches(input, output, options = {})
     @doc = LivingStyleGuide::Document.new { input.unindent(ignore_blank: true) }
     @doc.type = options[:type] || :lsg
-    @doc.template = options[:template] || 'plain'
+    @doc.template = options[:template] || "plain"
     actual = @doc.render(nil, options[:data]).gsub(/\n\n+/, "\n").strip
     expected = output.unindent(ignore_blank: true).gsub(/\n\n+/, "\n").strip
     actual.must_match Regexp.new(expected, Regexp::MULTILINE)
@@ -105,7 +105,7 @@ describe LivingStyleGuide::Document do
           @my-second-filter 'Test\''; Test\\; with semicolon; "More test\""
           Lorem ipsum
         INPUT
-          arg1: Test'
+          arg1: 'Test''
           arg2: Test; with semicolon
           arg3: More test"
           Lorem ipsum
@@ -121,7 +121,7 @@ describe LivingStyleGuide::Document do
           Lorem ipsum
         INPUT
           a: Lorem"
-          b: 1'
+          b: '1''
           c: 1; 2
           Lorem ipsum
         OUTPUT
@@ -133,7 +133,7 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with a block" do
         LivingStyleGuide::Filters.add_filter :x do |arguments, options, block|
-          block.gsub(/\w/, 'X')
+          block.gsub(/\w/, "X")
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @x {
@@ -150,7 +150,7 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with multiple arguments and a block" do
         LivingStyleGuide::Filters.add_filter :y do |arguments, options, block|
-          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
+          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, "Y")}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @y 1; 2 {
@@ -230,7 +230,7 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with an indented block" do
         LivingStyleGuide::Filters.add_filter :x_indented do |arguments, options, block|
-          block.gsub(/\w/, 'X')
+          block.gsub(/\w/, "X")
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @x-indented
@@ -246,7 +246,7 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with an indented block at the end of the file" do
         LivingStyleGuide::Filters.add_filter :x_indented do |arguments, options, block|
-          block.gsub(/\w/, 'X')
+          block.gsub(/\w/, "X")
         end
         assert_document_equals <<-INPUT.rstrip, <<-OUTPUT, type: :plain
           @x-indented
@@ -260,7 +260,7 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with multiple arguments and an indented block" do
         LivingStyleGuide::Filters.add_filter :y_indented do |arguments, options, block|
-          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
+          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, "Y")}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @y-indented 1; 2
@@ -282,7 +282,7 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with an indented block" do
         LivingStyleGuide::Filters.add_filter :x_newline do |arguments, options, block|
-          block.gsub(/\w/, 'X')
+          block.gsub(/\w/, "X")
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @x-newline:
@@ -299,7 +299,7 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with an indented block at the end of the file" do
         LivingStyleGuide::Filters.add_filter :x_newline do |arguments, options, block|
-          block.gsub(/\w/, 'X')
+          block.gsub(/\w/, "X")
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @x-newline:
@@ -313,7 +313,7 @@ describe LivingStyleGuide::Document do
 
       it "can have filters with multiple arguments and an indented block" do
         LivingStyleGuide::Filters.add_filter :y_newline do |arguments, options, block|
-          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, 'Y')}"
+          "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, "Y")}"
         end
         assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
           @y-newline 1; 2:
@@ -380,7 +380,7 @@ describe LivingStyleGuide::Document do
 
     it "should use template" do
       File.stub :read, "*<%= html %>*" do
-        assert_document_equals "Test", "*Test*", type: :plain, template: 'my-template'
+        assert_document_equals "Test", "*Test*", type: :plain, template: "my-template"
       end
     end
 
@@ -420,7 +420,7 @@ describe LivingStyleGuide::Document do
   describe "CSS" do
 
     it "should output CSS from SCSS source" do
-      doc = LivingStyleGuide::Document.new { '' }
+      doc = LivingStyleGuide::Document.new { "" }
       doc.scss << <<-SCSS
         $color: #bd0d5e;
         #test {
@@ -499,13 +499,13 @@ describe LivingStyleGuide::Document do
     end
 
     it "should generate IDs by hash" do
-      doc = LivingStyleGuide::Document.new { '# Test' }
+      doc = LivingStyleGuide::Document.new { "# Test" }
       doc.id.must_match(/^section-[0-9a-f]{6}$/)
     end
 
     it "should generate IDs by file name" do
-      doc = LivingStyleGuide::Document.new('test/fixtures/import/_headline-partial.lsg')
-      doc.id.must_equal('test/fixtures/import/headline-partial')
+      doc = LivingStyleGuide::Document.new("test/fixtures/import/_headline-partial.lsg")
+      doc.id.must_equal("test/fixtures/import/headline-partial")
     end
 
   end
@@ -538,7 +538,7 @@ describe LivingStyleGuide::Document do
       doc.template = :plain
       doc.render
       assert_equal "This is highlighted text.", doc.html
-      assert_equal 'This is <strong class="lsg--code-highlight">highlighted</strong> text.', doc.highlighted_source
+      assert_equal %Q(This is <strong class="lsg--code-highlight">highlighted</strong> text.), doc.highlighted_source
     end
 
     it "should highlight text in source code" do

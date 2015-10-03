@@ -1,7 +1,7 @@
 .layout {
   background: $white;
   color: $black;
-  font-family: Gubia, "helvetica neue", helvetica, arial, sans-serif;
+  font-family: gubia, helvetica neue, helvetica, arial, sans-serif;
   font-size: 4 * $grid;
   line-height: 1.25;
   margin: 0 0 5 * $grid;
@@ -9,13 +9,11 @@
   -webkit-font-smoothing: antialiased;
 }
 
-
 .layout--container {
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
 }
-
 
 .layout--content {
   margin: auto;
