@@ -11,7 +11,7 @@ def map_files(glob, &block)
   end.join
 end
 
-LivingStyleGuide.add_filter :import do |arguments, options, data|
+LivingStyleGuide.command :import do |arguments, options, data|
   glob = arguments.first
   if glob =~ /\.s[ac]ss$/
     raise "Error: Please use `@css #{glob}` instead of `@import #{glob}` for importing Sass."
@@ -26,7 +26,7 @@ LivingStyleGuide.add_filter :import do |arguments, options, data|
   end
 end
 
-LivingStyleGuide.add_filter :use do |arguments, options, data|
+LivingStyleGuide.command :use do |arguments, options, data|
   glob = arguments.first
   map_files glob do |file|
     File.read(file)

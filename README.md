@@ -305,7 +305,7 @@ Alternatively you can set the colors you want to output yourself (much better fo
 ### Haml Examples
 
 This will output the code as HTML but display the syntax highlighted
-source as Haml ([learn how to use Haml by default](#default-filters)):
+source as Haml ([learn how to use Haml by default](#default-commands)):
 
     ```
     @haml
@@ -423,7 +423,8 @@ Use your own text (defaults to “ABC…\nabc…\n123…\n!&…” if not set):
 
 ### Require Ruby files or Gems
 
-You can require any Ruby file (e.g. for custom filters) or Ruby Gems (e.g. a Compass plugin:
+You can require any Ruby file (e.g. for custom commands) or Ruby Gems (e.g. a
+Compass plugin:
 
     Loads `my-ruby-file.rb`:
     @require my-ruby-file
@@ -452,7 +453,7 @@ No syntax highlighter:
 You can set options to apply to all commands or all commands giving a
 name.
 This is useful, when you depend on Haml or other templating engines.
-Add a list of default filters to your _styleguide.html.lsg_:
+Add a list of default commands to your _styleguide.html.lsg_:
 
 For example without defaults:
 
@@ -572,7 +573,7 @@ Enable search for the style guide:
 @search-box
 ```
 
-This will add a search box on top of the style guide which filters the content via JavaScript.
+This will add a search box on top of the style guide which commands the content via JavaScript.
 
 You can also customize (e.g. translate) the placeholder for the search box:
 

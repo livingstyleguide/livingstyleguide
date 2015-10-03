@@ -2,7 +2,7 @@ require "document_test_helper"
 
 class DefaultTest < DocumentTestCase
 
-  LivingStyleGuide::Filters.add_filter :test_default do |arguments, options, block|
+  LivingStyleGuide.command :test_default do |arguments, options, block|
     options[:foo]
   end
 

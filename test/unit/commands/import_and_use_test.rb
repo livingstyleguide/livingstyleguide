@@ -2,7 +2,7 @@ require "document_test_helper"
 
 class ImportAndSourceTest < DocumentTestCase
 
-  LivingStyleGuide::Filters.add_filter :foo do |arguments, options, block|
+  LivingStyleGuide.command :foo do |arguments, options, block|
     text = arguments.first
     "# #{text.capitalize} #{text.capitalize}"
   end
@@ -72,11 +72,11 @@ class ImportAndSourceTest < DocumentTestCase
     OUTPUT
   end
 
-  def test_import_filter
+  def test_import_command
     assert_render_match <<-INPUT, <<-OUTPUT, template: :default
       Before
 
-      @import test/fixtures/import/filter.lsg
+      @import test/fixtures/import/command.lsg
 
       After
     INPUT

@@ -21,8 +21,8 @@ module LivingStyleGuide
     @@default_options
   end
 
-  def self.add_filter(*keys, &block)
-    Filters.add_filter(*keys, &block)
+  def self.command(*keys, &block)
+    Commands.command(*keys, &block)
   end
 
   def self.parse_data(data)
@@ -39,5 +39,5 @@ end
 require "livingstyleguide/version"
 require "livingstyleguide/markdown_extensions"
 require "livingstyleguide/document"
-require "livingstyleguide/filters"
+require "livingstyleguide/commands"
 require "livingstyleguide/integration"
