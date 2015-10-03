@@ -1,4 +1,4 @@
-LivingStyleGuide.add_filter :css do |arguments, options, css|
+LivingStyleGuide.command :css do |arguments, options, css|
   file = arguments.first
   if file =~ /\.css$/
     if document.file

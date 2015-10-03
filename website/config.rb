@@ -61,7 +61,7 @@ activate :blog do |blog|
   blog.layout = "blog-post"
 end
 
-LivingStyleGuide.add_filter :old_code_markers do |arguments, options, code|
+LivingStyleGuide.command :old_code_markers do |arguments, options, code|
   type = arguments.first
   code = ERB::Util.h(code)
   code.gsub!(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(\n<strong class="lsg--code-highlight-block">\\1</strong>\n))
@@ -75,7 +75,7 @@ LivingStyleGuide.add_filter :old_code_markers do |arguments, options, code|
 HTML
 end
 
-LivingStyleGuide.add_filter :plain_code do |arguments, options, code|
+LivingStyleGuide.command :plain_code do |arguments, options, code|
   code = ERB::Util.h(code)
   code.gsub!(/\n/, "<br>")
   <<-HTML

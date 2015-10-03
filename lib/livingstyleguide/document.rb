@@ -6,7 +6,7 @@ require "digest"
 require "pathname"
 
 class LivingStyleGuide::Document < ::Tilt::Template
-  attr_accessor :source, :type, :filters, :template, :classes, :html
+  attr_accessor :source, :type, :commands, :template, :classes, :html
   attr_accessor :css, :id, :locals
   attr_accessor :title
   attr_accessor :syntax
@@ -32,7 +32,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def prepare
     @type = :lsg
-    @filters = LivingStyleGuide::Filters.new(self)
+    @commands = LivingStyleGuide::Commands.new(self)
     @template = options.has_key?(:livingstyleguide) ? :default : :layout
     @classes = []
     @scss = ""
@@ -77,7 +77,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def erb
-    @erb ||= parse_filters do |name, arguments, options, block|
+    @erb ||= parse_commands do |name, arguments, options, block|
       options = %Q(document.defaults[:global].merge(document.defaults[:@#{name}] || {}).merge(#{options.inspect}))
       "<%= #{name}(#{arguments.inspect}, #{options}, #{block.inspect}) %>\n"
     end
@@ -95,7 +95,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @after = ""
     @footer = ""
     @scope = scope
-    result = ERB.new(erb).result(@filters.get_binding)
+    result = ERB.new(erb).result(@commands.get_binding)
     @source = result
     @html = render_html(result, locals)
     @classes.unshift "lsg--#{@type}-example"
@@ -196,7 +196,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   private
-  def parse_filters
+  def parse_commands
     data.gsub("<%", "<%%").gsub(/\G(.*?)((```.+?```)|\Z)/m) do
       content, code_block = $1, $2
       content.gsub(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|((?:\n+  .*)+(?=\n|\Z))| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
