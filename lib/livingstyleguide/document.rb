@@ -84,11 +84,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def evaluate(scope, locals, &block)
-    scripts_path = "#{File.dirname(__FILE__)}/templates/scripts"
     @head = ""
     @javascript = ""
     %w(copy copy_code copy_colors toggle_code).each do |partial|
-      @javascript << ERB.new(File.read("#{scripts_path}/#{partial}.js.erb")).result(binding)
+      @javascript << LivingStyleGuide.template("scripts/#{partial}.js.erb", binding)
     end
     @header = ""
     @before = ""

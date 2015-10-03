@@ -11,5 +11,5 @@ LivingStyleGuide.command :font_example do |arguments, options, text|
   text.strip!
   text.gsub!(/\n/, "<br>\n")
   font = ERB::Util.html_escape(arguments.first)
-  ERB.new(File.read("#{File.dirname(__FILE__)}/../templates/font-example.html.erb")).result(binding)
+  LivingStyleGuide.template("font-example.html.erb", binding)
 end
