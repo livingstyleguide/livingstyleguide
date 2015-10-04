@@ -3,10 +3,10 @@
   color: $black;
   font-family: gubia, helvetica neue, helvetica, arial, sans-serif;
   font-size: 4 * $grid;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.25;
   margin: 0 0 5 * $grid;
   text-align: center;
-  -webkit-font-smoothing: antialiased;
 }
 
 .layout--container {

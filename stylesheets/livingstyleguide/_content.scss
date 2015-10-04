@@ -6,12 +6,12 @@
   color: $lsg--color;
   font-family: $lsg--base-font;
   font-size: $lsg--base-font-size;
+  -webkit-font-smoothing: antialiased;
   font-weight: $lsg--base-font-weight;
   line-height: $lsg--base-line-height;
   margin: $lsg--gap-width auto;
-  text-align: $lsg--base-text-align;
   max-width: $lsg--width;
-  -webkit-font-smoothing: antialiased;
+  text-align: $lsg--base-text-align;
 }
 
 .lsg--unordered-list-item,
@@ -31,12 +31,12 @@
   display: block;
   font-family: $lsg--headline-font;
   font-size: $lsg--headline-font-size;
+  -webkit-font-smoothing: antialiased;
   font-weight: $lsg--headline-font-weight;
   line-height: $lsg--headline-line-height;
   margin: (3 * $lsg--gap-width) auto $lsg--gap-width;
-  text-align: $lsg--headline-text-align;
   max-width: $lsg--width;
-  -webkit-font-smoothing: antialiased;
+  text-align: $lsg--headline-text-align;
 }
 
 .lsg--anchor {
@@ -86,10 +86,10 @@
   border-top-right-radius: $lsg--border-radius;
   display: block;
   margin: $lsg--gap-width auto 0;
+  max-width: $lsg--width;
   overflow: hidden;
   padding: $lsg--gap-width;
   position: relative;
-  max-width: $lsg--width;
 
   &.-lsg-has-full-width {
     @extend #{$lsg--layout-selector} !optional;
