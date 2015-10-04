@@ -37,8 +37,8 @@ $lsg--copy-background-image: none;
 
 .markdown {
   max-width: $lsg--width + 2 * 40px;
-  padding: 40px;
   overflow: hidden;
+  padding: 40px;
   text-align: left;
 
   a {
@@ -78,8 +78,8 @@ $lsg--copy-background-image: none;
   .lsg--ordered-list-item,
   .lsg--unordered-list,
   .lsg--unordered-list-item {
-    font-size: 18px;
     font-family: source sans pro, arial, helvetica, sans-serif;
+    font-size: 18px;
     font-weight: 200;
     line-height: 1.5;
     margin: 0 0 0.75em;
@@ -116,9 +116,9 @@ $lsg--copy-background-image: none;
       background: $lsg--code-background-color;
       color: $turquoise;
       content: counter(ul);
-      height: 1.3em;
       font-size: 0.8em;
       font-weight: bold;
+      height: 1.3em;
       line-height: 1.25em;
       margin: 0.4em 0 0 -1.7em;
       position: absolute;
