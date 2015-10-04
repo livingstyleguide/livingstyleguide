@@ -130,6 +130,7 @@ style {
   position: absolute;
   right: -1em;
   top: 0;
+
   @include for-phones {
     right: 0;
     top: -1em;
@@ -139,8 +140,8 @@ style {
 .header--slogan {
   color: $light-pink;
   font-weight: bold;
-  padding-top: 220px;
   margin: auto;
+  padding-top: 220px;
   width: 300px;
 }
 
@@ -198,8 +199,8 @@ style {
 .footer--contact {
   color: $gray;
   display: block;
-  font-weight: normal;
   font-size: 1rem;
+  font-weight: normal;
   letter-spacing: 1px;
   margin: (15 * $grid) auto 0;
   text-transform: uppercase;

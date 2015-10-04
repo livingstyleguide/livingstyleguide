@@ -1,9 +1,5 @@
 $links--item-size: 160px;
 
-.links {
-
-}
-
 .links--container {
   display: block;
   font-size: 0;
@@ -28,7 +24,6 @@ $links--item-size: 160px;
   font-weight: bold;
   height: $diamonds--item-size;
   margin: floor($diamonds--item-size / -2) $margin $margin;
-  text-align: left;
   padding: 5 * $grid 0;
   position: relative;
   text-align: center;

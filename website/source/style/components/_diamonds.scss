@@ -2,18 +2,18 @@ $diamonds--item-size: 160px;
 $diamonds--item-rotated-size: floor(sqrt(2 * pow($diamonds--item-size, 2)));
 $a: -140px;
 $b: 20px;
-$diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
-                      #F4A7BE #F8AAC1 (#D0156E url("/images/diamonds--logo.svg") $a $a no-repeat) #E293AA #EE97B0,
-                  #FF96B5 (#CA1F70 url("/images/diamonds--logo.svg") $a $b no-repeat) (#CA1B6E url("/images/diamonds--logo.svg") $b $a no-repeat) #FF96B5,
-                      #EB83A2 (#C42872 url("/images/diamonds--logo.svg") $b $b no-repeat) #F8AAC1,
-                  #FF96B5 #F199B2,
-                      #ECA2B8;
+$diamonds--items: #ff96b5 #ef6991 #ff96b5 #f199b2 #ef6991 #eb83a2,
+                      #f4a7be #f8aac1 (#d0156e url("/images/diamonds--logo.svg") $a $a no-repeat) #e293aa #ee97b0,
+                  #ff96b5 (#ca1f70 url("/images/diamonds--logo.svg") $a $b no-repeat) (#ca1b6e url("/images/diamonds--logo.svg") $b $a no-repeat) #ff96b5,
+                      #eb83a2 (#c42872 url("/images/diamonds--logo.svg") $b $b no-repeat) #f8aac1,
+                  #ff96b5 #f199b2,
+                      #eca2b8;
 
 .diamonds {
   display: block;
   height: 61vw;
-  min-height: 480px;
   max-height: 700px;
+  min-height: 480px;
   @include transition(all, 0.5s);
 
   .-subpage- & {
@@ -47,8 +47,8 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
   float: left;
   height: $diamonds--item-size;
   margin: floor($diamonds--item-size / -2) $margin $margin;
-  text-align: center;
   position: relative;
+  text-align: center;
   width: $diamonds--item-size;
   @include transition(transform, 0.5s);
 
@@ -128,6 +128,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
     @each $item in $row {
       $item-number: $item-number + 1;
       $current-item-number: $current-item-number + 1;
+
       &:nth-child(#{$item-number}) {
         &:after {
           @if $current-item-number == 1 or $current-item-number == length(nth($diamonds--items, $row-number)) {
@@ -138,6 +139,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
             background: $item;
           }
         }
+
         @if $current-item-number == 1 {
           clear: left;
           margin-left: floor($diamonds--item-rotated-size / 2 * ($row-number - 1) + $margin);
@@ -203,7 +205,7 @@ $diamonds--items: #FF96B5 #EF6991 #FF96B5 #F199B2 #EF6991 #EB83A2,
 }
 
 .diamonds--item-tagline {
-  color: #FFABC2;
+  color: #ffabc2;
   font-size: 18px;
   font-weight: bold;
   left: -53%;

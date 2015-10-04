@@ -11,10 +11,10 @@
   display: inline;
   font-family: $lsg--code-font;
   font-size: $lsg--code-font-size;
+  -webkit-font-smoothing: subpixel-antialiased;
   font-weight: $lsg--code-font-weight;
   overflow: scroll;
   padding: 0 3px;
-  -webkit-font-smoothing: subpixel-antialiased;
 
   kbd {
     @extend %lsg--reset;
@@ -73,13 +73,14 @@
 
 .lsg--code-block {
   display: block;
-  min-height: $lsg--gap-width + $lsg--button-height;
   line-height: $lsg--code-line-height;
-  padding: 3px $lsg--gap-width;
   max-width: $lsg--width;
+  min-height: $lsg--gap-width + $lsg--button-height;
   -ms-overflow-style: none;
+  padding: 3px $lsg--gap-width;
 
   &::-webkit-scrollbar {
+    // scss-lint:disable ImportantRule
     width: 0 !important;
   }
 }

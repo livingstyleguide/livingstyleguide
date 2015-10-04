@@ -27,15 +27,25 @@
   }
 
   &:hover:before {
-    color: black;
     cursor: pointer;
+    color: black
   }
-
   &:after {
     cursor: pointer;
     display: block;
     font-weight: normal;
     text-align: center;
+  }
+
+  &.-lsg-empty {
+    overflow: hidden;
+    text-align: left;
+    text-indent: -119988px;
+
+    &:before,
+    &:after {
+      display: none;
+    }
   }
 }
 
@@ -48,7 +58,7 @@
   font-size: 0.8em;
   left: 0;
   line-height: 1.2em;
-  padding: 3px 0 3px 0;
+  padding: 3px 0;
   position: absolute;
   visibility: hidden;
   white-space: pre-wrap;
@@ -62,10 +72,10 @@
 
 .lsg--color-swatches {
   @extend %lsg--reset;
-  margin: $lsg--gap-width auto (-$lsg--gap-width) auto;
+  margin: $lsg--gap-width auto (-$lsg--gap-width);
+  max-width: $lsg--width + 2 * $lsg--gap-width;
   overflow: hidden;
   padding-left: $lsg--gap-width;
-  max-width: $lsg--width + 2 * $lsg--gap-width;
 }
 
 @for $i from 1 through 12 {
@@ -74,16 +84,5 @@
     height: $size;
     padding-top: $size / 2 + ($size / 5 - 20px);
     width: $size;
-  }
-}
-
-.lsg--color-swatch.-lsg-empty {
-  overflow: hidden;
-  text-align: left;
-  text-indent: -119988px;
-
-  &:before,
-  &:after {
-    display: none;
   }
 }

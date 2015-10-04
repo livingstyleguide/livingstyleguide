@@ -1,10 +1,10 @@
 .lsg--before {
-  margin-top: $lsg--gap-width * 2;
   margin-right: $lsg--width / 3;
+  margin-top: $lsg--gap-width * 2;
 
   > *:not(script) {
     display: inline-block;
-    margin: 0 $lsg--gap-width / 2;
     float: right;
+    margin: 0 $lsg--gap-width / 2;
   }
 }
