@@ -1,7 +1,6 @@
 require "document_test_helper"
 
 class ToggleCode < DocumentTestCase
-
   def test_toggle_code
     assert_render_equals <<-INPUT, <<-OUTPUT, template: :"toggle-code"
       @toggle-code
@@ -14,8 +13,9 @@ class ToggleCode < DocumentTestCase
     assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
       @toggle-code
     INPUT
-      .*<section class="lsg--before">.*<input type="button" class="lsg--code-switch">.*</section>.*
+      .*<section class="lsg--before">
+          .*<input type="button" class="lsg--code-switch">.*
+      .*</section>.*
     OUTPUT
   end
-
 end
