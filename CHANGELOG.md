@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.0.0.alpha.11
+
+* Rename filters to commands which reflects their usage and will allow filtering later
+* General refactor: Unify coding style and remove obsolete v1 files
+* Add helper for rendering templates
+* Reorganize JavaScript scripts and use new JavaScript instance variable to hold them into the `LivingStyleGuide::Document` (RGSoC)
+* Add `@before` and `@after` commands for injecting content (HTML, plain text and commands, etc) before and after the main document container with tests (RGSoC)
+* Add button to show and hide code blocks via new `@toggle-code` command injected in the document’s before section with tests (RGSoC)
+* Relocate `@search-box` in the document’s before section and add missing tests for it (RGSoC)
+* Avoid warnings while running the tests
+* Add a linter for SCSS and integrate with Hound CI
+
+
 ## 2.0.0.alpha.10
 
 * Inline search in the style guide via `@search-box` (RGSoC)
