@@ -1,7 +1,3 @@
-.lsg--code-switch-container {
-  margin: 0 auto;
-  width: $lsg--width;
-}
 
 .lsg--code-switch {
   background-color: $lsg--background-color;
@@ -10,11 +6,7 @@
   background-repeat: no-repeat;
   background-size: 90%;
   border-radius: $lsg--border-radius;
-  bottom: 4 * $lsg--gap-width;
-  float: right;
   height: $lsg--button-height;
-  position: relative;
-  right: $lsg--gap-width;
   width: $lsg--button-width;
 }
 
