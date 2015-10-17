@@ -30,6 +30,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
     end
   end
 
+  def logo
+    LivingStyleGuide.template("logo.html.erb", binding)
+  end
+
   def prepare
     @type = :lsg
     @commands = LivingStyleGuide::Commands.new(self)
