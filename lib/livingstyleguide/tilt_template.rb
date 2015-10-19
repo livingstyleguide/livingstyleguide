@@ -85,8 +85,7 @@ module LivingStyleGuide
           break
         end
         path = File.expand_path('..', path)
-        if path === '/'
-          puts 'No GemFile or .git found. Compiling anyway.'
+        if path == "/"
           break
         end
       end
