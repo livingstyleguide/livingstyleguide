@@ -15,7 +15,7 @@ task :deploy do
     system "cd website && bundle && bundle exec middleman build"
     path = "html"
     domain = "livingstyleguide.org"
-    system "rsync -avz website/build/ lsg@livingstyleguide.org:/var/www/virtual/lsg/#{path}"
+    system "rsync -avz website/build/ lsg@lsg.vulpecula.uberspace.de:/var/www/virtual/lsg/#{path}"
     puts "Sucessfully deployed website to http://#{domain}"
   end
 end

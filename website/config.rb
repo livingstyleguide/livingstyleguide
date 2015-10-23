@@ -18,10 +18,6 @@ configure :build do
   activate :asset_hash
 end
 
-after_build do
-  File.rename "build/.htaccess.html", "build/.htaccess"
-end
-
 require "fileutils"
 Dir.glob "source/images/graphics/*@2x.png" do |file|
   new_file = file.sub("graphics", "graphics-2x").sub("@2x", "")
