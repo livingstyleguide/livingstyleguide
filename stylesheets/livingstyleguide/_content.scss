@@ -1,25 +1,35 @@
 .lsg--paragraph,
 .lsg--code-block,
 .lsg--unordered-list,
-.lsg--ordered-list {
+.lsg--ordered-list,
+.lsg--font-example {
   @extend %lsg--reset;
   color: $lsg--color;
   font-family: $lsg--base-font;
   font-size: $lsg--base-font-size;
   -webkit-font-smoothing: antialiased;
   font-weight: $lsg--base-font-weight;
-  line-height: $lsg--base-line-height;
-  margin: $lsg--gap-width auto;
+  line-height: round($lsg--base-font-size * $lsg--base-line-height);
+  margin: (2 * $lsg--gap-width) auto;
   max-width: $lsg--width;
   text-align: $lsg--base-text-align;
 }
 
+.lsg--paragraph,
 .lsg--unordered-list-item,
 .lsg--ordered-list-item {
+  > a {
+    color: $lsg--link-color;
+  }
+}
+
+.lsg--unordered-list-item,
+.lsg--ordered-list-item {
+  $margin: ceil($lsg--gap-width / 2);
   @extend %lsg--reset;
   display: list-item;
   list-style: disc;
-  margin: ceil($lsg--gap-width / 2) 0 ceil($lsg--gap-width / 2) (2 * $lsg--gap-width);
+  margin: $margin 0 $margin (2 * $lsg--gap-width);
 }
 
 .lsg--page-title,
@@ -33,8 +43,7 @@
   font-size: $lsg--headline-font-size;
   -webkit-font-smoothing: antialiased;
   font-weight: $lsg--headline-font-weight;
-  line-height: $lsg--headline-line-height;
-  margin: (3 * $lsg--gap-width) auto $lsg--gap-width;
+  margin: (8 * $lsg--gap-width) auto (2 * $lsg--gap-width);
   max-width: $lsg--width;
   text-align: $lsg--headline-text-align;
 }
@@ -43,9 +52,10 @@
   @extend %lsg--reset;
   color: inherit;
   display: inline;
-  margin-left: -1em;
+  margin-left: -1.3em;
   opacity: 0;
   position: absolute;
+  text-align: right;
   text-decoration: none;
   width: 1em;
 
@@ -61,34 +71,43 @@
 
   &:before {
     content: "#";
+    transition: transform 0.2s;
+  }
+
+  &:active:before {
+    transform: scale(0.8);
   }
 }
 
 .lsg--page-title {
   display: block;
   font-size: $lsg--page-title-font-size;
+  line-height: round($lsg--page-title-font-size * $lsg--base-line-height);
 }
 
 .lsg--sub-headline {
   display: block;
   font-size: $lsg--sub-headline-font-size;
+  line-height: round($lsg--sub-headline-font-size * $lsg--base-line-height);
+  margin-top: 4 * $lsg--gap-width;
 }
 
 .lsg--sub-sub-headline {
   display: block;
   font-size: $lsg--sub-sub-headline-font-size;
+  line-height: round($lsg--sub-sub-headline-font-size * $lsg--base-line-height);
+  margin-top: 4 * $lsg--gap-width;
 }
 
 .lsg--example {
   @extend %lsg--reset;
-  background: white;
+  background: $lsg--example-background;
   border-top-left-radius: $lsg--border-radius;
   border-top-right-radius: $lsg--border-radius;
   display: block;
-  margin: $lsg--gap-width auto 0;
+  margin: (2 * $lsg--gap-width) auto;
   max-width: $lsg--width;
   overflow: hidden;
-  padding: $lsg--gap-width;
   position: relative;
 
   &.-lsg-has-full-width {
@@ -97,18 +116,55 @@
     display: block;
     height: auto;
     margin: 0 auto;
+    max-width: 100%;
     min-height: auto;
     padding: $lsg--full-width-padding;
     width: 100%;
+
+    .lsg--code-block {
+      z-index: 2;
+
+      &::before {
+        background-color: inherit;
+        bottom: 0;
+        content: "";
+        left: 50%;
+        position: absolute;
+        top: 0;
+        transform: translateX(-50%);
+        width: 100vw;
+        z-index: -1;
+      }
+    }
   }
 
   &.-lsg-for-javascript {
     display: none;
   }
+}
 
-  .lsg--code-block {
-    margin-bottom: -$lsg--gap-width;
-    margin-left: -$lsg--gap-width;
-    margin-right: -$lsg--gap-width;
+hr {
+  border: 0;
+  border-top: 1px mix($lsg--color, $lsg--background-color, 10%) solid;
+  margin: (8 * $lsg--gap-width) (2 * $lsg--gap-width);
+}
+
+.lsg--html {
+  display: block;
+  padding: $lsg--example-padding;
+}
+
+.lsg--font-example {
+  @extend %lsg--reset;
+  display: block;
+}
+
+.lsg--font-example-text {
+  @extend %lsg--reset;
+  display: block;
+  margin-bottom: 2 * $lsg--gap-width;
+
+  &::first-line {
+    font-size: $lsg--font-example-first-line;
   }
 }

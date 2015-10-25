@@ -25,7 +25,7 @@ $lsg--variables: () !default;
         }
 
         &:hover:before {
-          background: transparentize($value, 0.6);
+          background: mix($value, $lsg--background-color, 60%);
         }
       }
 

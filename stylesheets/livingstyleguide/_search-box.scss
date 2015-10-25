@@ -1,0 +1,35 @@
+.lsg--search-box {
+  -webkit-appearance: none;
+  background: $lsg--code-background;
+  border: 0;
+  border-radius: $lsg--border-radius;
+  color: $lsg--code-color;
+  display: block;
+  font-family: $lsg--headline-font;
+  font-size: $lsg--sub-headline-font-size;
+  line-height: inherit;
+  margin: (2 * $lsg--gap-width) auto;
+  max-width: $lsg--width;
+  outline: 0;
+  padding: $lsg--gap-width;
+  width: 100%;
+
+  $placeholder-color: mix($lsg--code-background, $lsg--code-color, 67%);
+
+  // scss-lint:disable VendorPrefix
+  &::-moz-placeholder {
+    color: $placeholder-color;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $placeholder-color;
+  }
+
+  &:-ms-input-placeholder {
+    color: $placeholder-color;
+  }
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+}
