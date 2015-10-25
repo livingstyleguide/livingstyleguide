@@ -5,6 +5,7 @@ activate :livereload
 page "/"
 page "/changelog.html"
 page "/blog.html"
+page "/examples/*", layout: false
 
 set :css_dir, "style"
 set :js_dir, "javascripts"

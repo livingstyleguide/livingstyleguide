@@ -1,0 +1,33 @@
+@style color: #282c34
+@style background-color: lighten(#85d2df, 20%)
+@style border-radius: 4px
+@style color-swatch-border-radius: $lsg--border-radius
+@scss {
+  .lsg--color-swatch::before {
+    transform: rotate(10deg);
+  }
+}
+
+@header {
+  <h1 class="lsg--page-title">LivingStyleGuide v2.0.0 default style</h1>
+}
+
+@search-box
+
+This is a test page for the default style of
+[LivingStyleGuide v2.0.0](https://github.com/livingstyleguide/livingstyleguide/tree/v2).
+The only customization applied:
+
+``` lsg
+\@style color: #282c34
+\@style background-color: #d6f0f4
+\@style border-radius: 4px
+\@style color-swatch-border-radius: $lsg--border-radius
+\@scss {
+  .lsg--color-swatch::before {
+    transform: rotate(10deg);
+  }
+}
+```
+
+@import content

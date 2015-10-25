@@ -1,0 +1,25 @@
+@style color: #465141
+@style background-color: #ecb438
+@style base-font: georgia, times new roman, serif
+@style base-font-size: 18px
+@style color-swatch-border-radius: 0
+
+@header {
+  <h1 class="lsg--page-title">LivingStyleGuide v2.0.0 default style</h1>
+}
+
+@search-box
+
+This is a test page for the default style of
+[LivingStyleGuide v2.0.0](https://github.com/livingstyleguide/livingstyleguide/tree/v2).
+The only customization applied:
+
+``` lsg
+\@style color: #465141
+\@style background-color: #ecb438
+\@style font: georgia, times new roman, serif
+\@style base-font-size: 18px
+\@style color-swatch-border-radius: 0
+```
+
+@import content

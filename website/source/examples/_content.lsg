@@ -1,0 +1,140 @@
+See the other examples:
+
+* [Default](default.html)
+* [Pink](pink.html)
+* [Blue background](blue.html)
+* [Blue background, invers code](blue-invers.html)
+* [Yellow with Georgia](yellow.html)
+
+
+@scss test.scss
+@scss {
+  $my-color: #e83573 !global;
+}
+
+
+# Color swatches
+
+Now they have a visual feedback when clicking to copy. Colors can be used from
+hex values, CSS color constants, Sass variables, and Sass functions.
+
+@colors:
+- -       -         white   -
+- -       $my-color #a3ae9e -
+- test()  #7bcb5a   #465141 -
+
+
+# Font examples
+
+@font-example bold 20px georgia, times new roman, helvetica neue, helvetica, sans-serif
+@font-example bold italic 20px georgia, times new roman, helvetica neue, helvetica, sans-serif
+
+
+# Text
+
+**All text** in _LSG_ files is written with
+[Markdown](https://en.wikipedia.org/wiki/Markdown).
+
+---
+
+
+# Documentation of front-end compontents
+
+The following examples will render the HTML using your browser’s default style.
+Usually you would link your CSS file.
+
+## By using HTML
+
+```
+<button class="***button***" type="button">Button</button>
+```
+
+## By using Haml
+
+```
+@haml
+%button.***button***(type="button") Button
+```
+
+By using [code markers](https://livingstyleguide.org/code-markers.html) you can
+easily highlight the difference to the previous example:
+
+```
+@haml
+%button.button(type="button" ***disabled***) Button
+```
+
+Code markers also work when used in anywhere: It does not break the syntax
+highligher, but might not make sense:
+
+```
+@haml
+%but***ton.button(type="button" disa***bled) Button
+```
+
+
+---
+
+
+# Full-width example
+
+For full-width examples, just add `@full-width` on top of your HTML source.
+It’s useful for all layout elements. In this case one of the few HTML elements
+which have a visible browser style is used:
+
+```
+@full-width
+<form action>
+  <fieldset>
+    <legend>Legend</legend>
+    <label for="my-field">My field:</label>
+    <input type="text" id="my-field">
+  </fieldset>
+</form>
+```
+
+
+---
+
+
+# Data
+
+```
+@haml
+%div
+  %input{ type: "radio", checked: selected, name: "data-example" }
+  = name
+@data
+  - name: Homer
+    selected: true
+  - name: Marge
+    selected: false
+  - name: Bart
+    selected: false
+  - name: Lisa
+    selected: false
+  - name: Maggie
+    selected: false
+```
+
+
+---
+
+
+# JavaScript
+
+Just open your console. This will be executed and displayed.
+
+```
+@javascript
+var lang = "JavaScript";
+console.log("Just wrote some " + lang + " code.");
+```
+
+It also works with Coffee-Script:
+
+```
+@coffee-script
+lang = "Coffee-Script"
+console.log "Just wrote some #{lang} code."
+```
