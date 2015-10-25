@@ -359,6 +359,14 @@ describe LivingStyleGuide::Document do
       OUTPUT
     end
 
+    it "should escape “\\@” in the beginning of the text" do
+      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        \\@lorem ipsum
+      INPUT
+        @lorem ipsum
+      OUTPUT
+    end
+
     it "can have commands within commands" do
       LivingStyleGuide.command :inner do |arguments, options, block|
         "<inner>"
