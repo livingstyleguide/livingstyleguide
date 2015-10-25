@@ -1,0 +1,8 @@
+@function lsg--striped($color-a, $color-b: transparent, $size: 4px, $width: 25%) {
+  @return linear-gradient(to top left,
+      $color-a $width,
+      $color-b 0, 50%,
+      $color-a 0, (50% + $width),
+      $color-b 0)
+    repeat 0 0/#{$size} #{$size};
+}

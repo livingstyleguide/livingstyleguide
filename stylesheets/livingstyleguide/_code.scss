@@ -1,19 +1,21 @@
 .lsg--code {
   @extend %lsg--reset;
+  font-family: $lsg--code-font;
 }
 
 .lsg--code-span,
 .lsg--code-block {
   @extend %lsg--reset;
-  background: $lsg--code-background-color;
+  background: $lsg--code-background;
   border-radius: $lsg--code-border-radius;
   color: $lsg--code-color;
   display: inline;
-  font-family: $lsg--code-font;
   font-size: $lsg--code-font-size;
+  font-style: normal;
+  font-weight: normal;
   -webkit-font-smoothing: subpixel-antialiased;
   font-weight: $lsg--code-font-weight;
-  overflow: scroll;
+  //overflow: scroll;
   padding: 0 3px;
 
   kbd {
@@ -74,10 +76,12 @@
 .lsg--code-block {
   display: block;
   line-height: $lsg--code-line-height;
+  margin: auto;
   max-width: $lsg--width;
   min-height: $lsg--gap-width + $lsg--button-height;
   -ms-overflow-style: none;
-  padding: 3px $lsg--gap-width;
+  padding: $lsg--code-padding;
+  position: relative;
 
   &::-webkit-scrollbar {
     // scss-lint:disable ImportantRule
@@ -106,37 +110,53 @@
 }
 
 .lsg--button {
-  background-color: $lsg--background-color;
+  background-color: $lsg--color;
   background-image: $lsg--copy-background-image;
   background-position: 50%;
   background-repeat: no-repeat;
-  background-size: 90%;
-  border-radius: $lsg--border-radius;
-  bottom: floor($lsg--gap-width / 2);
+  background-size: 70%;
+  border: 0;
+  border-radius: $lsg--color-swatch-border-radius;
+  bottom: $lsg--gap-width;
   cursor: pointer;
   height: $lsg--button-height;
+  outline: 0;
   position: absolute;
-  right: floor($lsg--gap-width / 2);
+  right: $lsg--gap-width;
+  transition: transform 0.2s;
   visibility: hidden;
   width: $lsg--button-width;
 
-  .lsg--code:hover & {
+  &:hover {
+    background-color: mix($lsg--color, $lsg--background-color, 80%);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  .lsg--code-block:hover & {
     visibility: visible;
   }
 }
 
-.lsg--font-example {
-  @extend .lsg--example;
-}
-
 .lsg--code-highlight {
   @extend %lsg--reset;
-  background-color: $lsg--highlight-color;
+  background-color: $lsg--highlight-background-color;
   border-radius: $lsg--highlight-border-radius;
+  color: $lsg--highlight-color;
   display: inline;
   font-style: inherit;
   font-weight: inherit;
+  margin: 0 -1px;
+  padding: 0 1px;
+  text-decoration: inherit;
   vertical-align: baseline;
+
+  * {
+    // scss-lint:disable ImportantRule
+    color: inherit !important;
+  }
 }
 
 .lsg--code-highlight-block {

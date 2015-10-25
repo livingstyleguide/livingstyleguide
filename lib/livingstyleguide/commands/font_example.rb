@@ -1,8 +1,8 @@
 LivingStyleGuide.default_options[:font_example] = { text: <<-TEXT }
+  Aa
   ABCDEFGHIJKLMNOPQRSTUVWXYZ
   abcdefghijklmnopqrstuvwxyz
-  0123456789
-  !&/()$=@;:,.
+  0123456789 ! ? & / ( ) € $ £ ¥ ¢ = @ ; : , .
 TEXT
 
 LivingStyleGuide.command :font_example do |arguments, options, text|

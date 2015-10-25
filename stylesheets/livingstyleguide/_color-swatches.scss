@@ -1,6 +1,7 @@
 .lsg--color-swatch {
   @extend %lsg--reset;
   color: $lsg--color-swatch-color;
+  cursor: pointer;
   float: left;
   font-family: $lsg--code-font;
   font-size: $lsg--code-font-size;
@@ -11,12 +12,24 @@
   margin: 0 $lsg--gap-width $lsg--gap-width 0;
   position: relative;
   text-align: center;
-  z-index: 1;
+  transition: transform 0.2s;
+
+  &:hover {
+    z-index: 2;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
 
   &:before {
     @extend %lsg--reset;
-    border: $lsg--color-swatch-border-width $lsg--color-swatch-border-color solid;
-    border-radius: $lsg--color-swatch-border-radius;
+    border: {
+      color: $lsg--color-swatch-border-color;
+      radius: $lsg--color-swatch-border-radius;
+      style: solid;
+      width: $lsg--color-swatch-border-width;
+    }
     content: "";
     height: 100%;
     left: 0;
@@ -27,9 +40,10 @@
   }
 
   &:hover:before {
+    color: black;
     cursor: pointer;
-    color: black
   }
+
   &:after {
     cursor: pointer;
     display: block;
@@ -38,6 +52,7 @@
   }
 
   &.-lsg-empty {
+    cursor: default;
     overflow: hidden;
     text-align: left;
     text-indent: -119988px;
@@ -50,32 +65,51 @@
 }
 
 .lsg--copy-color {
-  background: $lsg--background-color;
+  background: $lsg--color;
   border-radius: $lsg--border-radius;
-  color: $lsg--color;
-  cursor: pointer;
+  color: $lsg--background-color;
   font-family: $lsg--base-font;
   font-size: 0.8em;
   left: 0;
   line-height: 1.2em;
+  margin-top: -$lsg--gap-width;
   padding: 3px 0;
   position: absolute;
+  top: 100%;
   visibility: hidden;
   white-space: pre-wrap;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
+
+  &::before {
+    border: ($lsg--gap-width / 2) solid;
+    border-color: transparent transparent $lsg--color;
+    bottom: 100%;
+    content: "";
+    left: 50%;
+    margin: 0 (-$lsg--gap-width / 2);
+    position: absolute;
+  }
 
   .lsg--color-swatch:hover & {
     visibility: visible;
   }
 }
 
+// scss-lint:disable VendorPrefix
 .lsg--color-swatches {
   @extend %lsg--reset;
-  margin: $lsg--gap-width auto (-$lsg--gap-width);
+  margin: (4 * $lsg--gap-width) auto (-$lsg--gap-width);
   max-width: $lsg--width + 2 * $lsg--gap-width;
-  overflow: hidden;
   padding-left: $lsg--gap-width;
+  -webkit-user-select: none;
+  user-select: none;
+
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
 }
 
 @for $i from 1 through 12 {
