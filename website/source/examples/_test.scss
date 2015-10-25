@@ -1,0 +1,3 @@
+@function test($v: 100%) {
+  @return mix(#ab9201, white, 100%);
+}
