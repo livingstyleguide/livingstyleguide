@@ -18,7 +18,7 @@ LivingStyleGuide.command :colors do |arguments, options, content|
     if variable == "-"
       css_class = "-lsg-empty"
     end
-    %Q(<li class="lsg--color-swatch #{css_class || variable}"><span>#{variable}</span></li>\n)
+    %Q(<li class="lsg--color-swatch #{css_class || variable}"><span>#{variable =~ /^(#[0-9a-f]{3,6}|[a-z]+)$/ ? "&nbsp;" : variable}</span></li>\n)
   end.join("\n")
   %(<ul class="lsg--color-swatches -lsg-#{columns}-columns">\n#{colors_html}\n</ul>\n)
 end

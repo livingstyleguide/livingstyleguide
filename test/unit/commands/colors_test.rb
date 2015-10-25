@@ -76,8 +76,8 @@ class ColorsTest < DocumentTestCase
       <ul class="lsg--color-swatches -lsg-4-columns">
         <li class="lsg--color-swatch $pink"><span>$pink</span></li>
         <li class="lsg--color-swatch purple()"><span>purple()</span></li>
-        <li class="lsg--color-swatch #87c53b"><span>#87c53b</span></li>
-        <li class="lsg--color-swatch red"><span>red</span></li>
+        <li class="lsg--color-swatch #87c53b"><span>&nbsp;</span></li>
+        <li class="lsg--color-swatch red"><span>&nbsp;</span></li>
       </ul>
     OUTPUT
     assert_match /.\$pink/, @doc.css
