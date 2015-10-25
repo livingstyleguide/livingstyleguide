@@ -7,7 +7,7 @@
       .layout--content
         %h1.blog--headline= data.page.title
         .markdown
-          = yield.gsub(%r(\A.*<body class="livingstyleguide">(.+)</body>.*\Z)m, '\\1')
+          = yield.gsub(%r(\A.*<div class="lsg--container">(.+)</div>\s*<a href="http://livingstyleguide.org" class="lsg--logo">.*\Z)m, '\\1')
         .social-buttons
           .social-buttons--item
             .fb-like(data-action="like" data-href="#{current_url}" data-layout="box_count" data-share="false")
