@@ -202,7 +202,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def parse_commands
     data.gsub("<%", "<%%").gsub(/\G(.*?)((```.+?```)|\Z)/m) do
       content, code_block = $1, $2
-      content.gsub(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|((?:\n+  .*)+(?=\n|\Z))| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
+      content.gsub!(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|((?:\n+  .*)+(?=\n|\Z))| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
         name, arguments_string, block = $1, $2 || "", $3 || $4 || $5
         options = {
           block_type: $3 ? :braces : $4 ? :indented : $5 ? :block : :none
@@ -213,7 +213,9 @@ class LivingStyleGuide::Document < ::Tilt::Template
           block.gsub!(/\A\n(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, "") }
         end
         yield name, arguments, options, block
-      end + code_block
+      end
+      content.gsub!(/^\\@/, "@")
+      content + code_block
     end
   end
 
