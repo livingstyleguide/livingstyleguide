@@ -38,7 +38,7 @@
   margin: $livingstyleguide--gap-width auto (-$livingstyleguide--gap-width) auto;
   overflow: hidden;
   padding-left: $livingstyleguide--gap-width;
-  width: $livingstyleguide--width + 2 * $livingstyleguide--gap-width;
+  max-width: $livingstyleguide--width + 2 * $livingstyleguide--gap-width;
 }
 
 @for $i from 1 through 12 {
