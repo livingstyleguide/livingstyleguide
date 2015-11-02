@@ -14,7 +14,7 @@
   @extend %livingstyleguide--reset;
   display: block;
   margin: (4 * $livingstyleguide--gap-width) auto;
-  width: $livingstyleguide--width;
+  max-width: $livingstyleguide--width;
 }
 
 .livingstyleguide--logo {

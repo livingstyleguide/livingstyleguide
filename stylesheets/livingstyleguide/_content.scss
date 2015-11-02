@@ -10,7 +10,7 @@
   line-height: $livingstyleguide--base-line-height;
   margin: $livingstyleguide--gap-width auto;
   text-align: $livingstyleguide--base-text-align;
-  width: $livingstyleguide--width;
+  max-width: $livingstyleguide--width;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -35,7 +35,7 @@
   line-height: $livingstyleguide--headline-line-height;
   margin: (3 * $livingstyleguide--gap-width) auto $livingstyleguide--gap-width;
   text-align: $livingstyleguide--headline-text-align;
-  width: $livingstyleguide--width;
+  max-width: $livingstyleguide--width;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -89,7 +89,7 @@
   overflow: hidden;
   padding: $livingstyleguide--gap-width;
   position: relative;
-  width: $livingstyleguide--width;
+  max-width: $livingstyleguide--width;
 
   &.-lsg-has-full-width {
     @extend #{$livingstyleguide--layout-selector} !optional;
@@ -99,7 +99,7 @@
     margin: 0 auto;
     min-height: auto;
     padding: $livingstyleguide--full-width-padding;
-    width: 100%;
+    max-width: none;
   }
 
   &.-lsg-for-javascript {

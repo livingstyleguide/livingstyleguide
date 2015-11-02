@@ -75,7 +75,7 @@
   display: block;//none;
   line-height: $livingstyleguide--code-line-height;
   padding: 3px 6px;
-  width: $livingstyleguide--width;
+  max-width: $livingstyleguide--width;
 
   .show-code & {
     display: block;
@@ -98,7 +98,7 @@
   .livingstyleguide--code {
     display: block;
     margin: auto;
-    width: $livingstyleguide--width;
+    max-width: $livingstyleguide--width;
   }
 }
 
