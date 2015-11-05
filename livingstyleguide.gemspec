@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'minisyntax'
   gem.add_dependency 'sass'
-  gem.add_dependency 'redcarpet', '~> 3.0.0'
+  gem.add_dependency 'redcarpet', '>= 3.2.3'
   gem.add_dependency 'tilt'
   gem.add_dependency 'thor'
   gem.add_dependency 'hooks', '0.3.3'
