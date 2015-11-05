@@ -85,6 +85,9 @@ module LivingStyleGuide
           break
         end
         path = File.expand_path('..', path)
+        if path == "/"
+          break
+        end
       end
       path
     end
