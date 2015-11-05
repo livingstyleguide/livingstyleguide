@@ -21,7 +21,7 @@ LivingStyleGuide::Example.add_filter :colors do |file|
       elsif variable[0] != '$'
         variable = "$#{variable}"
       end
-      %Q(<li class="livingstyleguide--color-swatch #{css_class || variable}">#{variable}</li>\n)
+      %Q(<li class="livingstyleguide--color-swatch #{css_class || variable.tr("_", "-")}">#{variable}</li>\n)
     end.join("\n")
     %(<ul class="livingstyleguide--color-swatches -lsg-#{columns}-columns">\n#{colors_html}\n</ul>\n)
   end

@@ -19,11 +19,11 @@ class ColorsTest < ExampleTestCase
   def test_defined_colors
     assert_render_equals <<-INPUT, <<-OUTPUT
       @colors
-      $orange $green
+      $my-orange $my_green
     INPUT
       <ul class="livingstyleguide--color-swatches -lsg-2-columns">
-        <li class="livingstyleguide--color-swatch $orange">$orange</li>
-        <li class="livingstyleguide--color-swatch $green">$green</li>
+        <li class="livingstyleguide--color-swatch $my-orange">$my-orange</li>
+        <li class="livingstyleguide--color-swatch $my-green">$my_green</li>
       </ul>
     OUTPUT
   end
