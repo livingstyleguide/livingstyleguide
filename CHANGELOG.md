@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.3.0
+
+* [#185](https://github.com/hagenburger/livingstyleguide/pull/185): Better
+  responsiveness for style guides
+* [#184](https://github.com/hagenburger/livingstyleguide/pull/184): Resolved
+  issue where compiling via CLI would be stuck in a while loop if no GemFile or
+  .git directory exists.
+* [#175](https://github.com/hagenburger/livingstyleguide/issues/175): Allow
+  variables with underscore
+* [#161](https://github.com/hagenburger/livingstyleguide/pull/161): Updated
+  RedCarpet version
+
+
 ## 1.2.2
 
 * [#105](https://github.com/hagenburger/livingstyleguide/issues/105): Better support of `sass-rails` in various versions
