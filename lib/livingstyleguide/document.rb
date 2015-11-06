@@ -185,6 +185,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
       end
       code_with_highlights << char
     end
+    code_with_highlights << %Q(</strong>) if inside_highlight
     code_with_highlights
   end
 

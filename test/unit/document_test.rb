@@ -549,6 +549,15 @@ describe LivingStyleGuide::Document do
       assert_equal %Q(This is <strong class="lsg--code-highlight">highlighted</strong> text.), doc.highlighted_source
     end
 
+    it "should highlight text in a line" do
+      doc = LivingStyleGuide::Document.new { "This is ***highlighted***" }
+      doc.type = :plain
+      doc.template = :plain
+      doc.render
+      assert_equal "This is highlighted", doc.html
+      assert_equal %Q(This is <strong class="lsg--code-highlight">highlighted</strong>), doc.highlighted_source
+    end
+
     it "should highlight text in source code" do
       doc = LivingStyleGuide::Document.new { "<b>This</b> is ***highlighted*** <b class=\"***class***\">text</b>." }
       doc.type = :html
