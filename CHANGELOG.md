@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.0
+
+* [#188](https://github.com/livingstyleguide/livingstyleguide/pull/188):
+  Sprockets compatibility
+* **Internal:**
+  * Added Ruby 2.3.0 to Travis CI
+  * Fixed Travis CI bundler issue
+
+
 ## 1.3.0
 
 * [#185](https://github.com/hagenburger/livingstyleguide/pull/185): Better
