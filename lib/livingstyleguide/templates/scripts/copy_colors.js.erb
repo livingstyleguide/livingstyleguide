@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         colorSwatches[i].addEventListener("click", function(event) {
           if (event.altKey) {
             var copyHexColors = window.getComputedStyle(this, ":after").getPropertyValue("content");
-            copyHexColors = copyHexColors.replace(/'/g, "");
+            copyHexColors = copyHexColors.replace(/'|"/g, "");
             selectElementRange(createDiv(copyHexColors));
           }
           else {
