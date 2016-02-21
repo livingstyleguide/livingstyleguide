@@ -5,7 +5,6 @@
   float: left;
   font-family: $lsg--code-font;
   font-size: $lsg--code-font-size;
-  font-weight: bold;
   height: 4em * $lsg--base-line-height;
   line-height: 1em * $lsg--base-line-height;
   list-style: none;
@@ -22,7 +21,7 @@
     transform: scale(0.9);
   }
 
-  &:before {
+  &::before {
     @extend %lsg--reset;
     border: {
       color: $lsg--color-swatch-border-color;
@@ -39,16 +38,17 @@
     z-index: -1;
   }
 
-  &:hover:before {
+  &:hover::before {
+    background-image: $lsg--copy-background-image;
+    background-position: 50% 40%;
+    background-repeat: no-repeat;
+    background-size: 20%;
     color: black;
     cursor: pointer;
   }
 
-  &:after {
-    cursor: pointer;
-    display: block;
-    font-weight: normal;
-    text-align: center;
+  &::after {
+    display: none;
   }
 
   &.-lsg-empty {
@@ -64,35 +64,32 @@
   }
 }
 
-.lsg--copy-color {
-  background: $lsg--color;
-  border-radius: $lsg--border-radius;
-  color: $lsg--background-color;
-  font-family: $lsg--base-font;
-  font-size: 0.8em;
-  left: 0;
-  line-height: 1.2em;
-  margin-top: -$lsg--gap-width;
-  padding: 3px 0;
-  position: absolute;
-  top: 100%;
-  visibility: hidden;
-  white-space: pre-wrap;
-  width: 100%;
-  z-index: 2;
+.lsg--color-swatch-source {
+  @extend %lsg--reset;
+  display: block;
 
-  &::before {
-    border: ($lsg--gap-width / 2) solid;
-    border-color: transparent transparent $lsg--color;
-    bottom: 100%;
-    content: "";
-    left: 50%;
-    margin: 0 (-$lsg--gap-width / 2);
-    position: absolute;
+  &:hover {
+    text-decoration: underline;
   }
+}
+
+.lsg--color-swatch-value {
+  @extend %lsg--reset;
+  cursor: pointer;
+  display: block;
+  margin-top: 1em * $lsg--base-line-height;
+  text-align: center;
 
   .lsg--color-swatch:hover & {
-    visibility: visible;
+    text-decoration: underline;
+  }
+
+  .lsg--color-swatch-source + & {
+    margin-top: 0;
+  }
+
+  .lsg--color-swatch-source:hover + & {
+    text-decoration: none;
   }
 }
 

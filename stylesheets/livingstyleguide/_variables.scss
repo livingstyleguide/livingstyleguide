@@ -21,11 +21,11 @@ $lsg--variables: () !default;
         }
 
         &:before {
-          background: $value;
+          background-color: $value;
         }
 
         &:hover:before {
-          background: mix($value, $lsg--background-color, 60%);
+          background-color: mix($value, $lsg--background-color, 60%);
         }
       }
 

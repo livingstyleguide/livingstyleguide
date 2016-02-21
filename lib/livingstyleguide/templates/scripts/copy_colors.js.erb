@@ -3,15 +3,14 @@ document.addEventListener("DOMContentLoaded", function() {
     var colorSwatches = document.getElementsByClassName("lsg--color-swatch");
     for (var i = 0; i < colorSwatches.length; i++) {
       if (!colorSwatches[i].classList.contains("-lsg-empty")) {
-        colorSwatches[i].appendChild(createSpan());
         colorSwatches[i].addEventListener("click", function(event) {
-          if (event.altKey) {
+          if (event.target == this.children[0]) {
+            selectElementRange(createDiv(this.children[0].innerHTML));
+          }
+          else {
             var copyHexColors = window.getComputedStyle(this, ":after").getPropertyValue("content");
             copyHexColors = copyHexColors.replace(/'|"/g, "");
             selectElementRange(createDiv(copyHexColors));
-          }
-          else {
-            selectElementRange(this.children[0]);
           }
         });
       }
@@ -26,11 +25,4 @@ function createDiv(copyHexColors) {
   divCopy.appendChild(document.createTextNode(copyHexColors));
   document.body.appendChild(divCopy);
   return divCopy;
-}
-
-function createSpan() {
-  var spanHover = document.createElement("span");
-  spanHover.className = "lsg--copy-color";
-  spanHover.appendChild(document.createTextNode("Click to copy variable\nAlt + click to copy HEX code"));
-  return spanHover;
 }
