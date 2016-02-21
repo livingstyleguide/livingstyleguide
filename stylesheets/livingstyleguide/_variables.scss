@@ -16,8 +16,21 @@ $lsg--variables: () !default;
 
     .#{$selector} {
       @if type-of($value) == color {
-        @if (lightness($value) < lightness($lsg--color)) {
-          color: $lsg--background-color;
+        @if (lightness($value) < 50%) {
+          @if (lightness($lsg--background-color) > lightness($lsg--color)) {
+            color: $lsg--background-color;
+          }
+          @else {
+            color: $lsg--color;
+          }
+        }
+        @else {
+          @if (lightness($lsg--background-color) > lightness($lsg--color)) {
+            color: $lsg--color;
+          }
+          @else {
+            color: $lsg--background-color;
+          }
         }
 
         &:before {
