@@ -23,10 +23,6 @@ $lsg--variables: () !default;
         &:before {
           background-color: $value;
         }
-
-        &:hover:before {
-          background-color: mix($value, $lsg--background-color, 60%);
-        }
       }
 
       &:after {
