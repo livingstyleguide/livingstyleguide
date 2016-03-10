@@ -28,7 +28,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
 1. Setup
    ```
-   $ gem install livingstyleguide -v2.0.0.alpha.11
+   $ gem install livingstyleguide -v2.0.0.pre.1
    ```
 
 2. Create *_sass/styleguide.lsg_* (replace `sass/` with the directory name of your Sass files) with:
@@ -80,7 +80,7 @@ Sprockets and Tilt versions.
    Add this line to your application’s _Gemfile_:
 
    ``` ruby
-   gem "livingstyleguide", "2.0.0.alpha.11"
+   gem "livingstyleguide", "2.0.0.pre.1"
    ```
 
    And then execute:
@@ -149,7 +149,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
    Add this line to your application’s _Gemfile_:
 
    ```
-   gem "livingstyleguide", "2.0.0.alpha.11"
+   gem "livingstyleguide", "2.0.0.pre.1"
    ```
 
    And then execute:
@@ -653,7 +653,7 @@ which works well with CoffeeScript.
 Add this line to your application’s Gemfile:
 
 ``` ruby
-gem "livingstyleguide", "2.0.0.alpha.11"
+gem "livingstyleguide", "2.0.0.pre.1"
 ```
 
 And then execute:
@@ -662,7 +662,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install livingstyleguide -v2.0.0.alpha.11
+    $ gem install livingstyleguide -v2.0.0.pre.1
 
 
 ----
@@ -684,6 +684,6 @@ Or install it yourself as:
 
 ## Copyright
 
-Copyright 2012—2015 [Nico Hagenburger](http://www.hagenburger.net).
+Copyright 2012—2016 [Nico Hagenburger](http://www.hagenburger.net).
 See [MIT-LICENSE.md](MIT-LICENSE.md) for details.
 Get in touch with [@hagenburger](http://twitter.com/hagenburger) on Twitter or [open an issue](https://github.com/livingstyleguide/livingstyleguide/issues/new).

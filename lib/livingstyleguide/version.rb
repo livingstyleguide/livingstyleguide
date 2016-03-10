@@ -1,3 +1,3 @@
 module LivingStyleGuide
-  VERSION = "2.0.0.alpha.11"
+  VERSION = "2.0.0.pre.1"
 end

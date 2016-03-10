@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.0.pre.1
+
+* Optimized default theme
+* Optimized defaults for colors and sizes
+* Removed Alt + click for copying colors as it raised problems for Linux users
+  (now: click on either the value or the variable/function to copy; this also
+  avoids having English text which would require localization)
+* `@require` respects the current path for loading Ruby files
+* Commands can be escaped with trailing `\` (for example if you want to
+  document LSG itself)
+* Color swatches show the source only when the source already is a color
+  (instead of a Sass variable/function)
+
+
 ## 2.0.0.alpha.11
 
 * Rename filters to commands which reflects their usage and will allow filtering later
