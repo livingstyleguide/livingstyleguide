@@ -1,5 +1,6 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
+require "scss_lint/rake_task"
 
 Rake::TestTask.new :test do |t|
   t.libs << "lib"
@@ -7,6 +8,11 @@ Rake::TestTask.new :test do |t|
   test_files = FileList["test/**/*_test.rb"]
   t.test_files = test_files
   t.verbose = true
+end
+
+SCSSLint::RakeTask.new do |t|
+  t.config = ".scss-style.yml"
+  t.files = FileList["**/*.scss"]
 end
 
 desc "Deploys the website to livingstyleguide.org"
@@ -27,4 +33,4 @@ task :release do
   Rake::Task["deploy"].execute
 end
 
-task default: [:test]
+task default: [:scss_lint, :test]
