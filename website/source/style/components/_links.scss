@@ -41,7 +41,7 @@ $links--item-size: 160px;
     z-index: 5;
   }
 
-  &:after {
+  &::after {
     $distance: 10px;
     background: $yellow;
     bottom: $distance;
@@ -55,12 +55,12 @@ $links--item-size: 160px;
     @include transition(transform, 0.15s);
   }
 
-  &:hover:after {
+  &:hover::after {
     background: $turquoise;
     @include transform(rotateZ(-315deg));
   }
 
-  &:before {
+  &::before {
     content: "";
     display: block;
     margin: auto;
@@ -73,13 +73,13 @@ $links--item-size: 160px;
     }
   }
 
-  &:hover:before {
+  &:hover::before {
     @include transform(rotateZ(360deg));
   }
 
   $margin-right: 0;
   @each $name in issues, twitter, example-project {
-    &.-#{$name}:before {
+    &.-#{$name}::before {
       @include graphics-sprite-position($name);
     }
   }

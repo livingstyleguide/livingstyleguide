@@ -57,8 +57,8 @@
     text-align: left;
     text-indent: -119988px;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       display: none;
     }
   }

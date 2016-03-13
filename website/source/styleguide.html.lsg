@@ -33,7 +33,7 @@ styleguide-scss: |
     overflow: visible;
   }
 
-  .lsg--color-swatch:before {
+  .lsg--color-swatch::before {
     @include transform(rotateZ(45deg));
   }
 

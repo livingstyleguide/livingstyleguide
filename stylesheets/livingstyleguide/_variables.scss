@@ -33,12 +33,12 @@ $lsg--variables: () !default;
           }
         }
 
-        &:before {
+        &::before {
           background-color: $value;
         }
       }
 
-      &:after {
+      &::after {
         @extend %lsg--code !optional;
         content: "#{inspect($value)}";
       }

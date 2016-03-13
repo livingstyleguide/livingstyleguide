@@ -158,7 +158,7 @@ style {
     font-size: 1.5rem;
   }
 
-  &:before {
+  &::before {
     color: mix($turquoise, $white, 30%);
     content: ">";
     margin: 1px 0 0 -1em;

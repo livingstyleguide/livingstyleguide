@@ -70,12 +70,12 @@
     }
   }
 
-  &:before {
+  &::before {
     content: "#";
     transition: transform 0.2s;
   }
 
-  &:active:before {
+  &:active::before {
     transform: scale(0.8);
   }
 }

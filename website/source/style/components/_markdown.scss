@@ -103,7 +103,7 @@ $lsg--font-example-first-line: 4em;
   }
 
   .lsg--unordered-list-item {
-    &:before {
+    &::before {
       background: $turquoise;
       content: "";
       height: 6px;
@@ -117,7 +117,7 @@ $lsg--font-example-first-line: 4em;
   .lsg--ordered-list-item {
     counter-increment: ul;
 
-    &:before {
+    &::before {
       background: $lsg--code-background-color;
       color: $turquoise;
       content: counter(ul);

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
             selectElementRange(createDiv(this.children[0].innerHTML));
           }
           else {
-            var copyHexColors = window.getComputedStyle(this, ":after").getPropertyValue("content");
+            var copyHexColors = window.getComputedStyle(this, "::after").getPropertyValue("content");
             copyHexColors = copyHexColors.replace(/'|"/g, "");
             selectElementRange(createDiv(copyHexColors));
           }

@@ -35,9 +35,11 @@ $diamonds--items: #ff96b5 #ef6991 #ff96b5 #f199b2 #ef6991 #eb83a2,
   @for $i from 5 to 7 {
     $scale: $i / 5 - 0.3;
     $max-width: $i * 200px;
+
     @media all and (min-width: #{$last-max-width + 1px}) and (max-width: #{$max-width}) {
       @include transform(scale($scale) translateX(-50%));
     }
+
     $last-max-width: $max-width;
   }
 }
@@ -52,8 +54,8 @@ $diamonds--items: #ff96b5 #ef6991 #ff96b5 #f199b2 #ef6991 #eb83a2,
   width: $diamonds--item-size;
   @include transition(transform, 0.5s);
 
-  &:after,
-  &:before {
+  &::after,
+  &::before {
     bottom: 0;
     content: "";
     left: 0;
@@ -64,13 +66,13 @@ $diamonds--items: #ff96b5 #ef6991 #ff96b5 #f199b2 #ef6991 #eb83a2,
     @include transform(rotateZ(45deg) rotateX(180deg) rotateY(180deg));
   }
 
-  &:after {
+  &::after {
     @include transition(transform, 0.15s);
     @include backface-visibility(hidden);
     z-index: 3;
   }
 
-  &:hover:after {
+  &:hover::after {
     @include transform(rotateZ(45deg) rotateX(0deg) rotateY(180deg));
   }
 
@@ -90,7 +92,7 @@ $diamonds--items: #ff96b5 #ef6991 #ff96b5 #f199b2 #ef6991 #eb83a2,
     &:nth-child(19),
     &:nth-child(20),
     &:nth-child(21) {
-      &:after {
+      &::after {
         background: transparent;
       }
     }
@@ -130,7 +132,7 @@ $diamonds--items: #ff96b5 #ef6991 #ff96b5 #f199b2 #ef6991 #eb83a2,
       $current-item-number: $current-item-number + 1;
 
       &:nth-child(#{$item-number}) {
-        &:after {
+        &::after {
           @if $current-item-number == 1 or $current-item-number == length(nth($diamonds--items, $row-number)) {
             background: scale-color(lighten($item, 10%), $lightness: 70%, $saturation: 70%);
             background: $item;
