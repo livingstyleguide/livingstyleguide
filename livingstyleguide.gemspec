@@ -31,5 +31,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "minitest"
   gem.add_development_dependency "coffee-script"
   gem.add_development_dependency "i18n"
-  gem.add_development_dependency "scss-lint"
+  gem.add_development_dependency "scss_lint"
 end
