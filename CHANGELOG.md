@@ -3,6 +3,8 @@
 ## Unreleased
 
 * Color swatches accept nested functions like `lighten($my-color)` from now on
+* Doesn’t autofocus the search box (avoids scrolling up when refreshing the
+  page)
 
 
 ## 2.0.0.pre.1
