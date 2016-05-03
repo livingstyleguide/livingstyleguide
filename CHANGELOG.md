@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+* Color swatches accept nested functions like `lighten($my-color)` from now on
+
+
 ## 2.0.0.pre.1
 
 * Optimized default theme

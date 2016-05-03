@@ -71,6 +71,7 @@ class ColorsTest < DocumentTestCase
       }
       @colors {
         $pink purple() #87c53b red
+        light($pink) light(purple()) light(#87c53b) light(red)
       }
     INPUT
       <ul class="lsg--color-swatches -lsg-4-columns">
@@ -78,6 +79,10 @@ class ColorsTest < DocumentTestCase
         <li class="lsg--color-swatch purple()"><span class="lsg--color-swatch-source">purple()</span><span class="lsg--color-swatch-value purple()"></span></li>
         <li class="lsg--color-swatch #87c53b"><span class="lsg--color-swatch-value #87c53b"></span></li>
         <li class="lsg--color-swatch red"><span class="lsg--color-swatch-value red"></span></li>
+        <li class="lsg--color-swatch light($pink)"><span class="lsg--color-swatch-source">light($pink)</span><span class="lsg--color-swatch-value light($pink)"></span></li>
+        <li class="lsg--color-swatch light(purple())"><span class="lsg--color-swatch-source">light(purple())</span><span class="lsg--color-swatch-value light(purple())"></span></li>
+        <li class="lsg--color-swatch light(#87c53b)"><span class="lsg--color-swatch-source">light(#87c53b)</span><span class="lsg--color-swatch-value light(#87c53b)"></span></li>
+        <li class="lsg--color-swatch light(red)"><span class="lsg--color-swatch-source">light(red)</span><span class="lsg--color-swatch-value light(red)"></span></li>
       </ul>
     OUTPUT
     assert_match /.\$pink/, @doc.css

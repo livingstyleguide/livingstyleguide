@@ -6,3 +6,26 @@
       $color-b 0)
     repeat 0 0/#{$size} #{$size};
 }
+
+@function lsg--str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+            lsg--str-replace(
+              str-slice($string, $index + str-length($search)),
+              $search, $replace
+            );
+  }
+
+  @return $string;
+}
+
+$lsg--escapes: ("(": "\\(", ")": "\\)", "$": "\\$", "#": "\\#");
+
+@function lsg--escape-selector($selector) {
+  @each $before, $after in $lsg--escapes {
+    $selector: lsg--str-replace($selector, $before, $after);
+  }
+  @return $selector;
+}

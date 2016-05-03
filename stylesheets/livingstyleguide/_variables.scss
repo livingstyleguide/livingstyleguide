@@ -4,15 +4,7 @@ $lsg--variables: () !default;
   $value: null !default;
 
   @if $value != null {
-    $selector: $variable;
-
-    @if str-slice($variable, 1, 1) == "$" or str-slice($variable, 1, 1) == "#" {
-      $selector: "\\" + $selector;
-    }
-
-    @if str-slice($variable, -2, -1) == "()" {
-      $selector: str-slice($variable, 1, -3) + "\\(\\)";
-    }
+    $selector: lsg--escape-selector($variable);
 
     .#{$selector} {
       @if type-of($value) == color {
