@@ -117,3 +117,39 @@
     width: $size;
   }
 }
+
+$lsg--colors: () !default;
+
+@each $color-class, $value in $lsg--colors {
+  $value: null !default;
+
+  @if $value != null {
+    .#{$color-class} {
+      @if (lightness($value) < 50%) {
+        @if (lightness($lsg--background-color) > lightness($lsg--color)) {
+          color: $lsg--background-color;
+        }
+        @else {
+          color: $lsg--color;
+        }
+      }
+      @else {
+        @if (lightness($lsg--background-color) > lightness($lsg--color)) {
+          color: $lsg--color;
+        }
+        @else {
+          color: $lsg--background-color;
+        }
+      }
+
+      &::before {
+        background-color: $value;
+      }
+
+      &::after {
+        @extend %lsg--code !optional;
+        content: "#{inspect($value)}";
+      }
+    }
+  }
+}

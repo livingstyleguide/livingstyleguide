@@ -3,6 +3,8 @@
 ## Unreleased
 
 * CSS/Sass code can be added to the global scope from now on
+* **Internal:**
+  * Color swatches have been refactored for reduced error-proneness
 
 
 ## 2.0.0.pre.2
