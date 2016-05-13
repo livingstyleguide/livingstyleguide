@@ -6,6 +6,8 @@ LivingStyleGuide.command :css do |arguments, options, css|
     end
     document.depend_on file
     document.scss << %Q(@import "#{file}";\n)
+  elsif options[:scope] == "global"
+    document.scss << css
   else
     scope = "#" + document.id.gsub(/[\/\.]/, '\\\\\0')
     scoped_css = css.gsub(/(?<=\}|\A|;)[^@\};]+?(?=\{)/) do |selector|

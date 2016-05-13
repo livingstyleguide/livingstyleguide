@@ -30,6 +30,19 @@ class CssTest < DocumentTestCase
     CSS
   end
 
+  def test_adding_global_css
+    doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
+        @css scope: global {
+          #adding-global-css {
+            background: red;
+          }
+        }
+      INPUT
+    end
+    doc.render
+    assert_match(/(?<!##{doc.id} )#adding-global-css \{/, doc.css)
+  end
+
   def test_adding_css_inside_examples
     doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
         @css {
