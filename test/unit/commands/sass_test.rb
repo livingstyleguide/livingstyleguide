@@ -50,7 +50,7 @@ class CssTest < DocumentTestCase
 
   def test_adding_sass
     doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
-        @sass preprocessor: sass
+        @sass
           #adding-sass
             background: blue
             #x
