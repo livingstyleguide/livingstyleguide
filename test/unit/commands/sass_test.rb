@@ -34,48 +34,54 @@ class CssTest < DocumentTestCase
   end
 
   def test_adding_global_scss
-    doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
-        @scss scope: global {
-          #adding-global-scss {
-            background: red;
-            #x { color: green; }
+    ["preprocessor: sass", "!global"].each do |arguments|
+      doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
+          @scss scope: global {
+            #adding-global-scss {
+              background: red;
+              #x { color: green; }
+            }
           }
-        }
-      INPUT
+        INPUT
+      end
+      doc.render
+      assert_match(/(?<!##{doc.id} )#adding-global-scss \{/, doc.css)
+      assert_match(/(?<!##{doc.id} )#adding-global-scss #x \{/, doc.css)
     end
-    doc.render
-    assert_match(/(?<!##{doc.id} )#adding-global-scss \{/, doc.css)
-    assert_match(/(?<!##{doc.id} )#adding-global-scss #x \{/, doc.css)
   end
 
   def test_adding_sass
-    doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
-        @sass
-          #adding-sass
-            background: blue
-            #x
-              background: yellow
-      INPUT
+    ["preprocessor: sass", "!global"].each do |arguments|
+      doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
+          @sass #{arguments}
+            #adding-sass
+              background: blue
+              #x
+                background: yellow
+        INPUT
+      end
+      doc.render
+      assert_match(Regexp.new(<<-CSS, Regexp::EXTENDED), doc.css)
+        ##{doc.id} #adding-sass \{ background: red; \}
+        ##{doc.id} #adding-sass #x \{ color: green; \}
+      CSS
     end
-    doc.render
-    assert_match(Regexp.new(<<-CSS, Regexp::EXTENDED), doc.css)
-      ##{doc.id} #adding-sass \{ background: red; \}
-      ##{doc.id} #adding-sass #x \{ color: green; \}
-    CSS
   end
 
   def test_adding_global_sass
-    doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
-        @sass scope: global
-          #adding-global-sass
-            background: blue
-            #x
-              background: yellow
-      INPUT
+    ["preprocessor: sass", "!global"].each do |arguments|
+      doc = LivingStyleGuide::Document.new do <<-INPUT.unindent
+          @sass scope: global
+            #adding-global-sass
+              background: blue
+              #x
+                background: yellow
+        INPUT
+      end
+      doc.render
+      assert_match(/(?<!##{doc.id} )#adding-global-sass \{/, doc.css)
+      assert_match(/(?<!##{doc.id} )#adding-global-sass #x \{/, doc.css)
     end
-    doc.render
-    assert_match(/(?<!##{doc.id} )#adding-global-sass \{/, doc.css)
-    assert_match(/(?<!##{doc.id} )#adding-global-sass #x \{/, doc.css)
   end
 
   def test_adding_css_inside_examples

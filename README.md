@@ -394,6 +394,18 @@ write this:
       }
     }
 
+It is possible to add Sass code without scoping (works for `@css/scss/sass`).
+
+    @scss scope: global {
+      .code { ... }
+    }
+
+Or as a shortcut inspired by Sass’ global variables (for `@scss/@sass`):
+
+    @scss !global {
+      .code { ... }
+    }
+
 
 ### Handlebars.js (and other JavaScript templating languages) Examples
 
