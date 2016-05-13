@@ -1,5 +1,10 @@
 # Changelog
 
+## unreleased
+
+* Adds a shortcut `@scss !global` for `@scss scope: global`
+
+
 ## 2.0.0.pre.3
 
 * CSS/Sass code can be added to the global scope from now on
