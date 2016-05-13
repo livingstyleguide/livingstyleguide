@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.0.pre.3
 
 * CSS/Sass code can be added to the global scope from now on
 * **Internal:**
