@@ -1,0 +1,84 @@
+---
+title: Improved default design
+---
+
+[Version 2.0.0](https://github.com/livingstyleguide/livingstyleguide/tree/v2#livingstyleguide-)
+is close to a final release. In mid-March, we released v2.0.0.pre.1. This
+version brings some updates in the default style of the rendered style guide.
+Two major goals are:
+
+* __Nice and unobtrusive without configuration:__
+  A minimal design that works well with most website styles in a neutral color.
+* __Easy to adjust:__
+  All Sass styling variables depend on each other. By setting one color, all
+  others will match your corporate design.
+
+
+## Default style without configuration
+
+It’s just black and white, only the code blocks and examples get a gray
+background.
+
+
+## Default fonts
+
+In terms of font, `helvetica neue, helvetica, sans-serif` is used for text
+and `andale mono, courier, courier new, monospace` for code.
+
+Not your cup of tea? Here’s how to change:
+
+``` lsg
+\@style font: source sans pro, sans-serif
+\@style code-font: source code pro, monospace
+\@style base-font-size: 18px
+```
+
+Don’t forget to link them. If they are not available via your style sheet, you
+can easily add links:
+
+@plain-code
+  @head {
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  }
+
+
+## Exampe stylings
+
+Click on the examples to see all the setup needed for their invidual styling:
+
+<div class="example-previews">
+  <a href="../examples/default.html"><img src="blog/images/examples/default.jpg" alt="Default"></a>
+  <a href="../examples/pink.html"><img src="blog/images/examples/pink.jpg" alt="Pink"></a>
+  <a href="../examples/blue.html"><img src="blog/images/examples/blue.jpg" alt="Blue background"></a>
+  <a href="../examples/blue-invers.html"><img src="blog/images/examples/blue-invers.jpg" alt="Blue background, invers code"></a>
+  <a href="../examples/yellow.html"><img src="blog/images/examples/yellow.jpg" alt="Yellow with Georgia"></a>
+</div>
+
+<style>
+  .example-previews {
+    display: flex;
+    margin: 40px -33.3%;
+    outline: 20px #eafdf8 solid;
+    width: 166.7%;
+  }
+  .example-previews a {
+    background: black;
+    width: 33.3%;
+  }
+  .example-previews img {
+    width: 100%;
+  }
+  .example-previews img:hover {
+    opacity: 0.8;
+  }
+</style>
+
+
+## Summary
+
+Having the improved design, v2.0.0 is close to be released. The
+[Homify Style Guide](https://www.homify.de/assets/atoms.html) already makes use
+of the the latest v2 release in production.
+[Let us know](https://twitter.com/LSGorg) if it works for you or
+[open an issue](https://github.com/livingstyleguide/livingstyleguide/issues/new)
+if you find anything.
