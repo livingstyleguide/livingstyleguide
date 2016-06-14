@@ -9,6 +9,9 @@ rescue LoadError
 end
 
 module LivingStyleGuide
+  ROOT_PATH = File.join(File.dirname(__FILE__), "..")
+  SASS_PATH = File.join(ROOT_PATH, "stylesheets")
+
   @@default_options = {
     default_language: :example,
     title: "Living Style Guide",

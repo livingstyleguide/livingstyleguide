@@ -1,4 +1,7 @@
 if defined?(Compass)
-  base_directory = File.join(File.dirname(__FILE__), "..", "..", "..")
-  Compass::Frameworks.register "livingstyleguide", path: base_directory
+  options = {
+    path: LivingStyleGuide::ROOT_PATH,
+    stylesheets_directory: LivingStyleGuide::SASS_PATH
+  }
+  Compass::Frameworks.register "livingstyleguide", options
 end
