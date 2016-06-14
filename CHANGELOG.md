@@ -3,6 +3,7 @@
 ## unreleased
 
 * Adds a shortcut `@scss !global` for `@scss scope: global`
+* Fixed/improved Sass imports (#191)
 
 
 ## 2.0.0.pre.3
