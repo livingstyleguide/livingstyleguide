@@ -2,21 +2,21 @@ require "test_helper"
 
 describe LivingStyleGuide::Document do
 
-  def assert_document_equals(input, output, options = {})
+  def assert_document_equal(input, output, options = {})
     @doc = LivingStyleGuide::Document.new { input.unindent(ignore_blank: true) }
     @doc.type = options[:type] || :lsg
     @doc.template = options[:template] || "plain"
-    actual = @doc.render(nil, options[:data]).gsub(/\n\n+/, "\n").strip
-    expected = output.unindent(ignore_blank: true).gsub(/\n\n+/, "\n").strip
+    actual = @doc.render(nil, options[:data]).gsub(/\n+\s*/, " ").strip
+    expected = output.gsub(/\n+\s*/, " ").strip
     actual.must_equal expected
   end
 
-  def assert_document_matches(input, output, options = {})
+  def assert_document_match(input, output, options = {})
     @doc = LivingStyleGuide::Document.new { input.unindent(ignore_blank: true) }
     @doc.type = options[:type] || :lsg
     @doc.template = options[:template] || "plain"
-    actual = @doc.render(nil, options[:data]).gsub(/\n\n+/, "\n").strip
-    expected = output.unindent(ignore_blank: true).gsub(/\n\n+/, "\n").strip
+    actual = @doc.render(nil, options[:data]).gsub(/\n+\s*/, " ").strip
+    expected = output.gsub(/\n+\s*/, " ").strip
     actual.must_match Regexp.new(expected, Regexp::MULTILINE)
   end
 
@@ -29,11 +29,11 @@ describe LivingStyleGuide::Document do
     end
 
     it "outputs the input as default" do
-      assert_document_equals "Test", "Test", type: :plain
+      assert_document_equal "Test", "Test", type: :plain
     end
 
     it "outputs the input as HTML for Markdown" do
-      assert_document_equals <<-INPUT, <<-OUTPUT
+      assert_document_equal <<-INPUT, <<-OUTPUT
         *Test*
       INPUT
         <p class="lsg-paragraph"><em>Test</em></p>
@@ -45,7 +45,7 @@ describe LivingStyleGuide::Document do
   describe "change type by filter" do
 
     it "allows to set the type to Markdown" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+      assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
         @markdown
         *Test*
       INPUT
@@ -54,7 +54,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "allows to set the type to Haml" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+      assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
         @haml
         %test Test
       INPUT
@@ -67,7 +67,7 @@ describe LivingStyleGuide::Document do
   describe "set default type" do
 
     it "allows to set the default type to Markdown" do
-      assert_document_matches <<-INPUT, <<-OUTPUT
+      assert_document_match <<-INPUT, <<-OUTPUT
         @default type: markdown
 
         ```
@@ -88,7 +88,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :my_filter do |arguments, options, block|
           "arg: #{arguments.first}"
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @my-filter Test
           Lorem ipsum
         INPUT
@@ -101,7 +101,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :my_second_filter do |arguments, options, block|
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\narg3: #{arguments[2]}"
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @my-second-filter 'Test\''; Test\\; with semicolon; "More test\""
           Lorem ipsum
         INPUT
@@ -116,7 +116,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :my_option_filter do |arguments, options, block|
           "a: #{options[:a]}\nb: #{options[:b]}\nc: #{options[:c]}"
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @my-option-filter b: '1\''; c: 1\\; 2; a: "Lorem\""
           Lorem ipsum
         INPUT
@@ -135,7 +135,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :x do |arguments, options, block|
           block.unindent.gsub(/\w/, "X")
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @x {
             Lorem ipsum
             dolor
@@ -152,7 +152,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :y do |arguments, options, block|
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, "Y")}"
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @y 1; 2 {
             Lorem ipsum
             dolor
@@ -171,7 +171,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :css_test do |arguments, options, block|
           block.unindent
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @css-test {
             .my-class {
               background: black;
@@ -216,7 +216,7 @@ describe LivingStyleGuide::Document do
           inner = LivingStyleGuide::Document.new(livingstyleguide: document){ block }.render
           "<outer>#{inner}</outer>"
         end
-        assert_document_matches <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_match <<-INPUT, <<-OUTPUT, type: :plain
           @outer {
           @inner
           }
@@ -232,7 +232,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :x_indented do |arguments, options, block|
           block.gsub(/\w/, "X")
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @x-indented
             Lorem ipsum
             dolor
@@ -248,7 +248,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :x_indented do |arguments, options, block|
           block.gsub(/\w/, "X")
         end
-        assert_document_equals <<-INPUT.rstrip, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT.rstrip, <<-OUTPUT, type: :plain
           @x-indented
             Lorem ipsum
             dolor
@@ -262,7 +262,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :y_indented do |arguments, options, block|
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, "Y")}"
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @y-indented 1; 2
             Lorem ipsum
             dolor
@@ -284,7 +284,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :x_newline do |arguments, options, block|
           block.gsub(/\w/, "X")
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @x-newline:
           Lorem ipsum
           dolor
@@ -301,7 +301,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :x_newline do |arguments, options, block|
           block.gsub(/\w/, "X")
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @x-newline:
           Lorem ipsum
           dolor
@@ -315,7 +315,7 @@ describe LivingStyleGuide::Document do
         LivingStyleGuide.command :y_newline do |arguments, options, block|
           "arg1: #{arguments[0]}\narg2: #{arguments[1]}\n#{block.gsub(/\w/, "Y")}"
         end
-        assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
           @y-newline 1; 2:
           Lorem ipsum
           dolor
@@ -335,7 +335,7 @@ describe LivingStyleGuide::Document do
       LivingStyleGuide.command :css_test_indented do |arguments, options, block|
         block
       end
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+      assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
         @css-test-indented
           .my-class
             background: black
@@ -352,7 +352,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "should ignore “@” in the middle of the text" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+      assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
         Lorem @ipsum
       INPUT
         Lorem @ipsum
@@ -360,7 +360,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "should escape “\\@” in the beginning of the text" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, type: :plain
+      assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
         \\@lorem ipsum
       INPUT
         @lorem ipsum
@@ -375,7 +375,7 @@ describe LivingStyleGuide::Document do
         inner = LivingStyleGuide::Document.new(livingstyleguide: document){ block }.render
         "<outer>#{inner}</outer>"
       end
-      assert_document_matches <<-INPUT, <<-OUTPUT, type: :plain
+      assert_document_match <<-INPUT, <<-OUTPUT, type: :plain
         @outer
           @inner
       INPUT
@@ -388,12 +388,12 @@ describe LivingStyleGuide::Document do
 
     it "should use template" do
       File.stub :read, "*<%= html %>*" do
-        assert_document_equals "Test", "*Test*", type: :plain, template: "my-template"
+        assert_document_equal "Test", "*Test*", type: :plain, template: "my-template"
       end
     end
 
     it "should use the example template" do
-      assert_document_equals <<-INPUT, <<-OUTPUT
+      assert_document_equal <<-INPUT, <<-OUTPUT
         ```
         <div>Test</div>
         ```
@@ -408,7 +408,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "should use the example template" do
-      assert_document_equals <<-INPUT, <<-OUTPUT
+      assert_document_equal <<-INPUT, <<-OUTPUT
         ``` example
         @haml
         %div Test
@@ -521,7 +521,7 @@ describe LivingStyleGuide::Document do
   describe "Data" do
 
     it "should use data in Haml templates" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, data: { foo: "Bar" }, type: :haml
+      assert_document_equal <<-INPUT, <<-OUTPUT, data: { foo: "Bar" }, type: :haml
         %div= foo
       INPUT
         <div>Bar</div>
@@ -529,7 +529,7 @@ describe LivingStyleGuide::Document do
     end
 
     it "should allow ERB templates that don’t conflict with filters" do
-      assert_document_equals <<-INPUT, <<-OUTPUT, data: { foo: "Bar" }, type: :erb
+      assert_document_equal <<-INPUT, <<-OUTPUT, data: { foo: "Bar" }, type: :erb
         <div><%= foo %></div>
       INPUT
         <div>Bar</div>

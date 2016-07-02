@@ -3,7 +3,7 @@ require "document_test_helper"
 class HtmlHeadTest < DocumentTestCase
 
   def test_title
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
       @title My beautiful style guide
     INPUT
       <head>.*<title>My beautiful style guide</title>.*</head>
@@ -11,7 +11,7 @@ class HtmlHeadTest < DocumentTestCase
   end
 
   def test_head
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
       @head:
       <link>
 
@@ -23,7 +23,7 @@ class HtmlHeadTest < DocumentTestCase
   end
 
   def test_header
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
       @header:
       <span>My</span>
 
@@ -35,7 +35,7 @@ class HtmlHeadTest < DocumentTestCase
   end
 
   def test_footer
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
       @footer:
       <span>My</span>
 
@@ -47,7 +47,7 @@ class HtmlHeadTest < DocumentTestCase
   end
 
   def test_javascript_before
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
       @javascript-before application.js
       @javascript-before {
         alert("Hello World!");
@@ -60,7 +60,7 @@ class HtmlHeadTest < DocumentTestCase
   end
 
   def test_javascript_after
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
       @javascript-after application.js
       @javascript-after {
         alert("Good Bye World!");

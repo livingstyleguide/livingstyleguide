@@ -48,7 +48,7 @@ helpers do
   end
 
   def current_url
-    "http://livingstyleguide.org#{current_page.url}"
+    "https://livingstyleguide.org#{current_page.url}"
   end
 end
 

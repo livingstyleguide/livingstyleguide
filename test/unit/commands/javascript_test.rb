@@ -3,7 +3,7 @@ require "document_test_helper"
 class JavaScriptTest < DocumentTestCase
 
   def test_javascript
-    assert_render_equals <<-INPUT, <<-OUTPUT
+    assert_render_equal <<-INPUT, <<-OUTPUT
       @javascript
       alert("Hello world!");
     INPUT

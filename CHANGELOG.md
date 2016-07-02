@@ -6,6 +6,8 @@
 * Fixed/improved Sass imports (#191)
 * Refactored classes and variables
 * Removed IE hack
+* **Internal:**
+  * Cleaned up the code base
 
 
 ## 2.0.0.pre.3
@@ -284,7 +286,7 @@
 * **Internal:**
   * Integrated the website into the repository
   * Added the
-    [changelog](http://livingstyleguide.org/changelog.html) to the website
+    [changelog](https://livingstyleguide.org/changelog.html) to the website
   * Automated website deployment after a new version of the gem is
     released
 

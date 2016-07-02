@@ -3,7 +3,7 @@ require "document_test_helper"
 class BeforeTest < DocumentTestCase
 
   def test_before
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
       @before:
         <h1>This my before</h1>
     INPUT

@@ -1,39 +1,35 @@
 <!doctype html>
 <html id="<%= id %>">
-
-<head>
-<meta charset="utf-8">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="The LivingStyleGuide Gem v<%= LivingStyleGuide::VERSION %> – https://livingstyleguide.org" name="generator">
-<title><%= ERB::Util.h(title) %></title>
-<script>
-<%= javascript %>
-</script>
-<style>
-<%= css %>
-</style>
-<%= head %>
-</head>
-
-<body class="lsg">
-<%= header %>
-<% unless before.empty? %>
-  <section class="lsg-before">
-  <%= before %>
-  </section>
-<% end %>
-<div class="lsg-container">
-<%= html %>
-</div>
-<% unless after.empty? %>
-  <section class="lsg-after">
-  <%= after %>
-  </section>
-<% end %>
-
-<%= footer %>
-<%= logo %>
-</body>
-
+  <head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="livingstyleguide.org <%= LivingStyleGuide::VERSION %>" name="generator">
+    <title><%= ERB::Util.h(title) %></title>
+    <script>
+      <%= javascript %>
+    </script>
+    <style>
+      <%= css %>
+    </style>
+    <%= head %>
+  </head>
+  <body class="lsg">
+    <%= header %>
+    <% unless before.empty? %>
+      <section class="lsg-before">
+        <%= before %>
+      </section>
+    <% end %>
+    <article class="lsg-container">
+      <%= html %>
+    </article>
+    <% unless after.empty? %>
+      <section class="lsg-after">
+        <%= after %>
+      </section>
+    <% end %>
+    <%= footer %>
+    <%= logo %>
+  </body>
 </html>

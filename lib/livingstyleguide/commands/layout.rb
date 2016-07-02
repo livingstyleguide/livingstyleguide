@@ -3,7 +3,7 @@ LivingStyleGuide.command :title do |arguments, options, block|
   nil
 end
 
-{ :before => :head, :after => :footer }.each do |name, destination|
+{ before: :head, after: :footer }.each do |name, destination|
   eval <<-RUBY
     LivingStyleGuide.command :javascript_#{name} do |arguments, options, block|
       if src = arguments.first

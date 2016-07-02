@@ -15,11 +15,11 @@ def parse_file(filename)
   syntax   = filename[-4..-1].to_sym
   syntax   = :scss unless [:scss, :sass].include?(syntax)
   options  = {
-    :filename   => filename,
-    :load_paths => [File.dirname(filename)],
-    :syntax     => syntax,
-    :cache      => false,
-    :read_cache => false
+    filename:   filename,
+    load_paths: [File.dirname(filename)],
+    syntax:     syntax,
+    cache:      false,
+    read_cache: false
   }
   Sass::Engine.new(File.read(filename), options)
 end

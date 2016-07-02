@@ -6,7 +6,7 @@ class DocumentTestCase < Minitest::Test
     @class = Class.new(LivingStyleGuide::Document)
   end
 
-  def assert_render_equals(input, expected_output, options = {})
+  def assert_render_equal(input, expected_output, options = {})
     @doc = @class.new(options[:file]){ input.unindent }
     @doc.type = options[:type] || :lsg
     @doc.template = options[:template] || "plain"

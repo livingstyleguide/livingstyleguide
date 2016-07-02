@@ -1,24 +1,24 @@
 function selectElementRange(copyElementSelect) {
-  var range = document.createRange();
-  range.selectNode(copyElementSelect);
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(range);
+  var range = document.createRange()
+  range.selectNode(copyElementSelect)
+  window.getSelection().removeAllRanges()
+  window.getSelection().addRange(range)
 
-  document.execCommand("copy");
+  document.execCommand("copy")
 
   if (copyElementSelect.classList.contains("lsg-remove")) {
-    document.body.removeChild(copyElementSelect);
+    document.body.removeChild(copyElementSelect)
   }
 
-  window.getSelection().removeAllRanges();
+  window.getSelection().removeAllRanges()
 }
 
 function testCopy() {
   try {
-    document.execCommand("copy");
-    return true;
+    document.execCommand("copy")
+    return true
   }
-  catch(err) {
-    return false;
+  catch (error) {
+    return false
   }
 }

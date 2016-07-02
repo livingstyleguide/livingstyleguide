@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = LivingStyleGuide::VERSION
   gem.authors       = ["Nico Hagenburger"]
   gem.email         = ["nico@hagenburger.net"]
-  gem.description   = %q(Automatically generate beautiful front-end style guides with Sass and Markdown. See http://livingstyleguide.org for details.)
+  gem.description   = %q(Automatically generate beautiful front-end style guides with Sass and Markdown. See https://livingstyleguide.org for details.)
   gem.summary       = %q(Generate beautiful front-end style guides)
-  gem.homepage      = "http://livingstyleguide.org"
+  gem.homepage      = "https://livingstyleguide.org"
 
   gem.files         = `git ls-files`.split($/).select { |f| f =~ /^(assets|bin|lib|stylesheets|templates)/ }
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

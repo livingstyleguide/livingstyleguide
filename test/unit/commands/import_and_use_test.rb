@@ -8,7 +8,7 @@ class ImportAndSourceTest < DocumentTestCase
   end
 
   def test_import_lsg
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "default"
       Before
 
       @import test/fixtures/import/headline.lsg
@@ -25,7 +25,7 @@ class ImportAndSourceTest < DocumentTestCase
 
   def test_import_lsg_relative
     file = "test/fixtures/import/index.html.lsg"
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :default, file: file
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "default", file: file
       Before
 
       @import headline.lsg
@@ -41,7 +41,7 @@ class ImportAndSourceTest < DocumentTestCase
   end
 
   def test_import_lsg_partial_with_underscore
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "default"
       Before
 
       @import test/fixtures/import/headline-partial.lsg
@@ -57,7 +57,7 @@ class ImportAndSourceTest < DocumentTestCase
   end
 
   def test_import_lsg_without_extension
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "default"
       Before
 
       @import test/fixtures/import/headline
@@ -73,7 +73,7 @@ class ImportAndSourceTest < DocumentTestCase
   end
 
   def test_import_command
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "default"
       Before
 
       @import test/fixtures/import/command.lsg
@@ -89,7 +89,7 @@ class ImportAndSourceTest < DocumentTestCase
   end
 
   def test_import_multiple
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "default"
       Before
 
       @import test/fixtures/import/*
@@ -108,7 +108,7 @@ class ImportAndSourceTest < DocumentTestCase
 
   def test_import_haml
     require "tilt/haml"
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "default"
       Before
 
       @import test/fixtures/import/haml.haml
@@ -126,7 +126,7 @@ class ImportAndSourceTest < DocumentTestCase
   def test_import_with_data
     { erb: "erubis", haml: "haml" }.each do |type, file|
       require "tilt/#{file}"
-      assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+      assert_render_match <<-INPUT, <<-OUTPUT, template: "default"
         @import test/fixtures/import/with-data.#{type} {
           "foo": "Bar"
         }
@@ -138,7 +138,7 @@ class ImportAndSourceTest < DocumentTestCase
 
   def test_use_haml
     require "tilt/haml"
-    assert_render_match <<-INPUT, <<-OUTPUT, template: :default
+    assert_render_match <<-INPUT, <<-OUTPUT, template: "default"
       Before
 
       ```

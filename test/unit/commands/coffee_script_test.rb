@@ -3,7 +3,7 @@ require "document_test_helper"
 class CoffeeScriptTest < DocumentTestCase
 
   def test_coffee_script
-    assert_render_equals <<-INPUT, <<-OUTPUT
+    assert_render_equal <<-INPUT, <<-OUTPUT
       @coffee-script
       alert "Hello world!"
     INPUT
@@ -15,7 +15,7 @@ class CoffeeScriptTest < DocumentTestCase
   end
 
   def test_coffee
-    assert_render_equals <<-INPUT, <<-OUTPUT
+    assert_render_equal <<-INPUT, <<-OUTPUT
       @coffee
       alert "Hello world!"
     INPUT

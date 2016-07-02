@@ -5,32 +5,19 @@ require "digest/sha1"
 
 class ColorsTest < DocumentTestCase
 
-  def assert_render_equals_but_ignore_sha(input, expected_output, options = {})
+  def assert_render_equal_but_ignore_sha(input, expected_output, options = {})
     sources = []
     fake_sha = Proc.new do |source|
       sources << source unless sources.include?(source)
       "HEX#{sources.index(source) + 1}"
     end
     Digest::SHA1.stub(:hexdigest, fake_sha) do
-      assert_render_equals(input, expected_output, options)
+      assert_render_equal(input, expected_output, options)
     end
   end
 
-  def test_colors_of_file
-    skip
-    engine = OpenStruct.new(variables: { "variables/colors" => %w(red blue) })
-    assert_render_equals_but_ignore_sha <<-INPUT, <<-OUTPUT, {}, engine
-      @colors variables/colors
-    INPUT
-      <ul class="lsg-color-swatches lsg-2-columns">
-        <li class="lsg-color-swatch lsg-color-HEX1"><span class="lsg-color-swatch-source">$red</span><span class="lsg-color-swatch-value lsg-color-HEX1"></span></li>
-        <li class="lsg-color-swatch lsg-color-HEX2"><span class="lsg-color-swatch-source">$blue</span><span class="lsg-color-swatch-value lsg-color-HEX2"></span></li>
-      </ul>
-    OUTPUT
-  end
-
   def test_defined_colors
-    assert_render_equals_but_ignore_sha <<-INPUT, <<-OUTPUT
+    assert_render_equal_but_ignore_sha <<-INPUT, <<-OUTPUT
       @colors {
         $my-orange $my_green
       }
@@ -43,7 +30,7 @@ class ColorsTest < DocumentTestCase
   end
 
   def test_rows
-    assert_render_equals_but_ignore_sha <<-INPUT, <<-OUTPUT
+    assert_render_equal_but_ignore_sha <<-INPUT, <<-OUTPUT
       @colors {
         $pink $purple $gray
         $my-color $cyan $black
@@ -61,7 +48,7 @@ class ColorsTest < DocumentTestCase
   end
 
   def test_skipped_cells
-    assert_render_equals_but_ignore_sha <<-INPUT, <<-OUTPUT
+    assert_render_equal_but_ignore_sha <<-INPUT, <<-OUTPUT
       @colors {
         $pink $purple
         -     $my-color
@@ -77,7 +64,7 @@ class ColorsTest < DocumentTestCase
   end
 
   def test_functions_and_colors
-    assert_render_equals_but_ignore_sha <<-INPUT, <<-OUTPUT
+    assert_render_equal_but_ignore_sha <<-INPUT, <<-OUTPUT
       @scss scope: global {
         $pink: #c82570 !global;
         @function light($color) {

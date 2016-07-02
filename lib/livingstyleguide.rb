@@ -15,8 +15,6 @@ module LivingStyleGuide
   @@default_options = {
     default_language: :example,
     title: "Living Style Guide",
-    header: %Q(<h1 class="lsg-page-title">Living Style Guide</h1>),
-    footer: %Q(<div class="lsg-footer"><a class="lsg-logo" href="http://livingstyleguide.org">Made with the LivingStyleGuide gem.</a></div>),
     root: "/"
   }
 
