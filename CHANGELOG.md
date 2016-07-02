@@ -5,6 +5,7 @@
 * Adds a shortcut `@scss !global` for `@scss scope: global`
 * Fixed/improved Sass imports (#191)
 * Refactored classes and variables
+* Removed IE hack
 
 
 ## 2.0.0.pre.3
