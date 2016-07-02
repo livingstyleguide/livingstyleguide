@@ -13,7 +13,7 @@ LivingStyleGuide.command :colors do |arguments, options, content|
     $lsg-colors: () !default;
     $lsg-colors: join(
       $lsg-colors, (#{
-        colors.reject{ |c| c == '-' }.map do |color|
+        colors.reject{ |c| c == '-' }.uniq.map do |color|
           %Q("#{color_class(color)}": #{color})
         end.join(', ')
       })

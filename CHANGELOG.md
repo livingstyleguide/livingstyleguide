@@ -7,6 +7,7 @@
 * Refactored classes and variables
 * Removed IE hack
 * Fixes duplicate imports (#198)
+* Fixes duplicate colors Sass error (#196)
 * **Internal:**
   * Cleaned up the code base
 

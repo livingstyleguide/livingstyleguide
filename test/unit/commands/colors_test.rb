@@ -29,6 +29,17 @@ class ColorsTest < DocumentTestCase
     OUTPUT
   end
 
+  def test_duplicate_colors
+    assert render <<-INPUT, template: "layout"
+      @scss !global {
+        $my-orange: rgb(228, 168, 79);
+      }
+      @colors {
+        $my-orange $my-orange
+      }
+    INPUT
+  end
+
   def test_rows
     assert_render_equal_but_ignore_sha <<-INPUT, <<-OUTPUT
       @colors {
