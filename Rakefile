@@ -2,6 +2,10 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 require "scss_lint/rake_task"
 
+def branch
+  `git rev-parse --abbrev-ref HEAD`.strip
+end
+
 Rake::TestTask.new :test do |t|
   t.libs << "lib"
   t.libs << "test"
@@ -19,7 +23,12 @@ desc "Deploys the website to livingstyleguide.org"
 task :deploy do
   Bundler.with_clean_env do
     system "cd website && bundle && bundle exec middleman build"
-    path = "html"
+    case branch
+    when "master", "v2"
+      path = "html"
+    else
+      path = "preview.livingstyleguide.org"
+    end
     domain = "livingstyleguide.org"
     system "rsync -avz website/build/ lsg@lsg.vulpecula.uberspace.de:/var/www/virtual/lsg/#{path}"
     puts "Sucessfully deployed website to http://#{domain}"
@@ -28,7 +37,6 @@ end
 
 desc "Releases the Gem and updates the website"
 task :release do
-  branch = `git rev-parse --abbrev-ref HEAD`.strip
   raise "Please switch to `master` first." unless branch == "master"
   Rake::Task["deploy"].execute
 end

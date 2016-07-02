@@ -10,6 +10,7 @@ AddDefaultCharset utf-8
   RewriteCond %{HTTP_HOST} !=localhost [NC]
   RewriteCond %{HTTP_HOST} !=127.0.0.1
   RewriteCond %{HTTP_HOST} !^livingstyleguide\.org$ [NC]
+  RewriteCond %{HTTP_HOST} !^preview.livingstyleguide\.org$ [NC]
   RewriteRule ^(.*)$ https://livingstyleguide.org/$1 [R=301,L]
   #RewriteCond %{HTTP:CF-Visitor} '"scheme":"http"'
   #RewriteRule ^(.*)$ https://livingstyleguide.org/$1 [R=301,L]
