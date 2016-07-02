@@ -61,13 +61,13 @@ end
 LivingStyleGuide.command :old_code_markers do |arguments, options, code|
   type = arguments.first
   code = ERB::Util.h(code)
-  code.gsub!(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(\n<strong class="lsg--code-highlight-block">\\1</strong>\n))
-  code.gsub!(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="lsg--code-highlight">\\1</strong>))
+  code.gsub!(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(\n<strong class="lsg-code-highlight-block">\\1</strong>\n))
+  code.gsub!(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="lsg-code-highlight">\\1</strong>))
   code = ::MiniSyntax.highlight(code.strip, type.to_sym)
   code.gsub!(/\n/, "<br>")
   <<-HTML
-<div class="lsg--example">
-  <pre class="lsg--code-block"><code class="lsg--code">#{code}</code></pre>
+<div class="lsg-example">
+  <pre class="lsg-code-block"><code class="lsg-code">#{code}</code></pre>
 </div>
 HTML
 end
@@ -76,8 +76,8 @@ LivingStyleGuide.command :plain_code do |arguments, options, code|
   code = ERB::Util.h(code)
   code.gsub!(/\n/, "<br>")
   <<-HTML
-<div class="lsg--example">
-  <pre class="lsg--code-block"><code class="lsg--code">#{code}</code></pre>
+<div class="lsg-example">
+  <pre class="lsg-code-block"><code class="lsg-code">#{code}</code></pre>
 </div>
 HTML
 end

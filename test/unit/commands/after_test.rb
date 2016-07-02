@@ -7,7 +7,7 @@ class AfterTest < DocumentTestCase
       @after:
         <h1>This my after</h1>
     INPUT
-      <section class="lsg--after">.*<h1>This my after</h1>.*</section>
+      <section class="lsg-after">.*<h1>This my after</h1>.*</section>
     OUTPUT
   end
 

@@ -7,7 +7,7 @@ class BeforeTest < DocumentTestCase
       @before:
         <h1>This my before</h1>
     INPUT
-      <section class="lsg--before">.*<h1>This my before</h1>.*</section>
+      <section class="lsg-before">.*<h1>This my before</h1>.*</section>
     OUTPUT
   end
 

@@ -5,7 +5,7 @@ class ToggleCode < DocumentTestCase
     assert_render_equals <<-INPUT, <<-OUTPUT, template: :"toggle-code"
       @toggle-code
     INPUT
-      <input type="button" class="lsg--code-switch">
+      <input type="button" class="lsg-code-switch">
     OUTPUT
   end
 
@@ -13,8 +13,8 @@ class ToggleCode < DocumentTestCase
     assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
       @toggle-code
     INPUT
-      .*<section class="lsg--before">
-          .*<input type="button" class="lsg--code-switch">.*
+      .*<section class="lsg-before">
+          .*<input type="button" class="lsg-code-switch">.*
       .*</section>.*
     OUTPUT
   end

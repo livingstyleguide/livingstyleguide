@@ -6,7 +6,7 @@ function selectElementRange(copyElementSelect) {
 
   document.execCommand("copy");
 
-  if (copyElementSelect.classList.contains("-lsg-remove")) {
+  if (copyElementSelect.classList.contains("lsg-remove")) {
     document.body.removeChild(copyElementSelect);
   }
 

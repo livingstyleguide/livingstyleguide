@@ -1,5 +1,5 @@
 @header {
-  <h1 class="lsg--page-title">LivingStyleGuide v2.0.0 default style</h1>
+  <h1 class="lsg-page-title">LivingStyleGuide v2.0.0 default style</h1>
 }
 
 @search-box

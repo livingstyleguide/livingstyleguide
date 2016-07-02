@@ -1,14 +1,14 @@
-.lsg--color-swatch {
-  @extend %lsg--reset;
-  color: $lsg--color-swatch-color;
+.lsg-color-swatch {
+  @extend %lsg-reset;
+  color: $lsg-color-swatch-color;
   cursor: pointer;
   float: left;
-  font-family: $lsg--code-font;
-  font-size: $lsg--code-font-size;
-  height: 4em * $lsg--base-line-height;
-  line-height: 1em * $lsg--base-line-height;
+  font-family: $lsg-code-font-family;
+  font-size: $lsg-code-font-size;
+  height: 4em * $lsg-line-height;
+  line-height: 1em * $lsg-line-height;
   list-style: none;
-  margin: 0 $lsg--gap-width $lsg--gap-width 0;
+  margin: 0 $lsg-gutter $lsg-gutter 0;
   position: relative;
   text-align: center;
   transition: transform 0.2s;
@@ -22,12 +22,12 @@
   }
 
   &::before {
-    @extend %lsg--reset;
+    @extend %lsg-reset;
     border: {
-      color: $lsg--color-swatch-border-color;
-      radius: $lsg--color-swatch-border-radius;
+      color: $lsg-color-swatch-border-color;
+      radius: $lsg-color-swatch-border-radius;
       style: solid;
-      width: $lsg--color-swatch-border-width;
+      width: $lsg-color-swatch-border-width;
     }
     content: "";
     height: 100%;
@@ -39,7 +39,7 @@
   }
 
   &:hover::before {
-    background-image: $lsg--copy-background-image;
+    background-image: $lsg-copy-background-image;
     background-position: 50% 40%;
     background-repeat: no-repeat;
     background-size: 20%;
@@ -51,7 +51,7 @@
     display: none;
   }
 
-  &.-lsg-empty {
+  &.lsg-empty {
     cursor: default;
     overflow: hidden;
     text-align: left;
@@ -64,8 +64,8 @@
   }
 }
 
-.lsg--color-swatch-source {
-  @extend %lsg--reset;
+.lsg-color-swatch-source {
+  @extend %lsg-reset;
   display: block;
 
   &:hover {
@@ -73,32 +73,32 @@
   }
 }
 
-.lsg--color-swatch-value {
-  @extend %lsg--reset;
+.lsg-color-swatch-value {
+  @extend %lsg-reset;
   cursor: pointer;
   display: block;
-  margin-top: 1em * $lsg--base-line-height;
+  margin-top: 1em * $lsg-line-height;
   text-align: center;
 
-  .lsg--color-swatch:hover & {
+  .lsg-color-swatch:hover & {
     text-decoration: underline;
   }
 
-  .lsg--color-swatch-source + & {
+  .lsg-color-swatch-source + & {
     margin-top: 0;
   }
 
-  .lsg--color-swatch-source:hover + & {
+  .lsg-color-swatch-source:hover + & {
     text-decoration: none;
   }
 }
 
 // scss-lint:disable VendorPrefix
-.lsg--color-swatches {
-  @extend %lsg--reset;
-  margin: (4 * $lsg--gap-width) auto (-$lsg--gap-width);
-  max-width: $lsg--width + 2 * $lsg--gap-width;
-  padding-left: $lsg--gap-width;
+.lsg-color-swatches {
+  @extend %lsg-reset;
+  margin: (4 * $lsg-gutter) auto (-$lsg-gutter);
+  max-width: $lsg-width + 2 * $lsg-gutter;
+  padding-left: $lsg-gutter;
   -webkit-user-select: none;
   user-select: none;
 
@@ -110,35 +110,35 @@
 }
 
 @for $i from 1 through 12 {
-  .lsg--color-swatches.-lsg-#{$i}-columns .lsg--color-swatch {
-    $size: floor(($lsg--width - ($i - 1) * $lsg--gap-width) / $i);
+  .lsg-color-swatches.lsg-#{$i}-columns .lsg-color-swatch {
+    $size: floor(($lsg-width - ($i - 1) * $lsg-gutter) / $i);
     height: $size;
     padding-top: $size / 2 + ($size / 5 - 20px);
     width: $size;
   }
 }
 
-$lsg--colors: () !default;
+$lsg-colors: () !default;
 
-@each $color-class, $value in $lsg--colors {
+@each $color-class, $value in $lsg-colors {
   $value: null !default;
 
   @if $value != null {
     .#{$color-class} {
       @if (lightness($value) < 50%) {
-        @if (lightness($lsg--background-color) > lightness($lsg--color)) {
-          color: $lsg--background-color;
+        @if (lightness($lsg-background-color) > lightness($lsg-color)) {
+          color: $lsg-background-color;
         }
         @else {
-          color: $lsg--color;
+          color: $lsg-color;
         }
       }
       @else {
-        @if (lightness($lsg--background-color) > lightness($lsg--color)) {
-          color: $lsg--color;
+        @if (lightness($lsg-background-color) > lightness($lsg-color)) {
+          color: $lsg-color;
         }
         @else {
-          color: $lsg--background-color;
+          color: $lsg-background-color;
         }
       }
 
@@ -147,7 +147,7 @@ $lsg--colors: () !default;
       }
 
       &::after {
-        @extend %lsg--code !optional;
+        @extend %lsg-code !optional;
         content: "#{inspect($value)}";
       }
     }

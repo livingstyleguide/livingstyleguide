@@ -74,7 +74,7 @@ Let’s have a look at the old code. Only one call, but …
 
 ``` ruby
 code.gsub! /\*\*\*(.+?)\*\*\*/,
-  %Q(&lt;strong class="lsg--code-highlight">\\1&lt;strong>)
+  %Q(&lt;strong class="lsg-code-highlight">\\1&lt;strong>)
 ```
 
 The major problem: Should this be done before or after the syntax highlighter takes action?

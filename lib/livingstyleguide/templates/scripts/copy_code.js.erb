@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   if (testCopy()) {
-    var code = document.getElementsByClassName("lsg--code");
+    var code = document.getElementsByClassName("lsg-code");
 
     for (var i = 0; i < code.length; i++) {
       var newButton = createButton()
@@ -14,6 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function createButton(copyCodeSelect) {
   var buttonCopy = document.createElement("button");
-  buttonCopy.className = "lsg--button";
+  buttonCopy.className = "lsg-button";
   return buttonCopy;
 }

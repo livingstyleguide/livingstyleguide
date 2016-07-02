@@ -4,10 +4,10 @@ class OptionsTest < DocumentTestCase
 
   def test_style
     doc = LivingStyleGuide::Document.new do
-      "@style base-font: comic sans ms, serif"
+      "@style font-family: comic sans ms, serif"
     end
     doc.render
-    assert_match /\$lsg--base-font: comic sans ms, serif;/, doc.scss
+    assert_match /\$lsg-font-family: comic sans ms, serif;/, doc.scss
   end
 
 end

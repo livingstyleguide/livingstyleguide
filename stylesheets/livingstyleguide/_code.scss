@@ -1,23 +1,23 @@
-.lsg--code {
-  @extend %lsg--reset;
-  font-family: $lsg--code-font;
+.lsg-code {
+  @extend %lsg-reset;
+  font-family: $lsg-code-font-family;
 }
 
-.lsg--code-span,
-.lsg--code-block {
-  @extend %lsg--reset;
-  background: $lsg--code-background;
-  border-radius: $lsg--code-border-radius;
-  color: $lsg--code-color;
+.lsg-code-span,
+.lsg-code-block {
+  @extend %lsg-reset;
+  background: $lsg-code-background;
+  border-radius: $lsg-code-border-radius;
+  color: $lsg-code-color;
   display: inline;
-  font-size: $lsg--code-font-size;
+  font-size: $lsg-code-font-size;
   -webkit-font-smoothing: subpixel-antialiased;
   font-style: normal;
-  font-weight: $lsg--code-font-weight;
+  font-weight: $lsg-code-font-weight;
   padding: 0 3px;
 
   kbd {
-    @extend %lsg--reset;
+    @extend %lsg-reset;
     display: block;
     font-weight: bold;
 
@@ -27,8 +27,8 @@
   }
 
   em {
-    @extend %lsg--reset;
-    color: lighten($lsg--code-color, 10%);
+    @extend %lsg-reset;
+    color: lighten($lsg-code-color, 10%);
     display: inline;
     font-style: normal;
     font-weight: bold;
@@ -37,23 +37,23 @@
   }
 
   b {
-    @extend %lsg--reset;
-    color: lighten($lsg--code-color, 20%);
+    @extend %lsg-reset;
+    color: lighten($lsg-code-color, 20%);
     display: inline;
     font-weight: bold;
     vertical-align: baseline;
   }
 
   i {
-    @extend %lsg--reset;
-    color: lighten($lsg--code-color, 30%);
+    @extend %lsg-reset;
+    color: lighten($lsg-code-color, 30%);
     display: inline;
     vertical-align: baseline;
   }
 
   q {
-    @extend %lsg--reset;
-    color: lighten($lsg--code-color, 30%);
+    @extend %lsg-reset;
+    color: lighten($lsg-code-color, 30%);
     display: inline;
     vertical-align: baseline;
 
@@ -64,21 +64,21 @@
   }
 
   var {
-    @extend %lsg--reset;
+    @extend %lsg-reset;
     display: inline;
     text-decoration: underline;
     vertical-align: baseline;
   }
 }
 
-.lsg--code-block {
+.lsg-code-block {
   display: block;
-  line-height: $lsg--code-line-height;
+  line-height: $lsg-code-line-height;
   margin: auto;
-  max-width: $lsg--width;
-  min-height: $lsg--gap-width + $lsg--button-height;
+  max-width: $lsg-width;
+  min-height: $lsg-gutter + $lsg-button-height;
   -ms-overflow-style: none;
-  padding: $lsg--code-padding;
+  padding: $lsg-code-padding;
   position: relative;
 
   &::-webkit-scrollbar {
@@ -87,62 +87,62 @@
   }
 }
 
-.lsg--example + .lsg--code-block {
+.lsg-example + .lsg-code-block {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   margin-top: 0;
 }
 
-.lsg--layout-example + .lsg--code-block {
-  background: $lsg--code-background-color;
+.lsg-layout-example + .lsg-code-block {
+  background: $lsg-code-background-color;
   border-radius: 0;
-  margin: 0 0 $lsg--gap-width;
-  padding: $lsg--gap-width 0;
+  margin: 0 0 $lsg-gutter;
+  padding: $lsg-gutter 0;
   width: 100%;
 
-  .lsg--code {
+  .lsg-code {
     display: block;
     margin: auto;
-    max-width: $lsg--width;
+    max-width: $lsg-width;
   }
 }
 
-.lsg--button {
-  background-color: $lsg--color;
-  background-image: $lsg--copy-background-image;
+.lsg-button {
+  background-color: $lsg-color;
+  background-image: $lsg-copy-background-image;
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 70%;
   border: 0;
-  border-radius: $lsg--color-swatch-border-radius;
-  bottom: $lsg--gap-width;
+  border-radius: $lsg-color-swatch-border-radius;
+  bottom: $lsg-gutter;
   cursor: pointer;
-  height: $lsg--button-height;
+  height: $lsg-button-height;
   outline: 0;
   position: absolute;
-  right: $lsg--gap-width;
+  right: $lsg-gutter;
   transition: transform 0.2s;
   visibility: hidden;
-  width: $lsg--button-width;
+  width: $lsg-button-width;
 
   &:hover {
-    background-color: mix($lsg--color, $lsg--background-color, 80%);
+    background-color: mix($lsg-color, $lsg-background-color, 80%);
   }
 
   &:active {
     transform: scale(0.9);
   }
 
-  .lsg--code-block:hover & {
+  .lsg-code-block:hover & {
     visibility: visible;
   }
 }
 
-.lsg--code-highlight {
-  @extend %lsg--reset;
-  background-color: $lsg--highlight-background-color;
-  border-radius: $lsg--highlight-border-radius;
-  color: $lsg--highlight-color;
+.lsg-code-highlight {
+  @extend %lsg-reset;
+  background-color: $lsg-highlight-background-color;
+  border-radius: $lsg-highlight-border-radius;
+  color: $lsg-highlight-color;
   display: inline;
   font-style: inherit;
   font-weight: inherit;
@@ -157,8 +157,8 @@
   }
 }
 
-.lsg--code-highlight-block {
-  @extend %lsg--reset;
-  @extend .lsg--code-highlight;
+.lsg-code-highlight-block {
+  @extend %lsg-reset;
+  @extend .lsg-code-highlight;
   display: block;
 }

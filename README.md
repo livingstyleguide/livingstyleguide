@@ -620,8 +620,8 @@ You can also customize (e.g. translate) the placeholder for the search box:
 Most of the design of the style guide itself, is calculated by few variables in the _styleguide.html.lsg:_
 
 ```
-@style base-font: comic sans ms, arial, sans-serif
-@style base-font-size: 7em
+@style font-family: comic sans ms, arial, sans-serif
+@style font-size: 7em
 @style background-color: red
 @style border-color: $my-color
 @style color: #eee
@@ -629,7 +629,7 @@ Most of the design of the style guide itself, is calculated by few variables in 
 @style color-swatch-border-radius: 0
 ```
 
-* For a full list of options, [have a look at the source](https://github.com/livingstyleguide/livingstyleguide/blob/master/stylesheets/_livingstyleguide.scss) (just strip `$lsg--` from the variables).
+* For a full list of options, [have a look at the source](https://github.com/livingstyleguide/livingstyleguide/blob/master/stylesheets/_livingstyleguide.scss) (just strip `$lsg-` from the variables).
 * Every Sass expression is allowed
 * Variables defined in your production Sass are available
 * `code-color` generates a whole color scheme for syntax highlighting in your corporate colors

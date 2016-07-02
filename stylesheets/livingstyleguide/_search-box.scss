@@ -1,35 +1,35 @@
-.lsg--search-box {
+.lsg-search-box {
   -webkit-appearance: none;
-  background: $lsg--code-background;
+  background: $lsg-code-background;
   border: 0;
-  border-radius: $lsg--border-radius;
-  color: $lsg--code-color;
+  border-radius: $lsg-border-radius;
+  color: $lsg-code-color;
   display: block;
-  font-family: $lsg--headline-font;
-  font-size: $lsg--sub-headline-font-size;
+  font-family: $lsg-headline-font-family;
+  font-size: $lsg-sub-headline-font-size;
   line-height: inherit;
-  margin: (2 * $lsg--gap-width) auto;
-  max-width: $lsg--width;
+  margin: (2 * $lsg-gutter) auto;
+  max-width: $lsg-width;
   outline: 0;
-  padding: $lsg--gap-width;
+  padding: $lsg-gutter;
   width: 100%;
 
-  $placeholder-color: mix($lsg--code-background, $lsg--code-color, 67%);
+  $lsg-placeholder-color: mix($lsg-code-background, $lsg-code-color, 67%);
 
   // scss-lint:disable VendorPrefix
   &::-moz-placeholder {
-    color: $placeholder-color;
+    color: $lsg-placeholder-color;
   }
 
   &::-webkit-input-placeholder {
-    color: $placeholder-color;
+    color: $lsg-placeholder-color;
   }
 
   &:-ms-input-placeholder {
-    color: $placeholder-color;
+    color: $lsg-placeholder-color;
   }
 
   &::placeholder {
-    color: $placeholder-color;
+    color: $lsg-placeholder-color;
   }
 }

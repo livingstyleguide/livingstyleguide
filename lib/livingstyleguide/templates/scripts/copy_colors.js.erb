@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
   if (testCopy()) {
-    var colorSwatches = document.getElementsByClassName("lsg--color-swatch");
+    var colorSwatches = document.getElementsByClassName("lsg-color-swatch");
     for (var i = 0; i < colorSwatches.length; i++) {
-      if (!colorSwatches[i].classList.contains("-lsg-empty")) {
+      if (!colorSwatches[i].classList.contains("lsg-empty")) {
         colorSwatches[i].addEventListener("click", function(event) {
           if (event.target == this.children[0]) {
             selectElementRange(createDiv(this.children[0].innerHTML));
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function createDiv(copyHexColors) {
   var divCopy = document.createElement("div");
-  divCopy.className = "-lsg-remove";
+  divCopy.className = "lsg-remove";
   divCopy.setAttribute("style", "opacity: 0; position: absolute; top: -10000px");
   divCopy.appendChild(document.createTextNode(copyHexColors));
   document.body.appendChild(divCopy);

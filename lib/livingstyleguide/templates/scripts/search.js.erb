@@ -4,7 +4,7 @@ function hasClass(element, cls) {
 
 function addMatch(matched, node) {
   if (node.nodeType !== Node.TEXT_NODE) {
-    if (node.className.match(/lsg--/)) {
+    if (node.className.match(/lsg-/)) {
       matched.push(node);
     }
   }
@@ -13,7 +13,7 @@ function addMatch(matched, node) {
 function addNextElement(selection, matched, i) {
   var j = i + 1;
   while (j < selection.length) {
-    if (hasClass(selection[j], "lsg--headline")) {
+    if (hasClass(selection[j], "lsg-headline")) {
       break;
     }
     addMatch(matched, selection[j]);
@@ -25,7 +25,7 @@ function addPreviousElement(selection, matched, i) {
   var j = i;
   while (j >= 0) {
     addMatch(matched, selection[j]);
-    if (hasClass(selection[j], "lsg--headline")) {
+    if (hasClass(selection[j], "lsg-headline")) {
       break;
     }
     j--;
@@ -34,10 +34,10 @@ function addPreviousElement(selection, matched, i) {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-  document.querySelector(".lsg--search-box").addEventListener("input", function(event) {
+  document.querySelector(".lsg-search-box").addEventListener("input", function(event) {
     var searchTerm = this.value;
 
-    var selection = document.querySelectorAll(".lsg--example, .lsg--color-swatches, .lsg--font-example, .lsg--paragraph, .lsg--unordered-list, .lsg--ordered-list, .lsg--headline, .lsg--sub-headline, .lsg--sub-sub-headline");
+    var selection = document.querySelectorAll(".lsg-example, .lsg-color-swatches, .lsg-font-example, .lsg-paragraph, .lsg-unordered-list, .lsg-ordered-list, .lsg-headline, .lsg-sub-headline, .lsg-sub-sub-headline");
     var regexp = new RegExp(searchTerm, "i");
     selection = Array.prototype.slice.call(selection);
     var matched = [];

@@ -31,20 +31,20 @@
 
   var html = document.getElementsByTagName("HTML")[0];
 
-  var hideCode = localStorage.getItem("lsg--hide-code");
+  var hideCode = localStorage.getItem("lsg-hide-code");
 
   if (hideCode == "true") {
-    addClass(html, "lsg--hide-code");
+    addClass(html, "lsg-hide-code");
   }
 
   function toggleCode(event) {
     event.preventDefault();
-    var hideCode = toggleClass(html, "lsg--hide-code");
-    localStorage.setItem("lsg--hide-code", hideCode);
+    var hideCode = toggleClass(html, "lsg-hide-code");
+    localStorage.setItem("lsg-hide-code", hideCode);
   }
 
   document.addEventListener("DOMContentLoaded", function() {
-    var switches = document.getElementsByClassName("lsg--code-switch");
+    var switches = document.getElementsByClassName("lsg-code-switch");
     for (var i = 0; i < switches.length; i++) {
       switches[i].addEventListener("click", toggleCode);
     }

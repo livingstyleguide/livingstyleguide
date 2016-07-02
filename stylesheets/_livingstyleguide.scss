@@ -2,95 +2,107 @@
 
 //// INTEGRATION ////
 
-$lsg--layout-selector: body !default;
+$lsg-layout-selector: body !default;
 
-//// TYPOGRAPHY ////
+//// GLOBAL TYPOGRAPHY ////
 
-$lsg--base-font: helvetica neue, helvetica, sans-serif !default;
-$lsg--base-font-size: 14px !default;
-$lsg--base-font-weight: normal !default;
-$lsg--base-line-height: 1.429 !default;
-$lsg--base-text-align: left !default;
+$lsg-font-family: helvetica neue, helvetica, sans-serif !default;
+$lsg-font-size: 14px !default;
+$lsg-font-weight: normal !default;
+$lsg-line-height: 1.429 !default;
+$lsg-text-align: left !default;
 
-$lsg--page-title-font-size: 42px !default;
+$lsg-page-title-font-size: 42px !default;
 
-$lsg--headline-font: $lsg--base-font !default;
-$lsg--headline-font-size: 32px !default;
-$lsg--headline-font-weight: bold !default;
-$lsg--headline-line-height: 1.1 !default;
-$lsg--headline-text-align: left !default;
+//// HEADLINE TYPOGRAPHY ////
 
-$lsg--sub-headline-font-size: 21px !default;
+$lsg-headline-font-family: $lsg-font-family !default;
+$lsg-headline-font-size: 32px !default;
+$lsg-headline-font-weight: bold !default;
+$lsg-headline-line-height: 1.1 !default;
+$lsg-headline-text-align: left !default;
 
-$lsg--sub-sub-headline-font-size: $lsg--base-font-size !default;
+$lsg-sub-headline-font-size: 21px !default;
 
-$lsg--code-font: andale mono, courier, courier new, monospace !default;
-$lsg--code-font-size: 13px !default;
-$lsg--code-font-weight: normal !default;
-$lsg--code-line-height:
-  round($lsg--base-font-size * $lsg--base-line-height) !default;
+$lsg-sub-sub-headline-font-size: $lsg-font-size !default;
 
-$lsg--font-example-first-line: $lsg--base-line-height * 4em;
+//// CODE TYPOGRAPHY ////
 
-//// STYLING ////
+$lsg-code-font-family: andale mono, courier, courier new, monospace !default;
+$lsg-code-font-size: 13px !default;
+$lsg-code-font-weight: normal !default;
+$lsg-code-line-height: round($lsg-font-size * $lsg-line-height) !default;
 
-$lsg--background-color: white !default;
-$lsg--border-width: 1px !default;
-$lsg--border-color: silver !default;
-$lsg--border-radius: 0 !default;
-$lsg--color: black !default;
-$lsg--link-color: mix($lsg--color, $lsg--background-color, 80%) !default;
-$lsg--gap-width:
-  floor($lsg--base-font-size * $lsg--base-line-height / 2) !default;
-$lsg--width: 72 * $lsg--gap-width !default;
-$lsg--full-width-padding: 0 !default;
+//// FONT EXAMPLE TYPOGRAPHY ////
 
-@if (lightness($lsg--background-color) < lightness($lsg--color)) {
-  $lsg--adjust-lightness:
-    16 - (lightness($lsg--color) - lightness($lsg--background-color)) / 6.25 + 4
+$lsg-font-example-first-line: $lsg-line-height * 4em;
+
+//// GLOBAL STYLING ////
+
+$lsg-background-color: white !default;
+$lsg-border-width: 1px !default;
+$lsg-border-color: silver !default;
+$lsg-border-radius: 0 !default;
+$lsg-color: black !default;
+$lsg-link-color: mix($lsg-color, $lsg-background-color, 80%) !default;
+$lsg-gutter: floor($lsg-font-size * $lsg-line-height / 2) !default;
+$lsg-width: 72 * $lsg-gutter !default;
+$lsg-full-width-padding: 0 !default;
+
+@if (lightness($lsg-background-color) < lightness($lsg-color)) {
+  $lsg-adjust-lightness:
+    16 - (lightness($lsg-color) - lightness($lsg-background-color)) / 6.25 + 4
     !default !global;
 }
 @else {
-  $lsg--adjust-lightness:
-    4 - (lightness($lsg--background-color) - lightness($lsg--color)) / 25
+  $lsg-adjust-lightness:
+    4 - (lightness($lsg-background-color) - lightness($lsg-color)) / 25
     !default !global;
 }
 
-$lsg--example-padding: $lsg--gap-width !default;
-$lsg--example-background: lsg--striped(
-  mix($lsg--color, $lsg--background-color, 4% + $lsg--adjust-lightness),
-  $lsg--background-color, $width: 12%) !default;
+//// EXAMPLES ////
 
-$lsg--code-color: $lsg--color !default;
-$lsg--code-background-color:
-  mix($lsg--code-color, $lsg--background-color, 4% + $lsg--adjust-lightness)
+$lsg-example-padding: $lsg-gutter !default;
+$lsg-example-background: lsg-striped(
+  mix($lsg-color, $lsg-background-color, 4% + $lsg-adjust-lightness),
+  $lsg-background-color, $width: 12%) !default;
+
+//// CODE ////
+
+$lsg-code-color: $lsg-color !default;
+$lsg-code-background-color:
+  mix($lsg-code-color, $lsg-background-color, 4% + $lsg-adjust-lightness)
   !default;
-$lsg--code-background: $lsg--code-background-color !default;
-$lsg--code-border-width: $lsg--border-width !default;
-$lsg--code-border-color: $lsg--border-color !default;
-$lsg--code-border-radius: $lsg--border-radius !default;
-$lsg--code-padding: $lsg--gap-width !default;
+$lsg-code-background: $lsg-code-background-color !default;
+$lsg-code-border-width: $lsg-border-width !default;
+$lsg-code-border-color: $lsg-border-color !default;
+$lsg-code-border-radius: $lsg-border-radius !default;
+$lsg-code-padding: $lsg-gutter !default;
 
-$lsg--color-swatch-color: black !default;
-$lsg--color-swatch-border-width: 1px !default;
-$lsg--color-swatch-border-color: rgba($lsg--color, 0.05) !default;
-$lsg--color-swatch-border-radius: 50% !default;
-$lsg--color-swatches-per-line: 2 !default;
+//// COLOR SWATCHES ////
 
-$lsg--highlight-color: $lsg--code-background-color !default;
-$lsg--highlight-background-color: adjust-hue($lsg--code-color, 180) !default;
-$lsg--highlight-border-radius: 2px;
+$lsg-color-swatch-color: black !default;
+$lsg-color-swatch-border-width: 1px !default;
+$lsg-color-swatch-border-color: rgba($lsg-color, 0.05) !default;
+$lsg-color-swatch-border-radius: 50% !default;
+$lsg-color-swatches-per-line: 2 !default;
+
+//// HIGHLIGHTS ////
+
+$lsg-highlight-color: $lsg-code-background-color !default;
+$lsg-highlight-background-color: adjust-hue($lsg-code-color, 180) !default;
+$lsg-highlight-border-radius: 2px;
 
 //// IMAGES - SVG ////
 
-$lsg--copy-background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='100%' height='100%' viewBox='0 0 512 512' enable-background='new 0 0 512 512' xml:space='preserve'> <path id='copy-6-icon' d='M360.277,151.999V50.001H50v310.137h102v101.861h310v-310H360.277z M90,320.138V90.001h230.277v61.998 H152v168.139H90z M421.5,421.499h-230V191.832h20.569c10.639,0,20.745,4.656,27.657,12.744l19.023,22.256H358l19.366-22.408 c6.911-7.996,16.958-12.592,27.528-12.592H421.5V421.499z M379.479,338.581h-145.99v-29h145.99V338.581z M379.479,286.249h-145.99 v-29h145.99V286.249z M233.488,361.999h146.023v29H233.488V361.999z' fill='#{$lsg--background-color}'/></svg>");
-$lsg--code-switch-hide: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='1000' width='1000'><path d='M0 523.831q5.859 -48.825 64.449 -109.368 78.12 -80.073 175.77 -128.898 128.898 -60.543 259.749 -60.543 29.295 0 58.59 1.953l74.214 -128.898q9.765 -15.624 23.436 -17.577 3.906 0 7.812 1.953l50.778 31.248q17.577 7.812 1.953 33.201l-56.637 101.556 -46.872 78.12 -41.013 72.261 -144.522 249.984 -41.013 72.261 -46.872 80.073 -56.637 99.603q-15.624 25.389 -31.248 15.624l-52.731 -31.248q-15.624 -7.812 0 -33.201l48.825 -85.932 -7.812 -3.906q-103.509 -52.731 -175.77 -128.898 -64.449 -72.261 -64.449 -109.368zm263.655 0q0 74.214 46.872 132.804l48.825 -83.979q-9.765 -23.436 -9.765 -48.825 0 -50.778 34.178 -90.815t84.956 -49.802l48.825 -83.979l-17.577 0q-97.65 0 -166.982 65.425t-69.332 159.169zm177.723 294.903l41.013 -70.308l17.577 0q97.65 0 166.982 -65.425t69.332 -159.169q0 -74.214 -46.872 -132.804l62.496 -109.368q1.953 1.953 3.906 2.929t3.906 .977q103.509 52.731 175.77 128.898 64.449 72.261 64.449 109.368 -5.859 48.825 -64.449 109.368 -78.12 80.073 -175.77 128.898 -128.898 60.543 -259.749 60.543 -25.389 0 -58.59 -3.906zm89.838 -154.287l109.368 -189.441q9.765 25.389 9.765 48.825 0 50.778 -34.178 89.838t-84.956 50.778z' fill='#{$lsg--background-color}'/></svg>");
-$lsg--code-switch-show: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='1000' width='1000'><path d='M0 499.809q5.859 -48.825 64.449 -109.368 78.12 -80.073 175.77 -128.898 128.898 -60.543 259.749 -60.543 136.71 1.953 259.749 60.543 103.509 52.731 175.77 128.898 64.449 72.261 64.449 109.368 -5.859 48.825 -64.449 109.368 -78.12 80.073 -175.77 128.898 -128.898 60.543 -259.749 60.543 -136.71 -1.953 -259.749 -60.543 -103.509 -52.731 -175.77 -128.898 -64.449 -72.261 -64.449 -109.368zm263.655 0q0 93.744 69.332 159.169t166.982 65.425 166.982 -65.425 69.332 -159.169 -69.332 -159.169 -166.982 -65.425 -166.982 65.425 -69.332 159.169zm85.932 -.977q0 -59.567 43.943 -101.556t106.439 -41.989 106.439 41.989 43.943 101.556 -43.943 102.532 -106.439 42.966 -106.439 -42.966 -43.943 -102.532z' fill='#{$lsg--background-color}'/></svg>");
+$lsg-copy-background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='100%' height='100%' viewBox='0 0 512 512' enable-background='new 0 0 512 512' xml:space='preserve'> <path id='copy-6-icon' d='M360.277,151.999V50.001H50v310.137h102v101.861h310v-310H360.277z M90,320.138V90.001h230.277v61.998 H152v168.139H90z M421.5,421.499h-230V191.832h20.569c10.639,0,20.745,4.656,27.657,12.744l19.023,22.256H358l19.366-22.408 c6.911-7.996,16.958-12.592,27.528-12.592H421.5V421.499z M379.479,338.581h-145.99v-29h145.99V338.581z M379.479,286.249h-145.99 v-29h145.99V286.249z M233.488,361.999h146.023v29H233.488V361.999z' fill='#{$lsg-background-color}'/></svg>");
+$lsg-code-switch-hide: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='1000' width='1000'><path d='M0 523.831q5.859 -48.825 64.449 -109.368 78.12 -80.073 175.77 -128.898 128.898 -60.543 259.749 -60.543 29.295 0 58.59 1.953l74.214 -128.898q9.765 -15.624 23.436 -17.577 3.906 0 7.812 1.953l50.778 31.248q17.577 7.812 1.953 33.201l-56.637 101.556 -46.872 78.12 -41.013 72.261 -144.522 249.984 -41.013 72.261 -46.872 80.073 -56.637 99.603q-15.624 25.389 -31.248 15.624l-52.731 -31.248q-15.624 -7.812 0 -33.201l48.825 -85.932 -7.812 -3.906q-103.509 -52.731 -175.77 -128.898 -64.449 -72.261 -64.449 -109.368zm263.655 0q0 74.214 46.872 132.804l48.825 -83.979q-9.765 -23.436 -9.765 -48.825 0 -50.778 34.178 -90.815t84.956 -49.802l48.825 -83.979l-17.577 0q-97.65 0 -166.982 65.425t-69.332 159.169zm177.723 294.903l41.013 -70.308l17.577 0q97.65 0 166.982 -65.425t69.332 -159.169q0 -74.214 -46.872 -132.804l62.496 -109.368q1.953 1.953 3.906 2.929t3.906 .977q103.509 52.731 175.77 128.898 64.449 72.261 64.449 109.368 -5.859 48.825 -64.449 109.368 -78.12 80.073 -175.77 128.898 -128.898 60.543 -259.749 60.543 -25.389 0 -58.59 -3.906zm89.838 -154.287l109.368 -189.441q9.765 25.389 9.765 48.825 0 50.778 -34.178 89.838t-84.956 50.778z' fill='#{$lsg-background-color}'/></svg>");
+$lsg-code-switch-show: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='1000' width='1000'><path d='M0 499.809q5.859 -48.825 64.449 -109.368 78.12 -80.073 175.77 -128.898 128.898 -60.543 259.749 -60.543 136.71 1.953 259.749 60.543 103.509 52.731 175.77 128.898 64.449 72.261 64.449 109.368 -5.859 48.825 -64.449 109.368 -78.12 80.073 -175.77 128.898 -128.898 60.543 -259.749 60.543 -136.71 -1.953 -259.749 -60.543 -103.509 -52.731 -175.77 -128.898 -64.449 -72.261 -64.449 -109.368zm263.655 0q0 93.744 69.332 159.169t166.982 65.425 166.982 -65.425 69.332 -159.169 -69.332 -159.169 -166.982 -65.425 -166.982 65.425 -69.332 159.169zm85.932 -.977q0 -59.567 43.943 -101.556t106.439 -41.989 106.439 41.989 43.943 101.556 -43.943 102.532 -106.439 42.966 -106.439 -42.966 -43.943 -102.532z' fill='#{$lsg-background-color}'/></svg>");
 
 //// BUTTONS ////
 
-$lsg--button-height: 2 * $lsg--gap-width !default;
-$lsg--button-width: $lsg--button-height !default;
+$lsg-button-height: 2 * $lsg-gutter !default;
+$lsg-button-width: $lsg-button-height !default;
 
 //// IMPORTS ////
 

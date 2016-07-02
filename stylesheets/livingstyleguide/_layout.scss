@@ -1,53 +1,53 @@
-.livingstyleguide {
-  @extend %lsg--reset;
-  background: $lsg--background-color;
+.lsg {
+  @extend %lsg-reset;
+  background: $lsg-background-color;
   display: block;
 }
 
-.lsg--container {
-  @extend %lsg--reset;
+.lsg-container {
+  @extend %lsg-reset;
   display: block;
   min-height: 50vh;
 }
 
-.lsg--footer {
-  @extend %lsg--reset;
+.lsg-footer {
+  @extend %lsg-reset;
   display: block;
-  margin: (4 * $lsg--gap-width) auto;
-  max-width: $lsg--width;
+  margin: (4 * $lsg-gutter) auto;
+  max-width: $lsg-width;
 }
 
-.lsg--logo {
-  $logo-size: ceil($lsg--base-font-size / 3) * 9;
-  @extend %lsg--reset;
+.lsg-logo {
+  $logo-size: ceil($lsg-font-size / 3) * 9;
+  @extend %lsg-reset;
   color: transparent;
   display: block;
   font-size: 0;
   height: $logo-size * 2;
   line-height: $logo-size * 2;
-  margin: 0 auto (2 * $lsg--gap-width);
+  margin: 0 auto (2 * $lsg-gutter);
   position: relative;
   text-align: center;
   width: $logo-size * 8;
   z-index: 2;
 
   &:hover {
-    color: $lsg--color;
+    color: $lsg-color;
   }
 
   &::before {
     color: transparent;
     content: "Made with The LivingStyleGuide Gem";
     display: block;
-    font-family: $lsg--base-font;
-    font-size: $lsg--base-font-size;
+    font-family: $lsg-font-family;
+    font-size: $lsg-font-size;
     transform: scale(0.5);
     transition: all 0.1s;
     white-space: nowrap;
   }
 
   &:hover::before {
-    color: $lsg--color;
+    color: $lsg-color;
     transform: scale(1);
   }
 
@@ -57,11 +57,11 @@
     $position-a: $unit;
     $position-b: 5 * $unit;
     background:
-      linear-gradient(to top, $lsg--background-color, $lsg--background-color),
-      linear-gradient(to top, $lsg--background-color, $lsg--background-color),
-      linear-gradient(to top, $lsg--background-color, $lsg--background-color),
-      linear-gradient(to top, $lsg--background-color, $lsg--background-color),
-      $lsg--color;
+      linear-gradient(to top, $lsg-background-color, $lsg-background-color),
+      linear-gradient(to top, $lsg-background-color, $lsg-background-color),
+      linear-gradient(to top, $lsg-background-color, $lsg-background-color),
+      linear-gradient(to top, $lsg-background-color, $lsg-background-color),
+      $lsg-color;
     background-position:
       $position-a $position-a,
       $position-a $position-b,

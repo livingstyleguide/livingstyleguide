@@ -6,7 +6,7 @@ class SearchBoxText < DocumentTestCase
     assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
       @search-box
     INPUT
-      .*<section class="lsg--before">.*<input type="search" class="lsg--search-box" placeholder="Search …">.*</section>.*
+      .*<section class="lsg-before">.*<input type="search" class="lsg-search-box" placeholder="Search …">.*</section>.*
     OUTPUT
   end
 
@@ -14,7 +14,7 @@ class SearchBoxText < DocumentTestCase
     assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
       @search-box placeholder: Buscar
     INPUT
-      .*<section class="lsg--before">.*<input type="search" class="lsg--search-box" placeholder="Buscar">.*</section>.*
+      .*<section class="lsg-before">.*<input type="search" class="lsg-search-box" placeholder="Buscar">.*</section>.*
     OUTPUT
   end
 
@@ -24,7 +24,7 @@ class SearchBoxText < DocumentTestCase
     assert_render_match <<-INPUT, <<-OUTPUT, template: :layout
       @search-box
     INPUT
-      .*<section class="lsg--before">.*<input type="search" class="lsg--search-box" placeholder="Buscar ...">.*</section>.*
+      .*<section class="lsg-before">.*<input type="search" class="lsg-search-box" placeholder="Buscar ...">.*</section>.*
     OUTPUT
     LivingStyleGuide.default_options[:search_box] = backup
   end

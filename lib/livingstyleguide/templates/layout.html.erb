@@ -18,18 +18,18 @@ for(var e,l="article aside footer header nav section time picture".split(" ");e=
 <%= head %>
 </head>
 
-<body class="livingstyleguide">
+<body class="lsg">
 <%= header %>
 <% unless before.empty? %>
-  <section class="lsg--before">
+  <section class="lsg-before">
   <%= before %>
   </section>
 <% end %>
-<div class="lsg--container">
+<div class="lsg-container">
 <%= html %>
 </div>
 <% unless after.empty? %>
-  <section class="lsg--after">
+  <section class="lsg-after">
   <%= after %>
   </section>
 <% end %>

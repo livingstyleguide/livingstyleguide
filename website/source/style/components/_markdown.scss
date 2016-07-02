@@ -1,47 +1,58 @@
-$lsg--color: $black;
-$lsg--background-color: $white;
-$lsg--code-background: mix(white, $turquoise, 90%);
-$lsg--code-background-color: mix(white, $turquoise, 90%);
-$lsg--code-color: $pink;
-$lsg--code-font: courier new, courier, monospace;
-$lsg--base-font-size: 13px;
-$lsg--base-font-weight: normal;
-$lsg--base-line-height: 1.1;
-$lsg--base-text-align: left;
-$lsg--code-font-size: 13px;
-$lsg--code-border-radius: 0;
-$lsg--code-line-height: 1.1;
-$lsg--code-font-weight: normal;
-$lsg--width: 600px;
-$lsg--gap-width: 20px;
-$lsg--code-padding: $lsg--gap-width;
-$lsg--highlight-background-color: $yellow;
-$lsg--highlight-color: $pink;
-$lsg--highlight-border-radius: 0;
-$lsg--base-font: gubia, helvetica neue, helvetica, arial;
-$lsg--headline-font: gubia, helvetica neue, helvetica, arial;
-$lsg--headline-font-size: 36px;
-$lsg--headline-font-weight: bold;
-$lsg--headline-line-height: 1.3;
-$lsg--headline-text-align: center;
-$lsg--page-title-font-size: 44px;
-$lsg--sub-headline-font-size: 22px;
-$lsg--sub-sub-headline-font-size: 16px;
-$lsg--border-radius: 0;
-$lsg--layout-selector: ".layout";
-$lsg--full-width-padding: 0;
-$lsg--button-width: 23px;
-$lsg--button-height: 23px;
-$lsg--copy-background-image: none;
-$lsg--link-color: $turquoise;
-$lsg--example-background: $turquoise;
-$lsg--example-padding: $lsg--gap-width;
-$lsg--font-example-first-line: 4em;
+$lsg-color: $black;
+$lsg-background-color: $white;
+$lsg-width: 600px;
+$lsg-gutter: 20px;
+$lsg-border-radius: 0;
+$lsg-layout-selector: ".layout";
+$lsg-font-family: gubia, helvetica neue, helvetica, arial;
+$lsg-font-size: 13px;
+$lsg-font-weight: normal;
+$lsg-line-height: 1.1;
+$lsg-text-align: left;
+$lsg-link-color: $turquoise;
+
+$lsg-code-background: mix(white, $turquoise, 90%);
+$lsg-code-background-color: mix(white, $turquoise, 90%);
+$lsg-code-color: $pink;
+$lsg-code-font-family: courier new, courier, monospace;
+$lsg-code-font-size: 13px;
+$lsg-code-border-radius: 0;
+$lsg-code-line-height: 1.1;
+$lsg-code-font-weight: normal;
+$lsg-code-padding: $lsg-gutter;
+
+$lsg-highlight-background-color: $yellow;
+$lsg-highlight-color: $pink;
+$lsg-highlight-border-radius: 0;
+
+$lsg-headline-font-family: gubia, helvetica neue, helvetica, arial;
+$lsg-headline-font-size: 36px;
+$lsg-headline-font-weight: bold;
+$lsg-headline-line-height: 1.3;
+$lsg-headline-text-align: center;
+
+$lsg-page-title-font-size: 44px;
+
+$lsg-sub-headline-font-size: 22px;
+
+$lsg-sub-sub-headline-font-size: 16px;
+
+$lsg-full-width-padding: 0;
+
+$lsg-button-width: 23px;
+$lsg-button-height: 23px;
+
+$lsg-copy-background-image: none;
+
+$lsg-example-background: $turquoise;
+$lsg-example-padding: $lsg-gutter;
+
+$lsg-font-example-first-line: 4em;
 
 @import "livingstyleguide";
 
 .markdown {
-  max-width: $lsg--width + 2 * 40px;
+  max-width: $lsg-width + 2 * 40px;
   padding: 40px;
   text-align: left;
 
@@ -64,24 +75,24 @@ $lsg--font-example-first-line: 4em;
     @extend %font-weight-bold;
   }
 
-  .lsg--headline {
+  .lsg-headline {
     font-size: 3em;
     margin: 0 0 0.5em;
     width: auto;
   }
 
-  .lsg--sub-headline {
+  .lsg-sub-headline {
     font-size: 2em;
     margin: 1.5em 0 0.5em;
     width: auto;
   }
 
   p,
-  .lsg--paragraph,
-  .lsg--ordered-list,
-  .lsg--ordered-list-item,
-  .lsg--unordered-list,
-  .lsg--unordered-list-item {
+  .lsg-paragraph,
+  .lsg-ordered-list,
+  .lsg-ordered-list-item,
+  .lsg-unordered-list,
+  .lsg-unordered-list-item {
     font-family: source sans pro, arial, helvetica, sans-serif;
     font-size: 18px;
     font-weight: 200;
@@ -90,18 +101,18 @@ $lsg--font-example-first-line: 4em;
     width: auto;
   }
 
-  .lsg--unordered-list {
+  .lsg-unordered-list {
     counter-reset: ul;
     margin: 0 0 0.75em;
   }
 
-  .lsg--ordered-list-item,
-  .lsg--unordered-list-item {
+  .lsg-ordered-list-item,
+  .lsg-unordered-list-item {
     list-style: none;
     margin-left: 3em;
   }
 
-  .lsg--unordered-list-item {
+  .lsg-unordered-list-item {
     &::before {
       background: $turquoise;
       content: "";
@@ -113,11 +124,11 @@ $lsg--font-example-first-line: 4em;
     }
   }
 
-  .lsg--ordered-list-item {
+  .lsg-ordered-list-item {
     counter-increment: ul;
 
     &::before {
-      background: $lsg--code-background-color;
+      background: $lsg-code-background-color;
       color: $turquoise;
       content: counter(ul);
       font-size: 0.8em;
@@ -131,7 +142,7 @@ $lsg--font-example-first-line: 4em;
     }
   }
 
-  .lsg--code-span {
+  .lsg-code-span {
     background: mix($pink, $white, 3%);
     border-radius: 4px;
     display: inline;
@@ -140,27 +151,27 @@ $lsg--font-example-first-line: 4em;
     padding: 0 4px;
   }
 
-  .lsg--code-block {
-    background: $lsg--code-background-color;
+  .lsg-code-block {
+    background: $lsg-code-background-color;
     margin: 0;
-    padding: $lsg--gap-width;
+    padding: $lsg-gutter;
   }
 
-  .lsg--example {
-    margin: $lsg--gap-width 0;
+  .lsg-example {
+    margin: $lsg-gutter 0;
     padding: 0;
   }
 
-  .lsg--container {
+  .lsg-container {
     min-height: 0;
   }
 
-  .lsg--code-highlight {
+  .lsg-code-highlight {
     font-weight: inherit;
   }
 
-  .lsg--html {
-    background: $lsg--code-background-color;
+  .lsg-html {
+    background: $lsg-code-background-color;
     display: block;
     padding: 20px 20px 0;
   }

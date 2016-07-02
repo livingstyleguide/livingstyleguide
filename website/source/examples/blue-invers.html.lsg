@@ -1,12 +1,12 @@
 @style color: #282c34
 @style background-color: #d6f0f4
 @style border-radius: 4px
-@style code-color: $lsg--background-color
-@style code-background-color: $lsg--color
-@style color-swatch-border-radius: $lsg--border-radius
+@style code-color: $lsg-background-color
+@style code-background-color: $lsg-color
+@style color-swatch-border-radius: $lsg-border-radius
 
 @header {
-  <h1 class="lsg--page-title">LivingStyleGuide v2.0.0 default style</h1>
+  <h1 class="lsg-page-title">LivingStyleGuide v2.0.0 default style</h1>
 }
 
 @search-box
@@ -19,9 +19,9 @@ The only customization applied:
 \@style color: #282c34
 \@style background-color: #d6f0f4
 \@style border-radius: 4px
-\@style code-color: $lsg--background-color
-\@style code-background-color: $lsg--color
-\@style color-swatch-border-radius: $lsg--border-radius
+\@style code-color: $lsg-background-color
+\@style code-background-color: $lsg-color
+\@style color-swatch-border-radius: $lsg-border-radius
 ```
 
 @import content

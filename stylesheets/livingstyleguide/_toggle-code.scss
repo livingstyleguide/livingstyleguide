@@ -1,21 +1,21 @@
 
-.lsg--code-switch {
-  background-color: $lsg--background-color;
-  background-image: $lsg--code-switch-show;
+.lsg-code-switch {
+  background-color: $lsg-background-color;
+  background-image: $lsg-code-switch-show;
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 90%;
-  border-radius: $lsg--border-radius;
-  height: $lsg--button-height;
-  width: $lsg--button-width;
+  border-radius: $lsg-border-radius;
+  height: $lsg-button-height;
+  width: $lsg-button-width;
 }
 
-.lsg--hide-code {
-  .lsg--code-switch {
-    background-image: $lsg--code-switch-hide;
+.lsg-hide-code {
+  .lsg-code-switch {
+    background-image: $lsg-code-switch-hide;
   }
 
-  .lsg--code-block {
+  .lsg-code-block {
     display: none;
   }
 }

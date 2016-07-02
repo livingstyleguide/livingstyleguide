@@ -8,15 +8,15 @@ class FontExampleTest < DocumentTestCase
     assert_render_equals <<-INPUT, <<-OUTPUT
       @font-example 42px Comic Sans, sans-serif
     INPUT
-      <div class="lsg--font-example">
-        <p class="lsg--font-example-text" style="font: 42px Comic Sans, sans-serif">
+      <div class="lsg-font-example">
+        <p class="lsg-font-example-text" style="font: 42px Comic Sans, sans-serif">
           Aa<br>
           ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
           abcdefghijklmnopqrstuvwxyz<br>
           0123456789 ! ? &amp; / ( ) € $ £ ¥ ¢ = @ ; : , .
         </p>
-        <pre class="lsg--code-block">
-          <code class="lsg--code">42px Comic Sans, sans-serif</code>
+        <pre class="lsg-code-block">
+          <code class="lsg-code">42px Comic Sans, sans-serif</code>
         </pre>
       </div>
     OUTPUT
@@ -26,15 +26,15 @@ class FontExampleTest < DocumentTestCase
     assert_render_equals <<-INPUT, <<-OUTPUT
       @font-example 42px "Comic Neue"
     INPUT
-      <div class="lsg--font-example">
-        <p class="lsg--font-example-text" style="font: 42px &quot;Comic Neue&quot;">
+      <div class="lsg-font-example">
+        <p class="lsg-font-example-text" style="font: 42px &quot;Comic Neue&quot;">
           Aa<br>
           ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
           abcdefghijklmnopqrstuvwxyz<br>
           0123456789 ! ? &amp; / ( ) € $ £ ¥ ¢ = @ ; : , .
         </p>
-        <pre class="lsg--code-block">
-          <code class="lsg--code">42px &quot;Comic Neue&quot;</code>
+        <pre class="lsg-code-block">
+          <code class="lsg-code">42px &quot;Comic Neue&quot;</code>
         </pre>
       </div>
     OUTPUT
@@ -47,13 +47,13 @@ class FontExampleTest < DocumentTestCase
         verflixt öde Pangramme an.
       }
     INPUT
-      <div class="lsg--font-example">
-        <p class="lsg--font-example-text" style="font: 14px Helvetica">
+      <div class="lsg-font-example">
+        <p class="lsg-font-example-text" style="font: 14px Helvetica">
           Schweißgequält zündet Typograf Jakob<br>
           verflixt öde Pangramme an.
         </p>
-        <pre class="lsg--code-block">
-          <code class="lsg--code">14px Helvetica</code>
+        <pre class="lsg-code-block">
+          <code class="lsg-code">14px Helvetica</code>
         </pre>
       </div>
     OUTPUT
@@ -65,14 +65,14 @@ class FontExampleTest < DocumentTestCase
     assert_render_equals <<-INPUT, <<-OUTPUT
       @font-example 72px Drogowskaz
     INPUT
-      <div class="lsg--font-example">
-        <p class="lsg--font-example-text" style="font: 72px Drogowskaz">
+      <div class="lsg-font-example">
+        <p class="lsg-font-example-text" style="font: 72px Drogowskaz">
           zażółć<br>
           gęślą<br>
           jaźń
         </p>
-        <pre class="lsg--code-block">
-          <code class="lsg--code">72px Drogowskaz</code>
+        <pre class="lsg-code-block">
+          <code class="lsg-code">72px Drogowskaz</code>
         </pre>
       </div>
     OUTPUT
