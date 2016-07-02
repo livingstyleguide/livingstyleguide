@@ -6,19 +6,20 @@ class DocumentTestCase < Minitest::Test
     @class = Class.new(LivingStyleGuide::Document)
   end
 
-  def assert_render_equal(input, expected_output, options = {})
-    @doc = @class.new(options[:file]){ input.unindent }
+  def render(input, options = {})
+    @doc = @class.new(options[:file]){ input.unindent(ignore_blank: true) }
     @doc.type = options[:type] || :lsg
     @doc.template = options[:template] || "plain"
-    output = @doc.render
+    @doc.render
+  end
+
+  def assert_render_equal(input, expected_output, options = {})
+    output = render(input, options)
     assert_equal(normalize(expected_output), normalize(output))
   end
 
   def assert_render_match(input, expected_output, options = {})
-    @doc = @class.new(options[:file]){ input.gsub(/\n\n/, "\n      \n").unindent }
-    @doc.type = options[:type] || :lsg
-    @doc.template = options[:template] || "plain"
-    output = @doc.render
+    output = render(input, options)
     assert_match(/#{normalize(expected_output)}/, normalize(output))
   end
 
