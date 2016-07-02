@@ -17,7 +17,7 @@ class ImportAndSourceTest < DocumentTestCase
     INPUT
       <p.+?>Before</p>
       .*?
-      <h2.+?>Imported</h2>
+      <h2.+?>Headline</h2>
       .*?
       <p.+?>After</p>
     OUTPUT
@@ -34,7 +34,7 @@ class ImportAndSourceTest < DocumentTestCase
     INPUT
       <p.+?>Before</p>
       .*?
-      <h2.+?>Imported</h2>
+      <h2.+?>Headline</h2>
       .*?
       <p.+?>After</p>
     OUTPUT
@@ -50,7 +50,7 @@ class ImportAndSourceTest < DocumentTestCase
     INPUT
       <p.+?>Before</p>
       .*?
-      <h2.+?>Imported</h2>
+      <h2.+?>Headline partial</h2>
       .*?
       <p.+?>After</p>
     OUTPUT
@@ -66,7 +66,7 @@ class ImportAndSourceTest < DocumentTestCase
     INPUT
       <p.+?>Before</p>
       .*?
-      <h2.+?>Imported</h2>
+      <h2.+?>Headline</h2>
       .*?
       <p.+?>After</p>
     OUTPUT
@@ -98,12 +98,26 @@ class ImportAndSourceTest < DocumentTestCase
     INPUT
       <p.+?>Before</p>
       .*?
-      <h2.+?>Imported</h2>
+      <h2.+?>Headline partial</h2>
       .*?
       <h2.+?>Bar Bar</h2>
       .*?
+      <h2.+?>Headline</h2>
+      .*?
       <p.+?>After</p>
     OUTPUT
+  end
+
+  def test_import_multiple_only_once
+    html = render(<<-INPUT, template: "default")
+      Before
+
+      @import test/fixtures/import/*
+
+      After
+    INPUT
+    ids = html.scan(/id="([\w\-]+)"/).flatten
+    assert_equal ids.uniq, ids
   end
 
   def test_import_haml

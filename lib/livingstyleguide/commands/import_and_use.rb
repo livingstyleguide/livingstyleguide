@@ -5,7 +5,7 @@ def map_files(glob, &block)
   glob.gsub!(/[^\/]+$/, "{_,}\\0")
   glob = File.join(document.path, glob)
 
-  Dir.glob(glob).map do |file|
+  Dir.glob(glob).uniq.map do |file|
     document.depend_on file
     yield(file)
   end.join

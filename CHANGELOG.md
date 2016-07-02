@@ -6,6 +6,7 @@
 * Fixed/improved Sass imports (#191)
 * Refactored classes and variables
 * Removed IE hack
+* Fixes duplicate imports (#198)
 * **Internal:**
   * Cleaned up the code base
 
