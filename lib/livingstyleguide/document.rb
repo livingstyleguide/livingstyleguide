@@ -12,7 +12,9 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :syntax
   attr_reader :scope
 
-  %w(scss head header footer defaults javascript before after).each do |attr|
+  %w(
+    scss head header footer defaults javascript before after files
+  ).each do |attr|
     define_method attr do
       if options.has_key?(:livingstyleguide)
         options[:livingstyleguide].send(attr)
@@ -35,9 +37,14 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def prepare
+    if options.has_key?(:livingstyleguide)
+      @template = :default
+    else
+      @template = :layout
+      @files = []
+    end
     @type = :lsg
     @commands = LivingStyleGuide::Commands.new(self)
-    @template = options.has_key?(:livingstyleguide) ? :default : :layout
     @classes = []
     @scss = ""
     @css = ""
@@ -111,6 +118,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def depend_on(file)
+    files << file
     @scope.depend_on(File.expand_path(file)) if @scope.respond_to?(:depend_on)
   end
 

@@ -120,6 +120,19 @@ class ImportAndSourceTest < DocumentTestCase
     assert_equal ids.uniq, ids
   end
 
+  def test_dont_glob_import_already_imported_files
+    html = render(<<-INPUT, template: "default")
+      Before
+
+      @import test/fixtures/import/headline
+      @import test/fixtures/import/*
+
+      After
+    INPUT
+    ids = html.scan(/id="([\w\-]+)"/).flatten
+    assert_equal ids.uniq, ids
+  end
+
   def test_import_haml
     require "tilt/haml"
     assert_render_match <<-INPUT, <<-OUTPUT, template: "default"

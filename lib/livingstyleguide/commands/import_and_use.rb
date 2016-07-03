@@ -5,7 +5,15 @@ def map_files(glob)
   glob.gsub!(/[^\/]+$/, "{_,}\\0")
   glob = File.join(document.path, glob)
 
-  Dir.glob(glob).uniq.map do |file|
+  files = Dir.glob(glob)
+  if glob.index("*")
+    files.uniq!
+    files.reject! { |f| document.files.include?(f) }
+  else
+    raise Errno::ENOENT if files.empty?
+  end
+
+  files.map do |file|
     document.depend_on file
     yield(file)
   end.join
