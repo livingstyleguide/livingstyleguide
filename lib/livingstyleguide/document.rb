@@ -201,18 +201,15 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def parse_commands
-    data.gsub("<%", "<%%").gsub(/\G(.*?)((```.+?```)|\Z)/m) do
-      content, code_block = $1, $2
-      content.gsub!(/^@([\w\d_-]+)(?: ([^\n]*[^\{\n:]))?(?: *\{\n((?:.|\n)*?)\n\}|((?:\n+  .*)+(?=\n|\Z))| *:\n((?:.|\n)*?)(?:\n\n|\Z))?/) do
-        name, arguments_string, block = $1, $2 || "", $3 || $4 || $5
-        options = {
-          block_type: $3 ? :braces : $4 ? :indented : $5 ? :block : :none
-        }
-        name = name.gsub("-", "_").to_sym
-        arguments = parse_arguments(arguments_string, options)
-        if options[:block_type] == :indented
-          block.gsub!(/\A\n(\s*)((?:.|\n)+)\Z/){ $2.gsub(/^#{$1}/, "") }
-        end
+    doc = (data || "").gsub("<%", "<%%")
+    doc.gsub(/\G(?<content>.*?)(?<code_block>(?:```.+?```)|\Z)/m) do
+      content = $~[:content]
+      code_block = $~[:code_block]
+      content.gsub!(LivingStyleGuide::COMMANDS_REGEXP) do
+        name = $~[:name].tr("-", "_").to_sym
+        options = {}
+        arguments = parse_arguments($~[:arguments], options)
+        block = parse_block($~[:braces], $~[:indented], $~[:colon], options)
         yield name, arguments, options, block
       end
       content.gsub!(/^\\@/, "@")
@@ -222,6 +219,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   private
   def parse_arguments(arguments_string, options)
+    return [] if arguments_string.nil?
     arguments = arguments_string.split(/(?<!\\);/)
     arguments.map! do |argument|
       argument.strip!
@@ -237,6 +235,28 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   private
+  def parse_block(braces_block, indented_block, colon_block, options)
+    if braces_block
+      options[:block_type] = :braces
+      braces_block
+    elsif indented_block
+      options[:block_type] = :indented
+      unindent(indented_block)
+    elsif colon_block
+      options[:block_type] = :colon
+      colon_block
+    else
+      options[:block_type] = :none
+      nil
+    end
+  end
+
+  def unindent(block)
+    block.gsub(/\A\n(?<indent>(?: |\t)*)(?<content>(?:.|\n)+)\Z/) do
+      $~[:content].gsub(/^#{$~[:indent]}/, "")
+    end
+  end
+
   def remove_quots(string)
     string.sub(/^"(.*)"$|^"(.*)"$|^(.*)$/, "\\1\\2\\3").gsub(/\\("|")/, "\\1")
   end

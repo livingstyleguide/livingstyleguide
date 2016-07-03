@@ -244,6 +244,22 @@ describe LivingStyleGuide::Document do
         OUTPUT
       end
 
+      it "can have filters with an indented block with tabs" do
+        LivingStyleGuide.command :x_indented do |arguments, options, block|
+          block.gsub(/\w/, "X")
+        end
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
+          @x-indented
+          \tLorem ipsum
+          \tdolor
+          Lorem ipsum
+        INPUT
+          XXXXX XXXXX
+          XXXXX
+          Lorem ipsum
+        OUTPUT
+      end
+
       it "can have filters with an indented block at the end of the file" do
         LivingStyleGuide.command :x_indented do |arguments, options, block|
           block.gsub(/\w/, "X")
