@@ -1,4 +1,5 @@
-LivingStyleGuide.default_options[:font_example] = { text: <<-TEXT }
+LivingStyleGuide.default_options[:font_example] ||= {}
+LivingStyleGuide.default_options[:font_example][:text] ||= <<-TEXT
   Aa
   ABCDEFGHIJKLMNOPQRSTUVWXYZ
   abcdefghijklmnopqrstuvwxyz

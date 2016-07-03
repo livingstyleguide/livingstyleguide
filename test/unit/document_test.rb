@@ -599,7 +599,5 @@ describe LivingStyleGuide::Document do
       assert_equal "This is\n\nhighlighted\n\ntext.\n", doc.html
       assert_equal "This is<br><strong class=\"lsg-code-highlight\"><br>highlighted<br></strong><br>text.", doc.highlighted_source
     end
-
   end
-
 end

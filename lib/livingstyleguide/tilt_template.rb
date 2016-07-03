@@ -1,27 +1,28 @@
-require 'tilt'
-require 'erb'
-require 'yaml'
-require 'json'
+require "tilt"
+require "erb"
+require "yaml"
+require "json"
 
 module LivingStyleGuide
   class TiltTemplate < ::Tilt::Template
-    self.default_mime_type = 'text/html'
+    self.default_mime_type = "text/html"
 
     def prepare
     end
 
-    def evaluate(scope, locals, &block)
+    def evaluate(scope, _)
       @scope = scope
       parse_options(data)
       render_living_style_guide
     end
 
     private
+
     def sass_options
       if defined?(Compass)
         options = Compass.configuration.to_sass_plugin_options
       else
-        load_path = File.join(File.dirname(__FILE__), '..', '..', 'stylesheets')
+        load_path = File.join(File.dirname(__FILE__), "..", "..", "stylesheets")
         options = { load_paths: [load_path] }
       end
       if defined?(Rails)
@@ -46,21 +47,19 @@ module LivingStyleGuide
       options
     end
 
-    private
     def parse_options(data)
       data.strip!
-      @options = (data[0] == '{') ? JSON.parse(data) : YAML.load(data)
+      @options = (data[0] == "{") ? JSON.parse(data) : YAML.load(data)
       @options = {} unless @options
       @options.keys.each do |key|
-        @options[key.gsub('-', '_').to_sym] = @options.delete(key)
+        @options[key.tr("-", "_").to_sym] = @options.delete(key)
       end
       @options[:syntax] = @options.has_key?(:styleguide_sass) ? :sass : :scss
-      @options[:source] ||= File.basename(file, '.html.lsg')
+      @options[:source] ||= File.basename(file, ".html.lsg")
       @options[:filename] = file
       @options[:root] ||= root
     end
 
-    private
     def configure_cache
       return unless @scope.respond_to?(:depend_on)
       @engine.files.uniq.each do |file|
@@ -68,23 +67,23 @@ module LivingStyleGuide
       end
     end
 
-    private
     def root
-      if @scope.respond_to?(:environment) and @scope.environment.respond_to?(:root)
+      if @scope.respond_to?(:environment) &&
+         @scope.environment.respond_to?(:root)
         @scope.environment.root
       else
         find_root_path
       end
     end
 
-    private
     def find_root_path
       path = @file.nil? ? Dir.pwd : File.dirname(@file)
-      while path.length > 0 do
-        if File.exists?(File.join(path, 'Gemfile')) or File.exists?(File.join(path, '.git'))
+      while path.length > 0
+        if File.exists?(File.join(path, "Gemfile")) ||
+           File.exists?(File.join(path, ".git"))
           break
         end
-        path = File.expand_path('..', path)
+        path = File.expand_path("..", path)
         if path == "/"
           break
         end
@@ -92,7 +91,6 @@ module LivingStyleGuide
       path
     end
 
-    private
     def render_living_style_guide
       @engine = ::LivingStyleGuide::Engine.new(@options, sass_options)
       html = @engine.render

@@ -25,7 +25,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
       if options.has_key?(:livingstyleguide)
         options[:livingstyleguide].send("#{attr}=", value)
       else
-        instance_variable_get("@#{attr}", value)
+        instance_variable_set("@#{attr}", value)
       end
     end
   end
@@ -82,7 +82,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
 
   def erb
     @erb ||= parse_commands do |name, arguments, options, block|
-      options = %Q(document.defaults[:global].merge(document.defaults[:@#{name}] || {}).merge(#{options.inspect}))
+      global = "document.defaults[:global]"
+      scoped = "document.defaults[:@#{name}] || {}"
+      local = options.inspect
+      options = "#{global}.merge(#{scoped}).merge(#{local})"
       "<%= #{name}(#{arguments.inspect}, #{options}, #{block.inspect}) %>\n"
     end
   end
@@ -91,7 +94,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
     @head = ""
     @javascript = ""
     %w(copy copy_code copy_colors toggle_code).each do |partial|
-      @javascript << LivingStyleGuide.template("scripts/#{partial}.js.erb", binding)
+      file = "scripts/#{partial}.js.erb"
+      @javascript << LivingStyleGuide.template(file, binding)
     end
     @header = ""
     @before = ""
@@ -111,17 +115,20 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   private
+
   def render_html(result, locals)
     if @type == :lsg
-      renderer = LivingStyleGuide::RedcarpetHTML.new(LivingStyleGuide.default_options, self)
-      redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
+      renderer_options = LivingStyleGuide.default_options
+      renderer = LivingStyleGuide::RedcarpetHTML.new(self, renderer_options)
+      redcarpet_options = LivingStyleGuide::REDCARPET_RENDER_OPTIONS
+      redcarpet = ::Redcarpet::Markdown.new(renderer, redcarpet_options)
       redcarpet.render(result)
     elsif engine = Tilt[@type]
       begin
         require "tilt/#{template_name}"
       rescue LoadError
       end
-      template = engine.new{ remove_highlights(result) }
+      template = engine.new { remove_highlights(result) }
       (@locals.is_a?(Array) ? @locals : [@locals]).map do |current_locals|
         template.render(@scope || Object.new, current_locals.merge(locals))
       end.join("\n")
@@ -132,14 +139,12 @@ class LivingStyleGuide::Document < ::Tilt::Template
     end
   end
 
-  private
-  def set_highlights(code, &block)
+  def set_highlights(code)
     code, positions = remove_highlight_marker_and_save_positions(code)
     html = yield(code)
     insert_html_highlight_marker(html, positions)
   end
 
-  private
   def remove_highlight_marker_and_save_positions(code)
     positions = []
     index = 0
@@ -150,7 +155,6 @@ class LivingStyleGuide::Document < ::Tilt::Template
     [code_without_highlights, positions]
   end
 
-  private
   def insert_html_highlight_marker(html, positions)
     code_with_highlights = ""
     index = 0
@@ -176,7 +180,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
         end
         if char == "&"
           inside_character = true
-        elsif inside_character and char == ";"
+        elsif inside_character && char == ";"
           inside_character = false
           index += 1
         elsif not inside_character
@@ -189,17 +193,14 @@ class LivingStyleGuide::Document < ::Tilt::Template
     code_with_highlights
   end
 
-  private
   def remove_highlights(code)
     code.gsub(/\*\*\*/, "")
   end
 
-  private
   def template_erb
     File.read("#{File.dirname(__FILE__)}/templates/#{@template}.html.erb")
   end
 
-  private
   def parse_commands
     doc = (data || "").gsub("<%", "<%%")
     doc.gsub(/\G(?<content>.*?)(?<code_block>(?:```.+?```)|\Z)/m) do
@@ -217,7 +218,6 @@ class LivingStyleGuide::Document < ::Tilt::Template
     end
   end
 
-  private
   def parse_arguments(arguments_string, options)
     return [] if arguments_string.nil?
     arguments = arguments_string.split(/(?<!\\);/)
@@ -225,7 +225,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
       argument.strip!
       argument.gsub! "\\;", ";"
       if /^(?<key>[a-zA-Z0-9_\-]+):(?<value>.+)$/ =~ argument
-        options[key.downcase.gsub("-", "_").to_sym] = remove_quots(value.strip)
+        options[key.downcase.tr("-", "_").to_sym] = remove_quots(value.strip)
         nil
       else
         remove_quots(argument)
@@ -234,7 +234,6 @@ class LivingStyleGuide::Document < ::Tilt::Template
     arguments.compact
   end
 
-  private
   def parse_block(braces_block, indented_block, colon_block, options)
     if braces_block
       options[:block_type] = :braces
@@ -261,7 +260,6 @@ class LivingStyleGuide::Document < ::Tilt::Template
     string.sub(/^"(.*)"$|^"(.*)"$|^(.*)$/, "\\1\\2\\3").gsub(/\\("|")/, "\\1")
   end
 
-  private
   def gsub_content(regexp, &block)
     if @type == :lsg
       data.gsub(/\G(.+?)((```.+?```)|\Z)/m) do
@@ -273,12 +271,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
     end
   end
 
-  private
   def template_name
-    (@type == :lsg or @type == :markdown) ? :redcarpet : @type
+    (@type == :lsg || @type == :markdown) ? :redcarpet : @type
   end
 
-  private
   def generate_id
     if @file
       id = Pathname.new(@file).cleanpath.to_s
@@ -288,12 +284,10 @@ class LivingStyleGuide::Document < ::Tilt::Template
     end
   end
 
-  private
   def scss_template
     ::LivingStyleGuide.default_options[:scss_template] || Tilt["scss"]
   end
 
-  private
   def render_scss(scss)
     sass_options = options.merge(custom: { sprockets_context: @scope })
     sass_options[:load_paths] ||= []
@@ -303,7 +297,8 @@ class LivingStyleGuide::Document < ::Tilt::Template
         sass_options[:load_paths] << path
       end
     end
-    scss_template.new(file, sass_options){ scss }.render(@scope || Object.new)
+    template = scss_template.new(file, sass_options) { scss }
+    template.render(@scope || Object.new)
   end
 end
 

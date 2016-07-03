@@ -1,6 +1,6 @@
 require "tilt"
 
-def map_files(glob, &block)
+def map_files(glob)
   glob << ".lsg" unless glob =~ /\.(\w+|\*)$/
   glob.gsub!(/[^\/]+$/, "{_,}\\0")
   glob = File.join(document.path, glob)
@@ -14,13 +14,17 @@ end
 LivingStyleGuide.command :import do |arguments, options, data|
   glob = arguments.first
   if glob =~ /\.s[ac]ss$/
-    raise "Error: Please use `@css #{glob}` instead of `@import #{glob}` for importing Sass."
+    raise <<-ERROR.strip.squeeze
+      Error: Please use `@css #{glob}` instead of `@import #{glob}`
+      for importing Sass.
+    ERROR
   end
 
   data = LivingStyleGuide.parse_data(data)
 
   map_files glob do |file|
-    html = ::Tilt.new(file, livingstyleguide: document).render(document.scope, data)
+    template = ::Tilt.new(file, livingstyleguide: document)
+    html = template.render(document.scope, data)
     html.gsub!("\n", "\n  ")
     "\n<div>\n#{html}\n</div>\n"
   end

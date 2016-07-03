@@ -14,7 +14,7 @@ module LivingStyleGuide
   }
 
   class RedcarpetHTML < ::Redcarpet::Render::HTML
-    def initialize(options = {}, document)
+    def initialize(document, options = {})
       @options = options
       @options[:prefix] ||= "lsg-"
       @document = document
@@ -25,9 +25,11 @@ module LivingStyleGuide
 
     def header(text, header_level)
       @header = id = slug(text)
-      klass = %w(page-title headline sub-headline sub-sub-headline)[header_level]
+      class_names = %w(page-title headline sub-headline sub-sub-headline)
+      class_name = "#{@options[:prefix]}#{class_names[header_level]}"
       header_level += 1
-      %Q(<h#{header_level} class="#{@options[:prefix]}#{klass}" id="#{id}"><a class="lsg-anchor" href="##{id}"></a>#{text}</h#{header_level}>\n)
+      %Q(<h#{header_level} class="#{class_name}" id="#{id}">) +
+        %Q(<a class="lsg-anchor" href="##{id}"></a>#{text}</h#{header_level}>\n)
     end
 
     def paragraph(text)
@@ -36,11 +38,13 @@ module LivingStyleGuide
 
     def list(contents, list_type)
       tag_name = "#{list_type.to_s[0, 1]}l"
-      %Q(<#{tag_name} class="#{@options[:prefix]}#{list_type}-list">\n#{contents}</#{tag_name}>\n)
+      class_name = "#{@options[:prefix]}#{list_type}-list"
+      %Q(<#{tag_name} class="#{class_name}">\n#{contents}</#{tag_name}>\n)
     end
 
     def list_item(text, list_type)
-      %Q(<li class="#{@options[:prefix]}#{list_type}-list-item">#{text.strip}</li>\n)
+      class_name = "#{@options[:prefix]}#{list_type}-list-item"
+      %Q(<li class="#{class_name}">#{text.strip}</li>\n)
     end
 
     def block_code(code, language)
@@ -48,17 +52,22 @@ module LivingStyleGuide
       language = @options[:default_language] if language == :""
       document = Document.new(livingstyleguide: @document) { code }
       document.id = document_id
-      document.type = language == :example ? @document.defaults[:global][:type] : language
+      document.type = if language == :example
+                      then @document.defaults[:global][:type]
+                      else language
+                      end
       document.template = template_for(language)
       document.render(@document.scope)
     end
 
     def codespan(code)
       code = ERB::Util.html_escape(code)
-      %Q(<code class="#{@options[:prefix]}code-span #{@options[:prefix]}code">#{code}</code>)
+      class_name = "#{@options[:prefix]}code-span #{@options[:prefix]}code"
+      %Q(<code class="#{class_name}">#{code}</code>)
     end
 
     private
+
     def slug(text)
       require "active_support/core_ext/string/inflections"
       ::ActiveSupport::Inflector.parameterize(text, "-")
@@ -66,9 +75,10 @@ module LivingStyleGuide
       text.downcase.gsub(/[ _\.\-!\?\(\)\[\]]+/, "-").gsub(/^-|-$/, "")
     end
 
-    private
     def document_id
-      file = File.basename(@document.file, ".lsg").sub(/^_/, "") if @document.file
+      if @document.file
+        file = File.basename(@document.file, ".lsg").sub(/^_/, "")
+      end
       id = [file, @header].compact.uniq.join("-")
       if id != ""
         @ids[id] ||= 0
@@ -77,7 +87,6 @@ module LivingStyleGuide
       end
     end
 
-    private
     def template_for(language)
       language == :example ? :example : :code
     end

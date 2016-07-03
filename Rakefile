@@ -30,7 +30,8 @@ task :deploy do
       path = "preview.livingstyleguide.org"
     end
     domain = "livingstyleguide.org"
-    system "rsync -avz website/build/ lsg@lsg.vulpecula.uberspace.de:/var/www/virtual/lsg/#{path}"
+    server_path = "lsg@livingstyleguide.org:/var/www/virtual/lsg/#{path}"
+    system "rsync -avz website/build/ #{server_path}"
     puts "Sucessfully deployed website to http://#{domain}"
   end
 end

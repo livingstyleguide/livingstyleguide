@@ -11,7 +11,7 @@ set :css_dir, "style"
 set :js_dir, "javascripts"
 set :images_dir, "images"
 
-set :haml, { attr_wrapper: %Q("), format: :html5 }
+set :haml, attr_wrapper: %Q("), format: :html5
 
 configure :build do
   activate :minify_css
@@ -39,7 +39,8 @@ helpers do
     filename.gsub! /(.+)\/(.+)/, "source/\\1/_\\2.md" unless filename =~ /\.md$/
     markdown = File.read(filename)
     renderer = LivingStyleGuide::RedcarpetHTML.new({})
-    redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
+    options = LivingStyleGuide::REDCARPET_RENDER_OPTIONS
+    redcarpet = ::Redcarpet::Markdown.new(renderer, options)
     %Q(<article class="markdown">\n#{redcarpet.render(markdown)}\n</article>)
   end
 
@@ -61,8 +62,10 @@ end
 LivingStyleGuide.command :old_code_markers do |arguments, options, code|
   type = arguments.first
   code = ERB::Util.h(code)
-  code.gsub!(/^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m, %Q(\n<strong class="lsg-code-highlight-block">\\1</strong>\n))
-  code.gsub!(/\*\*\*(.+?)\*\*\*/, %Q(<strong class="lsg-code-highlight">\\1</strong>))
+  code.gsub! /^\s*\*\*\*\n(.+?)\n\s*\*\*\*(\n|$)/m,
+             %Q(\n<strong class="lsg--code-highlight-block">\\1</strong>\n)
+  code.gsub! /\*\*\*(.+?)\*\*\*/,
+             %Q(<strong class="lsg--code-highlight">\\1</strong>)
   code = ::MiniSyntax.highlight(code.strip, type.to_sym)
   code.gsub!(/\n/, "<br>")
   <<-HTML

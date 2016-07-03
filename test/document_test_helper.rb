@@ -1,13 +1,14 @@
 require "test_helper"
 
 class DocumentTestCase < Minitest::Test
-
   def setup
     @class = Class.new(LivingStyleGuide::Document)
   end
 
   def render(input, options = {})
-    @doc = @class.new(options[:file]){ input.unindent(ignore_blank: true) }
+    @doc = @class.new(options[:file]) do
+      input.unindent(ignore_blank: true)
+    end
     @doc.type = options[:type] || :lsg
     @doc.template = options[:template] || "plain"
     @doc.render
@@ -22,5 +23,4 @@ class DocumentTestCase < Minitest::Test
     output = render(input, options)
     assert_match(/#{normalize(expected_output)}/, normalize(output))
   end
-
 end
