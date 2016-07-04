@@ -1,6 +1,6 @@
 # Changelog
 
-## unreleased
+## 2.0.0.pre.4
 
 * Adds a shortcut `@scss !global` for `@scss scope: global`
 * Fixed/improved Sass imports (#191)
