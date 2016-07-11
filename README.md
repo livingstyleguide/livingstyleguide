@@ -28,7 +28,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
 1. Setup
    ```
-   $ gem install livingstyleguide -v2.0.0.pre.4
+   $ gem install livingstyleguide
    ```
 
 2. Create *_sass/styleguide.lsg_* (replace `sass/` with the directory name of your Sass files) with:
@@ -80,7 +80,7 @@ Sprockets and Tilt versions.
    Add this line to your application’s _Gemfile_:
 
    ``` ruby
-   gem "livingstyleguide", "2.0.0.pre.4"
+   gem "livingstyleguide"
    ```
 
    And then execute:
@@ -149,7 +149,7 @@ Since Rails 4 non-digest assets are not created anymore. If you want a public sh
    Add this line to your application’s _Gemfile_:
 
    ```
-   gem "livingstyleguide", "2.0.0.pre.4"
+   gem "livingstyleguide"
    ```
 
    And then execute:
@@ -407,11 +407,6 @@ Or as a shortcut inspired by Sass’ global variables (for `@scss/@sass`):
     }
 
 
-### Handlebars.js (and other JavaScript templating languages) Examples
-
-~~This requires some configuration which is explained in a [blog post on how to use Handlebars.js in the LivingStyleGuide](http://www.hagenburger.net/BLOG/handlebars-js-templates-living-style-guide.html). This blog post also shows how to load templates from other locations and use JSON to compile them in the style guide.~~ (This blog post shows v1 syntax.)
-
-
 ### JavaScript Examples
 
 This will show and execute the JavaScript, e. g. you designed tabs and
@@ -584,8 +579,6 @@ You can use any templating engine supported by Tilt:
     %h1 My Style Guide
 ```
 
-[Here’s the code](https://github.com/eurucamp/livingstyleguide-eurucamp/blob/master/source/index.html.lsg#L71-L80) of the custom header in the example of the screenshot.
-
 
 ### Custom Footer
 
@@ -681,7 +674,7 @@ which works well with CoffeeScript.
 Add this line to your application’s Gemfile:
 
 ``` ruby
-gem "livingstyleguide", "2.0.0.pre.4"
+gem "livingstyleguide"
 ```
 
 And then execute:
@@ -690,7 +683,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install livingstyleguide -v2.0.0.pre.4
+    $ gem install livingstyleguide
 
 
 ----

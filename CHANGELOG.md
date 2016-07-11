@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0
+
+* Equals 2.0.0.pre.4 :)
+
+
 ## 2.0.0.pre.4
 
 * Adds a shortcut `@scss !global` for `@scss scope: global`
