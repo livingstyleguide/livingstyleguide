@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["nico@hagenburger.net"]
   gem.summary       = "Generate beautiful front-end style guides"
   gem.homepage      = "https://livingstyleguide.org"
-  gem.description   = <<-DESCRIPTION.strip.squeeze
+  gem.description   = <<-DESCRIPTION.strip.gsub(/\s+/, " ")
     Automatically generate beautiful front-end style guides with Sass and
     Markdown. See https://livingstyleguide.org for details.
   DESCRIPTION
