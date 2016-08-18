@@ -127,6 +127,17 @@ describe LivingStyleGuide::Document do
         OUTPUT
       end
 
+      it "can have filters with an url argument" do
+        LivingStyleGuide.command :my_url_filter do |arguments, options, block|
+          "arg: #{arguments.first}"
+        end
+        assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
+          @my-url-filter http://code.jquery.com/jquery-3.1.0.min.js
+        INPUT
+          arg: http://code.jquery.com/jquery-3.1.0.min.js
+        OUTPUT
+      end
+
     end
 
     describe "filters with blocks in braces" do

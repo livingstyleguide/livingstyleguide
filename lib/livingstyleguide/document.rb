@@ -232,7 +232,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
     arguments.map! do |argument|
       argument.strip!
       argument.gsub! "\\;", ";"
-      if /^(?<key>[a-zA-Z0-9_\-]+):(?<value>.+)$/ =~ argument
+      if /^(?!https?:)(?<key>[a-zA-Z0-9_\-]+):(?<value>.+)$/ =~ argument
         options[key.downcase.tr("-", "_").to_sym] = remove_quots(value.strip)
         nil
       else
