@@ -132,7 +132,7 @@ describe LivingStyleGuide::Document do
           "arg: #{arguments.first}"
         end
         assert_document_equal <<-INPUT, <<-OUTPUT, type: :plain
-          @my-url-filter http://code.jquery.com/jquery-3.1.0.min.js
+          @my-url-filter "http://code.jquery.com/jquery-3.1.0.min.js"
         INPUT
           arg: http://code.jquery.com/jquery-3.1.0.min.js
         OUTPUT

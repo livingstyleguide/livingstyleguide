@@ -48,7 +48,7 @@ class HtmlHeadTest < DocumentTestCase
 
   def test_javascript_before
     assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
-      @javascript-before https://code.jquery.com/jquery-3.1.0.min.js
+      @javascript-before "https://code.jquery.com/jquery-3.1.0.min.js"
       @javascript-before application.js
       @javascript-before {
         alert("Hello World!");
@@ -62,7 +62,7 @@ class HtmlHeadTest < DocumentTestCase
 
   def test_javascript_after
     assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
-      @javascript-after https://code.jquery.com/jquery-3.1.0.min.js
+      @javascript-after "https://code.jquery.com/jquery-3.1.0.min.js"
       @javascript-after application.js
       @javascript-after {
         alert("Good Bye World!");
