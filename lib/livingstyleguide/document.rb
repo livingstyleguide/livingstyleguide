@@ -310,4 +310,4 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 end
 
-Tilt.register "lsg", LivingStyleGuide::Document
+Tilt.register LivingStyleGuide::Document, "lsg"
