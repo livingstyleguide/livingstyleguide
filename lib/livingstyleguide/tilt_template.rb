@@ -49,7 +49,7 @@ module LivingStyleGuide
 
     def parse_options(data)
       data.strip!
-      @options = (data[0] == "{") ? JSON.parse(data) : YAML.load(data)
+      @options = data[0] == "{" ? JSON.parse(data) : YAML.load(data)
       @options = {} unless @options
       @options.keys.each do |key|
         @options[key.tr("-", "_").to_sym] = @options.delete(key)
@@ -78,7 +78,7 @@ module LivingStyleGuide
 
     def find_root_path
       path = @file.nil? ? Dir.pwd : File.dirname(@file)
-      while path.length > 0
+      while !path.empty?
         if File.exists?(File.join(path, "Gemfile")) ||
            File.exists?(File.join(path, ".git"))
           break

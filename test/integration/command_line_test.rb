@@ -7,7 +7,7 @@ describe "LivingStyleGuide::CommandLineInterface" do
 
   it "should output the style guide from *.html.lsg source" do
     cli "compile styleguide.html.lsg" do |stdout|
-      File.exists?("styleguide.html").must_equal true
+      File.exist?("styleguide.html").must_equal true
       stdout.strip.must_equal <<-STDOUT.strip
         Successfully generated a living style guide at styleguide.html.
       STDOUT
@@ -16,7 +16,7 @@ describe "LivingStyleGuide::CommandLineInterface" do
 
   it "should output the style guide from *.lsg source" do
     cli "compile styleguide.lsg" do |stdout|
-      File.exists?("styleguide.html").must_equal true
+      File.exist?("styleguide.html").must_equal true
       stdout.strip.must_equal <<-STDOUT.strip
         Successfully generated a living style guide at styleguide.html.
       STDOUT
@@ -25,7 +25,7 @@ describe "LivingStyleGuide::CommandLineInterface" do
 
   it "should use different output file" do
     cli "compile styleguide.lsg hello-world.html" do |stdout|
-      File.exists?("hello-world.html").must_equal true
+      File.exist?("hello-world.html").must_equal true
       stdout.strip.must_equal <<-STDOUT.strip
         Successfully generated a living style guide at hello-world.html.
       STDOUT
@@ -36,7 +36,7 @@ describe "LivingStyleGuide::CommandLineInterface" do
     cli "compile", <<-STDIN.unindent do |stdout|
       @import modules/buttons
     STDIN
-      File.exists?("styleguide.html").must_equal false
+      File.exist?("styleguide.html").must_equal false
       stdout.must_match %r(<button class="button">)
     end
   end

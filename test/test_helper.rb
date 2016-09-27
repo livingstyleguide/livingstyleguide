@@ -25,8 +25,8 @@ def parse_file(filename)
 end
 
 def normalize(html)
-  html.gsub! /\s+/, " "
-  html.gsub! "><", "> <"
+  html.gsub!(/\s+/, " ")
+  html.gsub!("><", "> <")
   html.strip!
   html
 end

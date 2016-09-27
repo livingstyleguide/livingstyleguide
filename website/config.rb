@@ -30,7 +30,7 @@ helpers do
     # Prefer `git tag` over version.rb as tags are released:
     versions = `cd .. && git tag --sort=version:refname`.split(/\n/)
     versions.sort_by! { |v| Gem::Version.new(v[1..-1]) }
-    current  = versions.last
+    current = versions.last
     current.sub(/^v/, "")
   rescue
     "0.0.0"

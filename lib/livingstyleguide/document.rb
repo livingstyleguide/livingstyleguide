@@ -280,7 +280,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def template_name
-    (@type == :lsg || @type == :markdown) ? :redcarpet : @type
+    @type == :lsg || @type == :markdown ? :redcarpet : @type
   end
 
   def generate_id

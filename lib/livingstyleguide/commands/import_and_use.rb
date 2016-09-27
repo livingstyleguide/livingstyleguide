@@ -9,8 +9,8 @@ def map_files(glob)
   if glob.index("*")
     files.uniq!
     files.reject! { |f| document.files.include?(f) }
-  else
-    raise Errno::ENOENT if files.empty?
+  elsif files.empty?
+    raise Errno::ENOENT
   end
 
   files.map do |file|
