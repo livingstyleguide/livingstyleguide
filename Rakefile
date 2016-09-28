@@ -12,6 +12,7 @@ Rake::TestTask.new :test do |t|
   test_files = FileList["test/**/*_test.rb"]
   t.test_files = test_files
   t.verbose = true
+  t.warning = false
 end
 
 SCSSLint::RakeTask.new do |t|
