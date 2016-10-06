@@ -60,6 +60,18 @@ activate :blog do |blog|
   blog.layout = "blog-post"
 end
 
+@docs = {}
+Dir.glob("../lib/livingstyleguide/**/*.md").each do |file|
+  slug = file.sub(%r(^.+/livingstyleguide/(.+)\.[a-z]+$), "\\1").tr("_", "-")
+  folder, filename = slug.split("/")
+  @docs[folder] ||= []
+  @docs[folder] << filename
+  puts "/docs/#{slug}.html"
+  proxy "/docs/#{slug}.html", "/docs.html",
+        locals: { source: source, file: file }
+end
+puts @docs
+
 LivingStyleGuide.command :old_code_markers do |arguments, options, code|
   type = arguments.first
   code = ERB::Util.h(code)

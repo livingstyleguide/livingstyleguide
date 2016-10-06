@@ -48,9 +48,14 @@ module LivingStyleGuide
     end
 
     def block_code(code, language)
-      language = language.to_s.strip.to_sym
-      language = @options[:default_language] if language == :""
       document = Document.new(livingstyleguide: @document) { code }
+      if language.nil?
+        language = @options[:default_language]
+      else
+        language, raw = language.to_s.strip.split(":").reverse
+        language = language.to_sym
+        document.raw = true if raw == "raw"
+      end
       document.id = document_id
       document.type = if language == :example
                       then @document.defaults[:global][:type]

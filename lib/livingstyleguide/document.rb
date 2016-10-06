@@ -10,6 +10,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   attr_accessor :css, :id, :locals
   attr_accessor :title
   attr_accessor :syntax
+  attr_accessor :raw
   attr_reader :scope
 
   %w(
@@ -210,7 +211,9 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def parse_commands
-    doc = (data || "").gsub("<%", "<%%")
+    doc = data || ""
+    return doc if @raw
+    doc.gsub!("<%", "<%%")
     doc.gsub(/\G(?<content>.*?)(?<code_block>(?:```.+?```)|\Z)/m) do
       content = $~[:content]
       code_block = $~[:code_block]

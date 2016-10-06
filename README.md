@@ -242,36 +242,6 @@ In addition to Markdown, there are several commands (starting with an `@`) which
 * [@require](#require-ruby-files-or-gems)
 
 
-## Importing Files
-
-You can import any other *.lsg file at any place within any *.lsg file:
-
-    ```
-    // Import a file:
-    @import folder/file.lsg
-
-    // Import a file (`.lsg` will be added by default):
-    @import folder/file
-
-    // Import a file starting with `_` (folder/_file.lsg); this works automatically:
-    @import folder/file
-
-    // Import multiple files:
-    @import folder/*.lsg
-    @import folder/*
-
-    // Importing from multiple folders:
-    @import **/*.lsg
-    @import **/*
-
-    // Importing a Haml file (the resulting HTML will be rendered into the style guide):
-    @import folder/file.haml
-    @import folder/*.haml
-    @import **/*.haml
-    ```
-
-All file types supported by [Tilt](https://github.com/rtomayko/tilt#readme) can be imported.
-By default, `@import` is looking for `*.lsg` files.
 
 
 ## Writing Examples
@@ -290,35 +260,6 @@ Example:
 There are more **commands** to generate output. They start with an `@` and can be put in the code block:
 
 
-### Colors
-
-You can automatically generate color swatches out of your Sass variables:
-
-    @colors {
-      $light-red  $gray  $green  $red  $dark-red  $black
-    }
-
-By clicking the color swatch in the style guide, users can copy the hex code of
-the color (useful for designers). When pointing the cursor on the variable name,
-it will be copied on click instead (useful for developers).
-
-The output will respect newlines. The example below will create a 3 × 3 matrix
-of color swatches and groups shades in columns which might be more easy to
-understand. `-` leaves a cell empty in the matrix:
-
-    @colors {
-      -       $light-red  $gray
-      $green  $red        -
-      -       $dark-red   $black
-    }
-
-The LivingStyleGuide also supports CSS colors and Sass functions. All of them
-will work:
-
-    @colors {
-      red        #ca1f70              #FFF               rgba(0, 0, 0, 0.5)
-      $my-color  my-color-function()  lighten(red, 10%)  darken($my-color, 20%)
-    }
 
 
 ### Haml Examples

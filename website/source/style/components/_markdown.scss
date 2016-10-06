@@ -1,23 +1,23 @@
 $lsg-color: $black;
 $lsg-background-color: $white;
-$lsg-width: 600px;
+$lsg-width: 800px;
 $lsg-gutter: 20px;
 $lsg-border-radius: 0;
 $lsg-layout-selector: ".layout";
-$lsg-font-family: gubia, helvetica neue, helvetica, arial;
-$lsg-font-size: 13px;
+$lsg-font-family: berlin, source sans pro, helvetica neue, helvetica, arial;
+$lsg-font-size: 16px;
 $lsg-font-weight: normal;
-$lsg-line-height: 1.1;
+$lsg-line-height: 1.4;
 $lsg-text-align: left;
 $lsg-link-color: $turquoise;
 
 $lsg-code-background: mix(white, $turquoise, 90%);
 $lsg-code-background-color: mix(white, $turquoise, 90%);
 $lsg-code-color: $pink;
-$lsg-code-font-family: courier new, courier, monospace;
-$lsg-code-font-size: 13px;
+$lsg-code-font-family: source code pro, courier new, courier, monospace;
+$lsg-code-font-size: $lsg-font-size;
 $lsg-code-border-radius: 0;
-$lsg-code-line-height: 1.1;
+$lsg-code-line-height: 1.4;
 $lsg-code-font-weight: normal;
 $lsg-code-padding: $lsg-gutter;
 
@@ -25,7 +25,7 @@ $lsg-highlight-background-color: $yellow;
 $lsg-highlight-color: $pink;
 $lsg-highlight-border-radius: 0;
 
-$lsg-headline-font-family: gubia, helvetica neue, helvetica, arial;
+//$lsg-headline-font-family: source sans pro, helvetica neue, helvetica, arial;
 $lsg-headline-font-size: 36px;
 $lsg-headline-font-weight: bold;
 $lsg-headline-line-height: 1.3;
@@ -93,8 +93,8 @@ $lsg-font-example-first-line: 4em;
   .lsg-ordered-list-item,
   .lsg-unordered-list,
   .lsg-unordered-list-item {
-    font-family: source sans pro, arial, helvetica, sans-serif;
-    font-size: 18px;
+    font-family: $lsg-font-family;
+    font-size: $lsg-code-font-size;
     font-weight: 200;
     line-height: 1.5;
     margin: 0 0 0.75em;
@@ -146,7 +146,7 @@ $lsg-font-example-first-line: 4em;
     background: mix($pink, $white, 3%);
     border-radius: 4px;
     display: inline;
-    font-family: courier new, monospace;
+    font-family: $lsg-code-font-family;
     font-size: inherit;
     padding: 0 4px;
   }

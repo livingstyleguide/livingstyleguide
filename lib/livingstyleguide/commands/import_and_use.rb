@@ -10,7 +10,7 @@ def map_files(glob)
     files.uniq!
     files.reject! { |f| document.files.include?(f) }
   elsif files.empty?
-    raise Errno::ENOENT
+    raise glob#Errno::ENOENT
   end
 
   files.map do |file|

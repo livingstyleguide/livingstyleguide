@@ -1,0 +1,62 @@
+<div class="docs">
+  <nav>
+    <% @docs.each do |folder, files| %>
+      <div>
+        <h3><%= folder %></h3>
+        <ul>
+          <% files.each do |file| %>
+            <li>
+              <a href="/docs/<%= folder %>/<%= file %>.html"><%= file %></a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </nav>
+  <article>
+    <% LivingStyleGuide.default_options[:default_language] = "plain" %>
+    <% doc = Tilt[".lsg"].new(file, default_language: "html") %>
+    <% doc.template = :default %>
+    <%= doc.render(default_language: "plain") %>
+  </article>
+</div>
+<style>
+  .layout--content {
+    max-width: 80vw;
+  }
+  .docs {
+    display: flex;
+  }
+  .docs > nav {
+    flex: 1;
+    text-align: left;
+    width: calc(20vw - 10px);
+  }
+  .docs > nav h2 {
+    font-weight: bold;
+    padding: 5px 0;
+  }
+  .docs > nav ul {
+    margin-bottom: 20px;
+  }
+  .docs > nav li {
+    border-top: 1px #f199b2 solid;
+    padding: 5px 0;
+  }
+  .docs > article {
+    flex: 4;
+    margin-left: 20px;
+    width: calc(60vw - 10px);
+  }
+  .lsg-headline {
+    margin: 0;
+    text-align: left;
+  }
+  .lsg-sub-headline {
+    margin: 1em 0;
+    text-align: left;
+  }
+  .lsg-paragraph {
+    margin: 1em 0;
+  }
+</style>
