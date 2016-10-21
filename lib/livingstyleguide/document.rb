@@ -210,6 +210,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def parse_commands
+    return data if type == :plain
     doc = (data || "").gsub("<%", "<%%")
     doc.gsub(/\G(?<content>.*?)(?<code_block>(?:```.+?```)|\Z)/m) do
       content = $~[:content]
