@@ -1,5 +1,7 @@
 # LivingStyleGuide [![Build Status](https://travis-ci.org/livingstyleguide/livingstyleguide.svg?branch=v2)](https://travis-ci.org/livingstyleguide/livingstyleguide)
 
+[![Join the chat at https://gitter.im/livingstyleguide/livingstyleguide](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/livingstyleguide/livingstyleguide?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Easily create living style guides/front-end style guides/pattern libraries by adding Markdown documentation to
 your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
