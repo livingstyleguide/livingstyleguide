@@ -70,6 +70,7 @@ module LivingStyleGuide
 
     def slug(text)
       require "active_support/core_ext/string/inflections"
+      require "active_support/deprecation"
       ::ActiveSupport::Inflector.parameterize(text, "-")
     rescue LoadError
       text.downcase.gsub(/[ _\.\-!\?\(\)\[\]]+/, "-").gsub(/^-|-$/, "")
