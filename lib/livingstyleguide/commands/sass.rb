@@ -11,7 +11,6 @@ LivingStyleGuide.command :scss do |arguments, options, scss|
     document.depend_on file
     document.scss << %Q(@import "#{file}";\n)
   elsif options[:sprockets] && defined?(Rails) && defined?(Rails::Railtie) && defined?(Sprockets)
-    #if defined?(Rails) && defined?(Rails::Railtie) && defined?(Sprockets)
     css = Rails.application.assets.find_asset(options[:sprockets]).source
     document.scss << css
   else
