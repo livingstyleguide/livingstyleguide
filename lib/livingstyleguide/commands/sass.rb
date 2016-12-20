@@ -8,8 +8,11 @@ LivingStyleGuide.command :scss do |arguments, options, scss|
     if document.file
       file = File.join(File.dirname(document.file), file)
     end
-    css = Rails.application.assets.find_asset(arguments.first).source
     document.depend_on file
+    document.scss << %Q(@import "#{file}";\n)
+  elsif options[:sprockets] && defined?(Rails) && defined?(Rails::Railtie) && defined?(Sprockets)
+    #if defined?(Rails) && defined?(Rails::Railtie) && defined?(Sprockets)
+    css = Rails.application.assets.find_asset(options[:sprockets]).source
     document.scss << css
   else
     id = document.id.gsub(/[\/\.]/, '\\\\\0')
