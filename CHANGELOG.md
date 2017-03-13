@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.1
+
+* Compatibility with latest Sprockets versions (#203)
+* **Internal:**
+  * Less warnings when running tests
+  * Uses Ruby 2.3 for testing by default
+  * Upgraded Rubocop
+
+
 ## 2.0.0
 
 * Equals 2.0.0.pre.4 :)

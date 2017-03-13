@@ -355,9 +355,9 @@ need few lines of jQuery to bring them alive.
 
     ```
     @javascript {
-      $(".button").click(function() {
-        alert("Hello World!");
-      });
+    $(".button").click(function() {
+      alert("Hello World!");
+    });
     }
     ```
 
@@ -369,8 +369,8 @@ executed as JavaScript and displayed as CoffeeScript:
 
     ```
     @coffee-script
-      $(".button").click ->
-        alert "Hello World!"
+    $(".button").click ->
+      alert "Hello World!"
     ```
 
 
