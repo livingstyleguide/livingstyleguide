@@ -10,6 +10,9 @@ LivingStyleGuide.command :scss do |arguments, options, scss|
     end
     document.depend_on file
     document.scss << %Q(@import "#{file}";\n)
+  elsif options[:sprockets] && defined?(Rails) && defined?(Rails::Railtie) && defined?(Sprockets)
+    css = Rails.application.assets.find_asset(options[:sprockets]).source
+    document.scss << css
   else
     id = document.id.gsub(/[\/\.]/, '\\\\\0')
     document.scss << "##{id} {\n#{scss}\n}\n"
