@@ -48,6 +48,7 @@ class HtmlHeadTest < DocumentTestCase
 
   def test_javascript_before
     assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
+      @javascript-before "https://code.jquery.com/jquery-3.1.0.min.js"
       @javascript-before application.js
       @javascript-before {
         alert("Hello World!");
@@ -55,12 +56,13 @@ class HtmlHeadTest < DocumentTestCase
       @javascript-before transpiler: coffee-script
         alert "Hello Coffee World!"
     INPUT
-      <head>.*<script src="application.js"><\/script> <script> alert\\("Hello World!"\\); <\/script> <script>.+alert\\("Hello Coffee World!"\\);.*<\/script>.*</head>
+      <head>.*<script src="https://code.jquery.com/jquery-3.1.0.min.js"><\/script> <script src="application.js"><\/script> <script> alert\\("Hello World!"\\); <\/script> <script>.+alert\\("Hello Coffee World!"\\);.*<\/script>.*</head>
     OUTPUT
   end
 
   def test_javascript_after
     assert_render_match <<-INPUT, <<-OUTPUT, template: "layout"
+      @javascript-after "https://code.jquery.com/jquery-3.1.0.min.js"
       @javascript-after application.js
       @javascript-after {
         alert("Good Bye World!");
@@ -68,7 +70,7 @@ class HtmlHeadTest < DocumentTestCase
       @javascript-after transpiler: coffee-script
         alert "Good Bye Coffee World!"
     INPUT
-      <body.*<script src="application.js"><\/script> <script> alert\\("Good Bye World!"\\); <\/script> <script>.+alert\\("Good Bye Coffee World!"\\);.*<\/script>.*</body>
+      <body.*<script src="https://code.jquery.com/jquery-3.1.0.min.js"><\/script> <script src="application.js"><\/script> <script> alert\\("Good Bye World!"\\); <\/script> <script>.+alert\\("Good Bye Coffee World!"\\);.*<\/script>.*</body>
     OUTPUT
   end
 
