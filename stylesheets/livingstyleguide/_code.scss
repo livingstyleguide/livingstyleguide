@@ -162,3 +162,41 @@
   @extend .lsg-code-highlight;
   display: block;
 }
+
+.lsg-hidden-code {
+  display: none;
+  font-weight: inherit;
+}
+
+.lsg-show-hidden-code-wrapper {
+  display: block;
+}
+
+.lsg-show-hidden-code {
+  background: transparent;
+  border: 1px transparent solid;
+  border-radius: $lsg-highlight-border-radius;
+  color: mix($lsg-code-color, $lsg-code-background, 70%);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  margin: 0 -3px;
+  outline: none;
+  padding: 0 2px;
+  user-select: none;
+
+  &::before {
+    content: "···";
+  }
+
+  &:hover {
+    background: rgba($lsg-code-color, 0.2);
+    border-color: rgba($lsg-code-color, 0.1);
+    color: $lsg-code-color;
+  }
+
+  &:active {
+    background: rgba($lsg-code-color, 0.4);
+  }
+}

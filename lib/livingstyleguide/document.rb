@@ -100,7 +100,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def evaluate(scope, locals, &block)
     @head = ""
     @javascript = ""
-    %w(copy copy_code copy_colors toggle_code).each do |partial|
+    %w(copy copy_code copy_colors toggle_code hidden_code).each do |partial|
       file = "scripts/#{partial}.js.erb"
       @javascript << LivingStyleGuide.template(file, binding)
     end
@@ -156,9 +156,44 @@ class LivingStyleGuide::Document < ::Tilt::Template
   def remove_highlight_marker_and_save_positions(code)
     positions = []
     index = 0
-    code_without_highlights = code.gsub(/(.*?)\*\*\*/m) do
-      positions << index += $1.length
-      $1
+    inside_highlight = false
+    hidden_code_index = 0
+    code_without_highlights = code.gsub(/\[(–|-{3,}).*?(–|-{3,})\]/, "")
+    code_without_highlights = code_without_highlights.gsub(/ *\[(–|-{3,}).*?(–|-{3,})\]\n/m, "")
+    code_without_highlights = code_without_highlights.gsub(/(.*?)(\*\*\*|( *)(\[…|\[\.{3,})\n|\n *(…\]|\.{3,}\])\n?|(\[…|\[\.{3,})|(…\]|\.{3,}\]))/m) do
+      before = $1
+      match = $2
+      html = case match
+             when "***"
+               if inside_highlight
+                 inside_highlight = false
+                 %Q(</strong>)
+               else
+                 inside_highlight = true
+                 %Q(<strong class="lsg-code-highlight">)
+               end
+             when /( *)(\[…|\[\.{3,})\n/
+               indent = $1
+               hidden_code_index += 1
+               css_class = "lsg-hidden-code-#{id}-#{hidden_code_index}"
+               %Q(<div class="lsg-show-hidden-code-wrapper">#{indent}) +
+               %Q(<button type="button" class="lsg-show-hidden-code") +
+               %Q( data-target=".#{css_class}"></button></div>) +
+               %Q(<div class="lsg-hidden-code #{css_class}">)
+             when /\n *(…\]|\.{3,}\])\n?/
+               %Q(\n</div>)
+             when "[…", "[..."
+               hidden_code_index += 1
+               css_class = "lsg-hidden-code-#{id}-#{hidden_code_index}"
+               %Q(<span><button type="button" class="lsg-show-hidden-code") +
+               %Q( data-target=".#{css_class}"></button></span>) +
+               %Q(<strong class="lsg-hidden-code #{css_class}">)
+             when "…]", "...]"
+               %Q(</strong>)
+             end
+      index += before.length
+      positions << { index: index, html: html || "" }
+      before
     end
     [code_without_highlights, positions]
   end
@@ -173,17 +208,15 @@ class LivingStyleGuide::Document < ::Tilt::Template
     html.each_char do |char|
       if char == "<"
         inside_html = true
+        if next_position && index == next_position[:index]
+          code_with_highlights << next_position[:html]
+          next_position[:html] = ""
+        end
       elsif char == ">"
         inside_html = false
       elsif not inside_html
-        if index == next_position
-          if inside_highlight
-            code_with_highlights << %Q(</strong>)
-            inside_highlight = false
-          else
-            code_with_highlights << %Q(<strong class="lsg-code-highlight">)
-            inside_highlight = true
-          end
+        if next_position && index == next_position[:index]
+          code_with_highlights << next_position[:html]
           next_position = positions.shift
         end
         if char == "&"
@@ -202,7 +235,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def remove_highlights(code)
-    code.gsub(/\*\*\*/, "")
+    code.gsub(/\*\*\*|\[(…|\.{3,}|–|-{3,})|(…|\.{3,}|–|-{3,})\]/, "")
   end
 
   def template_erb

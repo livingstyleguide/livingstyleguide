@@ -433,6 +433,55 @@ can be found in [this blog post on code markers].
 [this blog post on code markers]: https://livingstyleguide.org/code-markers.html
 
 
+#### Hiding code
+
+HTML examples can easly look messed up. If you write a `<ul>` it might need to contain 5 `<li>`
+which all look the same. You want the developer reading your style guide to focus on the important
+things. LSG helps you by allowing to hide parts of the source from being rendered in the output.
+
+    ```
+    <ul>
+      <li>Item 1</li>
+      [---
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+      ---]
+    </ul>
+    ```
+
+In this example, Item 2 to Item 5 won’t show up in the source code section but in the visual HTML
+example. You can either use `[---xxx---]` or `[–xxx–]` (ndash: Alt + `-` on a Mac). This also works
+inline:
+
+    ```
+    <div>
+      <span>Shows up [---will be hidden---]</span>
+    </div>
+    ```
+
+### Hiding code temporarily
+
+The examples above completely hide the code. `[...xxx...]` or `[…xxx…]` (ellipsis: Alt + `.` on a Mac). A button with ellipsis will be inserted which shows the hidden code on click.
+
+    ```
+    <ul>
+      <li>Item 1 [...will be hidden...]</li>
+      [...<li>Item 2</li>...]
+      <li>Item 3</li>
+      [...
+      <li>Item 4</li>
+      <li>Item 5</li>
+      ...]
+    </ul>
+    ```
+
+The button will respect the indentation used left of the `[...`/`[…`.
+
+![hidden-code-example](https://user-images.githubusercontent.com/103399/26903680-aa7d1f50-4bde-11e7-8de2-7213ea5efd83.jpg)
+
+
 ### JavaScript Examples
 
 This will show and execute the JavaScript, e. g. you designed tabs and
