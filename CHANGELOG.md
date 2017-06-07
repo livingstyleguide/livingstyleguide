@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.2
+
+* Optimizes Rails integration
+
+
 ## 2.0.1
 
 * Compatibility with latest Sprockets versions (#203)
