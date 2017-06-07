@@ -407,6 +407,32 @@ Or as a shortcut inspired by Sass’ global variables (for `@scss/@sass`):
     }
 
 
+### Optimizing code examples
+
+To help developers reading the style guide/documentation you write, the code examples should be kept
+simple and highlight the important things.
+
+#### Using code markers
+
+LivingStyleGuide offers a simple way to highlight the parts of the source code. Like Markdown uses `**...**`
+to mark bold text, LSG uses `***...***` to highlight parts of the source code which are important
+for the current example. You might want to highlight the CSS classes used in the first example and
+only the diffs in the second example:
+
+    ```
+    <a class="***button***">A button</a>
+    ```
+
+    ```
+    <a class="button ***primary***">A primary button</a>
+    ```
+
+Of course, the `***` will get filtered from the HTML output. Further information and visual examples
+can be found in [this blog post on code markers].
+
+[this blog post on code markers]: https://livingstyleguide.org/code-markers.html
+
+
 ### JavaScript Examples
 
 This will show and execute the JavaScript, e. g. you designed tabs and
