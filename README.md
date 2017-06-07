@@ -706,6 +706,6 @@ Or install it yourself as:
 
 ## Copyright
 
-Copyright 2012—2016 [Nico Hagenburger](http://www.hagenburger.net).
+Copyright 2012—2017 [Nico Hagenburger](http://www.hagenburger.net).
 See [MIT-LICENSE.md](MIT-LICENSE.md) for details.
 Get in touch with [@hagenburger](http://twitter.com/hagenburger) on Twitter or [open an issue](https://github.com/livingstyleguide/livingstyleguide/issues/new).
