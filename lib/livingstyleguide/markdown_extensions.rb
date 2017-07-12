@@ -69,6 +69,7 @@ module LivingStyleGuide
     private
 
     def slug(text)
+      require "active_support"
       require "active_support/core_ext/string/inflections"
       if ::ActiveSupport::VERSION::MAJOR >= 5
         ::ActiveSupport::Inflector.parameterize(text, separator: "-")
