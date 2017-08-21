@@ -16,9 +16,9 @@ AllCops:
   - "**/Cheffile"
   - "**/Vagabondfile"
   Exclude:
-  - "vendor/**/*"
-  - "db/schema.rb"
-  - "test/**/*_test.rb"
+  - "ruby/vendor/**/*"
+  - "ruby/db/schema.rb"
+  - "ruby/test/**/*_test.rb"
   DisplayCopNames: false
   DisplayStyleGuide: false
   StyleGuideCopsOnly: false

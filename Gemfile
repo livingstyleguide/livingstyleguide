@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gemspec
+gemspec path: "ruby"
 
 # Use latest for testing, but allow older versions in the gemspec:
 gem "sass", "~> 3.4"
