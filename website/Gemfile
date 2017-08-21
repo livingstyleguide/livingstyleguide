@@ -6,7 +6,7 @@ gem "middleman-livereload", "~> 3.1.0"
 gem "middleman-blog"
 gem "wdm", "~> 0.1.0", platforms: [:mswin, :mingw]
 gem "compass-placeholders"
-gem "livingstyleguide", path: ".."
+gem "livingstyleguide", path: "../ruby"
 
 platforms :mri_18 do
   gem "ruby18_source_location"
