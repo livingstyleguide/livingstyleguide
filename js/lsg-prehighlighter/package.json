@@ -1,0 +1,11 @@
+{
+  "name": "@lsg/prehighlighter",
+  "version": "3.0.0",
+  "description": "LSG Pre Highlighter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nico Hagenburger",
+  "license": "MIT"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@lsg/links-plugin",
+  "version": "3.0.0",
+  "description": "LSG Links Plugin: Easily create links in the source code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nico Hagenburger",
+  "license": "MIT",
+  "dependencies": {
+  }
+}

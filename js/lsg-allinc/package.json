@@ -1,0 +1,17 @@
+{
+  "name": "@lsg/allinc",
+  "version": "3.0.0",
+  "description": "LSG All Official Plugins Combined",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nico Hagenburger",
+  "license": "MIT",
+  "dependencies": {
+    "@lsg/links-plugin": "3.0.0",
+    "@lsg/marker-plugin": "3.0.0",
+    "@lsg/preview-plugin": "3.0.0",
+    "@lsg/showmore-plugin": "3.0.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@lsg/preview-plugin",
+  "version": "3.0.0",
+  "description": "LSG Preview Plugin: A HTML preview of a component in a living style guide.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nico Hagenburger",
+  "license": "MIT",
+  "dependencies": {
+  }
+}

@@ -9,7 +9,7 @@ _yardoc
 coverage
 doc/
 lib/bundler/man
-pkg
+ruby/pkg
 rdoc
 spec/reports
 test/tmp
@@ -17,3 +17,4 @@ test/version_tmp
 tmp
 .rvmrc
 .sass-cache/
+node_modules

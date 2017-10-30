@@ -1,0 +1,38 @@
+.lsg-hidden-code {
+  display: none;
+  font-weight: inherit;
+}
+
+.lsg-show-hidden-code-wrapper {
+  display: block;
+}
+
+.lsg-show-hidden-code {
+  background: transparent;
+  border: 1px transparent solid;
+  border-radius: 2px;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  margin: -1px;
+  opacity: 0.6;
+  outline: none;
+  padding: 0 1px;
+  user-select: none;
+}
+
+.lsg-show-hidden-code:hover {
+  background: rgba(127, 127, 127, 0.1);
+  border-color: rgba(127, 127, 127, 0.1);
+  opacity: 1;
+}
+
+.lsg-show-hidden-code:active {
+  background: rgba(127, 127, 127, 0.2);
+}
+
+.lsg-show-hidden-code::before {
+  content: "···";
+}

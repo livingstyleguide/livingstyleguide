@@ -1,0 +1,13 @@
+{
+  "name": "@lsg/showmore-plugin",
+  "version": "3.0.0",
+  "description": "LSG Showmore Plugin: Easily hide parts of your source code and make them visible on click.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nico Hagenburger",
+  "license": "MIT",
+  "dependencies": {
+  }
+}

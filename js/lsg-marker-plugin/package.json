@@ -1,0 +1,13 @@
+{
+  "name": "@lsg/marker-plugin",
+  "version": "3.0.0",
+  "description": "LSG Marker Plugin: Easily create markers to highlight important parts of the source code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nico Hagenburger",
+  "license": "MIT",
+  "dependencies": {
+  }
+}

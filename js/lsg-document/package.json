@@ -1,0 +1,15 @@
+{
+  "name": "@lsg/document",
+  "version": "3.0.0",
+  "description": "LSG Document",
+  "main": "document.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nico Hagenburger",
+  "license": "MIT",
+  "dependencies": {
+    "@lsg/prehighlighter": "3.0.0",
+    "marked": "^0.3.6"
+  }
+}
