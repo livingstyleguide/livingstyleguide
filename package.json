@@ -1,4 +1,5 @@
 {
+  "name": "livingstyleguide",
   "description": "LivingStyleGuide",
   "author": "Nico Hagenburger <nico@hagenburger.net> (https://twitter.com/hagenburger)",
   "license": "MIT",
@@ -7,6 +8,14 @@
     "repository": "git@github.com:livingstyleguide/livingstyleguide.git"
   },
   "devDependencies": {
+    "@lsg/allinc": "file:js/lsg-allinc",
+    "@lsg/cli": "file:js/lsg-cli",
+    "@lsg/document": "file:js/lsg-document",
+    "@lsg/links-plugin": "file:js/lsg-links-plugin",
+    "@lsg/marker-plugin": "file:js/lsg-marker-plugin",
+    "@lsg/prehighlighter": "file:js/lsg-prehighlighter",
+    "@lsg/preview-plugin": "file:js/lsg-preview-plugin",
+    "@lsg/showmore-plugin": "file:js/lsg-showmore-plugin",
     "eslint": "^4.5.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
