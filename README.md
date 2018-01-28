@@ -704,6 +704,18 @@ Or install it yourself as:
 ----
 
 
+## Code of Conduct
+
+We do follow the [Contributor Covenant Code of Conduct]; our version including contact information can be found in [CODE-OF-CONDUCT.de].
+
+
+[Contributor Covenant Code of Conduct]: https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+[CODE-OF-CONDUCT.de]: https://livingstyleguide.org/code-of-conduct.html
+
+
+----
+
+
 ## Copyright
 
 Copyright 2012—2017 [Nico Hagenburger](http://www.hagenburger.net).
