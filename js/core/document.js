@@ -3,6 +3,7 @@ const marked = require('marked')
 module.exports = class Document {
   constructor (source) {
     this.source = source
+    this.title = null
     this.tokenize()
   }
 
@@ -12,7 +13,14 @@ module.exports = class Document {
     const lexer = new marked.Lexer(this.config.markedOptions)
 
     lexer.lex(this.source).forEach((token) => {
-      this.tokens.push(token)
+      if (token.type === 'heading') {
+        if (!this.title && token.depth === 1) {
+          this.title = token.text
+        }
+        this.tokens.push(token)
+      } else {
+        this.tokens.push(token)
+      }
     })
 
     this.tokens.links = []

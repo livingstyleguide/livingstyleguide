@@ -23,4 +23,24 @@ describe('rendering of a simple document', () => {
     `).render()
     expect(html).to.match(/<h1[^>]*>Hello<\/h1>/m)
   })
+
+  it('should use the first headline as the title', () => {
+    const doc = newDoc(`
+      # Hello
+
+      # World
+    `)
+    doc.render()
+    expect(doc.title).to.equal('Hello')
+  })
+
+  it('should not have a title when no headline is used', () => {
+    const doc = new Document(`
+      Hello
+
+      World
+    `)
+    doc.render()
+    expect(doc.title).to.be.null
+  })
 })
