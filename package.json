@@ -9,6 +9,7 @@
   },
   "version": "3.0.0-0",
   "devDependencies": {
+    "lerna": "^2.8.0",
     "npm-run-all": "^4.1.2",
     "sass-lint": "^1.12.1",
     "standard": "^10.0.3"
