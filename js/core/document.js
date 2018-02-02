@@ -1,4 +1,5 @@
 const marked = require('marked')
+const Code = require('./code')
 const Config = require('./config')
 
 module.exports = class Document {
@@ -45,11 +46,8 @@ module.exports = class Document {
     renderer.listitem = (text) => {
       return `<li class="${this.config.classNames.li}">${text}</li>\n`
     }
-    const originalCode = renderer.code
-    renderer.code = (code, infoString, escaped) => {
-      let lang
-      if (infoString) lang = infoString.replace(/^(.+?\.)?(.+)$/, '$2')
-      return originalCode.call(renderer, code, lang, escaped)
+    renderer.code = (source, infoString) => {
+      return new Code(source, infoString, this.config).render()
     }
 
     let markedOptions = {

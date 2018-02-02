@@ -1,3 +1,5 @@
+const marked = require('marked')
+
 module.exports = class Config {
   constructor () {
     this.classNames = {
@@ -25,6 +27,13 @@ module.exports = class Config {
       smartypants: false,
       headerPrefix: '',
       xhtml: false
+    }
+
+    this.renderers = {
+      code: (code) => {
+        const object = {options: this.markedOptions}
+        return marked.Renderer.prototype.code.call(object, code.source, code.lang)
+      }
     }
   }
 }
