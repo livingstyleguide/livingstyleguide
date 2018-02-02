@@ -94,3 +94,40 @@ describe('custom class names', () => {
     })
   })
 })
+
+describe('code blocks', () => {
+  const wrappers = ['```', `~~~`]
+
+  it('should render a code block', () => {
+    wrappers.forEach((wrapper) => {
+      const html = newDoc(`
+        ${wrapper}
+        My code
+        ${wrapper}
+      `).render()
+      expect(html).to.match(/<pre><code[^>]*>\s*My code/)
+    })
+  })
+
+  it('should render a code block with language', () => {
+    wrappers.forEach((wrapper) => {
+      const html = newDoc(`
+        ${wrapper} html
+        <p>My code</p>
+        ${wrapper}
+      `).render()
+      expect(html).to.match(/<pre><code[^>]+class="[^"]*lang-html[^"]*"[^>]*>\s*&lt;p&gt;My code/)
+    })
+  })
+
+  it('should render a code block with language as file extension', () => {
+    wrappers.forEach((wrapper) => {
+      const html = newDoc(`
+        ${wrapper} my-File_name.html
+        <p>My code</p>
+        ${wrapper}
+      `).render()
+      expect(html).to.match(/<pre><code[^>]+class="[^"]*lang-html[^"]*"[^>]*>\s*&lt;p&gt;My code/)
+    })
+  })
+})
