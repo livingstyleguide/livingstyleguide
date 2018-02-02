@@ -1,5 +1,15 @@
 module.exports = class Config {
   constructor () {
+    this.classNames = {
+      root: 'lsg',
+      h1: 'lsg-pagetitle',
+      h2: 'lsg-headline',
+      h3: 'lsg-sub-headline',
+      h4: 'lsg-sub-sub-headline',
+      p: 'lsg-paragraph',
+      li: 'lsg-list-item'
+    }
+
     this.markedOptions = {
       gfm: true,
       tables: true,

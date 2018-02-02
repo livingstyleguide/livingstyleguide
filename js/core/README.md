@@ -40,6 +40,21 @@ const doc = new Document(source, config)
 ```
 
 
+### Class names
+
+Custom class names can be set for `h1` to `h4`, `p`, `li` as well as the `root`
+(wrapper for the document).
+
+``` js
+const Config = require('@livingstyleguide/core/config')
+const Document = require('@livingstyleguide/core/document')
+const config = new Config()
+config.classNames.h1 = 'my-headline'
+const doc = new Document('# Hello world', config)
+doc.render() // => '... <h1 class="my-headline">Hello ...'
+```
+
+
 ## Attributes
 
 ### title
