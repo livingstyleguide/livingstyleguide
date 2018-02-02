@@ -15,6 +15,31 @@ console.log(doc.render())
 ```
 
 
+## Configuration
+
+Adding a custom configuration:
+
+``` js
+const Config = require('@livingstyleguide/core/config')
+const Document = require('@livingstyleguide/core/document')
+const config = new Config()
+const doc = new Document(source, config)
+```
+
+
+### Marked options
+
+All [options to configure Marked] can be used for the configuration:
+
+``` js
+const Config = require('@livingstyleguide/core/config')
+const Document = require('@livingstyleguide/core/document')
+const config = new Config()
+config.markedOptions.tables = false
+const doc = new Document(source, config)
+```
+
+
 ## Attributes
 
 ### title
@@ -31,3 +56,4 @@ console.log(doc.title) // => 'My document'
 
 [Markdown]: https://daringfireball.net/projects/markdown/
 [Marked]: https://github.com/chjj/marked
+[Options to configure Marked]: https://github.com/chjj/marked#options-1

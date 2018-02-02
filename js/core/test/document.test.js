@@ -1,4 +1,5 @@
 var expect = require('chai').expect
+var Config = require('../config')
 var Document = require('../document')
 
 function unindent (string) {
@@ -7,8 +8,8 @@ function unindent (string) {
   return string.replace(new RegExp(`^${shortestIndent}`, 'gm'), '')
 }
 
-function newDoc (source) {
-  return new Document(unindent(source).trim())
+function newDoc (source, config) {
+  return new Document(unindent(source).trim(), config)
 }
 
 describe('rendering of a simple document', () => {
@@ -42,5 +43,24 @@ describe('rendering of a simple document', () => {
     `)
     doc.render()
     expect(doc.title).to.be.null
+  })
+})
+
+describe('the use of the configuration object', () => {
+  it('should use a default', () => {
+    const config = new Config()
+    const html = newDoc(`
+      ---
+    `, config).render()
+    expect(html).to.match(/<hr>/)
+  })
+
+  it('should use markedOptions', () => {
+    const config = new Config()
+    config.markedOptions.xhtml = true
+    const html = newDoc(`
+      ---
+    `, config).render()
+    expect(html).to.match(/<hr\/>/)
   })
 })

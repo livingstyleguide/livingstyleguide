@@ -1,8 +1,10 @@
 const marked = require('marked')
+const Config = require('./config')
 
 module.exports = class Document {
-  constructor (source) {
+  constructor (source, config) {
     this.source = source
+    this.config = config || new Config()
     this.title = null
     this.tokenize()
   }
@@ -31,6 +33,7 @@ module.exports = class Document {
     let markedOptions = {
       renderer: renderer
     }
+    Object.assign(markedOptions, this.config.markedOptions)
 
     let html = marked.parser(this.tokens, markedOptions)
     return `<div>\n${html}\n</div>`
