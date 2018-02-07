@@ -35,5 +35,16 @@ module.exports = class Config {
         return marked.Renderer.prototype.code.call(object, code.source, code.lang)
       }
     }
+
+    this.infoStringParsers = []
+    this.addInfoStringParser = (regexp, func) => {
+      this.infoStringParsers.push({regexp: regexp, func: func})
+    }
+    this.addInfoStringParser(/^\.([^ ]+)/, function (matches) {
+      this.classList.push(matches[1])
+    })
+    this.addInfoStringParser(/^#([^ ]+)/, function (matches) {
+      this.id = matches[1]
+    })
   }
 }

@@ -19,28 +19,32 @@ module.exports = class Code {
   }
 
   _parseLang (infoString) {
-    const match = infoString.match(/^(.+?\.)?(.+)$/)
-    if (match) {
-      if (match[1]) this.filename = infoString
-      this.lang = match[2]
-    } else {
-      this.lang = infoString
-    }
+    return infoString.replace(/^([\w_-]+?\.)?(\w+)/, (filename, basename, suffix) => {
+      if (basename) {
+        if (basename) this.filename = infoString
+        this.lang = suffix
+      } else {
+        this.lang = filename
+      }
+      return ''
+    })
   }
 
   _parseInfoString (infoString) {
     if (!infoString) return
-    const options = infoString.split(/ +/)
-    if (options[0].match(/^[^#.]/)) {
-      this._parseLang(options.shift())
+    infoString = this._parseLang(infoString)
+    let keepGoing = true
+    while (infoString.length && keepGoing) {
+      keepGoing = false
+      infoString = infoString.trimLeft()
+      this.config.infoStringParsers.forEach((parser) => {
+        infoString = infoString.replace(parser.regexp, (...matches) => {
+          keepGoing = true
+          parser.func.call(this, matches)
+          return ''
+        })
+      })
     }
-    options.forEach((option) => {
-      if (option.match(/^\.(.+)$/)) {
-        this.classList.push(option.slice(1))
-      } else if (option.match(/^#(.+)$/)) {
-        this.id = option.slice(1)
-      }
-    })
   }
 
   _renderAttributes () {

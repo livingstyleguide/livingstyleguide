@@ -55,6 +55,34 @@ doc.render() // => '... <h1 class="my-headline">Hello ...'
 ```
 
 
+### Info string parsers
+
+The info string is additional infomartion added to the optening of a code block:
+
+```` markdown
+``` info string
+code block
+```
+````
+
+Usually this is used for defining the language of the code used for a syntax
+highlighter. All information given after the language (or a file name defining
+the language by its suffix) can be parsed by adding an `infoStringParser`.
+
+The example below replaces the code block source defined in the Markdown source by new text
+
+``` js
+const Config = require('@livingstyleguide/core/config')
+const Document = require('@livingstyleguide/core/document')
+const config = new Config()
+config.addInfoStringParser(/^!!!"([^"]+)"/, (matches) => {
+  this.source = matches[1] // content of ([^"]+)
+})
+const doc = new Document('``` html !!!new source\nold source\n```', config)
+doc.render() // => '... <code class="lang-html">new source</code> ...'
+```
+
+
 ## Attributes
 
 ### title
