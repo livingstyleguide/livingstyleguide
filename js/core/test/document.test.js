@@ -130,4 +130,15 @@ describe('code blocks', () => {
       expect(html).to.match(/<pre><code[^>]+class="[^"]*lang-html[^"]*"[^>]*>\s*&lt;p&gt;My code/)
     })
   })
+
+  it('should render a code block with language and additional info string without issues', () => {
+    wrappers.forEach((wrapper) => {
+      const html = newDoc(`
+        ${wrapper} html info string
+        <p>My code</p>
+        ${wrapper}
+      `).render()
+      expect(html).to.match(/<pre><code[^>]+class="[^"]*lang-html[^"]*"[^>]*>\s*&lt;p&gt;My code/)
+    })
+  })
 })

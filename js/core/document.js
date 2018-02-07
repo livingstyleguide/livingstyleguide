@@ -14,6 +14,7 @@ module.exports = class Document {
     this.tokens = []
 
     const lexer = new marked.Lexer(this.config.markedOptions)
+    lexer.rules.fences = /^ *(`{3,}|~{3,})[ .]*(\S+ ?.+?)? *\n([\s\S]*?)\s*\1 *(?:\n+|$)/
 
     lexer.lex(this.source).forEach((token) => {
       if (token.type === 'heading') {
