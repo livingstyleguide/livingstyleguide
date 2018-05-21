@@ -1,5 +1,5 @@
 ---
-Title: Congrats to DV Team, LSG’s RGSoC 2018 team! 
+title: Congrats to DV Team, LSG’s RGSoC 2018 team! 
 ---
 
 **Congratulations to Violeta and Diana from DV Team, our LivingStyleGuide (LSG) team in Barcelona!** There was no better news
@@ -19,12 +19,9 @@ Title: Congrats to DV Team, LSG’s RGSoC 2018 team!
 **If you applied to RGSoC with LSG and didn’t make it in, you can still work with us!** 
  
 Although RGSoC no longer has a policy of “official” non-scholarship teams as of this year, anyone who would like to work
- with us on LSG is always welcome to contribute! Feel free to join our [Slack channel](
-
-https://join.slack.com/t/livingstyleguide/shared_invite/enQtMzA5NDkyOTQ0NjI2LWM0YWU5OWIxOTJhZjZjZTNjNDRiNjE0MTUwOWM4MDM2OTkwYjI0NTljZDdjYjg1NjVjZTk3NjlmMDgzYzBiZGY)
-and visit our [GitHub repo]
-(https://github.com/livingstyleguide/livingstyleguide) to get a feel for what’s going on. We’d like to port LSG into
- JavaScript this year, so any help with getting that going is especially appreciated. 
+ with us on LSG is always welcome to contribute! Feel free to join our [Slack channel](https://join.slack.com/t/livingstyleguide/shared_invite/enQtMzA5NDkyOTQ0NjI2LWM0YWU5OWIxOTJhZjZjZTNjNDRiNjE0MTUwOWM4MDM2OTkwYjI0NTljZDdjYjg1NjVjZTk3NjlmMDgzYzBiZGY)
+ and visit our [GitHub repo](https://github.com/livingstyleguide/livingstyleguide) to get a feel for what’s going on. We’d
+ like to port LSG into JavaScript this year, so any help with getting that going is especially appreciated. 
  
 We’re looking forward to our summer working with not only DV Team, but also with the wider RGSoC family. Being an active
  part of growing the open-source community, and making it inclusive and welcoming for everyone to be involved in is a basic
