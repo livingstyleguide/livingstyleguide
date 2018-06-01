@@ -1,0 +1,42 @@
+---
+title: We’re porting LivingStyleGuide into JavaScript
+---
+  
+
+Yes, you read right. We’re porting LSG into JavaScript!
+
+  
+
+## But why?
+
+  
+
+* **Better integrations**  
+		 We’ve got front-end tools like Webpack and Gulp in mind. 
+
+* **Focus on extendability**  
+	JavaScript is widespread and will make LSG more accessible and extendable, and the API can be designed close to the DOM. 
+
+* **Issue reduction** 
+	We want to reduce issues on some projects that might be caused by Ruby dependency.
+
+## What are the advantages?
+
+
+* **Speed**  
+				 *Who doesn’t like that?*
+
+* **Reconsideration** 
+		 *A complete rewrite affords the opportunity to rethink design decisions*
+
+
+## How will it be done?
+
+1. Build the underlying technology for parsing and rendering
+
+2. Build the LivingStyleGuide-specific features
+
+3. Build an improved documentation website
+
+## LSG needs you!
+We need all the help we can get to start things moving on this! If you’re interested in helping out, [visit our repository](https://github.com/livingstyleguide/), or feel free to reach out to us on [Twitter](https://twitter.com/LSGorg).
