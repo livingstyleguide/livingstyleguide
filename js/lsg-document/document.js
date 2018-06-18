@@ -14,7 +14,7 @@ module.exports = class Document {
   tokenize () {
     this.tokens = []
 
-    const lexer = new marked.Lexer({})
+    const lexer = new marked.Lexer(this.config.markedOptions)
     lexer.rules.fences = /^ *(`{3,}|~{3,})[ .]*(\S+ ?.+?)? *\n([\s\S]*?)\s*\1 *(?:\n+|$)/
 
     lexer.lex(this.source).forEach((token) => {
@@ -32,7 +32,7 @@ module.exports = class Document {
   }
 
   renderContent () {
-    const renderer = new marked.Renderer()
+    const renderer = new marked.Renderer(this.config.markedOptions)
 
     renderer.code = (source, lang) => {
       const code = new Code(source, lang, this.config)
