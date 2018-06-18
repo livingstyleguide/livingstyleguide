@@ -1,4 +1,7 @@
-document.addEventListener('DOMContentLoaded', function () {
+window.lsg = window.lsg || {}
+window.lsg.initializers = window.lsg.initializers || {}
+
+window.lsg.initializers.showmore = function () {
   var showHiddenCode = function (event) {
     var el = event.currentTarget
     el.parentNode.style.display = 'none'
@@ -11,4 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', showHiddenCode)
   }
-})
+}
+
+document.addEventListener('DOMContentLoaded', window.lsg.initializers.showmore)
