@@ -7,13 +7,13 @@ module.exports = function (config) {
       counter++
       var className = `lsg-hidden-code-${counter}`
       var indent = matches[0].match(/^ +$/) ? matches[0] : ''
-      return `<div class="lsg-show-hidden-code-wrapper">${indent}` +
+      return `<span class="lsg-show-hidden-code-wrapper">${indent}` +
              '<button type="button" class="lsg-show-hidden-code"' +
-             ` data-target=".${className}"></button></div>` +
-             `<div class="lsg-hidden-code ${className}">`
+             ` data-target=".${className}"></button></span>` +
+             `<span class="lsg-hidden-code ${className}">`
     })
     code.preHighlighter.rule(/^ *(…\]|\.{3,}\])\n/, function () {
-      return '</div>'
+      return '</span>'
     })
 
     // Inline:
