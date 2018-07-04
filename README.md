@@ -5,7 +5,7 @@ your Sass project. [Follow @LSGorg](https://twitter.com/LSGorg) for updates.
 
 ![preview](https://cloud.githubusercontent.com/assets/103399/3854622/2fb68574-1eda-11e4-862c-33e7d7943c56.jpg)
 
-* On the left: http://www.homify.de/assets/styleguide.html (non-public repository)
+* On the left: [homify.com](https://www.homify.com)’s style guide (non-public repository)
 * On the right: http://style-guide.eurucamp.org/2015/ ([public repository](https://github.com/eurucamp/livingstyleguide-eurucamp))
 
 ----
