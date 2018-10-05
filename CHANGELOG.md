@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.3
+
+* Fix RedcarpetHTML
+
+
 ## 2.0.2
 
 * Optimizes Rails integration
