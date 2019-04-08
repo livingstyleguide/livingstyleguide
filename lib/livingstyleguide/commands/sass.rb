@@ -1,4 +1,4 @@
-require "sass"
+require "sassc"
 
 LivingStyleGuide.command :scss do |arguments, options, scss|
   file = arguments.first
