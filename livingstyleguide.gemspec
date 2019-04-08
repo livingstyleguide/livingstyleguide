@@ -26,7 +26,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency "minisyntax", ">= 0.2.5"
-  gem.add_dependency "sass"
+  gem.add_dependency "sassc"
   gem.add_dependency "redcarpet"
   gem.add_dependency "tilt"
   gem.add_dependency "thor"

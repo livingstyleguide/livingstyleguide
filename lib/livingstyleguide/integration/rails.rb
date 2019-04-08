@@ -6,7 +6,7 @@ if defined?(Rails) && defined?(Rails::Railtie) && defined?(Sprockets)
         LivingStyleGuideTransformer.register(env)
       end
       LivingStyleGuide.default_options[:scss_template] =
-        ::Sass::Rails::ScssTemplate
+        ::SassC::Rails::ScssTemplate
       app.config.assets.paths << ::LivingStyleGuide::SASS_PATH
     end
   end
