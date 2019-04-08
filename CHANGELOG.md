@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0
+
+* Use SassC instead of Ruby Sass Gem
+
+
 ## 2.0.3
 
 * Fix RedcarpetHTML
