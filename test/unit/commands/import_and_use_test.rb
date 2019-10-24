@@ -102,8 +102,6 @@ class ImportAndSourceTest < DocumentTestCase
       .*?
       <h2.+?>Bar Bar</h2>
       .*?
-      <h2.+?>Headline</h2>
-      .*?
       <p.+?>After</p>
     OUTPUT
   end
