@@ -293,7 +293,7 @@ class LivingStyleGuide::Document < ::Tilt::Template
   end
 
   def scss_template
-    ::LivingStyleGuide.default_options[:scss_template] || Tilt["scss"]
+    Tilt["scss"]
   end
 
   def render_scss(scss)
